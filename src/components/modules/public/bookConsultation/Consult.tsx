@@ -9,7 +9,7 @@ import BookLawyer from "./BookLawyer";
 export default function Consult() {
   const steps = [1, 2, 3, 4];
   const [currentStep, setCurrentStep] = useState(1);
-  const [complete, setComplete] = useState(false);
+  const [complete] = useState(false);
 
   const goNext = () => {
     setCurrentStep((prev) => prev + 1);

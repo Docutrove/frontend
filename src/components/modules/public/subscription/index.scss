@@ -1,0 +1,15 @@
+.subscription {
+  &__services {
+    &__subtitle {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__content {
+      display: flex;
+      gap: 48px;
+      padding-top: 58px;
+      padding-bottom: 92px;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.pricing {
+  &__services {
+    &__content {
+      display: flex;
+      gap: 48px;
+      padding-bottom: 90px;
+    }
+  }
+}
+
+.pricing-subscription {
+  padding-bottom: 0;
+}

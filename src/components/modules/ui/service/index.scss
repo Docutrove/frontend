@@ -1,0 +1,29 @@
+.service {
+  &__content {
+    background: #f2f7ff;
+    display: flex;
+    position: relative;
+    border-radius: 20px;
+
+    &__text {
+      padding: 70px 0 76px 62px;
+
+      &__title {
+        max-width: 560px;
+      }
+
+      &__description {
+        margin-top: 20px;
+        margin-bottom: 40px;
+        max-width: 530px;
+      }
+    }
+
+    &__image {
+      max-width: 960px;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}

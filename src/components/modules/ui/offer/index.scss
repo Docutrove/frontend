@@ -1,0 +1,110 @@
+.offer {
+  padding: 30px;
+  border-radius: 20px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+
+  .offer-text {
+    margin-bottom: auto;
+  }
+
+  &--purple {
+    @extend .offer;
+    background: #dfe4ff;
+  }
+
+  &--green {
+    @extend .offer;
+    background: #defaeb;
+  }
+
+  &--blue {
+    @extend .offer;
+    background: #cefbfc;
+  }
+
+  &--plain {
+    @extend .offer;
+    background: var(--white);
+    border: 1px solid var(--border);
+  }
+
+  &__icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px;
+    border-radius: 100vh;
+    background: linear-gradient(
+      144.69deg,
+      #ffffff 0.68%,
+      rgba(255, 255, 255, 0.31) 87.57%
+    );
+  }
+
+  &__title {
+    font-weight: 700;
+  }
+
+  &__description {
+    max-width: 320px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+
+  &__lists {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+
+    &__list {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+
+      .tick-icon {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100vh;
+
+        &--gradient {
+          @extend .tick-icon;
+          background: linear-gradient(
+            265.33deg,
+            #81e8ff -3.78%,
+            #c7f6dc 85.48%,
+            #c7f6dc 96.74%
+          );
+          color: var(--dark);
+        }
+
+        &--black {
+          @extend .tick-icon;
+          background: var(--dark);
+          color: var(--white);
+        }
+      }
+    }
+  }
+
+  &__amount {
+    display: flex;
+    gap: 10px;
+    border-top: 1px solid #d7e4ff;
+    padding-top: 30px;
+    margin-bottom: 30px;
+    align-items: center;
+  }
+
+  .amount-suffix {
+    color: #425669;
+  }
+}

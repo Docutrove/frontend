@@ -1,0 +1,47 @@
+.customise {
+  &__how {
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      row-gap: 90px;
+      border-bottom: 1px solid #d7e4ff;
+      padding-bottom: 90px;
+    }
+  }
+
+  &__search {
+    padding-top: 92px;
+    padding-bottom: 90px;
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__selects {
+      display: flex;
+      gap: 53px;
+      margin-top: 53px;
+
+      .search-select {
+        padding: 40px 46px 40px 42px;
+        border-radius: 20px;
+        width: 621px;
+
+        &:nth-child(1) {
+          background: #edfff5;
+        }
+
+        &:nth-child(2) {
+          background: #eafeff;
+        }
+      }
+    }
+  }
+
+  &__explore {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+}

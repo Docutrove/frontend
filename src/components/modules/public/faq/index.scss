@@ -1,0 +1,16 @@
+.faq {
+  background: linear-gradient(265.33deg, #d6f5fc 16.76%, #e6faf4 104.26%);
+
+  &__help {
+    margin-top: 80px;
+    margin-bottom: 120px;
+
+    &__content {
+      background: var(--white);
+      padding-top: 60px;
+      padding-bottom: 62px;
+      max-width: 941px;
+      margin: 0 auto;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__box {
+    border: 1px solid var(--border);
+    padding: 14px 12px;
+    border-radius: 10px;
+    background: var(--white);
+    display: flex;
+    justify-content: space-between;
+
+    select {
+      appearance: none;
+      width: 100%;
+    }
+
+    &__icon {
+      width: 20px;
+      height: 20px;
+      transform: rotate(90deg);
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.accordion {
+  padding: 22px 30px;
+  background: var(--white);
+  border-radius: 20px;
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 100vh;
+
+      .rotate-down {
+        transform: rotate(-90deg);
+      }
+
+      .rotate-up {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.3s ease;
+    max-width: 1040px;
+
+    &.active {
+      max-height: 848px;
+    }
+  }
+}

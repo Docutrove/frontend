@@ -1,0 +1,22 @@
+.footer {
+  background: #1d2744;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__links {
+      display: flex;
+      gap: 50px;
+
+      &__link {
+        a {
+          color: var(--border);
+        }
+      }
+    }
+  }
+}

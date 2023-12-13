@@ -1,0 +1,110 @@
+@import "./fonts.scss";
+@import "./mixins.scss";
+
+:root {
+  --dark: #0e2557;
+  --white: #ffffff;
+  --text: #425669;
+  --border: #cfd3dd;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border: 0;
+  outline: none;
+  list-style: none;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--dark);
+}
+
+button {
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 63px;
+  line-height: 64px;
+  font-weight: 400;
+  font-family: "PT Serif", serif;
+}
+
+h2 {
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: 400;
+  font-family: "PT Serif", serif;
+}
+
+h3 {
+  font-size: 34px;
+  line-height: 40px;
+  font-family: "PT Serif", serif;
+}
+
+h4 {
+  font-size: 30px;
+  line-height: 38px;
+  font-family: "PT Serif", serif;
+}
+
+h5 {
+  font-size: 24px;
+  line-height: 32px;
+  font-family: "PT Serif", serif;
+}
+
+h6 {
+  font-size: 20px;
+  line-height: 27px;
+  font-family: "PT Serif", serif;
+}
+
+.text {
+  &--sm {
+    font-size: 18px;
+    line-height: 26.5px;
+  }
+
+  &--xs {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &--2xs {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.app-container {
+  padding-left: 50px;
+  padding-right: 50px;
+
+  &__section {
+    max-width: 1296px;
+    margin: 0 auto;
+  }
+}
+
+.subtitle {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.8px;
+  color: #3a5899;
+  text-transform: uppercase;
+}

@@ -1,0 +1,16 @@
+.business {
+  &__services {
+    &__subtitle {
+      margin-bottom: 66px;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 90px;
+      padding-bottom: 90px;
+    }
+  }
+}

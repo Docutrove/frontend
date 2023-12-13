@@ -1,0 +1,28 @@
+.hero-title {
+  padding-top: 96px;
+  padding-bottom: 130px;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    &__header {
+      max-width: 622px;
+    }
+
+    &__description {
+      max-width: 614px;
+      font-weight: 400;
+      font-family: "Inter", sans-serif;
+    }
+
+    .polygon {
+      width: 253px;
+      position: absolute;
+      right: 0;
+      bottom: -195px;
+      z-index: -1;
+    }
+  }
+}

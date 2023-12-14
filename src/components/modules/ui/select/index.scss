@@ -10,6 +10,8 @@
     background: var(--white);
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    position: relative;
 
     select {
       appearance: none;
@@ -19,7 +21,9 @@
     &__icon {
       width: 20px;
       height: 20px;
-      transform: rotate(90deg);
+      position: absolute;
+      right: 12px;
+      top: 16px;
     }
   }
 }

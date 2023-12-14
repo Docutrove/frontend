@@ -1,4 +1,9 @@
 .subscription {
+  &__hero {
+    bottom: -177px !important;
+    right: 70px !important;
+  }
+
   &__services {
     &__subtitle {
       display: flex;

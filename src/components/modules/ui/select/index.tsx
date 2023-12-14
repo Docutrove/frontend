@@ -13,7 +13,7 @@ export default function Select({ label }: SelectProps) {
         <select name="" id="" className="text--xs">
           <option value="">Lorem ipsum</option>
         </select>
-        <Icon name="caret-right" className="select__box__icon" />
+        <Icon name="dropdown" className="select__box__icon" />
       </div>
     </label>
   );

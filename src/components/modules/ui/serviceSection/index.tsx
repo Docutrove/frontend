@@ -19,7 +19,7 @@ export default function ServiceSection({
   return (
     <div className="service-section">
       <div className="service-section__text">
-        <p className="service-section__subtitle how-subtitle">{subtitle}</p>
+        <p className="service-section__subtitle subtitle">{subtitle}</p>
         <h3 className="title">{title}</h3>
         <div className="description text--sm">{children}</div>
         {/* <p className="description text--sm">{description}</p> */}

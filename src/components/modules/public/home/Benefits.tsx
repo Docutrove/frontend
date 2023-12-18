@@ -3,7 +3,12 @@ import BaseButton from "../../ui/button";
 export default function HomeBenefits() {
   return (
     <div className="home__benefits app-container">
-      <div className="app-container__section">
+      <div className="home__benefits__content app-container__section">
+        <div className="mobile-header">
+          <p className="subtitle">Benefits</p>
+          <h2 className="home__benefits__title">Sorem ipsum dolor sit amet</h2>
+        </div>
+
         <div className="home__benefits__wrapper">
           <div className="home__benefits__benefit green">
             <h4>Nunc vulputate</h4>
@@ -30,10 +35,12 @@ export default function HomeBenefits() {
           </div>
 
           <div>
-            <p className="subtitle">Benefits</p>
-            <h2 className="home__benefits__title">
-              Sorem ipsum dolor sit amet
-            </h2>
+            <div className="web-header">
+              <p className="subtitle">Benefits</p>
+              <h2 className="home__benefits__title">
+                Sorem ipsum dolor sit amet
+              </h2>
+            </div>
             <div className="home__benefits__benefit purple">
               <h4>Consectetur</h4>
               <div className="benefit-descriptions">

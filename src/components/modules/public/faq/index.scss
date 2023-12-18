@@ -1,9 +1,15 @@
+@import "../../../../assets/styles/mixins.scss";
+
 .faq {
-  background: linear-gradient(265.33deg, #d6f5fc 16.76%, #e6faf4 104.26%);
 
   &__help {
     margin-top: 80px;
     margin-bottom: 120px;
+
+    @include mobile(756px) {
+      margin-top: 60px;
+      margin-bottom: 60px;
+    }
 
     &__content {
       background: var(--white);
@@ -12,6 +18,11 @@
       max-width: 941px;
       margin: 0 auto;
       border-radius: 20px;
+      position: relative;
+
+      @include mobile(756px) {
+        padding: 30px 20px;
+      }
 
       &__subtitle {
         display: flex;
@@ -23,6 +34,11 @@
         margin: 20px auto 54px;
         text-align: center;
         max-width: 623px;
+
+        @include mobile(600px) {
+          margin-top: 12px;
+          margin-bottom: 30px;
+        }
       }
 
       &__links {
@@ -33,11 +49,23 @@
           display: flex;
           align-items: center;
           justify-content: space-between;
-          border-bottom: 1px solid #efebf2;
+          border-bottom: 1px solid var(--border2);
           padding: 36px 0;
 
           &:nth-last-of-type(1) {
             border: 0;
+          }
+
+          &:first-child {
+            @include mobile(600px) {
+              padding-top: 0;
+            }
+          }
+
+          &:last-child {
+            @include mobile(600px) {
+              padding-bottom: 0;
+            }
           }
 
           &__icon {

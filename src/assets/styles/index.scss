@@ -6,6 +6,7 @@
   --white: #ffffff;
   --text: #425669;
   --border: #cfd3dd;
+  --border2: #efebf2;
 }
 
 * {
@@ -40,6 +41,11 @@ h1 {
   line-height: 64px;
   font-weight: 400;
   font-family: "PT Serif", serif;
+
+  @include mobile(600px) {
+    font-size: 44px;
+    line-height: 48px;
+  }
 }
 
 h2 {
@@ -47,52 +53,89 @@ h2 {
   line-height: 52px;
   font-weight: 400;
   font-family: "PT Serif", serif;
+
+  @include mobile(600px) {
+    font-size: 32px;
+    line-height: 36px;
+  }
 }
 
 h3 {
   font-size: 34px;
   line-height: 40px;
   font-family: "PT Serif", serif;
+
+  @include mobile(600px) {
+    font-size: 27px;
+    line-height: 32px;
+  }
 }
 
 h4 {
   font-size: 30px;
   line-height: 38px;
   font-family: "PT Serif", serif;
+
+  @include mobile(600px) {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }
 
 h5 {
   font-size: 24px;
   line-height: 32px;
   font-family: "PT Serif", serif;
+
+  @include mobile(600px) {
+    font-size: 20px;
+    line-height: 26px;
+  }
 }
 
 h6 {
   font-size: 20px;
   line-height: 27px;
   font-family: "PT Serif", serif;
+
+  @include mobile(600px) {
+    font-size: 19px;
+  }
 }
 
 .text {
   &--sm {
     font-size: 18px;
     line-height: 26.5px;
+    color: var(--text);
+
+    @include mobile(600px) {
+      font-size: 17px;
+      line-height: 25.5px;
+    }
   }
 
   &--xs {
     font-size: 16px;
     line-height: 24px;
+    color: var(--text);
   }
 
   &--2xs {
     font-size: 14px;
     line-height: 20px;
+    color: var(--text);
   }
 }
 
 .app-container {
   padding-left: 50px;
   padding-right: 50px;
+
+  @include mobile(986px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
   &__section {
     max-width: 1296px;
@@ -107,4 +150,86 @@ h6 {
   letter-spacing: 0.8px;
   color: #3a5899;
   text-transform: uppercase;
+}
+
+.bg-gradient {
+  background: linear-gradient(265.33deg, #d6f5fc 16.76%, #e6faf4 104.26%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.bg-arrow {
+  position: relative;
+
+  &::before {
+    content: "";
+    background: url("/images/Polygon_3.png");
+    position: absolute;
+    left: -16px;
+    top: 87px;
+    width: 159px;
+    height: 176px;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+
+    @include mobile(1210px) {
+      width: 120px;
+      height: 140px;
+      top: -30px;
+      left: -47px;
+    }
+
+    @include mobile(400px) {
+      width: 81px;
+      height: 81px;
+      top: -30px;
+      left: -41px;
+    }
+  }
+
+  &::after {
+    content: "";
+    background: url("/images/Polygon_2.png");
+    position: absolute;
+    right: 0;
+    top: 325px;
+    width: 434px;
+    height: 481px;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @include mobile(1210px) {
+      width: 400px;
+      height: 500px;
+      top: 600px;
+      right: -30px;
+    }
+
+    @include mobile(1083px) {
+      width: 300px;
+      height: 350px;
+      top: 700px;
+      right: -30px;
+    }
+
+    @include mobile(1000px) {
+      right: -14px;
+    }
+
+    @include mobile(600px) {
+      width: 250px;
+      height: 300px;
+      top: 550px;
+      right: -14px;
+    }
+
+    @include mobile(400px) {
+      width: 147px;
+      height: 156px;
+      top: 600px;
+      right: -14px;
+    }
+  }
 }

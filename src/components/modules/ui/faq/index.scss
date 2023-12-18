@@ -1,12 +1,23 @@
+@import "../../../../assets/styles/mixins.scss";
+
 .app__faq {
   padding-top: 90px;
   padding-bottom: 90px;
   background: linear-gradient(93.23deg, #d3f5fc 5.65%, #b9ffe2 117.99%);
+
+  @include mobile(756px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
 
   &__list {
     margin-top: 60px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    @include mobile(600px) {
+      margin-top: 35px;
+    }
   }
 }

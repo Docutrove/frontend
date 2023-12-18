@@ -1,3 +1,5 @@
+@import "../../../../assets/styles/mixins.scss";
+
 .subscription {
   &__hero {
     bottom: -177px !important;
@@ -15,6 +17,17 @@
       gap: 48px;
       padding-top: 58px;
       padding-bottom: 92px;
+
+      @include mobile(1189px) {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      @include mobile(811px) {
+        gap: 20px;
+        padding-top: 40px;
+        padding-bottom: 60px;
+      }
     }
   }
 }

@@ -4,10 +4,10 @@ import Select from "../../ui/select";
 export default function CustomiseSearch() {
   return (
     <div className="customise__search app-container">
-      <div className=" app-container__section">
+      <div className="customise__search__content app-container__section">
         <div className="customise__search__header">
           <h2>Search for a document</h2>
-          <BaseButton variant="primary">Search document</BaseButton>
+          {/* <BaseButton variant="primary">Search document</BaseButton> */}
         </div>
         <div className="customise__search__selects">
           <div className="search-select">
@@ -17,6 +17,7 @@ export default function CustomiseSearch() {
             <Select label="Select the specific template you need" />
           </div>
         </div>
+        <BaseButton variant="primary" className="search-button">Search document</BaseButton>
       </div>
     </div>
   );

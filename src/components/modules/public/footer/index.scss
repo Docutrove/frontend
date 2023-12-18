@@ -1,20 +1,43 @@
+@import "../../../../assets/styles/mixins.scss";
+
 .footer {
   background: #1d2744;
   padding-top: 40px;
   padding-bottom: 40px;
+  margin-top: auto;
+  position: relative;
 
   &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    @include mobile(748px) {
+      flex-direction: column;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
     &__links {
       display: flex;
+      flex-wrap: wrap;
       gap: 50px;
+
+      @include mobile(375px) {
+        flex-direction: column;
+        gap: 20px;
+      }
 
       &__link {
         a {
           color: var(--border);
+          font-size: 16px;
+          line-height: 32px;
+
+          @include mobile(600px) {
+            font-size: 15px;
+            line-height: 15px;
+          }
         }
       }
     }

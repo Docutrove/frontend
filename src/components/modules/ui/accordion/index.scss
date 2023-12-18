@@ -1,7 +1,13 @@
+@import "../../../../assets/styles/mixins.scss";
+
 .accordion {
   padding: 22px 30px;
   background: var(--white);
   border-radius: 20px;
+
+  @include mobile(600px) {
+    padding: 20px;
+  }
 
   &__title {
     display: flex;
@@ -16,6 +22,12 @@
       height: 48px;
       border: 1px solid var(--border);
       border-radius: 100vh;
+      flex-shrink: 0;
+
+      @include mobile(784px) {
+        width: 40px;
+        height: 40px;
+      }
 
       .rotate-down {
         transform: rotate(-90deg);
@@ -35,6 +47,7 @@
 
     &.active {
       max-height: 848px;
+      margin-top: 20px;
     }
   }
 }

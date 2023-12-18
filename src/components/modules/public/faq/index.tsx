@@ -4,7 +4,7 @@ import "./index.scss";
 
 export default function FAQ() {
   return (
-    <Layout className="faq">
+    <Layout className="bg-gradient faq">
       <FAQHelp />
     </Layout>
   );

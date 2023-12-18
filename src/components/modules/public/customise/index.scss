@@ -1,5 +1,16 @@
+@import "../../../../assets/styles/mixins.scss";
+
 .customise {
   &__how {
+    .customise-subtitle {
+      display: none;
+
+      @include mobile(1101px) {
+        display: block;
+        max-width: 620px;
+        margin: 0 auto 16px;
+      }
+    }
 
     &__content {
       display: flex;
@@ -7,12 +18,26 @@
       row-gap: 90px;
       border-bottom: 1px solid #d7e4ff;
       padding-bottom: 90px;
+
+      @include mobile(1101px) {
+        gap: 60px;
+        padding-bottom: 60px;
+      }
     }
   }
 
   &__search {
     padding-top: 92px;
     padding-bottom: 90px;
+
+    @include mobile(850px) {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+
+    &__content {
+      position: relative;
+    }
 
     &__header {
       display: flex;
@@ -24,10 +49,31 @@
       gap: 53px;
       margin-top: 53px;
 
+      @include mobile(986px) {
+        gap: 20px;
+      }
+
+      @include mobile(850px) {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      @include mobile(600px) {
+        margin-top: 30px;
+      }
+
       .search-select {
         padding: 40px 46px 40px 42px;
         border-radius: 20px;
         width: 621px;
+
+        @include mobile(850px) {
+          width: 100%;
+        }
+
+        @include mobile(600px) {
+          padding: 20px;
+        }
 
         &:nth-child(1) {
           background: #edfff5;
@@ -38,10 +84,31 @@
         }
       }
     }
+
+    .search-button {
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      @include mobile(986px) {
+        right: 20px;
+      }
+
+      @include mobile(850px) {
+        position: unset;
+        margin-top: 30px;
+        width: 100%;
+      }
+    }
   }
 
   &__explore {
     padding-top: 90px;
     padding-bottom: 90px;
+
+    @include mobile(756px) {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
   }
 }

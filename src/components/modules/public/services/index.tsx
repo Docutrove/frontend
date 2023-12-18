@@ -10,7 +10,7 @@ export default function Services() {
     <Layout>
       <ServiceHero />
       <HomeOffers />
-      <HomeSubscription />
+      <HomeSubscription className="services-subscription" />
       <HomeSupport />
     </Layout>
   );

@@ -1,3 +1,9 @@
-.home__subscription {
+@import "../../../../assets/styles/mixins.scss";
+
+.services-subscription {
   padding-top: 108px;
+
+  @include mobile(756px) {
+    padding-top: 60px;
+  }
 }

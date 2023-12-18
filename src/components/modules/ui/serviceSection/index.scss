@@ -1,9 +1,22 @@
+@import "../../../../assets/styles/mixins.scss";
+
 .service-section {
   display: flex;
   justify-content: space-between;
+  gap: 50px;
+
+  @include mobile(1101px) {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 30px;
+  }
 
   &:nth-child(even) {
     flex-direction: row-reverse;
+
+    @include mobile(1101px) {
+      flex-direction: column-reverse;
+    }
   }
 
   &__text {
@@ -13,6 +26,17 @@
       margin-top: 20px;
       margin-bottom: 40px;
       max-width: 485px;
+
+      @include mobile(600px) {
+        margin-top: 16px;
+        margin-bottom: 30px;
+      }
+    }
+
+    .service-button {
+      @include mobile(1101px) {
+        width: 100%;
+      }
     }
   }
 
@@ -26,5 +50,9 @@
 
   &__subtitle {
     margin-bottom: 20px;
+
+    @include mobile(1101px) {
+      display: none;
+    }
   }
 }

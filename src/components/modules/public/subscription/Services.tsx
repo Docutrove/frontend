@@ -21,7 +21,7 @@ export default function SubscriptionServices({
           description="Fames adipiscing lorem ultrices faucibus fusce sagittis sed imperdiet dolor sagittis."
           amount={0}
           buttonText="Subscribe to Tier 1"
-          path=""
+          path="/coming"
           lists={[
             "Tortor interdum condimentum nunc",
             "Purus orci netus suscipit",
@@ -37,7 +37,7 @@ export default function SubscriptionServices({
           description="Fames adipiscing lorem ultrices faucibus fusce sagittis sed imperdiet dolor sagittis."
           buttonText="Subscribe to Tier 2"
           amount={0}
-          path=""
+          path="/coming"
           lists={[
             "Tortor interdum condimentum nunc",
             "Purus orci netus suscipit",
@@ -54,7 +54,7 @@ export default function SubscriptionServices({
           description="Fames adipiscing lorem ultrices faucibus fusce sagittis sed imperdiet dolor sagittis."
           buttonText="Subscribe to Tier 3"
           amount={0}
-          path=""
+          path="/coming"
           lists={[
             "Tortor interdum condimentum nunc",
             "Purus orci netus suscipit",

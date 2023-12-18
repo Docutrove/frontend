@@ -7,6 +7,7 @@ import FAQ from "./components/modules/public/faq";
 import Business from "./components/modules/public/business";
 import Subscription from "./components/modules/public/subscription";
 import Pricing from "./components/modules/public/pricing";
+import ComingSoon from "./components/modules/public/comingSoon";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/subscription" element={<Subscription />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/coming" element={<ComingSoon />} />
       </Routes>
     </BrowserRouter>
   );

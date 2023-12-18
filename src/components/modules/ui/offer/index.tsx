@@ -34,7 +34,7 @@ export function Offer({
       <div className="offer-text">
         {iconName ? (
           <div className="offer__icon">
-            <Icon name={iconName} />
+            <Icon name={iconName} className="icon" />
           </div>
         ) : null}
         <h4 className="offer__title">{title}</h4>
@@ -64,7 +64,7 @@ export function Offer({
             <p className="text--xs amount-suffix">{amountSuffix}</p>
           </div>
         ) : null}
-        <BaseButton href={path} variant={buttonVariant}>
+        <BaseButton href={path} variant={buttonVariant} className="offer-button">
           {buttonText}
         </BaseButton>
       </div>

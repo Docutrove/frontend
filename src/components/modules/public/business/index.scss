@@ -1,3 +1,5 @@
+@import "../../../../assets/styles/mixins.scss";
+
 .business {
   &__hero {
     bottom: -283px !important;
@@ -7,6 +9,10 @@
       margin-bottom: 66px;
       display: flex;
       justify-content: center;
+
+      @include mobile(600px) {
+        margin-bottom: 40px;
+      }
     }
 
     &__content {
@@ -14,6 +20,11 @@
       flex-direction: column;
       gap: 90px;
       padding-bottom: 90px;
+
+      @include mobile(1101px) {
+        gap: 60px;
+        padding-bottom: 60px;
+      }
     }
   }
 }

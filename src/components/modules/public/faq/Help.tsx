@@ -2,7 +2,8 @@ import { Icon } from "../../ui/Icon";
 
 export default function FAQHelp() {
   return (
-    <div className="faq__help">
+    <div className="faq__help app-container">
+      <div className="bg-arrow"></div>
       <div className="faq__help__content">
         <p className="faq__help__content__subtitle text--sm">
           Help and support

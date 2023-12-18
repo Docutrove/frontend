@@ -1,9 +1,17 @@
+@import "../../../../assets/styles/mixins.scss";
+
 .offer {
   padding: 30px;
   border-radius: 20px;
   width: 400px;
   display: flex;
   flex-direction: column;
+
+  @include mobile(1024px) {
+    padding: 20px;
+    width: unset;
+    max-width: 400px;
+  }
 
   .offer-text {
     margin-bottom: auto;
@@ -43,6 +51,18 @@
       #ffffff 0.68%,
       rgba(255, 255, 255, 0.31) 87.57%
     );
+
+    @include mobile(600px) {
+      width: 56px;
+      height: 56px;
+    }
+
+    .icon {
+      @include mobile(600px) {
+        width: 28px;
+        height: 28px;
+      }
+    }
   }
 
   &__title {
@@ -54,6 +74,11 @@
     margin-top: 20px;
     margin-bottom: 30px;
     font-weight: 500;
+
+    @include mobile(600px) {
+      margin-top: 16px;
+      margin-bottom: 28px;
+    }
   }
 
   &__lists {
@@ -65,7 +90,7 @@
     &__list {
       display: flex;
       gap: 16px;
-      align-items: center;
+      align-items: flex-start;
 
       .tick-icon {
         width: 20px;
@@ -74,6 +99,8 @@
         justify-content: center;
         align-items: center;
         border-radius: 100vh;
+        flex-shrink: 0;
+        transform: translateY(3px);
 
         &--gradient {
           @extend .tick-icon;
@@ -104,7 +131,10 @@
     align-items: center;
   }
 
-  .amount-suffix {
-    color: #425669;
+
+  .offer-button {
+    @include mobile(787px) {
+      width: 100%;
+    }
   }
 }

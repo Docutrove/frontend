@@ -26,7 +26,7 @@ export default function Service({
           <p className="service__content__text__description text--sm">
             {description}
           </p>
-          <BaseButton href={path} variant="primary">
+          <BaseButton href={path} variant="primary" className="service-button">
             {buttonText}
           </BaseButton>
         </div>

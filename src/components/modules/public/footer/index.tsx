@@ -4,7 +4,7 @@ import "./index.scss";
 
 export default function Footer() {
   return (
-    <div className="footer app-container">
+    <footer className="footer app-container">
       <div className="footer__content app-container__section">
         <Link to="/">
           <Icon name="logo-dark" />
@@ -25,6 +25,6 @@ export default function Footer() {
           </li>
         </ul>
       </div>
-    </div>
+    </footer>
   );
 }

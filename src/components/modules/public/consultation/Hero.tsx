@@ -5,7 +5,7 @@ export default function ConsultationHero() {
     <HeroTitle
       imgSrc="/images/Polygon_5.png"
       title="Book a consultation  headline lorem"
-      description="Lorem ipsum dolor sit amet consectetur. Sollicitudin massa risus blandit ac leo. Feugiat in nunc nunc eget sit eu. Purus orci netus suscipit sagittis nec duis. Justo et in sagittis pharetra tellus."
+      description="Harness top-quality legal knowledge from TEMPLARS lawyers for ongoing support and returns on your investment. Identify the right template and receive expert assistance for unique needs."
     />
   );
 }

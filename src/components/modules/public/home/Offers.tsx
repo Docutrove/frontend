@@ -8,10 +8,9 @@ export default function HomeOffers() {
           variant="purple"
           iconName="document"
           title="Customize a document"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum. 
-          "
+          description="Automated legal documentss tailored to your needs. Looking for professional legal documents? Docutrove delivers. Access high-quality documents for essential business situations. Simply answer a few questions, and a personalized document is created automatically."
           path="/customise"
-          buttonText="Discover More"
+          buttonText="Browse Templates"
           buttonVariant="secondary"
         />
         <Offer
@@ -26,8 +25,8 @@ export default function HomeOffers() {
         <Offer
           variant="blue"
           iconName="user"
-          title="Consult with an expert"
-          description="Fames adipiscing lorem ultrices faucibus fusce sagittis sed imperdiet dolor sagittis."
+          title="Consult a lawyer"
+          description="Our team of experienced lawyers, qualified across multiple jurisdictions, provides tailored solutions. We offer top-tier knowledge and expertise for all aspects of our service."
           path="/consultation"
           buttonText="Discover More"
           buttonVariant="secondary"

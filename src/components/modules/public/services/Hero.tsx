@@ -5,7 +5,7 @@ export default function ServiceHero() {
     <HeroTitle
       imgSrc="/images/Polygon_6.png"
       title="Services landing page headline"
-      description="Borem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra."
+      description=" Docutrove is a robust document automation platform providing tailored, house-styled documents swiftly. Our aim is to save time, money, and reduce risks during document drafting."
     />
   );
 }

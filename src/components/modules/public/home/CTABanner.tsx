@@ -8,7 +8,7 @@ export default function HomeCTABanner() {
         <h2 className="home__banner__content__title">
           Create an account and receive discounted pricing
         </h2>
-        <BaseButton variant="primary">Create an account</BaseButton>
+        <BaseButton href="/coming" variant="primary">Create an account</BaseButton>
         <div>
           <img src="/images/Polygon_7.png" alt="" className="polygon" />
           <img src="/images/Polygon_8.png" alt="" className="polygon" />

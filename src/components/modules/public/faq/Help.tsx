@@ -33,12 +33,12 @@ export default function FAQHelp() {
             </div>
           </div>
 
-          <div className="faq__help__content__links__link">
+          {/* <div className="faq__help__content__links__link">
             <h5>Subscription services</h5>
             <div className="faq__help__content__links__link__icon">
               <Icon name="caret-right" />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

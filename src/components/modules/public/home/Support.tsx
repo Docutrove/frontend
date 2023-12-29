@@ -32,12 +32,12 @@ export default function HomeSupport() {
             </div>
           </Link>
 
-          <Link to="/coming" className="home__support__content__links__link">
+          {/* <Link to="/coming" className="home__support__content__links__link">
             <h5>Subscription services</h5>
             <div className="home__support__content__links__link__icon">
               <Icon name="caret-right" />
             </div>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </div>

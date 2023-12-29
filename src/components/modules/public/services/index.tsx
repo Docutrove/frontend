@@ -1,5 +1,5 @@
 import HomeOffers from "../home/Offers";
-import HomeSubscription from "../home/Subscription";
+// import HomeSubscription from "../home/Subscription";
 import HomeSupport from "../home/Support";
 import Layout from "../layout";
 import ServiceHero from "./Hero";
@@ -10,7 +10,7 @@ export default function Services() {
     <Layout>
       <ServiceHero />
       <HomeOffers />
-      <HomeSubscription className="services-subscription" />
+      {/* <HomeSubscription className="services-subscription" /> */}
       <HomeSupport />
     </Layout>
   );

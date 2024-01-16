@@ -1,107 +1,98 @@
 @import "../../../../assets/styles/mixins.scss";
 
-.bg-gradient {
-  background: linear-gradient(265.33deg, #d6f5fc 16.76%, #e6faf4 104.26%);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+.gradient-layout {
+  margin-top: 80px;
+  margin-bottom: 120px;
 
-  .gradient-layout {
-    margin-top: 80px;
-    margin-bottom: 120px;
+  @include mobile(756px) {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+
+  .bg-arrow {
+    position: relative;
+
+    &::before {
+      content: "";
+      background: url("/images/Polygon_3.png");
+      position: absolute;
+      left: -16px;
+      top: 87px;
+      width: 159px;
+      height: 176px;
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      @include mobile(1210px) {
+        width: 120px;
+        height: 140px;
+        top: -30px;
+        left: -47px;
+      }
+
+      @include mobile(400px) {
+        width: 81px;
+        height: 81px;
+        top: -30px;
+        left: -41px;
+      }
+    }
+
+    &::after {
+      content: "";
+      background: url("/images/Polygon_2.png");
+      position: absolute;
+      right: 0;
+      top: 325px;
+      width: 434px;
+      height: 481px;
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      @include mobile(1210px) {
+        width: 400px;
+        height: 500px;
+        top: 600px;
+        right: -30px;
+      }
+
+      @include mobile(1083px) {
+        width: 300px;
+        height: 350px;
+        top: 700px;
+        right: -30px;
+      }
+
+      @include mobile(1000px) {
+        right: -14px;
+      }
+
+      @include mobile(600px) {
+        width: 250px;
+        height: 300px;
+        top: 550px;
+        right: -14px;
+      }
+
+      @include mobile(400px) {
+        width: 147px;
+        height: 156px;
+        top: 600px;
+        right: -14px;
+      }
+    }
+  }
+
+  &__content {
+    background: var(--white);
+    border-radius: 20px;
+    max-width: 941px;
+    margin: 0 auto;
+    position: relative;
+    padding: 60px 20px 62px;
 
     @include mobile(756px) {
-      margin-top: 60px;
-      margin-bottom: 60px;
-    }
-
-    .bg-arrow {
-      position: relative;
-
-      &::before {
-        content: "";
-        background: url("/images/Polygon_3.png");
-        position: absolute;
-        left: -16px;
-        top: 87px;
-        width: 159px;
-        height: 176px;
-        background-size: contain;
-        background-repeat: no-repeat;
-
-        @include mobile(1210px) {
-          width: 120px;
-          height: 140px;
-          top: -30px;
-          left: -47px;
-        }
-
-        @include mobile(400px) {
-          width: 81px;
-          height: 81px;
-          top: -30px;
-          left: -41px;
-        }
-      }
-
-      &::after {
-        content: "";
-        background: url("/images/Polygon_2.png");
-        position: absolute;
-        right: 0;
-        top: 325px;
-        width: 434px;
-        height: 481px;
-        background-size: contain;
-        background-repeat: no-repeat;
-
-        @include mobile(1210px) {
-          width: 400px;
-          height: 500px;
-          top: 600px;
-          right: -30px;
-        }
-
-        @include mobile(1083px) {
-          width: 300px;
-          height: 350px;
-          top: 700px;
-          right: -30px;
-        }
-
-        @include mobile(1000px) {
-          right: -14px;
-        }
-
-        @include mobile(600px) {
-          width: 250px;
-          height: 300px;
-          top: 550px;
-          right: -14px;
-        }
-
-        @include mobile(400px) {
-          width: 147px;
-          height: 156px;
-          top: 600px;
-          right: -14px;
-        }
-      }
-    }
-
-    &__content {
-      background: var(--white);
-      border-radius: 20px;
-      padding-top: 60px;
-      padding-bottom: 62px;
-      max-width: 941px;
-      margin: 0 auto;
-      position: relative;
-
-      @include mobile(756px) {
-        padding: 30px 20px;
-      }
+      padding: 30px 20px;
     }
   }
 }

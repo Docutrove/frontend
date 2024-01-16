@@ -1,13 +1,29 @@
+@import "../styles/mixins.scss";
+
 .invoice-details {
   &__content {
     display: flex;
+
+    @include mobile(1105px) {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
   }
 
   &__text {
     max-width: 721px;
     margin-left: auto;
     padding: 80px 73px 54px;
-    width: 100%;
+    width: 50vw;
+
+    @include mobile(1105px) {
+      margin-left: unset;
+      width: unset;
+    }
+
+    @include mobile(600px) {
+      padding: 60px 20px;
+    }
   }
 }
 
@@ -22,6 +38,11 @@
   gap: 8px;
   margin-top: 30px;
   margin-bottom: 60px;
+
+  p {
+    color: var(--dark);
+    font-weight: 500;
+  }
 
   .back-button {
     background: var(--dark);
@@ -73,7 +94,16 @@
   background: linear-gradient(282.33deg, #eafafe 52.56%, #f2fdfa 115.44%);
   flex: 1;
   max-width: 50vw;
-  padding-top: 40px;
+  padding: 40px 20px;
+
+  @include mobile(1105px) {
+    width: 100%;
+    max-width: unset;
+  }
+
+  @include mobile(600px) {
+    padding: 25px 20px;
+  }
 
   .template-image {
     background: var(--white);
@@ -81,9 +111,17 @@
     align-items: center;
     justify-content: center;
     border: 1px solid #f6f6f6;
-    height: 100%;
+    min-height: 100vh;
     margin: 0 auto;
     max-width: 512px;
+
+    @include mobile(1105px) {
+      min-height: 50vh;
+    }
+
+    @include mobile(600px) {
+      min-height: 444px;
+    }
 
     &__text {
       max-width: 260px;

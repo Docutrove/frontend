@@ -8,7 +8,7 @@ export default function TemplateInvoice() {
   const { goBack } = useCustomiseDocContext();
   return (
     <>
-      <NavBar variant="border" />
+      <NavBar hasBorder />
       <div className="invoice-details">
         <div className="invoice-details__content">
           <div className="invoice-details__text">

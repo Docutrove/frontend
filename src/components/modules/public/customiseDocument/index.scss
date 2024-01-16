@@ -1,9 +1,13 @@
+@import "../../../../assets/styles/mixins.scss";
+
 .choose-document-type {
   &__text {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+
+    @include mobile(600px) {
+      margin-bottom: 20px;
+    }
   }
 }
-
-

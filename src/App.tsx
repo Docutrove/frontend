@@ -12,6 +12,7 @@ import CustomiseDocumentProvider from "./components/modules/public/customiseDocu
 import BookConsultationProvider from "./components/modules/public/bookConsultation";
 import BusinessRegistrationProvider from "./components/modules/public/businessRegistration";
 import Login from "./components/modules/public/login";
+import Settings from "./components/modules/app/settings";
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
         <Route path="/businessregistration" element={<BusinessRegistrationProvider />} />
         <Route path="/bookconsultation" element={<BookConsultationProvider />} />
         <Route path="/login" element={<Login />} /> 
+
+
+        {/* protected route */}
+        <Route path="/settings" element={<Settings />} />    
       </Routes>
     </BrowserRouter>
   );

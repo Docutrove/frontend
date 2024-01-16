@@ -14,8 +14,8 @@ export default function Login() {
   };
 
   return (
-    <div className="login">
-      <NavBar />
+    <div className="login bg-gradient">
+      <NavBar  />
       <div className="app-container">
         <div className="login__content">
           <h3>Log in to your account</h3>
@@ -54,8 +54,7 @@ export default function Login() {
               </div>
 
               <div className="remember">
-                <div className="remember__checkbox">
-                </div>
+                <div className="remember__checkbox"></div>
                 <p className="text--xs">Remember me</p>
               </div>
             </div>

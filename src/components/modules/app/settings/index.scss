@@ -1,0 +1,28 @@
+.settings {
+  &__header {
+    margin-top: 80px;
+    margin-bottom: 74px;
+    display: flex;
+    justify-content: center;
+  }
+  &__content {
+    margin-bottom: 120px;
+
+    &__tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      justify-content: center;
+
+      button {
+        padding: 6px 36px;
+        color: var(--text);
+        padding-bottom: 20px;
+      }
+
+      .active-tab {
+        color: var(--dark);
+        border-bottom: 3px solid var(--dark);
+      }
+    }
+  }
+}

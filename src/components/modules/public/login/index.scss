@@ -1,9 +1,4 @@
 .login {
-  background: linear-gradient(265.33deg, #d6f5fc 16.76%, #e6faf4 104.26%);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-
   &__content {
     background: var(--white);
     max-width: 724px;

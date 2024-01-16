@@ -5,10 +5,10 @@ import "./index.scss";
 import { useState } from "react";
 
 interface NavBarProps {
-  variant?: "border";
+  hasBorder?: boolean;
 }
 
-export default function NavBar({ variant }: NavBarProps) {
+export default function NavBar({ hasBorder }: NavBarProps) {
   const [openMenu, setOpenMenu] = useState(false);
 
   const handleToggle = () => {
@@ -16,7 +16,7 @@ export default function NavBar({ variant }: NavBarProps) {
   };
 
   return (
-    <div className={`nav-bar--${variant} app-container`}>
+    <div className={`nav-bar ${hasBorder ? "border" : ""} app-container`}>
       <div className="nav-bar__content app-container__section">
         <Link to="/">
           <Icon name="logo-light" className="nav-logo" />

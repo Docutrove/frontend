@@ -4,11 +4,6 @@
   padding-top: 12px;
   padding-bottom: 12px;
 
-  &--border {
-    @extend .nav-bar;
-    border-bottom: 1px solid var(--border2);
-  }
-
   @include mobile(745px) {
     border-bottom: 1px solid var(--border2);
     background: var(--white);
@@ -151,4 +146,8 @@
       opacity: 1;
     }
   }
+}
+
+.border {
+  border-bottom: 1px solid var(--border2);
 }

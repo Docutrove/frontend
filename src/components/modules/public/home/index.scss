@@ -162,12 +162,12 @@
 
     &__benefit {
       width: 400px;
-      height: 400px;
+      height: fit-content;
       display: flex;
       flex-direction: column;
       gap: 20px;
       justify-content: center;
-      padding: 0 40px;
+      padding: 60px 40px;
       border-radius: 20px;
 
       @include mobile(756px) {
@@ -191,6 +191,11 @@
             display: flex;
             flex-shrink: 0;
             transform: translateY(10px);
+          }
+
+          span {
+            color: var(--dark);
+            font-weight: 600;
           }
         }
       }

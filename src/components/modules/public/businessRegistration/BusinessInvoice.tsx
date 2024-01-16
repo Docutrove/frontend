@@ -8,7 +8,7 @@ export default function BusinessInvoice() {
   const { goBack } = useBusinessRegistrationContext();
   return (
     <>
-      <NavBar variant="border" />
+      <NavBar hasBorder />
       <div className="invoice-details">
         <div className="invoice-details__content">
           <div className="invoice-details__text">

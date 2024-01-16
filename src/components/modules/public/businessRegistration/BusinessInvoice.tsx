@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useBusinessRegistrationContext } from ".";
 import { Icon } from "../../ui/Icon";
 import BaseButton from "../../ui/button";
@@ -75,11 +76,13 @@ export default function BusinessInvoice() {
                 <p className="privacy-info__description text--2xs">
                   Description of the template and what it’s used for lorem ipsum
                   dolor sit amet, consectetur adipiscing elit. Nunc vulputate
-                  libero et velit interdum, ac aliquet odio mattis. View our
-                  Privacy and Information Policy.
+                  libero et velit interdum, ac aliquet odio mattis. View our{" "}
+                  <Link to="/coming">Privacy and Information Policy.</Link>
                 </p>
               </div>
-              <BaseButton variant="primary" href="/coming">Begin registration</BaseButton>
+              <BaseButton variant="primary" href="/coming">
+                Begin registration
+              </BaseButton>
             </div>
           </div>
           <div className="template-container">

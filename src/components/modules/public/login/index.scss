@@ -1,12 +1,13 @@
 .login {
   background: linear-gradient(265.33deg, #d6f5fc 16.76%, #e6faf4 104.26%);
-  padding-bottom: 120px;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   &__content {
     background: var(--white);
     max-width: 724px;
-    margin: 80px auto 0;
+    margin: 80px auto 120px;
     padding: 60px 50px;
     border-radius: 20px;
 
@@ -41,6 +42,7 @@
         width: 24px;
         height: 24px;
         border: 1px solid var(--border);
+        border-radius: 4px;
       }
     }
 
@@ -57,7 +59,7 @@
       &::before {
         content: "";
         display: block;
-        height: 2px;
+        height: 1px;
         width: 293px;
         position: absolute;
         top: 50%;
@@ -68,7 +70,7 @@
       &::after {
         content: "";
         display: block;
-        height: 2px;
+        height: 1px;
         width: 293px;
         position: absolute;
         top: 50%;
@@ -94,6 +96,15 @@
       align-items: center;
       border-top: 1px solid var(--border3);
       padding-top: 30px;
+
+      p {
+        color: var(--dark);
+        font-weight: 500;
+      }
+
+      span {
+        color: #64769e;
+      }
     }
   }
 }

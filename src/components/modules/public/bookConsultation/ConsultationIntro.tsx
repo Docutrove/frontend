@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import BaseButton from "../../ui/button";
 import GradientLayout from "../../ui/gradientLayout";
 
@@ -53,8 +54,8 @@ export default function ConsultationIntro() {
           <p className="privacy-info__description text--2xs">
             Description of the template and what it’s used for lorem ipsum dolor
             sit amet, consectetur adipiscing elit. Nunc vulputate libero et
-            velit interdum, ac aliquet odio mattis. View our Privacy and
-            Information Policy.
+            velit interdum, ac aliquet odio mattis. View our{" "}
+            <Link to="/coming">Privacy and Information Policy.</Link>
           </p>
         </div>
         <BaseButton

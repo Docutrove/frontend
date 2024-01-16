@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCustomiseDocContext } from ".";
 import { Icon } from "../../ui/Icon";
 import BaseButton from "../../ui/button";
@@ -7,7 +8,7 @@ export default function TemplateInvoice() {
   const { goBack } = useCustomiseDocContext();
   return (
     <>
-      <NavBar variant="border"/>
+      <NavBar variant="border" />
       <div className="invoice-details">
         <div className="invoice-details__content">
           <div className="invoice-details__text">
@@ -34,8 +35,8 @@ export default function TemplateInvoice() {
                 <p className="privacy-info__description text--2xs">
                   Description of the template and what it’s used for lorem ipsum
                   dolor sit amet, consectetur adipiscing elit. Nunc vulputate
-                  libero et velit interdum, ac aliquet odio mattis. View our
-                  Privacy and Information Policy.
+                  libero et velit interdum, ac aliquet odio mattis. View our{" "}
+                  <Link to="/coming">Privacy and Information Policy.</Link>
                 </p>
               </div>
               <BaseButton variant="primary" href="/coming">

@@ -57,10 +57,15 @@
   &__title {
     font-weight: 600;
     margin-bottom: 8px;
+    color: var(--dark) !important;
   }
 
   &__description {
-    color: #64769e;
+    color: #64769e !important;
+
+    a {
+      text-decoration: underline;
+    }
   }
 }
 

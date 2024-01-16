@@ -40,9 +40,9 @@ export function Offer({
         <h4 className="offer__title">{title}</h4>
         <p className="offer__description text--sm">{description}</p>
 
-        <div className="offer__lists">
+        <div className="lists">
           {lists?.map((list, index) => (
-            <div key={index} className="offer__lists__list">
+            <div key={index} className="lists__list">
               <div className={`tick-icon--${iconVariant}`}>
                 <Icon name="tick" />
               </div>

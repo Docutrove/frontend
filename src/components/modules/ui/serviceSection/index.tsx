@@ -27,9 +27,9 @@ export default function ServiceSection({
         <h3 className="title">{title}</h3>
         <p className="description text--sm">{description}</p>
 
-        <div className="offer__lists">
+        <div className="lists">
           {lists?.map((list, index) => (
-            <div key={index} className="offer__lists__list">
+            <div key={index} className="lists__list">
               <div className="tick-icon--gradient">
                 <Icon name="tick" />
               </div>

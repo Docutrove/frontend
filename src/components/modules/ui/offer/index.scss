@@ -81,51 +81,11 @@
     }
   }
 
-  &__lists {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 30px;
-
-    &__list {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-
-      .tick-icon {
-        width: 20px;
-        height: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100vh;
-        flex-shrink: 0;
-        transform: translateY(3px);
-
-        &--gradient {
-          @extend .tick-icon;
-          background: linear-gradient(
-            265.33deg,
-            #81e8ff -3.78%,
-            #c7f6dc 85.48%,
-            #c7f6dc 96.74%
-          );
-          color: var(--dark);
-        }
-
-        &--black {
-          @extend .tick-icon;
-          background: var(--dark);
-          color: var(--white);
-        }
-      }
-    }
-  }
 
   &__amount {
     display: flex;
     gap: 10px;
-    border-top: 1px solid #d7e4ff;
+    border-top: 1px solid var(--border3);
     padding-top: 30px;
     margin-bottom: 30px;
     align-items: center;

@@ -8,6 +8,10 @@ import Business from "./components/modules/public/business";
 // import Subscription from "./components/modules/public/subscription";
 import Pricing from "./components/modules/public/pricing";
 import ComingSoon from "./components/modules/public/comingSoon";
+import CustomiseDocumentProvider from "./components/modules/public/customiseDocument";
+import BookConsultationProvider from "./components/modules/public/bookConsultation";
+import BusinessRegistrationProvider from "./components/modules/public/businessRegistration";
+import Login from "./components/modules/public/login";
 
 function App() {
   return (
@@ -22,6 +26,10 @@ function App() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/coming" element={<ComingSoon />} />
+        <Route path="/customisedocument" element={<CustomiseDocumentProvider />} />
+        <Route path="/businessregistration" element={<BusinessRegistrationProvider />} />
+        <Route path="/bookconsultation" element={<BookConsultationProvider />} />
+        <Route path="/login" element={<Login />} /> 
       </Routes>
     </BrowserRouter>
   );

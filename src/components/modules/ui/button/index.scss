@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   width: fit-content;
+  gap: 10px;
 
   &--primary {
     @extend .base-button;
@@ -19,5 +20,12 @@
     @extend .base-button;
     background: var(--white);
     color: var(--dark);
+  }
+
+  &--inverted {
+    @extend .base-button;
+    background: var(--white);
+    color: var(--dark);
+    border: 1px solid var(--border);
   }
 }

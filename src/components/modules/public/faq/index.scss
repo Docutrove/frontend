@@ -1,84 +1,45 @@
 @import "../../../../assets/styles/mixins.scss";
 
 .faq {
-
   &__help {
-    margin-top: 80px;
-    margin-bottom: 120px;
-
-    @include mobile(756px) {
-      margin-top: 60px;
-      margin-bottom: 60px;
-    }
-
-    &__content {
-      background: var(--white);
-      padding-top: 60px;
-      padding-bottom: 62px;
-      max-width: 941px;
+    &__links {
+      max-width: 624px;
       margin: 0 auto;
-      border-radius: 20px;
-      position: relative;
 
-      @include mobile(756px) {
-        padding: 30px 20px;
-      }
-
-      &__subtitle {
+      &__link {
         display: flex;
-        justify-content: center;
-      }
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--border2);
+        padding: 36px 0;
 
-      &__title {
-        display: flex;
-        margin: 20px auto 54px;
-        text-align: center;
-        max-width: 623px;
-
-        @include mobile(600px) {
-          margin-top: 12px;
-          margin-bottom: 30px;
+        &:nth-last-of-type(1) {
+          border: 0;
         }
-      }
 
-      &__links {
-        max-width: 624px;
-        margin: 0 auto;
+        &:first-child {
+          @include mobile(600px) {
+            padding-top: 0;
+          }
+        }
 
-        &__link {
+        &:last-child {
+          @include mobile(600px) {
+            padding-bottom: 0;
+          }
+        }
+
+        &__icon {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          border-bottom: 1px solid var(--border2);
-          padding: 36px 0;
-
-          &:nth-last-of-type(1) {
-            border: 0;
-          }
-
-          &:first-child {
-            @include mobile(600px) {
-              padding-top: 0;
-            }
-          }
-
-          &:last-child {
-            @include mobile(600px) {
-              padding-bottom: 0;
-            }
-          }
-
-          &__icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border);
-            width: 48px;
-            height: 48px;
-            border-radius: 100vh;
-          }
+          justify-content: center;
+          border: 1px solid var(--border);
+          width: 48px;
+          height: 48px;
+          border-radius: 100vh;
+          color: var(--dark);
         }
       }
-    }
+    } 
   }
 }

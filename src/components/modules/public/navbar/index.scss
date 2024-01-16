@@ -4,6 +4,11 @@
   padding-top: 12px;
   padding-bottom: 12px;
 
+  &--border {
+    @extend .nav-bar;
+    border-bottom: 1px solid var(--border2);
+  }
+
   @include mobile(745px) {
     border-bottom: 1px solid var(--border2);
     background: var(--white);
@@ -48,9 +53,9 @@
             width: 100%;
             background: var(--dark);
             position: absolute;
-            transition: .3s ease;
+            transition: 0.3s ease;
             border-radius: 100vh;
-            
+
             &:nth-child(1) {
               top: 0;
             }
@@ -80,7 +85,6 @@
               }
             }
           }
-         
         }
       }
     }

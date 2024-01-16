@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./index.scss";
 
 interface ButtonProps {
-  variant: "primary" | "secondary";
+  variant: "primary" | "secondary" | "inverted";
   children: ReactNode;
   className?: string;
   href?: string;

@@ -1,5 +1,6 @@
 @import "./fonts.scss";
 @import "./mixins.scss";
+@import "./docInvoice.scss";
 
 :root {
   --dark: #0e2557;
@@ -7,6 +8,7 @@
   --text: #425669;
   --border: #cfd3dd;
   --border2: #efebf2;
+  --border3: #d7e4ff;
 }
 
 * {
@@ -159,77 +161,87 @@ h6 {
   flex-direction: column;
 }
 
-.bg-arrow {
-  position: relative;
+.gradient-title {
+  display: flex;
+  margin: 20px auto 0;
+  text-align: center;
+  max-width: 623px;
 
-  &::before {
-    content: "";
-    background: url("/images/Polygon_3.png");
-    position: absolute;
-    left: -16px;
-    top: 87px;
-    width: 159px;
-    height: 176px;
-    background-size: contain;
-    background-repeat: no-repeat;
+  @include mobile(600px) {
+    margin-top: 12px;
+    margin-bottom: 30px;
+  }
+}
 
+.gradient-subtitle {
+  display: flex;
+  justify-content: center;
+  color: #3a5899;
+  font-weight: 600;
+}
 
-    @include mobile(1210px) {
-      width: 120px;
-      height: 140px;
-      top: -30px;
-      left: -47px;
-    }
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 849px;
+  margin: 50px auto 0;
 
-    @include mobile(400px) {
-      width: 81px;
-      height: 81px;
-      top: -30px;
-      left: -41px;
+  .option {
+    border: 1px solid var(--border);
+    background: var(--white);
+    border-radius: 20px;
+    padding: 22px 31px;
+    color: var(--dark);
+    text-align: center;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      max-width: 178px;
     }
   }
+}
 
-  &::after {
-    content: "";
-    background: url("/images/Polygon_2.png");
-    position: absolute;
-    right: 0;
-    top: 325px;
-    width: 434px;
-    height: 481px;
-    background-size: contain;
-    background-repeat: no-repeat;
+.lists {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 30px;
 
-    @include mobile(1210px) {
-      width: 400px;
-      height: 500px;
-      top: 600px;
-      right: -30px;
-    }
+  &__list {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
 
-    @include mobile(1083px) {
-      width: 300px;
-      height: 350px;
-      top: 700px;
-      right: -30px;
-    }
+    .tick-icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 100vh;
+      flex-shrink: 0;
+      transform: translateY(3px);
 
-    @include mobile(1000px) {
-      right: -14px;
-    }
+      &--gradient {
+        @extend .tick-icon;
+        background: linear-gradient(
+          265.33deg,
+          #81e8ff -3.78%,
+          #c7f6dc 85.48%,
+          #c7f6dc 96.74%
+        );
+        color: var(--dark);
+      }
 
-    @include mobile(600px) {
-      width: 250px;
-      height: 300px;
-      top: 550px;
-      right: -14px;
-    }
-
-    @include mobile(400px) {
-      width: 147px;
-      height: 156px;
-      top: 600px;
-      right: -14px;
+      &--black {
+        @extend .tick-icon;
+        background: var(--dark);
+        color: var(--white);
+      }
     }
   }
 }

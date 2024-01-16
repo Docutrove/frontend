@@ -1,0 +1,17 @@
+.consultation-intro {
+  max-width: 618px;
+  margin: 0 auto;
+
+  .consultation-lists {
+    margin-top: 40px;
+    &__title {
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .consultation-button {
+    margin: 0 auto;
+  }
+}

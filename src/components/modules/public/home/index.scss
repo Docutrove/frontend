@@ -365,6 +365,7 @@
             width: 48px;
             height: 48px;
             border-radius: 100vh;
+            color: var(--dark);
 
             @include mobile(600px) {
               width: 40px;

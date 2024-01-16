@@ -1,0 +1,89 @@
+.invoice-details {
+  &__content {
+    display: flex;
+  }
+
+  &__text {
+    max-width: 721px;
+    margin-left: auto;
+    padding: 80px 73px 54px;
+    width: 100%;
+  }
+}
+
+.invoice-subtitle {
+  justify-content: flex-start !important;
+  margin-bottom: 30px;
+}
+
+.invoice-back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 30px;
+  margin-bottom: 60px;
+
+  .back-button {
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 100vh;
+    color: var(--white);
+
+    .back-icon {
+      transform: rotate(180deg);
+      width: 5px;
+      height: 9px;
+    }
+  }
+}
+
+.invoice-price {
+  margin: 40px 0;
+}
+
+.invoice-description {
+  max-width: 511px;
+}
+
+.privacy-info {
+  border-top: 1px solid var(--border3);
+  padding-top: 40px;
+  margin: 40px 0;
+
+  &__title {
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    color: #64769e;
+  }
+}
+
+.template-container {
+  background: linear-gradient(282.33deg, #eafafe 52.56%, #f2fdfa 115.44%);
+  flex: 1;
+  max-width: 50vw;
+  padding-top: 40px;
+
+  .template-image {
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f6f6f6;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 512px;
+
+    &__text {
+      max-width: 260px;
+      opacity: 30%;
+      text-align: center;
+    }
+  }
+}

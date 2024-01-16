@@ -4,7 +4,11 @@ import BaseButton from "../../ui/button";
 import "./index.scss";
 import { useState } from "react";
 
-export default function NavBar() {
+interface NavBarProps {
+  variant?: "border";
+}
+
+export default function NavBar({ variant }: NavBarProps) {
   const [openMenu, setOpenMenu] = useState(false);
 
   const handleToggle = () => {
@@ -12,7 +16,7 @@ export default function NavBar() {
   };
 
   return (
-    <div className="nav-bar app-container">
+    <div className={`nav-bar--${variant} app-container`}>
       <div className="nav-bar__content app-container__section">
         <Link to="/">
           <Icon name="logo-light" className="nav-logo" />
@@ -76,7 +80,7 @@ export default function NavBar() {
             </NavLink>
           </li>
           <li>
-            <BaseButton variant="primary" href="/coming">
+            <BaseButton variant="primary" href="/login">
               Sign in
             </BaseButton>
           </li>

@@ -8,7 +8,7 @@ export default function ConsultationServices() {
           title="Book counsel headline lorem ipsum dolor"
           buttonText="Book a counsel"
           imgSrc="/images/consultation1.png"
-          path="/coming"
+          path="/bookconsultation"
           description="Lorem ipsum dolor sit amet consectetur. Tellus nisl in nisi nam
           consequat. Facilisi sed senectus euismod risus eget mattis ut rutrum
           nec. Cursus in nisl eget posuere amet. Rhoncus turpis blandit blandit

@@ -11,7 +11,7 @@ export default function BusinessServices() {
           title="Formation of a business headline lorem"
           buttonText="Get started"
           imgSrc="/images/Business1.png"
-          path="/coming"
+          path="/businessregistration"
           lists={[
             "Tortor interdum condimentum nunc molestie",
             "Purus orci netus suscipit sagittis nec duis",

@@ -1,11 +1,11 @@
-import Layout from "../layout";
+import GradientLayout from "../../ui/gradientLayout";
 import FAQHelp from "./Help";
 import "./index.scss";
 
 export default function FAQ() {
   return (
-    <Layout className="bg-gradient faq">
+    <GradientLayout className="faq">
       <FAQHelp />
-    </Layout>
+    </GradientLayout>
   );
 }

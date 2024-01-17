@@ -94,7 +94,7 @@
   background: linear-gradient(282.33deg, #eafafe 52.56%, #f2fdfa 115.44%);
   flex: 1;
   max-width: 50vw;
-  padding: 40px 20px;
+  padding: 40px 20px 0;
 
   @include mobile(1105px) {
     width: 100%;
@@ -111,7 +111,7 @@
     align-items: center;
     justify-content: center;
     border: 1px solid #f6f6f6;
-    min-height: 100vh;
+    min-height: 100%;
     margin: 0 auto;
     max-width: 512px;
 

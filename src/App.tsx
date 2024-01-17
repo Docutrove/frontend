@@ -13,6 +13,7 @@ import BookConsultationProvider from "./components/modules/public/bookConsultati
 import BusinessRegistrationProvider from "./components/modules/public/businessRegistration";
 import Login from "./components/modules/public/login";
 import Settings from "./components/modules/app/settings";
+import SignUp from "./components/modules/public/signUp";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/businessregistration" element={<BusinessRegistrationProvider />} />
         <Route path="/bookconsultation" element={<BookConsultationProvider />} />
         <Route path="/login" element={<Login />} /> 
+        <Route path="/signup" element={<SignUp />} /> 
 
 
         {/* protected route */}

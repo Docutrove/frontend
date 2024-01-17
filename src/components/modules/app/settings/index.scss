@@ -1,9 +1,16 @@
+@import "../../../../assets/styles/mixins.scss";
+
 .settings {
   &__header {
     margin-top: 80px;
     margin-bottom: 74px;
     display: flex;
     justify-content: center;
+
+    @include mobile(600px) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   }
   &__content {
     margin-bottom: 120px;
@@ -22,6 +29,71 @@
       .active-tab {
         color: var(--dark);
         border-bottom: 3px solid var(--dark);
+      }
+    }
+  }
+
+  &__table {
+    background: var(--white);
+    padding: 40px 48px;
+    border-radius: 20px;
+    max-width: 722px;
+    margin: 50px auto 0;
+    width: 100%;
+    border-spacing: inherit;
+
+    &__head {
+      tr {
+        td {
+          padding-bottom: 25px;
+          border-bottom: 1px solid var(--border3);
+          color: var(--dark);
+          font-weight: 500;
+        }
+      }
+
+      .document {
+        flex: 3;
+      }
+    }
+
+    &__body {
+      &__row {
+        &:last-of-type {
+          .cell {
+            border: 0;
+          }
+        }
+        .cell {
+          padding: 20px 0;
+          border-bottom: 1px solid var(--border3);
+        }
+
+        .card {
+          &__type {
+            width: 35px;
+            height: 24px;
+          }
+        }
+
+        .cell-dark {
+          color: var(--dark);
+          font-weight: 500;
+        }
+
+        .cell-button {
+          padding: 4px 20px;
+          border: 1px solid var(--border);
+          border-radius: 30px;
+          color: var(--dark);
+          font-size: 14px;
+          line-height: 24px;
+        }
+
+        .cell-end {
+          display: flex;
+          justify-content: end;
+        }
       }
     }
   }

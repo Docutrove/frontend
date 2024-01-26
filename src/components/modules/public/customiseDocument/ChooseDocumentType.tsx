@@ -4,7 +4,7 @@ import GradientLayout from "../../ui/gradientLayout";
 export default function ChooseDocumentType() {
     const {goNext} = useCustomiseDocContext()
   return (
-    <GradientLayout>
+    <GradientLayout arrow>
       <div className="choose-document-type">
         <p className="gradient-subtitle text--sm">
           Customize and download a legal document

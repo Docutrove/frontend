@@ -214,6 +214,7 @@
     padding-top: 71px;
     padding-bottom: 71px;
     position: relative;
+    z-index: 1;
 
     @include mobile(917px) {
       padding-bottom: 142px;

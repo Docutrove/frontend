@@ -1,0 +1,105 @@
+.radio {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  &__container {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border-radius: 100vh;
+    border: 1px solid var(--border);
+    // background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.active {
+      border: 1px solid var(--dark);
+
+      span {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 100vh;
+        background: var(--dark);
+      }
+    }
+
+    .radio-input {
+      opacity: 0;
+    }
+  }
+
+  &--primary {
+    @extend .radio;
+    align-items: flex-start;
+
+    &__container {
+      position: relative;
+      width: 18px;
+      height: 18px;
+      border-radius: 100vh;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(2px);
+
+      &.active {
+        border: 0;
+        background: var(--dark);
+
+        span {
+          position: absolute;
+          width: 8px;
+          height: 8px;
+          border-radius: 100vh;
+          background: var(--white);
+        }
+      }
+
+      .radio-input {
+        opacity: 0;
+      }
+    }
+  }
+
+  &--inverted {
+    @extend .radio;
+
+    &__container {
+      position: relative;
+      width: 24px;
+      height: 24px;
+      border-radius: 100vh;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &.active {
+        border: 1px solid var(--dark);
+
+        span {
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          border-radius: 100vh;
+          background: var(--dark);
+        }
+      }
+
+      .radio-input {
+        opacity: 0;
+      }
+    }
+  }
+}

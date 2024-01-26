@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import BaseButton from "../../ui/button";
 import GradientLayout from "../../ui/gradientLayout";
+import { useBookConsultationContext } from ".";
 
 export default function ConsultationIntro() {
+  const { goNext } = useBookConsultationContext();
   return (
-    <GradientLayout>
+    <GradientLayout arrow>
       <div className="consultation-intro">
         <p className="gradient-subtitle text--sm">Consult with a lawyer</p>
         <h2 className="gradient-title">Helpful advice, when you need it</h2>
@@ -55,13 +57,15 @@ export default function ConsultationIntro() {
             Description of the template and what it’s used for lorem ipsum dolor
             sit amet, consectetur adipiscing elit. Nunc vulputate libero et
             velit interdum, ac aliquet odio mattis. View our{" "}
-            <Link to="/coming">Privacy and Information Policy.</Link>
+            <Link to="/coming" className="underline">
+              Privacy and Information Policy.
+            </Link>
           </p>
         </div>
         <BaseButton
           variant="primary"
-          href="/coming"
           className="consultation-button"
+          onClick={goNext}
         >
           Make a booking
         </BaseButton>

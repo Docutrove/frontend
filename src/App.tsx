@@ -14,9 +14,13 @@ import BusinessRegistrationProvider from "./components/modules/public/businessRe
 import Login from "./components/modules/public/login";
 import Settings from "./components/modules/app/settings";
 import SignUp from "./components/modules/public/signUp";
+import Payment from "./components/modules/app/payment";
+import FAQTopic from "./components/modules/public/faq/FAQTopic";
+import EditPayment from "./components/modules/app/settings/EditPayment";
 
 function App() {
   return (
+    // prettier-ignore
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -33,10 +37,13 @@ function App() {
         <Route path="/bookconsultation" element={<BookConsultationProvider />} />
         <Route path="/login" element={<Login />} /> 
         <Route path="/signup" element={<SignUp />} /> 
+        <Route path="/faqtopic" element={<FAQTopic />} />
+        <Route path="/editpayment" element={<EditPayment />} />
 
 
         {/* protected route */}
         <Route path="/settings" element={<Settings />} />    
+        <Route path="/payment" element={<Payment />} />    
       </Routes>
     </BrowserRouter>
   );

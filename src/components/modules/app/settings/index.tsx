@@ -1,6 +1,6 @@
 import { useState } from "react";
 import DocumentSettings from "./DocumentSettings";
-// import SubscriptionSettings from "./SubscriptionSettings";
+import SubscriptionSettings from "./SubscriptionSettings";
 import InvoiceSettings from "./InvoiceSettings";
 import AccountSettings from "./AccountSettings";
 import NavBar from "../../public/navbar";
@@ -8,10 +8,10 @@ import Footer from "../../public/footer";
 import "./index.scss";
 import classNames from "classnames";
 
-const TABS = ["Document", "Invoice", "Account"];
+const TABS = ["Document", "Subscription", "Invoice", "Account"];
 
 export default function Settings() {
-  const [activeTab, switchTab] = useState(TABS[0]);
+  const [activeTab, switchTab] = useState(TABS[3]);
 
   return (
     <div className="settings bg-gradient">
@@ -30,7 +30,7 @@ export default function Settings() {
       <div className="app-container">
         <div className="settings__content">
           {activeTab === "Document" && <DocumentSettings />}
-          {/* {activeTab === "Subscription" && <SubscriptionSettings />} */}
+          {activeTab === "Subscription" && <SubscriptionSettings />}
           {activeTab === "Invoice" && <InvoiceSettings />}
           {activeTab === "Account" && <AccountSettings />}
         </div>

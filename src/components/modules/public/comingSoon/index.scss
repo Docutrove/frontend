@@ -15,17 +15,11 @@
     margin: 0 auto;
     text-align: center;
 
-    &__description {
-      margin-top: 20px;
-      margin-bottom: 40px;
-      color: var(--text);
-      font-family: "Inter", sans-serif;
-    }
 
     &__input {
       position: relative;
       max-width: 500px;
-      margin: 0 auto;
+      margin: 40px auto;
 
       .coming-button {
         position: absolute;

@@ -4,7 +4,7 @@ import "./index.scss";
 
 export default function FAQ() {
   return (
-    <GradientLayout className="faq">
+    <GradientLayout arrow className="faq">
       <FAQHelp />
     </GradientLayout>
   );

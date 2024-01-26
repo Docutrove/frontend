@@ -40,6 +40,21 @@
           color: var(--dark);
         }
       }
-    } 
+    }
+
+    .faq-button {
+      margin: 62px auto 0;
+      justify-content: center;
+    }
+  }
+}
+
+.faq-topic {
+  .gradient-layout__content {
+    background: transparent;
+  }
+
+  .app__faq__list {
+    max-width: 848px;
   }
 }

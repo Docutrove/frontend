@@ -4,7 +4,7 @@ import GradientLayout from "../../ui/gradientLayout";
 export default function BusinessType() {
   const { goNext } = useBusinessRegistrationContext();
   return (
-    <GradientLayout>
+    <GradientLayout arrow>
       <div className="choose-document-type">
         <p className="gradient-subtitle text--sm">Register a business</p>
         <h2 className="gradient-title">

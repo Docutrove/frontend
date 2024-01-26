@@ -7,18 +7,24 @@ interface ButtonProps {
   children: ReactNode;
   className?: string;
   href?: string;
+  onClick?: () => void;
 }
 
 export default function BaseButton({
   variant,
   children,
   className,
-  href
+  href,
+  onClick,
 }: ButtonProps) {
   const Component: any = href ? Link : "button";
 
   return (
-    <Component to={href} className={`base-button--${variant} ${className}`}>
+    <Component
+      to={href}
+      className={`base-button--${variant} ${className}`}
+      onClick={onClick}
+    >
       {children}
     </Component>
   );

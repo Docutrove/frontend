@@ -5,16 +5,18 @@ import "./index.scss";
 interface GradientLayoutProps {
   className?: string;
   children: ReactNode;
+  arrow?: boolean;
 }
 
 export default function GradientLayout({
   className,
   children,
+  arrow,
 }: GradientLayoutProps) {
   return (
     <Layout className={`bg-gradient ${className}`}>
       <div className="gradient-layout app-container">
-        <div className="bg-arrow"></div>
+        {arrow ? <div className="bg-arrow"></div> : ""}
         <div className="gradient-layout__content">{children}</div>
       </div>
     </Layout>

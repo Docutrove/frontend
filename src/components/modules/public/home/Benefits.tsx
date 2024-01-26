@@ -5,13 +5,13 @@ export default function HomeBenefits() {
     <div className="home__benefits app-container">
       <div className="home__benefits__content app-container__section">
         <div className="mobile-header">
-          <p className="subtitle">Benefits</p>
-          <h2 className="home__benefits__title">Sorem ipsum dolor sit amet</h2>
+          {/* <p className="subtitle">Benefits</p> */}
+          <h2 className="home__benefits__title">Benefits</h2>
         </div>
 
         <div className="home__benefits__wrapper">
           <div className="home__benefits__benefit green">
-            <h4>Automated Legal Templatese</h4>
+            <h4>Automated Legal Templates</h4>
             <div className="benefit-descriptions">
               <div className="benefit-descriptions__description">
                 <div className="bullet"></div>
@@ -42,10 +42,8 @@ export default function HomeBenefits() {
 
           <div>
             <div className="web-header">
-              <p className="subtitle">Benefits</p>
-              <h2 className="home__benefits__title">
-                Sorem ipsum dolor sit amet
-              </h2>
+              {/* <p className="subtitle">Benefits</p> */}
+              <h2 className="home__benefits__title">Benefits</h2>
             </div>
             <div className="home__benefits__benefit purple">
               <h4>Expert Legal Consultation</h4>

@@ -10,7 +10,7 @@ const businessRegistrationContext = createContext<{
 }>({});
 
 export default function BusinessRegistrationProvider() {
-  const SCREENS = ["business_type", "business_invoice"];
+  const SCREENS = ["business_type", "business_invoice", "business_details", "confirm_business"];
   const [activeScreen, setActiveScreen] = useState(SCREENS[0]);
 
   const goNext = () => {

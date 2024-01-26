@@ -1,0 +1,14 @@
+.password-info {
+  margin: 6px 0 30px;
+  color: var(--text2);
+}
+
+.privacy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  p {
+    color: var(--text2);
+  }
+}

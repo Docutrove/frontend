@@ -13,7 +13,7 @@ export default function HomeHero() {
             document, register your business or book an appointment with an
             experienced lawyer with just a few clicks.
           </h6>
-          <BaseButton href="/services" variant="primary" className="home-button">
+          <BaseButton href="/customise" variant="primary" className="home-button">
             Get started
           </BaseButton>
         </div>

@@ -13,7 +13,9 @@ export default function CustomiseDocumentProvider() {
   const SCREENS = [
     "choose_document_type",
     "choose_template",
+    "template_invoice",
     "template_details",
+    "confirm_template",
   ];
   const [activeScreen, setActiveScreen] = useState(SCREENS[0]);
 

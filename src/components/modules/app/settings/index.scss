@@ -24,6 +24,7 @@
         padding: 6px 36px;
         color: var(--text);
         padding-bottom: 20px;
+        width: 180px;
       }
 
       .active-tab {
@@ -69,13 +70,6 @@
           border-bottom: 1px solid var(--border3);
         }
 
-        .card {
-          &__type {
-            width: 35px;
-            height: 24px;
-          }
-        }
-
         .cell-dark {
           color: var(--dark);
           font-weight: 500;
@@ -96,5 +90,38 @@
         }
       }
     }
+  }
+  .account {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .document {
+    padding-bottom: 20px;
+  }
+
+  .settings-subscription {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+.edit-payment {
+  &__radios {
+    margin: 40px 0 50px;
+
+    &__radio:not(:first-child) {
+      border-top: 1px solid var(--border3);
+      padding-top: 30px;
+      margin-top: 30px;
+
+      .edit-apple {
+        color: #000;
+      }
+    }
+  }
+
+  &__button {
+    width: 100%;
   }
 }

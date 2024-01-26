@@ -36,8 +36,6 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 30px;
-  margin-bottom: 60px;
 
   p {
     color: var(--dark);
@@ -68,6 +66,10 @@
 
 .invoice-description {
   max-width: 511px;
+
+  &__header {
+    margin-top: 60px;
+  }
 }
 
 .privacy-info {
@@ -82,7 +84,7 @@
   }
 
   &__description {
-    color: #64769e !important;
+    color: var(--text2) !important;
 
     a {
       text-decoration: underline;
@@ -111,7 +113,7 @@
     align-items: center;
     justify-content: center;
     border: 1px solid #f6f6f6;
-    min-height: 100%;
+    min-height: 100vh;
     margin: 0 auto;
     max-width: 512px;
 
@@ -128,5 +130,64 @@
       opacity: 30%;
       text-align: center;
     }
+  }
+}
+
+.confirm-text {
+  margin: 20px 0 40px;
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: 20px;
+  border-top: 1px solid var(--border3);
+  padding-top: 40px;
+}
+
+.document-details {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 40px 0;
+
+  &__input {
+    .label {
+      font-weight: 700;
+      font-family: "PT Serif", serif;
+      font-size: 20px;
+      line-height: 27px;
+    }
+  }
+}
+
+.document-check {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.direction-buttons {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  border-top: 1px solid var(--border3);
+  padding-top: 40px;
+}
+
+.card-date {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.card {
+  display: flex;
+  gap: 8px;
+
+  &__type {
+    width: 35px;
+    height: 24px;
   }
 }

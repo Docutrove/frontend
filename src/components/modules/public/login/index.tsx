@@ -5,6 +5,7 @@ import { Icon } from "../../ui/Icon";
 import "./index.scss";
 import NavBar from "../navbar";
 import Footer from "../footer";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [click, setClick] = useState(false);
@@ -15,7 +16,7 @@ export default function Login() {
 
   return (
     <div className="login bg-gradient">
-      <NavBar  />
+      <NavBar />
       <div className="app-container">
         <div className="login__content">
           <h3>Log in to your account</h3>
@@ -58,33 +59,36 @@ export default function Login() {
                 <p className="text--xs">Remember me</p>
               </div>
             </div>
+            <div>
+              <BaseButton variant="primary" className="login__content__button">
+                Sign in
+              </BaseButton>
+              <p className="text--2xs login__content__border">Or</p>
+              <div className="login__content__socials">
+                <BaseButton
+                  variant="inverted"
+                  className="login__content__socials__button"
+                >
+                  <Icon name="google" />
+                  Continue with Google
+                </BaseButton>
+                <BaseButton
+                  variant="inverted"
+                  className="login__content__socials__button"
+                >
+                  {" "}
+                  <Icon name="facebook" /> Continue with Facebook
+                </BaseButton>
+              </div>
+            </div>
+          </div>
 
-            <BaseButton variant="primary" className="login__content__button">
-              Sign in
-            </BaseButton>
-          </div>
-          <p className="text--2xs login__content__border">Or</p>
-          <div className="login__content__socials">
-            <BaseButton
-              variant="inverted"
-              className="login__content__socials__button"
-            >
-              <Icon name="google" />
-              Continue with Google
-            </BaseButton>
-            <BaseButton
-              variant="inverted"
-              className="login__content__socials__button"
-            >
-              {" "}
-              <Icon name="facebook" /> Continue with Facebook
-            </BaseButton>
-          </div>
           <div className="forget-password">
             <p className="text--2xs">Forgotten your password?</p>
             <p className="text--2xs">
               {" "}
-              <span>Not registered?</span> Create an account
+              <span>Not registered?</span>{" "}
+              <Link to="/signup">Create an account</Link>
             </p>
           </div>
         </div>

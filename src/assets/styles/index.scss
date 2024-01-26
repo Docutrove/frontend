@@ -4,8 +4,10 @@
 
 :root {
   --dark: #0e2557;
+  --secondary: #F2F7FF;
   --white: #ffffff;
   --text: #425669;
+  --text2: #64769e;
   --border: #cfd3dd;
   --border2: #efebf2;
   --border3: #d7e4ff;
@@ -103,6 +105,10 @@ h6 {
   @include mobile(600px) {
     font-size: 19px;
   }
+}
+
+::-webkit-calendar-picker-indicator {
+  opacity: 0;
 }
 
 .text {
@@ -260,4 +266,12 @@ h6 {
 
 .border {
   border-bottom: 1px solid var(--border2);
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.card-image {
+  max-width: 138px;
 }

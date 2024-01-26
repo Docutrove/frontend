@@ -2,7 +2,7 @@ import { Icon } from "../../ui/Icon";
 
 export default function DocumentSettings() {
   return (
-    <table className="settings__table app-container">
+    <table className="settings__table document app-container">
       <thead className="settings__table__head">
         <tr>
           <td className="settings__table__head__title">

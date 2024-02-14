@@ -1,0 +1,54 @@
+@import "../../../../assets/styles/mixins.scss";
+
+.thank-you {
+  .gradient-layout__content {
+    background: none;
+    padding: 0;
+    max-width: 847px;
+  }
+
+  &__icon {
+    width: 70px;
+    height: 71px;
+    margin: 0 auto 30px;
+    display: flex;
+  }
+
+  &__title {
+    text-align: center;
+  }
+
+  &__subtitle {
+    margin-top: 20px;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  &__button {
+    margin: 40px auto 0;
+
+    @include mobile(600px) {
+      margin-top: 30px;
+    }
+  }
+
+  &__description {
+    text-align: center;
+    margin-top: 60px;
+
+    @include mobile(600px) {
+      margin-top: 30px;
+    }
+  }
+
+  &__back {
+    margin-top: 40px;
+    justify-content: center;
+
+    @include mobile(600px) {
+      margin-top: 30px;
+    }
+  }
+}

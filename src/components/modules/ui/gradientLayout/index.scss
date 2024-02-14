@@ -10,14 +10,14 @@
   }
 
   .bg-arrow {
-    position: relative;
+    // position: relative;
 
     &::before {
       content: "";
       background: url("/images/Polygon_3.png");
       position: absolute;
-      left: -16px;
-      top: 87px;
+      left: 52px;
+      top: 236px;
       width: 159px;
       height: 176px;
       background-size: contain;
@@ -26,15 +26,19 @@
       @include mobile(1210px) {
         width: 120px;
         height: 140px;
-        top: -30px;
-        left: -47px;
+        top: 120px;
+        left: 16px;
       }
 
-      @include mobile(400px) {
+      @include mobile(937px) {
+        top: 100px;
+      }
+
+      @include mobile(600px) {
         width: 81px;
         height: 81px;
-        top: -30px;
-        left: -41px;
+        top: 90px;
+        left: -16px;
       }
     }
 
@@ -42,8 +46,8 @@
       content: "";
       background: url("/images/Polygon_2.png");
       position: absolute;
-      right: 0;
-      top: 325px;
+      right: 10px;
+      bottom: 0;
       width: 434px;
       height: 481px;
       background-size: contain;
@@ -52,33 +56,25 @@
       @include mobile(1210px) {
         width: 400px;
         height: 500px;
-        top: 600px;
-        right: -30px;
       }
 
       @include mobile(1083px) {
         width: 300px;
         height: 350px;
-        top: 700px;
-        right: -30px;
-      }
-
-      @include mobile(1000px) {
-        right: -14px;
       }
 
       @include mobile(600px) {
-        width: 250px;
-        height: 300px;
-        top: 550px;
-        right: -14px;
+        width: 147px;
+        right: 5px;
+        bottom: -200px;
       }
 
-      @include mobile(400px) {
-        width: 147px;
-        height: 156px;
-        top: 600px;
-        right: -14px;
+      @include mobile(430px) {
+        bottom: 0px;
+      }
+
+      @include mobile(375px) {
+        bottom: 50px;
       }
     }
   }
@@ -89,10 +85,11 @@
     max-width: 941px;
     margin: 0 auto;
     position: relative;
+    z-index: 1;
     padding: 60px 20px 62px;
 
     @include mobile(756px) {
-      padding: 30px 20px;
+      padding: 40px 20px;
     }
   }
 }

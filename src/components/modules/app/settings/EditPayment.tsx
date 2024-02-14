@@ -10,7 +10,7 @@ export default function EditPayment() {
   return (
     <div className="edit-payment bg-gradient">
       <NavBar />
-      <div className="app_container">
+      <div className="app-container">
         <div className="login__content">
           <h3>Payment</h3>
           <div className="edit-payment__radios">

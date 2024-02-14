@@ -29,7 +29,7 @@ export default function TemplateInvoice() {
           <Link to="/coming" className="underline">Privacy and Information Policy.</Link>
         </p>
       </div>
-      <BaseButton variant="primary" onClick={goNext}>
+      <BaseButton variant="primary" className="privacy-info__button" onClick={goNext}>
         Customize a document
       </BaseButton>
     </InvoiceDetails>

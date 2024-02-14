@@ -4,6 +4,7 @@ import BaseButton from "../../ui/button";
 import BaseInput from "../../ui/input";
 import InvoiceDetails from "../../ui/invoiceDetails";
 import Radio from "../../ui/radio";
+import Select from "../../ui/select";
 
 export default function TemplateDetails() {
   const { goBack, goNext } = useCustomiseDocContext();
@@ -12,6 +13,7 @@ export default function TemplateDetails() {
       subtitle="Customize and download a legal document"
       title="Template name"
       back_button
+      backClick={goBack}
       document_text="Template One"
     >
       <div className="document-details">
@@ -29,18 +31,18 @@ export default function TemplateDetails() {
           label="2. Ipsum dolor sit amet, consectetur?"
           placeholder="Free text field answer"
         />
-        <BaseInput
+        <Select
           label="3. Forem ipsum dolor sit amet, consectetur?"
-          placeholder=""
+          options={["Dropdown selection"]}
         />
         <BaseInput
           className="document-details__input"
           label="4. Ipsum dolor sit amet, consectetur?"
           placeholder="Free text field answer"
         />
-        <BaseInput
+        <Select
           label="5. Forem ipsum dolor sit amet, consectetur?"
-          placeholder=""
+          options={["Dropdown selection"]}
         />
         <div>
           <h6 className="document-details__input">

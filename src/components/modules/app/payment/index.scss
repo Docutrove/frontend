@@ -1,7 +1,14 @@
+@import "../../../../assets/styles/mixins.scss";
+
 .payment {
   &__description {
     margin-top: 24px;
     margin-bottom: 50px;
+
+    @include mobile(600px) {
+      margin-top: 16px;
+      margin-bottom: 30px;
+    }
   }
 
   &__order {
@@ -49,6 +56,11 @@
     margin-top: 30px;
     padding-top: 30px;
     border-top: 1px solid var(--border3);
+
+    @include mobile(600px) {
+      margin-top: 20px;
+      padding-top: 20px;
+    }
 
     &__card {
       margin-top: 20px;

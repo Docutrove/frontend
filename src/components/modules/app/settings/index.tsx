@@ -8,7 +8,7 @@ import Footer from "../../public/footer";
 import "./index.scss";
 import classNames from "classnames";
 
-const TABS = ["Document", "Subscription", "Invoice", "Account"];
+const TABS = ["Documents", "Subscription", "Invoices", "Account Settings"];
 
 export default function Settings() {
   const [activeTab, switchTab] = useState(TABS[3]);
@@ -17,22 +17,24 @@ export default function Settings() {
     <div className="settings bg-gradient">
       <NavBar />
       <h5 className="settings__header">Account Settings</h5>
-      <div className="settings__content__tabs">
-        {TABS.map((tab) => (
-          <button
-            onClick={() => switchTab(tab)}
-            className={classNames({ "active-tab": activeTab === tab })}
-          >
-            <h6>{tab}</h6>
-          </button>
-        ))}
+      <div className="tabs-wrapper">
+        <div className="settings__content__tabs">
+          {TABS.map((tab) => (
+            <button
+              onClick={() => switchTab(tab)}
+              className={classNames({ "active-tab": activeTab === tab })}
+            >
+              <h6>{tab}</h6>
+            </button>
+          ))}
+        </div>
       </div>
       <div className="app-container">
         <div className="settings__content">
-          {activeTab === "Document" && <DocumentSettings />}
+          {activeTab === "Documents" && <DocumentSettings />}
           {activeTab === "Subscription" && <SubscriptionSettings />}
-          {activeTab === "Invoice" && <InvoiceSettings />}
-          {activeTab === "Account" && <AccountSettings />}
+          {activeTab === "Invoices" && <InvoiceSettings />}
+          {activeTab === "Account Settings" && <AccountSettings />}
         </div>
       </div>
       <Footer />

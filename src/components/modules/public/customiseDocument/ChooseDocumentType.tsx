@@ -14,19 +14,19 @@ export default function ChooseDocumentType() {
         </h2>
         <div className="options-grid">
           <div className="option" onClick={goNext}>
-            <p>Tech / Startup agreements</p>
+            <p className="text--sm">Tech / Startup agreements</p>
           </div>
           <div className="option">
-            <p>Loan agreements</p>
+            <p className="text--sm">Loan agreements</p>
           </div>
           <div className="option">
-            <p>General commercial contracts</p>
+            <p className="text--sm">General commercial contracts</p>
           </div>
           <div className="option">
-            <p>Real Estate / Property contracts</p>
+            <p className="text--sm">Real Estate / Property contracts</p>
           </div>
           <div className="option">
-            <p>Labour and Employment</p>
+            <p className="text--sm">Labour and Employment</p>
           </div>
         </div>
       </div>

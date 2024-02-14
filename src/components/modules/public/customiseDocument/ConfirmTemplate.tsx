@@ -6,7 +6,6 @@ export default function ConfirmTemplate() {
     <InvoiceDetails
       subtitle="Customize and download a legal document"
       title="Template name"
-      back_button
       document_text="Template One"
     >
       <p className="text--sm confirm-text">

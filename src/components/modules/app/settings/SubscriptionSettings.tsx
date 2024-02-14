@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import useModal from "../../../hooks/useModal";
 import Modal from "../../ui/modal";
+import BaseButton from "../../ui/button";
 
 export default function SubscriptionSettings() {
   const [modalVisible, openModal, closeModal] = useModal();
@@ -12,7 +12,13 @@ export default function SubscriptionSettings() {
             <td className="cell cell-dark text--sm">Your Subscription</td>
             <td className="cell text--xs">Tier one</td>
             <td className="cell cell-end">
-              <button className="cell-button">Change plan</button>
+              <BaseButton
+                variant="inverted"
+                href="/changeplan"
+                className="cell-button"
+              >
+                Change plan
+              </BaseButton>
             </td>
           </tr>
           <tr className="settings__table__body__row">
@@ -24,9 +30,13 @@ export default function SubscriptionSettings() {
             <td className="cell  cell-dark text--sm">New renewal</td>
             <td className="cell text--xs">16/04/2024</td>
             <td className="cell cell-end">
-              <button className="cell-button" onClick={openModal}>
+              <BaseButton
+                variant="inverted"
+                className="cell-button"
+                onClick={openModal}
+              >
                 Cancel renewal
-              </button>
+              </BaseButton>
             </td>
           </tr>
           <tr className="settings__table__body__row">
@@ -38,13 +48,76 @@ export default function SubscriptionSettings() {
               </div>
             </td>
             <td className="cell cell-end">
-              <Link to="/editpayment" className="cell-button">
+              <BaseButton
+                variant="inverted"
+                href="/editpayment"
+                className="cell-button"
+              >
                 Edit
-              </Link>
+              </BaseButton>
             </td>
           </tr>
         </tbody>
       </table>
+
+      <div className="settings__table settings-subscription app-container settings-table-mobile">
+        <div className="settings__table__body">
+          <div className="settings__table__body__row settings-mobile">
+            <div className="table-cells">
+              <p className="cell-dark text--sm">Your Subscription</p>
+              <p className="text--xs">Tier one</p>
+            </div>
+
+            <BaseButton
+              variant="inverted"
+              href="/changeplan"
+              className="cell-button"
+            >
+              Change plan
+            </BaseButton>
+          </div>
+
+          <div className="settings__table__body__row settings-mobile">
+            <div className="table-cells">
+              <p className="cell-dark text--sm">Cost</p>
+              <p className="text--xs">₦0,000.00</p>
+            </div>
+          </div>
+          <div className="settings__table__body__row settings-mobile">
+            <div className="table-cells">
+              <p className="cell-dark text--sm">New renewal</p>
+              <p className="text--xs">16/04/2024</p>
+            </div>
+
+            <BaseButton
+              variant="inverted"
+              className="cell-button"
+              onClick={openModal}
+            >
+              Cancel renewal
+            </BaseButton>
+          </div>
+
+          <div className="settings__table__body__row settings-mobile">
+            <div className="table-cells">
+              <p className="cell-dark text--sm">Payment method</p>
+              <div className="card">
+                <img src="/images/master.png" className="card__type" alt="" />
+                <p>••• 04/14 | 01/28</p>
+              </div>
+            </div>
+
+            <BaseButton
+              variant="inverted"
+              href="/editpayment"
+              className="cell-button"
+            >
+              Edit
+            </BaseButton>
+          </div>
+        </div>
+      </div>
+
       <Modal
         title="Cancellation renewal"
         isOpen={modalVisible}

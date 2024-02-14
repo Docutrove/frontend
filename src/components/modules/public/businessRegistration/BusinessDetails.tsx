@@ -4,6 +4,7 @@ import BaseButton from "../../ui/button";
 import BaseInput from "../../ui/input";
 import InvoiceDetails from "../../ui/invoiceDetails";
 import Radio from "../../ui/radio";
+import Select from "../../ui/select";
 
 export default function BusinessDetails() {
   const { goBack, goNext } = useBusinessRegistrationContext();
@@ -12,6 +13,7 @@ export default function BusinessDetails() {
       subtitle="Register a business"
       title="Registration name"
       back_button
+      backClick={goBack}
       document_text="Document updates as you complete the fields on the left"
     >
       <div className="document-details">
@@ -29,19 +31,20 @@ export default function BusinessDetails() {
           label="2. Ipsum dolor sit amet, consectetur?"
           placeholder="Free text field answer"
         />
-        <BaseInput
+        <Select
           label="3. Forem ipsum dolor sit amet, consectetur?"
-          placeholder=""
+          options={["Dropdown selection"]}
         />
         <BaseInput
           className="document-details__input"
           label="4. Ipsum dolor sit amet, consectetur?"
           placeholder="Free text field answer"
         />
-        <BaseInput
+        <Select
           label="5. Forem ipsum dolor sit amet, consectetur?"
-          placeholder=""
+          options={["Dropdown selection"]}
         />
+
         <div>
           <h6 className="document-details__input">
             6. Ipsum dolor sit amet, consectetur?

@@ -66,7 +66,7 @@ export default function BusinessInvoice() {
           <Link to="/coming" className="underline">Privacy and Information Policy.</Link>
         </p>
       </div>
-      <BaseButton variant="primary" onClick={goNext}>
+      <BaseButton variant="primary" className="privacy-info__button" onClick={goNext}>
         Begin registration
       </BaseButton>
     </InvoiceDetails>

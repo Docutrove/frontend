@@ -10,7 +10,7 @@ export default function Payment() {
   return (
     <div className="payment bg-gradient">
       <NavBar />
-      <div className="app_container">
+      <div className="app-container">
         <div className="login__content">
           <h3>Payment</h3>
           <p className="text--xs payment__description">

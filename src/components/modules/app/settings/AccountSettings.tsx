@@ -1,4 +1,5 @@
 import useModal from "../../../hooks/useModal";
+import BaseButton from "../../ui/button";
 import BaseInput from "../../ui/input";
 import Modal from "../../ui/modal";
 
@@ -15,31 +16,91 @@ export default function AccountSettings() {
             <td className="cell cell-dark text--sm">Account name</td>
             <td className="cell text--xs">Andrew Smith</td>
             <td className="cell">
-              <button className="cell-button" onClick={openNameModal}>
+              <BaseButton
+                variant="inverted"
+                className="cell-button"
+                onClick={openNameModal}
+              >
                 Edit
-              </button>
+              </BaseButton>
             </td>
           </tr>
           <tr className="settings__table__body__row">
             <td className="cell cell-dark text--sm">Account email</td>
             <td className="cell text--xs">Andrew.Smith@instinctif.com</td>
             <td className="cell">
-              <button className="cell-button" onClick={openEmailModal}>
+              <BaseButton
+                variant="inverted"
+                className="cell-button"
+                onClick={openEmailModal}
+              >
                 Edit
-              </button>
+              </BaseButton>
             </td>
           </tr>
           <tr className="settings__table__body__row">
             <td className="cell cell-dark text--sm">Password</td>
             <td className="cell text--xs">**************</td>
             <td className="cell">
-              <button className="cell-button" onClick={openPasswordModal}>
+              <BaseButton
+                variant="inverted"
+                className="cell-button"
+                onClick={openPasswordModal}
+              >
                 Edit
-              </button>
+              </BaseButton>
             </td>
           </tr>
         </tbody>
       </table>
+
+      <div className="settings__table account app-container settings-table-mobile">
+        <div className="settings__table__body">
+          <div className="settings__table__body__row settings-mobile">
+            <div className="table-cells">
+              <p className="cell-dark text--sm">Account name</p>
+              <p className="text--xs">Andrew Smith</p>
+            </div>
+
+            <BaseButton
+              variant="inverted"
+              className="cell-button"
+              onClick={openNameModal}
+            >
+              Edit
+            </BaseButton>
+          </div>
+          <div className="settings__table__body__row settings-mobile">
+            <div className="table-cells">
+              <p className="cell-dark text--sm">Account email</p>
+              <p className="text--xs">Andrew.Smith@instinctif.com</p>
+            </div>
+
+            <BaseButton
+              variant="inverted"
+              className="cell-button"
+              onClick={openEmailModal}
+            >
+              Edit
+            </BaseButton>
+          </div>
+          <div className="settings__table__body__row settings-mobile">
+            <div className="table-cells">
+              <p className="cell-dark text--sm">Password</p>
+              <p className="text--xs">**************</p>
+            </div>
+
+            <BaseButton
+              variant="inverted"
+              className="cell-button"
+              onClick={openPasswordModal}
+            >
+              Edit
+            </BaseButton>
+          </div>
+        </div>
+      </div>
+
       <Modal
         title="Edit profile"
         isOpen={showNameModal}

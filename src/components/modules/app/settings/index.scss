@@ -10,21 +10,40 @@
     @include mobile(600px) {
       padding-left: 20px;
       padding-right: 20px;
+      margin: 60px 0;
     }
   }
+
+  .tabs-wrapper {
+    border-bottom: 1px solid var(--border);
+  }
+
   &__content {
     margin-bottom: 120px;
 
     &__tabs {
       display: flex;
-      border-bottom: 1px solid var(--border);
       justify-content: center;
+      overflow-x: auto;
+
+      @include mobile(720px) {
+        padding-left: 20px;
+        padding-right: 20px;
+        justify-content: space-between;
+        gap: 20px;
+      }
 
       button {
-        padding: 6px 36px;
+        padding: 6px 0px;
         color: var(--text);
         padding-bottom: 20px;
         width: 180px;
+        white-space: nowrap;
+
+        @include mobile(720px) {
+          padding: 0 0 16px;
+          width: unset;
+        }
       }
 
       .active-tab {
@@ -42,6 +61,15 @@
     margin: 50px auto 0;
     width: 100%;
     border-spacing: inherit;
+
+    @include mobile(600px) {
+      margin-top: 40px;
+    }
+
+    @include mobile(550px) {
+      display: none;
+      padding: 10px 20px;
+    }
 
     &__head {
       tr {
@@ -65,23 +93,10 @@
             border: 0;
           }
         }
+
         .cell {
           padding: 20px 0;
           border-bottom: 1px solid var(--border3);
-        }
-
-        .cell-dark {
-          color: var(--dark);
-          font-weight: 500;
-        }
-
-        .cell-button {
-          padding: 4px 20px;
-          border: 1px solid var(--border);
-          border-radius: 30px;
-          color: var(--dark);
-          font-size: 14px;
-          line-height: 24px;
         }
 
         .cell-end {
@@ -89,8 +104,40 @@
           justify-content: end;
         }
       }
+
+      .settings-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 20px;
+        padding-top: 20px;
+      }
+
+      .settings-mobile:not(:last-child) {
+        border-bottom: 1px solid var(--border3);
+      }
+    }
+
+    .cell-dark {
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    .cell-button {
+      padding: 4px 20px;
+      font-size: 14px;
+      line-height: 24px;
     }
   }
+
+  .settings-table-mobile {
+    display: none;
+
+    @include mobile(550px) {
+      display: block;
+    }
+  }
+
   .account {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -98,11 +145,20 @@
 
   .document {
     padding-bottom: 20px;
+
+    @include mobile(550px) {
+      padding-bottom: 10px;
+    }
   }
 
   .settings-subscription {
     padding-top: 20px;
     padding-bottom: 20px;
+
+    @include mobile(550px) {
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
   }
 }
 
@@ -110,10 +166,19 @@
   &__radios {
     margin: 40px 0 50px;
 
+    @include mobile(600px) {
+      margin: 30px 0;
+    }
+
     &__radio:not(:first-child) {
       border-top: 1px solid var(--border3);
       padding-top: 30px;
       margin-top: 30px;
+
+      @include mobile(600px) {
+        padding-top: 20px;
+        margin-top: 20px;
+      }
 
       .edit-apple {
         color: #000;
@@ -123,5 +188,37 @@
 
   &__button {
     width: 100%;
+  }
+}
+
+.change-plan {
+  &__subscription {
+    display: flex;
+    justify-content: space-between;
+
+    @include mobile(1189px) {
+      justify-content: center;
+    }
+  }
+
+  &__button {
+    justify-content: center;
+    padding-bottom: 120px;
+
+    @include mobile(600px) {
+      padding-bottom: 60px;
+    }
+  }
+
+  .subscription__services {
+    padding-top: 80px;
+
+    @include mobile(600px) {
+      padding-top: 60px;
+    }
+
+    &__subtitle {
+      text-align: center;
+    }
   }
 }

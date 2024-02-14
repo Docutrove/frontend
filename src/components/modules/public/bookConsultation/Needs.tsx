@@ -11,10 +11,10 @@ export default function Needs({ goNext, goBack }: NeedsProps) {
   return (
     <div className="about-you">
       <h2 className="gradient-title">Tell us about what you need help with</h2>
-      <h6 className="about-you__description">
+      <p className="about-you__description text--sm">
         Please be as descriptive as possible in order to make the most of your
         allocated time and to enable us to assign the right person
-      </h6>
+      </p>
       <div className="about-you__form">
         <BaseInput
           label="Subject"

@@ -1,12 +1,15 @@
-.consultation-intro {
-  max-width: 618px;
-  margin: 0 auto;
+@import "../../../../assets/styles/mixins.scss";
 
+.consultation-intro {
   .stepper {
     display: flex;
     justify-content: space-between;
     max-width: 266px;
     margin: 30px auto;
+
+    @include mobile(600px) {
+      margin: 20px auto;
+    }
 
     .step-item {
       position: relative;
@@ -61,19 +64,35 @@
 
   .consultation-lists {
     margin-top: 40px;
+
+    @include mobile(600px) {
+      margin-top: 30px;
+    }
+
     &__title {
       margin-bottom: 40px;
       display: flex;
       justify-content: center;
+
+      @include mobile(600px) {
+        margin-bottom: 30px;
+      }
     }
   }
 
   .consultation-button {
     margin: 0 auto;
+
+    @include mobile(600px) {
+      width: 100%;
+    }
   }
 }
 
 .about-you {
+  max-width: 624px;
+  margin: 0 auto;
+
   &__title {
     margin-bottom: 50px;
   }
@@ -81,6 +100,10 @@
   &__description {
     margin: 50px auto 40px;
     text-align: center;
+
+    @include mobile(600px) {
+      margin: 30px auto;
+    }
   }
 
   &__form {
@@ -95,9 +118,204 @@
     align-items: center;
     gap: 32px;
     justify-content: center;
+
+    @include mobile(600px) {
+      justify-content: space-between;
+    }
   }
 }
 
-.search-inputs{
+.search-inputs {
   margin-top: 50px;
+
+  @include mobile(600px) {
+    margin-top: 30px;
+  }
+}
+
+.book-lawyer {
+  max-width: 841px;
+
+  .book-details {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    @include mobile(600px) {
+      margin-top: 0;
+    }
+
+    &__detail:not(:first-child) {
+      border-left: 1px solid #c6ced6;
+      padding-left: 10px;
+    }
+  }
+
+  .lawyers {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .lawyer-details {
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 20px;
+
+      @include mobile(986px) {
+        padding: 20px;
+      }
+
+      &__info {
+        display: flex;
+        gap: 23px;
+        border-bottom: 1px solid var(--border3);
+        padding-bottom: 29px;
+
+        @include mobile(600px) {
+          display: none;
+        }
+
+        .lawyer-image {
+          max-width: 103px;
+
+          img {
+            width: 100%;
+          }
+        }
+      }
+
+      .position {
+        margin-top: 6px;
+        margin-bottom: 18px;
+      }
+
+      .about {
+        max-width: 653px;
+      }
+
+      &__mobile {
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+        border-bottom: 1px solid var(--border3);
+        padding-bottom: 20px;
+
+        @include mobile(600px) {
+          display: flex;
+        }
+
+        &__info {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+
+          .lawyer-image {
+            max-width: 103px;
+
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      &__date {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 29px;
+        margin-bottom: 29px;
+
+        @include mobile(600px) {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+
+        .available-time-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          margin-top: 12px;
+
+          @include mobile(600px) {
+            gap: 10px;
+          }
+        }
+
+        .available-time {
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+
+          @include mobile(600px) {
+            gap: 10px;
+          }
+
+          .time {
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 78px;
+            height: 51px;
+            border-radius: 20px;
+
+            @include mobile(600px) {
+              width: 70px;
+              height: 48px;
+              border-radius: 15px;
+            }
+
+            p {
+              color: var(--dark);
+            }
+          }
+        }
+      }
+
+      &__value {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid var(--border3);
+        padding-top: 29px;
+
+        @include mobile(600px) {
+          padding-top: 20px;
+        }
+
+        @include mobile(560px) {
+          flex-direction: column;
+          gap: 20px;
+          align-items: flex-start;
+        }
+
+        &__button {
+          @include mobile(560px) {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.meeting {
+  margin-top: 60px;
+  margin-bottom: 16px;
+  text-align: center;
+
+  @include mobile(600px) {
+    margin-top: 30px;
+  }
+}
+
+.meeting-details {
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: 500;
+  text-align: center;
 }

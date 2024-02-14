@@ -1,3 +1,5 @@
+@import "../../../../assets/styles/mixins.scss";
+
 .login {
   &__content {
     background: var(--white);
@@ -5,6 +7,16 @@
     margin: 80px auto 120px;
     padding: 60px 50px;
     border-radius: 20px;
+    position: relative;
+    z-index: 1;
+
+    @include mobile(986px) {
+      padding: 40px 20px 49px;
+    }
+
+    @include mobile(600px) {
+      margin: 60px auto;
+    }
 
     &__description {
       margin: 20px 0 30px;
@@ -51,6 +63,10 @@
       margin: 24px auto;
       text-align: center;
 
+      @include mobile(986px) {
+        margin: 20px auto;
+      }
+
       &::before {
         content: "";
         display: block;
@@ -78,6 +94,11 @@
       display: flex;
       gap: 20px;
       margin-bottom: 30px;
+
+      @include mobile(630px) {
+        flex-direction: column;
+        gap: 16px;
+      }
 
       &__button {
         width: 100%;

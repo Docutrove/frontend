@@ -30,6 +30,10 @@
 .invoice-subtitle {
   justify-content: flex-start !important;
   margin-bottom: 30px;
+
+  @include mobile(600px) {
+    margin-bottom: 20px;
+  }
 }
 
 .invoice-back-button {
@@ -62,6 +66,10 @@
 
 .invoice-price {
   margin: 40px 0;
+
+  @include mobile(600px) {
+    margin: 30px 0;
+  }
 }
 
 .invoice-description {
@@ -69,6 +77,10 @@
 
   &__header {
     margin-top: 60px;
+
+    @include mobile(600px) {
+      margin-top: 40px;
+    }
   }
 }
 
@@ -76,6 +88,11 @@
   border-top: 1px solid var(--border3);
   padding-top: 40px;
   margin: 40px 0;
+
+  @include mobile(600px) {
+    margin: 30px 0;
+    padding-top: 30px;
+  }
 
   &__title {
     font-weight: 600;
@@ -88,6 +105,12 @@
 
     a {
       text-decoration: underline;
+    }
+  }
+
+  &__button {
+    @include mobile(600px) {
+      width: 100%;
     }
   }
 }
@@ -142,6 +165,22 @@
   gap: 20px;
   border-top: 1px solid var(--border3);
   padding-top: 40px;
+
+  @include mobile(1105px) {
+    justify-content: space-between;
+  }
+
+  @include mobile(430px) {
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 30px;
+  }
+
+  a {
+    @include mobile(430px) {
+      width: 100%;
+    }
+  }
 }
 
 .document-details {
@@ -150,12 +189,18 @@
   gap: 24px;
   margin: 40px 0;
 
+  @include mobile(600px) {
+    margin: 30px 0;
+    gap: 20px;
+  }
+
   &__input {
     .label {
       font-weight: 700;
       font-family: "PT Serif", serif;
       font-size: 20px;
       line-height: 27px;
+      margin-bottom: 12px;
     }
   }
 }
@@ -173,6 +218,14 @@
   gap: 32px;
   border-top: 1px solid var(--border3);
   padding-top: 40px;
+
+  @include mobile(1105px) {
+    justify-content: space-between;
+  }
+
+  @include mobile(600px) {
+    padding-top: 30px;
+  }
 }
 
 .card-date {
@@ -180,6 +233,11 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   margin-top: 16px;
+
+  @include mobile(600px) {
+    gap: 10px;
+    margin-top: 10px;
+  }
 }
 
 .card {
@@ -189,5 +247,47 @@
   &__type {
     width: 35px;
     height: 24px;
+  }
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 849px;
+  margin: 50px auto 0;
+
+  @include mobile(783px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile(600px) {
+    grid-template-columns: 1fr;
+    margin: 0 auto;
+    gap: 20px;
+  }
+
+  .option {
+    border: 1px solid var(--border);
+    background: var(--white);
+    border-radius: 20px;
+    padding: 22px 31px;
+    color: var(--dark);
+    text-align: center;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 96px;
+
+    &:hover {
+      border: 1px solid var(--dark);
+      background: var(--secondary);
+    }
+
+    p {
+      max-width: 178px;
+      color: var(--dark);
+    }
   }
 }

@@ -13,7 +13,7 @@ interface AuthContext {
     name: string;
     email: string;
   };
-  setUser: any;
+  setUser: (data: AuthContext["user"]) => void;
 }
 
 const authContext = createContext<AuthContext>({

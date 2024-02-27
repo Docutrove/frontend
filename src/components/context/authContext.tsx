@@ -6,9 +6,14 @@ interface AuthContextProviderProps {
 
 interface AuthContext {
   token: string;
-  setToken: any;
+  setToken: (data: string) => void;
   isAuthenticated: boolean;
-  setIsAuthenticated: any;
+  setIsAuthenticated: (data: boolean) => void;
+  user: {
+    name: string;
+    email: string;
+  };
+  setUser: any;
 }
 
 const authContext = createContext<AuthContext>({
@@ -16,6 +21,11 @@ const authContext = createContext<AuthContext>({
   setToken: () => null,
   isAuthenticated: false,
   setIsAuthenticated: () => null,
+  user: {
+    name: "",
+    email: "",
+  },
+  setUser: () => null,
 });
 
 export default function AuthContextProvider({
@@ -23,9 +33,18 @@ export default function AuthContextProvider({
 }: AuthContextProviderProps) {
   const [token, setToken] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState({ name: "", email: "" });
+
   return (
     <authContext.Provider
-      value={{ token, setToken, isAuthenticated, setIsAuthenticated }}
+      value={{
+        token,
+        setToken,
+        isAuthenticated,
+        setIsAuthenticated,
+        user,
+        setUser,
+      }}
     >
       {children}
     </authContext.Provider>

@@ -6,6 +6,8 @@ import NavBar from "../navbar";
 import { Icon } from "../../ui/Icon";
 import { Link } from "react-router-dom";
 import "./index.scss";
+import * as Yup from "yup";
+import useForm from "../../../hooks/useForm";
 
 export default function SignUp() {
   const [click, setClick] = useState(false);
@@ -13,6 +15,33 @@ export default function SignUp() {
   const toggle = () => {
     setClick((prev) => !prev);
   };
+
+  const emailRules =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const passWordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+  const { getFieldProps, handleSubmit } = useForm({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      firstName: Yup.string().required("First name is required"),
+      lastName: Yup.string().required("Last name is required"),
+      email: Yup.string()
+        .email("Email Address is required")
+        .matches(emailRules, "Invalid Email"),
+      phone: Yup.string().required("Phone Number is required"),
+      password: Yup.string()
+        .required("Password is required")
+        .matches(passWordRules, "Password should contain 1 "),
+    }),
+    onSubmit: () => {},
+  });
+
   return (
     <div className="login bg-gradient">
       <NavBar />
@@ -23,33 +52,39 @@ export default function SignUp() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
 
-          <div className="login__content__form">
+          <form className="login__content__form" onSubmit={handleSubmit}>
             <div className="login__content__form__inputs">
+              <BaseInput
+                label="First name"
+                placeholder="Andrew"
+                {...getFieldProps("firstName")}
+              />
+              <BaseInput
+                label="Last Name"
+                placeholder="Smith"
+                {...getFieldProps("lastName")}
+              />
               <BaseInput
                 label="Email address"
                 placeholder="Andrew.Smith@instinctif.com"
+                {...getFieldProps("email")}
+              />
+              <BaseInput
+                label="Phone Number"
+                placeholder="09099876543"
+                type="number"
+                {...getFieldProps("phone")}
               />
               <div className="password-text">
-                {click ? (
-                  <BaseInput
-                    label="Password"
-                    type="text"
-                    placeholder="****************"
-                  />
-                ) : (
-                  <BaseInput
-                    label="Password"
-                    type="password"
-                    placeholder="****************"
-                  />
-                )}
+                <BaseInput
+                  label="Password"
+                  type={`${click ? "text" : "password"}`}
+                  placeholder="****************"
+                  {...getFieldProps("password")}
+                />
 
                 <button type="button" onClick={toggle} className="eye">
-                  {click ? (
-                    <Icon name="eye-closed" />
-                  ) : (
-                    <Icon name="eye-closed" />
-                  )}
+                  <Icon name={`${click ? "eye-closed" : "eye-closed"}`} />
                 </button>
               </div>
             </div>
@@ -71,7 +106,7 @@ export default function SignUp() {
             <BaseButton variant="primary" className="login__content__button">
               Sign up
             </BaseButton>
-          </div>
+          </form>
 
           <p className="text--2xs login__content__border">Or</p>
           <div className="login__content__socials">

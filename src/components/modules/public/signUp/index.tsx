@@ -84,11 +84,7 @@ export default function SignUp() {
                 />
 
                 <button type="button" onClick={toggle} className="eye">
-                  {click ? (
-                    <Icon name="eye-closed" />
-                  ) : (
-                    <Icon name="eye-closed" />
-                  )}
+                  <Icon name={`${click ? "eye-closed" : "eye-closed"}`} />
                 </button>
               </div>
             </div>

@@ -9,7 +9,7 @@ interface AboutYouProps {
   goBack: () => void;
 }
 
-export default function AboutYou({ goNext, goBack }: AboutYouProps) {
+export default function AboutYou({ goNext}: AboutYouProps) {
   return (
     <div className="about-you">
       <h2 className="gradient-title">

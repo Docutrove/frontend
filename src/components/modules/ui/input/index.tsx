@@ -8,6 +8,9 @@ interface BaseInputProps {
   type?: string;
   children?: ReactNode;
   textarea?: boolean;
+  value?: string;
+  name?: string;
+  errorMessage?: string;
 }
 
 export default function BaseInput({
@@ -17,6 +20,10 @@ export default function BaseInput({
   type,
   children,
   textarea,
+  name,
+  value,
+  errorMessage,
+  ...props
 }: BaseInputProps) {
   return (
     <label className={`base-input ${className}`}>
@@ -25,10 +32,14 @@ export default function BaseInput({
         {textarea ? (
           <textarea className="textarea input"></textarea>
         ) : (
-          <input className="input" placeholder={placeholder} type={type} />
+          <input
+            className={`input ${errorMessage ? "error-input" : ""}`}
+            {...{ placeholder, type, name, value, ...props }}
+          />
         )}
         <div className="input-icons">{children}</div>
       </div>
+      <p className="error-message text--2xs">{errorMessage}</p>
     </label>
   );
 }

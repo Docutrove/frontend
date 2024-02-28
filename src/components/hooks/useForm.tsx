@@ -1,38 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-interface UseFormProps {
-  onSubmit: any;
+interface useFormProps {
+  initialValues: Record<string, any>;
   validationSchema: any;
-  initialValues: Record<string,any>;
+  onSubmit: (values: useFormProps["initialValues"]) => void;
 }
 
-export default function useForm({ onSubmit, validationSchema, initialValues }: UseFormProps) {
+function useForm({
+  initialValues = {},
+  validationSchema,
+  onSubmit,
+}: useFormProps) {
   const [values, setValues] = useState(initialValues);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<Record<string, any>>({});
+  const [touched, setTouched] = useState<string[]>([]);
 
-  async function handleSubmit() {
-    const isvalid = validateForm();
-    if (isvalid) onSubmit(values);
-  }
+  useEffect(() => {
+    validate();
+  }, [JSON.stringify(values)]);
 
-  function handleInputChange({ target: { name, value } }: any) {
-    setFieldValue(name, value);
-  }
-
-  function setFieldValue(name: string, value: string | boolean | number) {
-    setValues((prev) => ({ ...prev, [name]: value }));
-  }
-
-  function getFieldProps(name: string) {
-    return {
-      name,
-      onChange: handleInputChange,
-      onBlur: () => null,
-      onFocus: () => null,
-    };
-  }
-
-  function validateForm() {
+  function validate() {
     if (!validationSchema) return true;
     try {
       validationSchema.validateSync(values, { abortEarly: false });
@@ -43,18 +30,44 @@ export default function useForm({ onSubmit, validationSchema, initialValues }: U
       err.inner.forEach((innerError: any) => {
         errorDump[innerError.path] = innerError.message;
       });
-
-      console.log(errorDump);
       setErrors(errorDump);
       return false;
     }
   }
 
+  function handleInputChange({ target: { name, value } }: any) {
+    setFieldValue(name, value);
+  }
+
+  function setFieldValue(name: string, value: any) {
+    setValues((values) => ({ ...values, [name]: value }));
+  }
+
+  function getFieldProps(name: string) {
+    return {
+      name,
+      value: values[name],
+      onChange: handleInputChange,
+      onBlur: () =>
+        setTouched((prev) => (prev?.includes(name) ? prev : [...prev, name])),
+      errorMessage: touched.includes(name) ? errors[name] : "",
+      onFocus: () => null,
+    };
+  }
+
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    setTouched(Object.keys(initialValues));
+    const isValid = validate();
+    if (isValid) onSubmit(values);
+  }
+
   return {
-    handleSubmit,
     getFieldProps,
-    setFieldValue,
-    values,
+    handleSubmit,
     errors,
+    values,
   };
 }
+
+export default useForm;

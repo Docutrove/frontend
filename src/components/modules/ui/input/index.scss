@@ -28,6 +28,10 @@
       }
     }
 
+    .error-input{
+      border: 1px solid rgb(234, 26, 26);
+    }
+
     .textarea {
       height: 260px;
     }
@@ -39,5 +43,9 @@
       transform: translateY(-8px);
       pointer-events: none;
     }
+  }
+
+  .error-message{
+    color: rgb(234, 26, 26);
   }
 }

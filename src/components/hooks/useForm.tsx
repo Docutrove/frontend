@@ -23,6 +23,7 @@ function useForm({
     if (!validationSchema) return true;
     try {
       validationSchema.validateSync(values, { abortEarly: false });
+      setErrors({});
       return true;
     } catch (err: any) {
       let errorDump: any = {};
@@ -54,6 +55,8 @@ function useForm({
       onFocus: () => null,
     };
   }
+
+  // console.log(touched, errors);
 
   function handleSubmit(e: any) {
     e.preventDefault();

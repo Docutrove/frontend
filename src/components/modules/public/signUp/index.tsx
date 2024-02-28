@@ -8,17 +8,19 @@ import { Link } from "react-router-dom";
 import "./index.scss";
 import * as Yup from "yup";
 import useForm from "../../../hooks/useForm";
+import useRequest from "../../../hooks/useRequest";
+import { signup } from "../../../../api/auth";
+import { useAuthContext } from "../../../context/authContext";
+import regex from "../../../../utils/regex";
 
 export default function SignUp() {
   const [click, setClick] = useState(false);
+  const { makeRequest, isLoading } = useRequest(signup);
+  const { setToken } = useAuthContext();
 
   const toggle = () => {
     setClick((prev) => !prev);
   };
-
-  const emailRules =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const passWordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
   const { getFieldProps, handleSubmit } = useForm({
     initialValues: {
@@ -33,13 +35,21 @@ export default function SignUp() {
       lastName: Yup.string().required("Last name is required"),
       email: Yup.string()
         .email("Email Address is required")
-        .matches(emailRules, "Invalid Email"),
+        .matches(regex.email, "Invalid Email"),
       phone: Yup.string().required("Phone Number is required"),
       password: Yup.string()
         .required("Password is required")
-        .matches(passWordRules, "Password should contain 1 "),
+        .matches(
+          regex.password,
+          "Password must contain 8 or more characters with at least one of each: uppercase, number and special"
+        ),
     }),
-    onSubmit: () => {},
+    onSubmit: async (data) => {
+      const [res, err] = await makeRequest(data);
+      if (err) return; // display error with toast
+      setToken(res.token);
+      // access context and set is authenticated to true, redirect to base path
+    },
   });
 
   return (
@@ -78,7 +88,7 @@ export default function SignUp() {
               <div className="password-text">
                 <BaseInput
                   label="Password"
-                  type={`${click ? "text" : "password"}`}
+                  type={click ? "text" : "password"}
                   placeholder="****************"
                   {...getFieldProps("password")}
                 />
@@ -103,7 +113,12 @@ export default function SignUp() {
               </Link>
             </p>
 
-            <BaseButton variant="primary" className="login__content__button">
+            <BaseButton
+              variant="primary"
+              className="login__content__button"
+              isLoading={isLoading}
+              disabled={isLoading}
+            >
               Sign up
             </BaseButton>
           </form>

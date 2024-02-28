@@ -1,4 +1,10 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 interface AuthContextProviderProps {
   children: ReactNode;
@@ -31,9 +37,13 @@ const authContext = createContext<AuthContext>({
 export default function AuthContextProvider({
   children,
 }: AuthContextProviderProps) {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(localStorage.AUTH_TOKEN);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState({ name: "", email: "" });
+
+  useEffect(() => {
+    localStorage.setItem("AUTH_TOKEN", token);
+  }, [token]);
 
   return (
     <authContext.Provider

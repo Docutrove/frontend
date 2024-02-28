@@ -21,8 +21,13 @@ import ChangePlan from "./components/modules/app/settings/ChangePlan";
 import DocumentThank from "./components/modules/public/customiseDocument/DocumentThank";
 import BusinessThank from "./components/modules/public/businessRegistration/BusinessThank";
 import ConsultationThank from "./components/modules/public/bookConsultation/ConsultationThank";
+import { useAuthContext } from "./components/context/authContext";
+
+// wrap app with context, context returns isAuthenticated state
 
 function App() {
+  const { token } = useAuthContext();
+  const isAuthenticated = Boolean(token);
   return (
     // prettier-ignore
     <BrowserRouter>
@@ -48,10 +53,10 @@ function App() {
         <Route path="/businessthankyou" element={<BusinessThank />} />
         <Route path="/consultationthankyou" element={<ConsultationThank />} />
 
-
         {/* protected route */}
-        <Route path="/settings" element={<Settings />} />    
-        <Route path="/payment" element={<Payment />} />    
+        {/* if is authenticated render these routes */}
+        {isAuthenticated ? <>  <Route path="/settings" element={<Settings />} />    
+        <Route path="/payment" element={<Payment />} /></> : ""}
       </Routes>
     </BrowserRouter>
   );

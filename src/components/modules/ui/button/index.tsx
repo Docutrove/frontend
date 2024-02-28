@@ -8,6 +8,8 @@ interface ButtonProps {
   className?: string;
   href?: string;
   onClick?: () => void;
+  isLoading?: boolean;
+  disabled?: boolean;
 }
 
 export default function BaseButton({
@@ -16,6 +18,8 @@ export default function BaseButton({
   className,
   href,
   onClick,
+  isLoading,
+  disabled,
 }: ButtonProps) {
   const Component: any = href ? Link : "button";
 
@@ -24,8 +28,9 @@ export default function BaseButton({
       to={href}
       className={`base-button--${variant} ${className}`}
       onClick={onClick}
+      disabled={disabled}
     >
-      {children}
+      {isLoading ? "loading" : children}
     </Component>
   );
 }

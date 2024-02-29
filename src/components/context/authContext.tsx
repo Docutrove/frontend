@@ -16,7 +16,8 @@ interface AuthContext {
   isAuthenticated: boolean;
   setIsAuthenticated: (data: boolean) => void;
   user: {
-    name: string;
+    firstName: string;
+    lastName: string;
     email: string;
   };
   setUser: (data: AuthContext["user"]) => void;
@@ -28,7 +29,8 @@ const authContext = createContext<AuthContext>({
   isAuthenticated: false,
   setIsAuthenticated: () => null,
   user: {
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
   },
   setUser: () => null,
@@ -39,11 +41,15 @@ export default function AuthContextProvider({
 }: AuthContextProviderProps) {
   const [token, setToken] = useState(localStorage.AUTH_TOKEN);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState({ name: "", email: "" });
+  const [user, setUser] = useState({ firstName: "", lastName: "", email: "" });
 
   useEffect(() => {
     localStorage.setItem("AUTH_TOKEN", token);
   }, [token]);
+
+  useEffect(() => {
+    localStorage.setItem("USER", JSON.stringify(user));
+  }, [user]);
 
   return (
     <authContext.Provider

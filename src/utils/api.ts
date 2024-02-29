@@ -23,7 +23,6 @@ export default async function createRequest(
     }
     return [response, null];
   } catch (err) {
-    console.log(err);
-    return [null, null];
+    return [null, err];
   }
 }

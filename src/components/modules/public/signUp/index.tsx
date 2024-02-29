@@ -12,11 +12,12 @@ import useRequest from "../../../hooks/useRequest";
 import { signup } from "../../../../api/auth";
 import { useAuthContext } from "../../../context/authContext";
 import regex from "../../../../utils/regex";
+import toast from "react-hot-toast";
 
 export default function SignUp() {
   const [click, setClick] = useState(false);
   const { makeRequest, isLoading } = useRequest(signup);
-  const { setToken } = useAuthContext();
+  const { setToken, setUser } = useAuthContext();
 
   const toggle = () => {
     setClick((prev) => !prev);
@@ -46,11 +47,18 @@ export default function SignUp() {
     }),
     onSubmit: async (data) => {
       const [res, err] = await makeRequest(data);
-      if (err) return; // display error with toast
+      if (err) {
+        toast.error("This is an error");
+      } // display error with toast
       setToken(res.token);
+      setUser(res.user);
       // access context and set is authenticated to true, redirect to base path
     },
   });
+
+  // useEffect(() => {
+  //   toast.error("This is an error");
+  // }, []);
 
   return (
     <div className="login bg-gradient">

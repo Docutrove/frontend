@@ -139,6 +139,16 @@
           }
         }
       }
+
+      .user{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100vh;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--border2);
+      }
     }
 
     .active {

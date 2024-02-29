@@ -3,6 +3,7 @@ import { Icon } from "../../ui/Icon";
 import BaseButton from "../../ui/button";
 import "./index.scss";
 import { useState } from "react";
+// import { useAuthContext } from "../../../context/authContext";
 
 interface NavBarProps {
   hasBorder?: boolean;
@@ -10,6 +11,7 @@ interface NavBarProps {
 
 export default function NavBar({ hasBorder }: NavBarProps) {
   const [openMenu, setOpenMenu] = useState(false);
+  // const { user } = useAuthContext();
 
   const handleToggle = () => {
     setOpenMenu((prev) => !prev);
@@ -52,6 +54,20 @@ export default function NavBar({ hasBorder }: NavBarProps) {
               Sign in
             </BaseButton>
           </li>
+          {/* {user ? (
+            ""
+          ) : (
+            <li>
+              <BaseButton variant="primary" href="/login">
+                Sign in
+              </BaseButton>
+            </li>
+          )} */}
+
+          {/* <div className="user">
+            {user.firstName[0]}
+            {user.lastName[0]}
+          </div> */}
         </ul>
       </div>
     </div>

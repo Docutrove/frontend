@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import "./index.scss";
+import { ClipLoader } from "react-spinners";
 
 interface ButtonProps {
   variant: "primary" | "secondary" | "inverted";
@@ -30,7 +31,17 @@ export default function BaseButton({
       onClick={onClick}
       disabled={disabled}
     >
-      {isLoading ? "loading" : children}
+      {isLoading ? (
+        <ClipLoader
+          color="#f2f7ff"
+          loading={isLoading}
+          size={24}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      ) : (
+        children
+      )}
     </Component>
   );
 }

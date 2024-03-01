@@ -9,7 +9,7 @@ export default function HomeOffers() {
           iconName="document"
           title="Customize a document"
           description="Access tailored legal documents with ease on Docutrove."
-          path="/customise"
+          path="/customisedocument"
           buttonText="Discover More"
           buttonVariant="secondary"
         />
@@ -18,7 +18,7 @@ export default function HomeOffers() {
           iconName="pie"
           title="Business services"
           description="Comprehensive Legal Support for Your Enterprise."
-          path="/business"
+          path="/coming"
           buttonText="Discover More"
           buttonVariant="secondary"
         />
@@ -28,7 +28,7 @@ export default function HomeOffers() {
           title="Consult a lawyer"
           description="Our team, qualified across multiple jurisdictions, delivers customized legal solutions.
           "
-          path="/consultation"
+          path="/coming"
           buttonText="Discover More"
           buttonVariant="secondary"
         />

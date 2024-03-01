@@ -42,23 +42,19 @@ export default function SignUp() {
         .required("Password is required")
         .matches(
           regex.password,
-          "Password must contain 8 or more characters with at least one of each: uppercase, number and special"
+          "Password must contain at least 10 characters with at least one of each: uppercase, number and special"
         ),
     }),
     onSubmit: async (data) => {
       const [res, err] = await makeRequest(data);
       if (err) {
-        toast.error("This is an error");
+        toast.error("Error");
       } // display error with toast
       setToken(res.token);
       setUser(res.user);
       // access context and set is authenticated to true, redirect to base path
     },
   });
-
-  // useEffect(() => {
-  //   toast.error("This is an error");
-  // }, []);
 
   return (
     <div className="login bg-gradient">
@@ -107,10 +103,10 @@ export default function SignUp() {
               </div>
             </div>
 
-            <p className="text--2xs password-info">
+            {/* <p className="text--2xs password-info">
               At least 10 characters must be included.
-            </p>
-            <p className="text--2xs">
+            </p> */}
+            <p className="text--2xs  password-info">
               By signing up, you agree to the{" "}
               <Link to="/coming" className="underline">
                 Terms and Conditions

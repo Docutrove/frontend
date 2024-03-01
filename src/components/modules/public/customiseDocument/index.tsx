@@ -12,7 +12,7 @@ const customiseDocContext = createContext<{
 export default function CustomiseDocumentProvider() {
   const SCREENS = [
     "choose_document_type",
-    "choose_template",
+    // "choose_template",
     "template_invoice",
     "template_details",
     "confirm_template",

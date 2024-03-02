@@ -10,14 +10,14 @@ import * as Yup from "yup";
 import useForm from "../../../hooks/useForm";
 import useRequest from "../../../hooks/useRequest";
 import { signup } from "../../../../api/auth";
-import { useAuthContext } from "../../../context/authContext";
+// import { useAuthContext } from "../../../context/authContext";
 import regex from "../../../../utils/regex";
 import toast from "react-hot-toast";
 
 export default function SignUp() {
   const [click, setClick] = useState(false);
   const { makeRequest, isLoading } = useRequest(signup);
-  const { setToken, setUser } = useAuthContext();
+  // const { setToken, setUser } = useAuthContext();
 
   const toggle = () => {
     setClick((prev) => !prev);
@@ -50,8 +50,9 @@ export default function SignUp() {
       if (err) {
         toast.error("Error");
       } // display error with toast
-      setToken(res.token);
-      setUser(res.user);
+      console.log(res)
+      // setToken(res.token);
+      // setUser(res.user);
       // access context and set is authenticated to true, redirect to base path
     },
   });

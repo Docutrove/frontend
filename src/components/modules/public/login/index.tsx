@@ -17,15 +17,17 @@ export default function Login() {
   const [click, setClick] = useState(false);
   const { makeRequest, isLoading } = useRequest(login);
   const { setToken } = useAuthContext();
+  // const [checked, setChecked] = useState(true);
 
   const toggle = () => {
     setClick((prev) => !prev);
   };
 
-  const { handleSubmit, getFieldProps } = useForm({
+  const { handleSubmit, getFieldProps, values } = useForm({
     initialValues: {
       email: "",
       password: "",
+      rememberMe: false,
     },
     validationSchema: Yup.object({
       email: Yup.string()
@@ -71,7 +73,18 @@ export default function Login() {
               </div>
 
               <div className="remember">
-                <div className="remember__checkbox"></div>
+                <label>
+                  <input
+                    type="checkbox"
+                    {...getFieldProps("rememberMe")}
+                    defaultChecked={values.rememberMe}
+                  />
+                  <span
+                    className={`check ${values.rememberMe ? "active" : ""}`}
+                  >
+                    <Icon name="tick" className="check-tick" />
+                  </span>
+                </label>
                 <p className="text--xs">Remember me</p>
               </div>
             </div>

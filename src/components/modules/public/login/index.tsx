@@ -39,6 +39,13 @@ export default function Login() {
       const [res, err] = await makeRequest(data);
       if (err) return; // display error with toast
       setToken(res.token);
+      if (values.rememberMe) {
+        localStorage.setItem("email", values.email);
+        localStorage.setItem("password", values.password);
+      } else {
+        localStorage.setItem("email", "");
+        localStorage.setItem("password", "");
+      }
     },
   });
 
@@ -77,7 +84,7 @@ export default function Login() {
                   <input
                     type="checkbox"
                     {...getFieldProps("rememberMe")}
-                    defaultChecked={values.rememberMe}
+                    checked={values.rememberMe}
                   />
                   <span
                     className={`check ${values.rememberMe ? "active" : ""}`}

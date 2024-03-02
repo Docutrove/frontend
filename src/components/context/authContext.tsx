@@ -41,7 +41,7 @@ export default function AuthContextProvider({
 }: AuthContextProviderProps) {
   const [token, setToken] = useState(localStorage.AUTH_TOKEN);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState({ firstName: "", lastName: "", email: "" });
+  const [user, setUser] = useState(localStorage.USER);
 
   useEffect(() => {
     localStorage.setItem("AUTH_TOKEN", token);

@@ -140,14 +140,59 @@
         }
       }
 
-      .user{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 100vh;
-        width: 40px;
-        height: 40px;
-        border: 1px solid var(--border2);
+      .user-container {
+        position: relative;
+
+        .user {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 100vh;
+          width: 48px;
+          height: 48px;
+          border: 1px solid var(--dark);
+          cursor: pointer;
+        }
+
+        .nav-dropdown {
+          position: absolute;
+          right: 0;
+          top: 50px;
+
+          &.show {
+            display: block;
+          }
+
+          &.hide {
+            display: none;
+          }
+
+          &__item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding-top: 8px;
+            padding-bottom: 8px;
+            width: 145px;
+            padding-left: 19px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            &:hover {
+              background: var(--secondary);
+            }
+          }
+        }
+
+        .dropdown-account {
+          border-radius: 5px 5px 0 0;
+          border-bottom: 0;
+        }
+
+        .dropdown-logout {
+          border-radius: 0px 0px 5px 5px;
+          cursor: pointer;
+        }
       }
     }
 

@@ -1,12 +1,14 @@
 export default async function createRequest(
   url: string,
   method: "get" | "post" | "put" | "patch" | "delete",
-  body?: Record<string, any>
+  body?: Record<string, any>,
+  token?: string
 ) {
   try {
     const res = await fetch(`http://3.142.252.101${url}`, {
       method,
       headers: {
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),

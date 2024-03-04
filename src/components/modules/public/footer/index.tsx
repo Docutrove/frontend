@@ -17,12 +17,12 @@ export default function Footer() {
           <li className="footer__content__links__link">
             <Link to="">Support</Link>
           </li>
-          <li className="footer__content__links__link">
+          {/* <li className="footer__content__links__link">
             <Link to="">Terms and conditions</Link>
           </li>
           <li className="footer__content__links__link">
             <Link to="">Privacy policy</Link>
-          </li>
+          </li> */}
         </ul>
       </div>
     </footer>

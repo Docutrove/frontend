@@ -5,18 +5,20 @@ import { Icon } from "../../ui/Icon";
 import "./index.scss";
 import NavBar from "../navbar";
 import Footer from "../footer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import regex from "../../../../utils/regex";
 import useForm from "../../../hooks/useForm";
 import * as Yup from "yup";
 import useRequest from "../../../hooks/useRequest";
 import { login } from "../../../../api/auth";
 import { useAuthContext } from "../../../context/authContext";
+import { toast } from "react-hot-toast";
 
 export default function Login() {
   const [click, setClick] = useState(false);
   const { makeRequest, isLoading } = useRequest(login);
   const { setToken } = useAuthContext();
+  const navigate = useNavigate();
   // const [checked, setChecked] = useState(true);
 
   const toggle = () => {
@@ -37,8 +39,14 @@ export default function Login() {
     }),
     onSubmit: async (data) => {
       const [res, err] = await makeRequest(data);
-      if (err) return; // display error with toast
-      setToken(res.token);
+      if (err) {
+        toast.error(err.message);
+      } // display error with toast
+
+      if (res) {
+        setToken(res.data);
+        navigate("/");
+      }
       if (values.rememberMe) {
         localStorage.setItem("email", values.email);
         localStorage.setItem("password", values.password);

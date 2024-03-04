@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+// import { useNavigate } from "react-router";
 
 interface AuthContextProviderProps {
   children: ReactNode;
@@ -21,6 +22,7 @@ interface AuthContext {
     email: string;
   };
   setUser: (data: AuthContext["user"]) => void;
+  logout: () => void;
 }
 
 const authContext = createContext<AuthContext>({
@@ -34,6 +36,7 @@ const authContext = createContext<AuthContext>({
     email: "",
   },
   setUser: () => null,
+  logout: () => null,
 });
 
 export default function AuthContextProvider({
@@ -42,6 +45,7 @@ export default function AuthContextProvider({
   const [token, setToken] = useState(localStorage.AUTH_TOKEN);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(localStorage.USER);
+  // const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem("AUTH_TOKEN", token);
@@ -50,6 +54,12 @@ export default function AuthContextProvider({
   useEffect(() => {
     localStorage.setItem("USER", JSON.stringify(user));
   }, [user]);
+
+  const logout = () => {
+    localStorage.removeItem("AUTH_TOKEN");
+    // navigate("/");
+    console.log("LOGOUT");
+  };
 
   return (
     <authContext.Provider
@@ -60,6 +70,7 @@ export default function AuthContextProvider({
         setIsAuthenticated,
         user,
         setUser,
+        logout,
       }}
     >
       {children}

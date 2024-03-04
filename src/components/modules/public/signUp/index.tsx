@@ -4,20 +4,21 @@ import BaseInput from "../../ui/input";
 import Footer from "../footer";
 import NavBar from "../navbar";
 import { Icon } from "../../ui/Icon";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./index.scss";
 import * as Yup from "yup";
 import useForm from "../../../hooks/useForm";
 import useRequest from "../../../hooks/useRequest";
 import { signup } from "../../../../api/auth";
-// import { useAuthContext } from "../../../context/authContext";
+import { useAuthContext } from "../../../context/authContext";
 import regex from "../../../../utils/regex";
 import toast from "react-hot-toast";
 
 export default function SignUp() {
   const [click, setClick] = useState(false);
   const { makeRequest, isLoading } = useRequest(signup);
-  // const { setToken, setUser } = useAuthContext();
+  const { setUser } = useAuthContext();
+  const navigate = useNavigate();
 
   const toggle = () => {
     setClick((prev) => !prev);
@@ -48,12 +49,13 @@ export default function SignUp() {
     onSubmit: async (data) => {
       const [res, err] = await makeRequest(data);
       if (err) {
-        toast.error("Error");
+        toast.error(err.message);
       } // display error with toast
-      console.log(res)
-      // setToken(res.token);
-      // setUser(res.user);
-      // access context and set is authenticated to true, redirect to base path
+      console.log(res);
+      if (res) {
+        setUser(res.data);
+        navigate("/login");
+      }
     },
   });
 

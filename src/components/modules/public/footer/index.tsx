@@ -12,7 +12,7 @@ export default function Footer() {
 
         <ul className="footer__content__links">
           <li className="footer__content__links__link">
-            <Link to="">Pricing</Link>
+            <Link to="/pricing">Pricing</Link>
           </li>
           <li className="footer__content__links__link">
             <Link to="">Support</Link>

@@ -19,8 +19,9 @@ export default function Settings() {
       <h5 className="settings__header">Account Settings</h5>
       <div className="tabs-wrapper">
         <div className="settings__content__tabs">
-          {TABS.map((tab) => (
+          {TABS.map((tab, i) => (
             <button
+              key={i}
               onClick={() => switchTab(tab)}
               className={classNames({ "active-tab": activeTab === tab })}
             >

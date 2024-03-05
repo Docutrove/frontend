@@ -19,7 +19,6 @@ export default function Login() {
   const { makeRequest, isLoading } = useRequest(login);
   const { setToken } = useAuthContext();
   const navigate = useNavigate();
-  // const [checked, setChecked] = useState(true);
 
   const toggle = () => {
     setClick((prev) => !prev);
@@ -27,8 +26,8 @@ export default function Login() {
 
   const { handleSubmit, getFieldProps, values } = useForm({
     initialValues: {
-      email: "",
-      password: "",
+      email: localStorage.getItem("email" || ""),
+      password: localStorage.getItem("password" || ""),
       rememberMe: false,
     },
     validationSchema: Yup.object({
@@ -50,9 +49,6 @@ export default function Login() {
       if (values.rememberMe) {
         localStorage.setItem("email", values.email);
         localStorage.setItem("password", values.password);
-      } else {
-        localStorage.setItem("email", "");
-        localStorage.setItem("password", "");
       }
     },
   });
@@ -112,7 +108,7 @@ export default function Login() {
               >
                 Sign in
               </BaseButton>
-              <p className="text--2xs login__content__border">Or</p>
+              {/* <p className="text--2xs login__content__border">Or</p>
               <div className="login__content__socials">
                 <BaseButton
                   variant="inverted"
@@ -128,7 +124,7 @@ export default function Login() {
                   {" "}
                   <Icon name="facebook" /> Continue with Facebook
                 </BaseButton>
-              </div>
+              </div> */}
             </div>
           </form>
 

@@ -105,10 +105,6 @@ export default function SignUp() {
                 </button>
               </div>
             </div>
-
-            {/* <p className="text--2xs password-info">
-              At least 10 characters must be included.
-            </p> */}
             <p className="text--2xs  password-info">
               By signing up, you agree to the{" "}
               <Link to="/coming" className="underline">
@@ -130,7 +126,7 @@ export default function SignUp() {
             </BaseButton>
           </form>
 
-          <p className="text--2xs login__content__border">Or</p>
+          {/* <p className="text--2xs login__content__border">Or</p>
           <div className="login__content__socials">
             <BaseButton
               variant="inverted"
@@ -146,7 +142,7 @@ export default function SignUp() {
               {" "}
               <Icon name="facebook" /> Continue with Facebook
             </BaseButton>
-          </div>
+          </div> */}
           <div className="privacy">
             <p className="text--2xs">
               This site is protected by reCAPTCHA and the Google Privacy Policy

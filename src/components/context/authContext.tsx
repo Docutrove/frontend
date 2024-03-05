@@ -5,7 +5,6 @@ import {
   useEffect,
   useState,
 } from "react";
-// import { useNavigate } from "react-router";
 
 interface AuthContextProviderProps {
   children: ReactNode;
@@ -45,7 +44,6 @@ export default function AuthContextProvider({
   const [token, setToken] = useState(localStorage.AUTH_TOKEN);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(localStorage.USER);
-  // const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem("AUTH_TOKEN", token);
@@ -57,8 +55,6 @@ export default function AuthContextProvider({
 
   const logout = () => {
     localStorage.removeItem("AUTH_TOKEN");
-    // navigate("/");
-    console.log("LOGOUT");
   };
 
   return (

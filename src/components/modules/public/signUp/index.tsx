@@ -10,14 +10,12 @@ import * as Yup from "yup";
 import useForm from "../../../hooks/useForm";
 import useRequest from "../../../hooks/useRequest";
 import { signup } from "../../../../api/auth";
-import { useAuthContext } from "../../../context/authContext";
 import regex from "../../../../utils/regex";
 import toast from "react-hot-toast";
 
 export default function SignUp() {
   const [click, setClick] = useState(false);
   const { makeRequest, isLoading } = useRequest(signup);
-  const { setUser } = useAuthContext();
   const navigate = useNavigate();
 
   const toggle = () => {
@@ -52,7 +50,6 @@ export default function SignUp() {
         toast.error(err.message);
       } // display error with toast
       if (res) {
-        setUser(res.data);
         navigate("/login");
       }
     },

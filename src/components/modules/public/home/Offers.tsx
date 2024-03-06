@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Offer } from "../../ui/offer";
-import { useAuthContext } from "../../../context/authContext";
+import useRequest from "../../../hooks/useRequest";
+import { toast } from "react-hot-toast";
 
 interface Category {
+  name: string;
   displayName: string;
   description: string;
 }
@@ -28,30 +30,17 @@ interface Category {
 // ];
 
 export default function HomeOffers() {
-  const { token } = useAuthContext();
   const [categories, setCategories] = useState<Category[]>();
+  const { makeRequest } = useRequest(getCategories);
 
   async function getCategories() {
-    try {
-      const res = await fetch(
-        "http://3.142.252.101/api/v1/item/categories?page=1&limit=100",
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const response = await res.json();
-      console.log(response);
-      if (response) {
-        console.log("CATEGORIES>>>>", response.data);
-        setCategories(response.data);
-      }
-    } catch (err: any) {
-      // toast.error(err.message);
-      console.log(err.message);
+    const [res, err] = await makeRequest();
+
+    if (err) {
+      toast.error(err.message);
+    }
+    if (res) {
+      setCategories(res.data);
     }
   }
 

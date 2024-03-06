@@ -14,8 +14,4 @@ function signup(payload: {
   return createRequest("/api/v1/auth/register", "post", payload);
 }
 
-function getUser() {
-  return createRequest("/api/v1/user", "get");
-}
-
-export { login, signup, getUser };
+export { login, signup };

@@ -2,11 +2,15 @@ import { useEffect, useState } from "react";
 import { Offer } from "../../ui/offer";
 import useRequest from "../../../hooks/useRequest";
 import { toast } from "react-hot-toast";
+import { getCategories } from "../../../../api/home";
 
 interface Category {
   name: string;
   displayName: string;
   description: string;
+  variant: string;
+  iconName: string;
+  path: string;
 }
 
 // const offers = [
@@ -33,19 +37,20 @@ export default function HomeOffers() {
   const [categories, setCategories] = useState<Category[]>();
   const { makeRequest } = useRequest(getCategories);
 
-  async function getCategories() {
+  const getCategory = async () => {
     const [res, err] = await makeRequest();
 
     if (err) {
       toast.error(err.message);
     }
     if (res) {
+      console.log("CATEGORIES>>>>", res.data);
       setCategories(res.data);
     }
-  }
+  };
 
   useEffect(() => {
-    getCategories();
+    getCategory();
   }, []);
   return (
     <div className="home__offers app-container">
@@ -65,26 +70,6 @@ export default function HomeOffers() {
             />
           );
         })}
-        {/* 
-        <Offer
-          variant="green"
-          iconName="pie"
-          title="Business services"
-          description="Comprehensive Legal Support for Your Enterprise."
-          path="/coming"
-          buttonText="Discover More"
-          buttonVariant="secondary"
-        />
-        <Offer
-          variant="blue"
-          iconName="user"
-          title="Consult a lawyer"
-          description="Our team, qualified across multiple jurisdictions, delivers customized legal solutions.
-          "
-          path="/coming"
-          buttonText="Discover More"
-          buttonVariant="secondary"
-        /> */}
       </div>
     </div>
   );

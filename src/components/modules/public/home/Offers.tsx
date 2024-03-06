@@ -8,7 +8,7 @@ interface Category {
   name: string;
   displayName: string;
   description: string;
-  variant: string;
+  variant: "purple" | "green" | "blue" | "plain";
   iconName: string;
   path: string;
 }
@@ -56,7 +56,8 @@ export default function HomeOffers() {
     <div className="home__offers app-container">
       <div className="home__offers__content app-container__section">
         {categories?.map((category, i) => {
-          // const offerItems = offers[i];
+          // const offerItems = offers[category.name];
+
           return (
             <Offer
               key={i}

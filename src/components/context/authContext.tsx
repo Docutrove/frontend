@@ -54,7 +54,7 @@ export default function AuthContextProvider({
   }, [user]);
 
   const logout = () => {
-    localStorage.removeItem("AUTH_TOKEN");
+    localStorage.setItem("AUTH_TOKEN", "");
   };
 
   return (

@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Icon } from "../../ui/Icon";
 import BaseButton from "../../ui/button";
 import "./index.scss";
@@ -13,7 +13,7 @@ export default function NavBar({ hasBorder }: NavBarProps) {
   const [openMenu, setOpenMenu] = useState(false);
   const { user, token, logout } = useAuthContext();
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setDropdownOpen((prev) => !prev);
@@ -21,9 +21,7 @@ export default function NavBar({ hasBorder }: NavBarProps) {
 
   const Logout = () => {
     logout();
-    window.location.reload();
-    navigate("/");
-    console.log("LOGOUT");
+    location.replace("/");
   };
 
   const handleToggle = () => {
@@ -63,13 +61,14 @@ export default function NavBar({ hasBorder }: NavBarProps) {
             </NavLink>
           </li>
 
-          {token ? (
+          {token != "" ? (
             <div className="user-container">
               <div className="user" onClick={toggleDropdown}>
-                <h5>
-                  {user.firstName[0]}
-                  {user.lastName[0]}
-                </h5>
+                <Icon name="dark_user" className="user__icon" />
+                <p className="text--xs">
+                  {user.firstName} {user.lastName}
+                </p>
+                <Icon name="dropdown" className="user__icon" />
               </div>
               <div className={`nav-dropdown ${dropdownOpen ? "show" : "hide"}`}>
                 <Link

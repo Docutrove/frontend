@@ -17,7 +17,7 @@ import { toast } from "react-hot-toast";
 export default function Login() {
   const [click, setClick] = useState(false);
   const { makeRequest, isLoading } = useRequest(login);
-  const { setToken } = useAuthContext();
+  const { setToken, setUser } = useAuthContext();
   const navigate = useNavigate();
 
   const toggle = () => {
@@ -43,7 +43,8 @@ export default function Login() {
       } // display error with toast
 
       if (res) {
-        setToken(res.data);
+        setToken(res.data.token);
+        setUser(res.data.user);
         navigate("/");
       }
       if (values.rememberMe) {

@@ -11,7 +11,7 @@ interface NavBarProps {
 
 export default function NavBar({ hasBorder }: NavBarProps) {
   const [openMenu, setOpenMenu] = useState(false);
-  const { token, logout } = useAuthContext();
+  const { user, token, logout } = useAuthContext();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -66,7 +66,10 @@ export default function NavBar({ hasBorder }: NavBarProps) {
           {token ? (
             <div className="user-container">
               <div className="user" onClick={toggleDropdown}>
-                <h5>{/* {user.firstName[0]}{user.lastName[0]} */}</h5>
+                <h5>
+                  {user.firstName[0]}
+                  {user.lastName[0]}
+                </h5>
               </div>
               <div className={`nav-dropdown ${dropdownOpen ? "show" : "hide"}`}>
                 <Link

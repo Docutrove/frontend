@@ -51,7 +51,6 @@ export default function SignUp() {
       if (err) {
         toast.error(err.message);
       } // display error with toast
-      console.log(res);
       if (res) {
         setUser(res.data);
         navigate("/login");

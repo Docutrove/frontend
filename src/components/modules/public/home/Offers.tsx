@@ -1,18 +1,59 @@
+import { useEffect, useState } from "react";
 import { Offer } from "../../ui/offer";
+import { useAuthContext } from "../../../context/authContext";
+
+interface Category {
+  displayName: string;
+  description: string;
+}
 
 export default function HomeOffers() {
+  const { token } = useAuthContext();
+  const [categories, setCategories] = useState<Category[]>();
+
+  async function getCategories() {
+    try {
+      const res = await fetch(
+        "http://3.142.252.101/api/v1/item/categories?page=1&limit=100",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const response = await res.json();
+      console.log(response);
+      if (response) {
+        console.log("CATEGORIES>>>>", response.data);
+        setCategories(response.data);
+      }
+    } catch (err: any) {
+      // toast.error(err.message);
+      console.log(err.message);
+    }
+  }
+
+  useEffect(() => {
+    getCategories();
+  }, []);
   return (
     <div className="home__offers app-container">
       <div className="home__offers__content app-container__section">
-        <Offer
-          variant="purple"
-          iconName="document"
-          title="Customize a document"
-          description="Access tailored legal documents with ease on Docutrove."
-          path="/customisedocument"
-          buttonText="Discover More"
-          buttonVariant="secondary"
-        />
+        {categories?.map((category, i) => (
+          <Offer
+            key={i}
+            variant="purple"
+            iconName="document"
+            title={category.displayName}
+            description="Access tailored legal documents with ease on Docutrove."
+            path="/customisedocument"
+            buttonText="Discover More"
+            buttonVariant="secondary"
+          />
+        ))}
+
         <Offer
           variant="green"
           iconName="pie"

@@ -7,6 +7,26 @@ interface Category {
   description: string;
 }
 
+// const offers = [
+//   {
+//     variant: "purple",
+//     iconName: "document",
+//     path: "/customisedocument",
+//   },
+
+//   {
+//     variant: "green",
+//     iconName: "pie",
+//     path: "/coming",
+//   },
+
+//   {
+//     variant: "blue",
+//     iconName: "user",
+//     path: "/coming",
+//   },
+// ];
+
 export default function HomeOffers() {
   const { token } = useAuthContext();
   const [categories, setCategories] = useState<Category[]>();
@@ -41,19 +61,22 @@ export default function HomeOffers() {
   return (
     <div className="home__offers app-container">
       <div className="home__offers__content app-container__section">
-        {categories?.map((category, i) => (
-          <Offer
-            key={i}
-            variant="purple"
-            iconName="document"
-            title={category.displayName}
-            description="Access tailored legal documents with ease on Docutrove."
-            path="/customisedocument"
-            buttonText="Discover More"
-            buttonVariant="secondary"
-          />
-        ))}
-
+        {categories?.map((category, i) => {
+          // const offerItems = offers[i];
+          return (
+            <Offer
+              key={i}
+              variant="purple"
+              iconName="document"
+              title={category.displayName}
+              description={category.description}
+              path="/customisedocument"
+              buttonText="Discover More"
+              buttonVariant="secondary"
+            />
+          );
+        })}
+        {/* 
         <Offer
           variant="green"
           iconName="pie"
@@ -72,7 +95,7 @@ export default function HomeOffers() {
           path="/coming"
           buttonText="Discover More"
           buttonVariant="secondary"
-        />
+        /> */}
       </div>
     </div>
   );

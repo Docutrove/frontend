@@ -8,30 +8,37 @@ interface Category {
   name: string;
   displayName: string;
   description: string;
+}
+
+interface Offers {
+  name: string;
   variant: "purple" | "green" | "blue" | "plain";
-  iconName: string;
+  iconName: "document" | "pie" | "user";
   path: string;
 }
 
-// const offers = [
-//   {
-//     variant: "purple",
-//     iconName: "document",
-//     path: "/customisedocument",
-//   },
+const offers: Offers[] = [
+  {
+    name: "template",
+    variant: "purple",
+    iconName: "document",
+    path: "/customisedocument",
+  },
 
-//   {
-//     variant: "green",
-//     iconName: "pie",
-//     path: "/coming",
-//   },
+  {
+    name: "business_registration",
+    variant: "green",
+    iconName: "pie",
+    path: "/coming",
+  },
 
-//   {
-//     variant: "blue",
-//     iconName: "user",
-//     path: "/coming",
-//   },
-// ];
+  {
+    name: "consultation",
+    variant: "blue",
+    iconName: "user",
+    path: "/coming",
+  },
+];
 
 export default function HomeOffers() {
   const [categories, setCategories] = useState<Category[]>();
@@ -58,14 +65,23 @@ export default function HomeOffers() {
         {categories?.map((category, i) => {
           // const offerItems = offers[category.name];
 
+          const offerItem = offers.find(
+            (offer) => offer.name === category.name
+          );
+
+          if (!offerItem) {
+            console.warn(`No offer found for category: ${category.name}`);
+            return null;
+          }
+
           return (
             <Offer
               key={i}
-              variant="purple"
-              iconName="document"
+              variant={offerItem.variant}
+              iconName={offerItem.iconName}
               title={category.displayName}
               description={category.description}
-              path="/customisedocument"
+              path={offerItem.path}
               buttonText="Discover More"
               buttonVariant="secondary"
             />

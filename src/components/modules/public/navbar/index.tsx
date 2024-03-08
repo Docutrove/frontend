@@ -21,7 +21,7 @@ export default function NavBar({ hasBorder }: NavBarProps) {
 
   const Logout = () => {
     logout();
-    location.replace("/");
+    location.replace("/login");
   };
 
   const handleToggle = () => {

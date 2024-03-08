@@ -13,7 +13,6 @@ export default function NavBar({ hasBorder }: NavBarProps) {
   const [openMenu, setOpenMenu] = useState(false);
   const { user, token, logout } = useAuthContext();
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  // const navigate = useNavigate();
 
   const toggleDropdown = () => {
     setDropdownOpen((prev) => !prev);

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Icon } from "../Icon";
 import BaseButton from "../button";
 import "./index.scss";
@@ -29,6 +30,8 @@ export function Offer({
   buttonVariant,
   buttonText,
 }: OfferProps) {
+  const [showMore, setShowMore] = useState(false);
+
   return (
     <div className={`offer--${variant}`}>
       <div className="offer-text">
@@ -38,7 +41,16 @@ export function Offer({
           </div>
         ) : null}
         <h4 className="offer__title">{title}</h4>
-        <p className="offer__description text--sm">{description}</p>
+        <p className="offer__description text--sm">
+          {showMore ? description : `${description.substring(0, 100)}...`}
+          <span
+            onClick={() => {
+              setShowMore((prev) => !prev);
+            }}
+          >
+            {showMore ? "Show less" : "Show more"}
+          </span>
+        </p>
 
         <div className="lists">
           {lists?.map((list, index) => (
@@ -53,7 +65,7 @@ export function Offer({
       </div>
 
       <div>
-        {typeof amount === 'number' ? (
+        {typeof amount === "number" ? (
           <div className="offer__amount">
             <h4>
               {amount?.toLocaleString("en-NG", {
@@ -64,7 +76,11 @@ export function Offer({
             <p className="text--xs amount-suffix">{amountSuffix}</p>
           </div>
         ) : null}
-        <BaseButton href={path} variant={buttonVariant} className="offer-button">
+        <BaseButton
+          href={path}
+          variant={buttonVariant}
+          className="offer-button"
+        >
           {buttonText}
         </BaseButton>
       </div>

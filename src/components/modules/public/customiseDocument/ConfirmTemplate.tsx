@@ -16,7 +16,7 @@ export default function ConfirmTemplate() {
         <BaseButton variant="inverted" href="/coming">
           Edit information
         </BaseButton>
-        <BaseButton variant="primary" href="/coming">
+        <BaseButton variant="primary" href="/payment">
           Proceed to payment
         </BaseButton>
       </div>

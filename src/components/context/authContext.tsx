@@ -43,18 +43,29 @@ export default function AuthContextProvider({
 }: AuthContextProviderProps) {
   const [token, setToken] = useState(localStorage.AUTH_TOKEN);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [user, setUser] = useState(localStorage.USER);
+  const [user, setUser] = useState(
+    (() => {
+      try {
+        return JSON.parse(localStorage.USER);
+      } catch {
+        return null;
+      }
+    })()
+  );
 
   useEffect(() => {
-    localStorage.setItem("AUTH_TOKEN", token);
+    if (token) localStorage.setItem("AUTH_TOKEN", token);
+    else localStorage.removeItem("AUTH_TOKEN");
   }, [token]);
 
   useEffect(() => {
-    localStorage.setItem("USER", JSON.stringify(user));
-  }, [user]);
+    if (user) localStorage.setItem("USER", JSON.stringify(user));
+    else localStorage.removeItem("USER");
+  }, [JSON.stringify(user)]);
 
   const logout = () => {
-    localStorage.setItem("AUTH_TOKEN", "");
+    setToken(undefined);
+    setUser(undefined)
   };
 
   return (

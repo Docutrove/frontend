@@ -36,8 +36,8 @@ function useForm({
     }
   }
 
-  function handleInputChange({ target: { name, value } }: any) {
-    setFieldValue(name, value);
+  function handleInputChange({ target: { name, value, checked, type } }: any) {
+    setFieldValue(name, type === "checkbox" ? checked : value);
   }
 
   function setFieldValue(name: string, value: any) {

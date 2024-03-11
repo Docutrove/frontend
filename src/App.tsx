@@ -1,4 +1,10 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import Home from "./components/modules/public/home";
 import Services from "./components/modules/public/services";
 import Customise from "./components/modules/public/customise";
@@ -22,6 +28,7 @@ import DocumentThank from "./components/modules/public/customiseDocument/Documen
 import BusinessThank from "./components/modules/public/businessRegistration/BusinessThank";
 import ConsultationThank from "./components/modules/public/bookConsultation/ConsultationThank";
 import { useAuthContext } from "./components/context/authContext";
+import { useEffect } from "react";
 
 // wrap app with context, context returns isAuthenticated state
 
@@ -55,11 +62,30 @@ function App() {
 
         {/* protected route */}
         {/* if is authenticated render these routes */}
-        {isAuthenticated ? <>  <Route path="/settings" element={<Settings />} />    
-        <Route path="/payment" element={<Payment />} /></> : ""}
+        {isAuthenticated ? <>  
+        <Route path="/settings" element={<Settings />} />    
+        <Route path="/payment" element={<Payment />} />
+        </> : null}
+
+
+        <Route path="/*" element={<HandleAuthRoute />} />
+
+
+
+
       </Routes>
     </BrowserRouter>
   );
+}
+
+function HandleAuthRoute() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    navigate(`/login?to=${location.pathname}`);
+  }, []);
+  return null;
 }
 
 export default App;

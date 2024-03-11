@@ -4,9 +4,17 @@ export default async function createRequest(
   body?: Record<string, any>
 ) {
   try {
+    const headers: any = {
+      "Content-Type": "application/json",
+    };
+
+    if (localStorage.getItem("AUTH_TOKEN")) {
+      headers["Authorization"] = `Bearer ${localStorage.getItem("AUTH_TOKEN")}`;
+    }
+
     const res = await fetch(`http://3.142.252.101${url}`, {
       method,
-      headers: { "Content-Type": "application/json" },
+      headers,
       body: JSON.stringify(body),
     });
     let response;

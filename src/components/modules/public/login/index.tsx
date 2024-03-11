@@ -5,7 +5,7 @@ import { Icon } from "../../ui/Icon";
 import "./index.scss";
 import NavBar from "../navbar";
 import Footer from "../footer";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import regex from "../../../../utils/regex";
 import useForm from "../../../hooks/useForm";
 import * as Yup from "yup";
@@ -19,11 +19,15 @@ export default function Login() {
   const { makeRequest, isLoading } = useRequest(login);
   const { setToken, setUser } = useAuthContext();
   const navigate = useNavigate();
+  const [params] = useSearchParams();
 
   const toggle = () => {
     setClick((prev) => !prev);
   };
 
+  const pathToNavigate = `${params.get("to") ?? "/"}`
+
+  
   const { handleSubmit, getFieldProps, values } = useForm({
     initialValues: {
       email: localStorage.getItem("email" || ""),
@@ -45,7 +49,7 @@ export default function Login() {
       if (res) {
         setToken(res.data.token);
         setUser(res.data.user);
-        navigate("/");
+        navigate(pathToNavigate);
       }
       if (values.rememberMe) {
         localStorage.setItem("email", values.email);

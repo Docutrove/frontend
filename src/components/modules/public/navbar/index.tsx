@@ -60,7 +60,7 @@ export default function NavBar({ hasBorder }: NavBarProps) {
             </NavLink>
           </li>
 
-          {token != "" ? (
+          {user ? (
             <div className="user-container">
               <div className="user" onClick={toggleDropdown}>
                 <Icon name="dark_user" className="user__icon" />

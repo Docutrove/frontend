@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Offer } from "../../ui/offer";
 import useRequest from "../../../hooks/useRequest";
 import { toast } from "react-hot-toast";

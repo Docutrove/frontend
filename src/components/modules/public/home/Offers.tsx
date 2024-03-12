@@ -41,18 +41,13 @@ const offers: Offers[] = [
 ];
 
 export default function HomeOffers() {
-  const [categories, setCategories] = useState<Category[]>();
-  const { makeRequest } = useRequest(getCategories);
+  const { makeRequest, response } = useRequest(getCategories);
 
   const getCategory = async () => {
-    const [res, err] = await makeRequest();
+    const [_, err] = await makeRequest();
 
     if (err) {
       toast.error(err.message);
-    }
-    if (res) {
-      console.log("CATEGORIES>>>>", res.data);
-      setCategories(res.data);
     }
   };
 
@@ -62,9 +57,7 @@ export default function HomeOffers() {
   return (
     <div className="home__offers app-container">
       <div className="home__offers__content app-container__section">
-        {categories?.map((category, i) => {
-          // const offerItems = offers[category.name];
-
+        {response?.data?.map((category: Category, i: number) => {
           const offerItem = offers.find(
             (offer) => offer.name === category.name
           );

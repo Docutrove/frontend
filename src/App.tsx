@@ -51,7 +51,6 @@ function App() {
         <Route path="/customisedocument" element={<CustomiseDocumentProvider />} />
         <Route path="/businessregistration" element={<BusinessRegistrationProvider />} />
         <Route path="/bookconsultation" element={<BookConsultationProvider />} />
-        <Route path="/login" element={<Login />} /> 
         <Route path="/signup" element={<SignUp />} /> 
         <Route path="/faqtopic" element={<FAQTopic />} />
         <Route path="/editpayment" element={<EditPayment />} />
@@ -65,10 +64,18 @@ function App() {
         {isAuthenticated ? <>  
         <Route path="/settings" element={<Settings />} />    
         <Route path="/payment" element={<Payment />} />
-        </> : null}
+        <Route path="/login" element={<Redirect to="/" />} />
+        </> : 
+        
+        
+        
+        <Route path="/login" element={<Login />} /> 
 
 
-        <Route path="/*" element={<HandleAuthRoute />} />
+        }
+
+
+        <Route path="/*" element={<Redirect />} />
 
 
 
@@ -78,12 +85,12 @@ function App() {
   );
 }
 
-function HandleAuthRoute() {
+function Redirect({ to }: { to?: string }) {
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    navigate(`/login?to=${location.pathname}`);
+    navigate(to ?? `/login?to=${location.pathname}`);
   }, []);
   return null;
 }

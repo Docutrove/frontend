@@ -11,7 +11,7 @@ interface NavBarProps {
 
 export default function NavBar({ hasBorder }: NavBarProps) {
   const [openMenu, setOpenMenu] = useState(false);
-  const { user, token, logout } = useAuthContext();
+  const { user, logout } = useAuthContext();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {

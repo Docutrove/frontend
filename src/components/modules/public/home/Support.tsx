@@ -11,33 +11,33 @@ export default function HomeSupport() {
         </h2>
 
         <div className="home__support__content__links">
-          <Link to="/coming" className="home__support__content__links__link">
+          <Link to="/customise" className="home__support__content__links__link">
             <h5>Create documents</h5>
             <div className="home__support__content__links__link__icon">
               <Icon name="caret-right" />
             </div>
           </Link>
 
-          <Link to="/coming" className="home__support__content__links__link">
+          <Link to="/business" className="home__support__content__links__link">
             <h5>Business services</h5>
             <div className="home__support__content__links__link__icon">
               <Icon name="caret-right" />
             </div>
           </Link>
 
-          <Link to="/coming" className="home__support__content__links__link">
+          <Link to="/consultation" className="home__support__content__links__link">
             <h5>Consultations</h5>
             <div className="home__support__content__links__link__icon">
               <Icon name="caret-right" />
             </div>
           </Link>
 
-          {/* <Link to="/coming" className="home__support__content__links__link">
+          <Link to="/subscription" className="home__support__content__links__link">
             <h5>Subscription services</h5>
             <div className="home__support__content__links__link__icon">
               <Icon name="caret-right" />
             </div>
-          </Link> */}
+          </Link>
         </div>
       </div>
     </div>

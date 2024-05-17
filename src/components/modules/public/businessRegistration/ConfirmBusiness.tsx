@@ -16,7 +16,7 @@ export default function ConfirmBusiness() {
         <BaseButton variant="inverted" href="/coming">
           Edit information
         </BaseButton>
-        <BaseButton variant="primary" href="/coming">
+        <BaseButton variant="primary" href="/payment">
           Proceed to payment
         </BaseButton>
       </div>

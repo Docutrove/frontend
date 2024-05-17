@@ -11,7 +11,7 @@ export default function PricingServices() {
           "
           amount={1000000}
           buttonText="Customize a document"
-          path="/coming"
+          path="/customise"
           lists={[
             "Tortor interdum condimentum nunc",
             "Purus orci netus suscipit",
@@ -29,7 +29,7 @@ export default function PricingServices() {
           description="Tincidunt nulla in hac viverra lobortis proin. Magna nibh turpis facilisi urna nisi. Nulla morbi tempor enim vitae."
           buttonText="Register a business"
           amount={1000000}
-          path="/coming"
+          path="/services"
           lists={[
             "Tortor interdum condimentum nunc",
             "Purus orci netus suscipit",
@@ -48,7 +48,7 @@ export default function PricingServices() {
           description="Fames adipiscing lorem ultrices faucibus fusce sagittis sed imperdiet dolor sagittis."
           buttonText="Book a consultation"
           amount={1000000}
-          path="/coming"
+          path="/consultation"
           lists={[
             "Tortor interdum condimentum nunc",
             "Purus orci netus suscipit",

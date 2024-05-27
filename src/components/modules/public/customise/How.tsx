@@ -11,7 +11,7 @@ export default function CustomiseHow() {
             buttonText="Customize a document"
             imgSrc="/images/How1.png"
             subtitle="How it works"
-            path="/customisedocument"
+            path="/customise/document"
             description=" Lorem ipsum dolor sit amet consectetur. Mattis ante feugiat
             facilisis arcu elit. Fames adipiscing lorem ultrices faucibus fusce
             sagittis sed imperdiet dolor. Nulla morbi tempor enim vitae."
@@ -21,7 +21,7 @@ export default function CustomiseHow() {
             title="Lorem ipsum dolor sit amet consectetur"
             buttonText="Customize a document"
             imgSrc="/images/How2.png"
-            path="/customisedocument"
+            path="/customise/document"
             description="Nulla morbi tempor enim vitae, mattis ante feugiat facilisis arcu
             elit. Fames adipiscing lorem ultrices faucibus fusce sagittis sed
             imperdiet dolor."
@@ -31,7 +31,7 @@ export default function CustomiseHow() {
             title="Lorem ipsum dolor sit amet consectetur"
             buttonText="Customize a document"
             imgSrc="/images/How3.png"
-            path="/customisedocument"
+            path="/customise/document"
             description="Fames adipiscing lorem ultrices faucibus fusce sagittis sed
             imperdiet dolor. Nulla morbi tempor enim vitae."
           />

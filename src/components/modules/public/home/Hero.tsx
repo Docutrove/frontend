@@ -14,7 +14,7 @@ export default function HomeHero() {
             experienced lawyer with just a few clicks.
           </h6>
           <BaseButton
-            href="/customisedocument"
+            href="/services"
             variant="primary"
             className="home-button"
           >

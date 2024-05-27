@@ -8,10 +8,10 @@ export default function BusinessServices() {
       </h5>
       <div className="business__services__content app-container__section">
         <ServiceSection
-          title="Formation of a business headline lorem"
+          title="Formation of a business name "
           buttonText="Get started"
           imgSrc="/images/Business1.png"
-          path="/businessregistration"
+          path="/business/formation"
           lists={[
             "Tortor interdum condimentum nunc molestie",
             "Purus orci netus suscipit sagittis nec duis",

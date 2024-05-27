@@ -13,7 +13,7 @@ export default function FAQTopic() {
             <Accordion title={q} content={a} />
           ))}
         </div>
-        <BaseButton variant="primary" className="faq-button">
+        <BaseButton variant="primary" className="faq-button" href="/faq">
           View all topics
         </BaseButton>
       </div>

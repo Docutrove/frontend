@@ -14,9 +14,11 @@ import Business from "./components/modules/public/business";
 import Subscription from "./components/modules/public/subscription";
 import Pricing from "./components/modules/public/pricing";
 import ComingSoon from "./components/modules/public/comingSoon";
+import BusinessFormation from "./components/modules/public/businessFormation";
 import CustomiseDocumentProvider from "./components/modules/public/customiseDocument";
 import BookConsultationProvider from "./components/modules/public/bookConsultation";
 import BusinessRegistrationProvider from "./components/modules/public/businessRegistration";
+import BusinessReservationProvider from "./components/modules/public/businessReservation";
 import Login from "./components/modules/public/login";
 import Settings from "./components/modules/app/settings";
 import SignUp from "./components/modules/public/signUp";
@@ -48,11 +50,13 @@ function App() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/coming" element={<ComingSoon />} />
-        <Route path="/customisedocument" element={<CustomiseDocumentProvider />} />
-        <Route path="/businessregistration" element={<BusinessRegistrationProvider />} />
-        <Route path="/bookconsultation" element={<BookConsultationProvider />} />
+        <Route path="/business/formation" element={<BusinessFormation />} />
+        <Route path="/business/reservation" element={<BusinessReservationProvider />} />
+        <Route path="/business/registration" element={<BusinessRegistrationProvider />} />
+        <Route path="/customise/document" element={<CustomiseDocumentProvider />} />
+        <Route path="/consultation/book" element={<BookConsultationProvider />} />
         <Route path="/signup" element={<SignUp />} /> 
-        <Route path="/faqtopic" element={<FAQTopic />} />
+        <Route path="/faq/topic" element={<FAQTopic />} />
         <Route path="/editpayment" element={<EditPayment />} />
         <Route path="/changeplan" element={<ChangePlan />} />
         <Route path="/documentthankyou" element={<DocumentThank />} />

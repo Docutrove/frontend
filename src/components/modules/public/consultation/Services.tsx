@@ -8,7 +8,7 @@ export default function ConsultationServices() {
           title="Book counsel headline lorem ipsum dolor"
           buttonText="Book a counsel"
           imgSrc="/images/consultation1.png"
-          path="/bookconsultation"
+          path="/consultation/book"
           description="Lorem ipsum dolor sit amet consectetur. Tellus nisl in nisi nam
           consequat. Facilisi sed senectus euismod risus eget mattis ut rutrum
           nec. Cursus in nisl eget posuere amet. Rhoncus turpis blandit blandit
@@ -19,7 +19,7 @@ export default function ConsultationServices() {
           title="Book lawyer headline lorem ipsum dolor"
           buttonText="Book a lawyer"
           imgSrc="/images/consultation2.png"
-          path="/bookconsultation"
+          path="/consultation/book"
           description=" Nulla morbi tempor enim vitae, mattis ante feugiat facilisis arcu
           elit. Fames adipiscing lorem ultrices faucibus fusce sagittis sed
           imperdiet dolor. Facilisi sed senectus euismod risus eget mattis ut

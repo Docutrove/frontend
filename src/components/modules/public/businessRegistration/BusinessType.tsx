@@ -12,13 +12,13 @@ export default function BusinessType() {
         </h2>
         <div className="options-grid">
           <div className="option" onClick={goNext}>
-            <p>Business name</p>
+            <p>Business name Reservation</p>
           </div>
           <div className="option">
-            <p>Incorporated Trustees</p>
+            <p>Business Name Registration</p>
           </div>
           <div className="option">
-            <p>Company</p>
+            <p>Company Registration</p>
           </div>
         </div>
       </div>

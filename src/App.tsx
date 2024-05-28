@@ -27,7 +27,7 @@ import FAQTopic from "./components/modules/public/faq/FAQTopic";
 import EditPayment from "./components/modules/app/settings/EditPayment";
 import ChangePlan from "./components/modules/app/settings/ChangePlan";
 import DocumentThank from "./components/modules/public/customiseDocument/DocumentThank";
-import BusinessThank from "./components/modules/public/businessRegistration/BusinessThank";
+// import BusinessThank from "./components/modules/public/businessRegistration/BusinessThank";
 import ConsultationThank from "./components/modules/public/bookConsultation/ConsultationThank";
 import { useAuthContext } from "./components/context/authContext";
 import { useEffect } from "react";
@@ -60,7 +60,7 @@ function App() {
         <Route path="/editpayment" element={<EditPayment />} />
         <Route path="/changeplan" element={<ChangePlan />} />
         <Route path="/documentthankyou" element={<DocumentThank />} />
-        <Route path="/businessthankyou" element={<BusinessThank />} />
+        {/* <Route path="/businessthankyou" element={<BusinessThank />} /> */}
         <Route path="/consultationthankyou" element={<ConsultationThank />} />
 
         {/* protected route */}

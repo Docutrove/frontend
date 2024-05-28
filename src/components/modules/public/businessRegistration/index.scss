@@ -12,3 +12,276 @@
   max-width: 621px;
   margin: 0 auto;
 }
+
+$userInfoBcg: linear-gradient(265.33deg, #D6F5FC 16.76%, #E6FAF4 104.26%);
+
+.business--information--container{
+    padding: 20px 0px 0px 0px;
+    background: $userInfoBcg;
+
+    .business--information--content{
+        width: 100%;
+        //min-height: 100vh;
+        padding: 20px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .business--information--header{
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0px 0px 10px 0px;
+        }
+
+        .business--summary{
+            background: rgba(255, 255, 255, 1);
+            width: calc(70% - 5rem);
+            padding: 20px 30px;
+            margin: 0px 0px 25px 0px;
+        }
+
+        .business--information--form{
+            padding: 50px 30px;
+            border-radius: 7px;
+            height: auto;
+            background: rgba(255, 255, 255, 1);
+            width: calc(70% - 5rem);
+            border: 2px solid rgba(240, 236, 245, 1);
+
+            .summary--header{
+                text-align: center;
+                padding: 10px 0px;
+                border: 1px solid rgba(240, 236, 245, 1);
+                color: rgba(0, 184, 191, 1);
+                margin: 0px 0px 15px 0px;
+            }
+
+            .table--item{
+                margin: 0px 0px 10px 0px;
+                padding: 10px;
+                color: rgba(188, 198, 204);
+                border-bottom: 1.5px solid rgba(188, 198, 204, 0.15);
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .table--header{
+                color: rgba(28, 28, 28, 1);
+                margin: 10px 0px 20px 0px;
+            }
+
+            .radio__text{
+                margin: 0px 0px 20px 0px;
+            }
+
+            .business--note{
+                color: rgba(161, 139, 0, 1);
+                font-size: 14px;
+                background: rgba(161, 139, 0, 0.05);
+                padding: 10px 10px;
+                margin: 0px 0px 25px 0px;
+                line-height: 30px;
+            }
+
+            .business--text--area{
+                background: rgba(188, 198, 204, 0.1);
+                display: block;
+                margin: 20px 0px 20px 0px;
+                width: 50%;
+                border: 1px solid rgba(188, 198, 204, 0.15);
+                font-size: 14px;
+                padding: 20px;
+                resize: none;
+            }
+
+            .requirement--content{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+
+                .requirement{
+                    width: 48%;
+                    padding: 10px;
+                    margin: 0px 0px 20px 0px;
+                
+                    .requirement--format{
+                        margin: 10px 0px 15px 0px;
+                    }
+
+                    .upload--button{
+                        width: 100%;
+                        border-radius: 7px;
+                        padding: 10px 15px;
+                        border: rgba(188, 198, 204, 0.15);
+                        background-color: rgba(188, 198, 204, 0.1);
+                        color: rgba(0, 184, 191, 1);
+                        font-size: 14px;
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+
+            .double--input{
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                flex: 0 0 auto;
+
+                .user--input{
+                    width: 45%;
+                }
+
+                .select{
+                    width: 45%;
+                }
+            }
+
+            .triple--input{
+                display: flex;
+                justify-content: space-between;
+
+                .user--input{
+                    width: 32%;
+                }
+
+                .select{
+                    width: 31.5%;
+                }
+            }
+
+            .user--input{
+                margin: 0px 0px 30px 0px;
+            }
+
+            .select{
+                margin: 20px 0px 30px 0px;
+            }
+
+            .select h6{
+                font-size: 14px;
+            }
+
+            .partition{
+                height: 1px;
+                background: rgba(215, 228, 255, 1);
+                width: 100%;
+            }
+
+            h5{
+                margin: 20px 0px;
+            }
+
+            .add-button{
+                background: rgba(0, 184, 191, 1);
+                color: #fff;
+                padding: 10px 20px;
+                font-size: 14px;
+                border-radius: 5px;
+                width: fit-content;
+
+            }
+
+          
+
+            .address--information{
+                color: rgba(161, 139, 0, 1);
+                font-size: 14px;
+                background: rgba(161, 139, 0, 0.05);
+                padding: 10px 10px;
+                margin: 0px 0px 25px 0px;
+                line-height: 30px;
+            }
+        }
+
+  
+    }
+
+          .bottom--buttons{
+            display: flex;
+            margin: 20px 0px 20px 0px;
+            width: calc(55% - 5rem);
+            //background: pink;
+            margin-left:  auto;
+            
+            .base-button--inverted, .base-button--primary {
+                border-radius: 7px;
+                padding: 10px 50px;
+            }
+
+            .save--button{
+                margin: 0px 0px 0px 10px;
+            }
+        }
+}
+
+.mb{
+    margin: 0px 0px 25px 0px;
+}
+
+$userInfoBcg: linear-gradient(265.33deg, #D6F5FC 16.76%, #E6FAF4 104.26%);
+
+.user--content{
+    width: 100%;
+    min-height: 100vh;
+    background: $userInfoBcg;
+    padding: 20px 0px 0px 0px;
+
+   
+
+    .user--information--content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 100px 0px 100px 0px;
+
+        
+    .user--information{
+        padding: 50px 30px;
+        border-radius: 7px;
+        height: auto;
+        background: rgba(255, 255, 255, 1);
+
+        .detail--header{
+            font-size: 34px;
+            font-weight: 700;
+        }
+
+        .user--advice{
+            margin: 20px 0px;
+            color: var(--Dark-grey, rgba(66, 86, 105, 1));
+
+        }
+
+        .user--details{
+
+            .user--input{
+                margin: 0px 0px 15px 0px;
+            }
+
+            .user--submit--button{
+                width: 100%;
+            }
+
+            .or--option--container{
+                margin: 15px 0px;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .line{
+                    width: 45%;
+                    height: 1px;
+                    background: rgba(215, 228, 255, 1);
+                }
+            }
+        }
+    }
+    }
+    
+}
+
+

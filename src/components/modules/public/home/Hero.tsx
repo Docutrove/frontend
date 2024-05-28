@@ -6,12 +6,12 @@ export default function HomeHero() {
       <div className="home__hero__content app-container__section">
         <div className="home__hero__content__text">
           <h1 className="home__hero__content__text__title">
-            Access legal services and customize legal documents in minutes
+            You & Docutrove: Better Together
           </h1>
           <h6 className="home__hero__content__text__description">
-            Answer a few simple questions to generate a customized legal
-            document, register your business or book an appointment with an
-            experienced lawyer with just a few clicks.
+            DocuTrove by Templars allows you to access easy-to-customise legal documents, 
+            quick business registration and the expertise of experienced lawyers putting 
+            you in control of your legal matters
           </h6>
           <BaseButton
             href="/services"

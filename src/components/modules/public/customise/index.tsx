@@ -12,8 +12,8 @@ export default function Customise() {
       <CustomiseHero />
       <CustomiseHow />
       <CustomiseSearch />
-      <CustomiseFAQ />
       <CustomiseExplore />
+      <CustomiseFAQ />
     </Layout>
   );
 }

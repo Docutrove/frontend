@@ -8,67 +8,58 @@ export default function BusinessServices() {
       </h5>
       <div className="business__services__content app-container__section">
         <ServiceSection
-          title="Formation of a business name "
+          title="Company Formation & Registration"
           buttonText="Get started"
           imgSrc="/images/Business1.png"
           path="/business/formation"
           lists={[
-            "Tortor interdum condimentum nunc molestie",
-            "Purus orci netus suscipit sagittis nec duis",
-            "Tortor interdum condimentum nunc molestie",
-            "Feugiat in nunc nunc eget sit eus agit is nec dui",
+            "Business Name Reservation",
+            "Business Registration",
+            "Regulatory Compliance",
           ]}
-          description="Lorem ipsum dolor sit amet consectetur. Mattis ante feugiat
-          facilisis arcu elit. Fames adipiscing lorem ultrices faucibus fusce."
+          description="Ensure a smooth launch with expert guidance on everything you need to start well."
         />
 
         <ServiceSection
-          title="Business compliance services"
-          buttonText="Get started"
+          title="Ongoing Legal Maintenance:"
+          buttonText="Schedule Consultation"
           imgSrc="/images/Business2.png"
           path="/coming"
           lists={[
-            "Tortor interdum condimentum nunc molestie",
-            "Purus orci netus suscipit sagittis nec duis",
-            "Tortor interdum condimentum nunc molestie",
-            "Feugiat in nunc nunc eget sit eus agit is nec dui",
+            "Company secretarial services",
+            "Annual report filing",
+            "Permit Renewal",
           ]}
-          description="Lorem ipsum dolor sit amet consectetur. Mattis ante feugiat
-          facilisis arcu elit. Fames adipiscing lorem ultrices faucibus."
+          description="We handle essential tasks that keep your business compliant such as"
         />
 
         <ServiceSection
-          title="Bespoke contract solutions"
-          buttonText="Get started"
+          title="Contract Review & Negotiation"
+          buttonText="Schedule Consultation"
           imgSrc="/images/Business3.png"
           path="/coming"
           lists={[
-            "Tortor interdum condimentum nunc molestie",
-            "Purus orci netus suscipit sagittis nec duis",
-            "Tortor interdum condimentum nunc molestie",
+            "Contract Review",
+            "Identification of potential Risks",
+            "Negotiation of terms that protect your interest",
           ]}
-          description="Lorem ipsum dolor sit amet consectetur. Pellentesque nibh aliquam
-          semper pharetra mauris pharetra massa non. Non commodo purus eu
-          nunc. Molestie magna ut sed venenatis adipiscing diam interdum.
-          Praesent consequat eleifend in."
+          description="Our experienced lawyers can help and protect you from bad decisions through."
         />
 
         <ServiceSection
-          title="Intellectual property services"
-          buttonText="Get started"
+          title="Compliance support"
+          buttonText="Schedule consultation"
           imgSrc="/images/Business4.png"
           path="/coming"
           lists={[
-            "Tortor interdum condimentum nunc molestie",
-            "Purus orci netus suscipit sagittis nec duis",
-            "Tortor interdum condimentum nunc molestie",
-            "Tortor interdum condimentum nunc molestie",
+            "Data Privacy Laws",
+            "Employment laws",
+            "Industry-specific regulations",
           ]}
-          description="Lorem ipsum dolor sit amet consectetur. Mattis ante feugiat
-          facilisis arcu elit."
+          description="Navigate complex legal regulations with confidence. DocuTrove helps you stay compliant with."
         />
 
-        <ServiceSection
+        {/* <ServiceSection
           title="Tax insurance VAT services"
           buttonText="Get started"
           imgSrc="/images/Business5.png"
@@ -81,7 +72,7 @@ export default function BusinessServices() {
           ]}
           description="Lorem ipsum dolor sit amet consectetur. Mattis ante feugiat
           facilisis arcu elit."
-        />
+        /> */}
       </div>
     </div>
   );

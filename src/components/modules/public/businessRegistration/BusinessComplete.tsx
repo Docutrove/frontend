@@ -5,6 +5,7 @@ export default function BusinessThank() {
     <ThankYou
       iconName="user"
       header="Thank you for using Docutrove to register your business"
+      linkTo="/business"
     >
       <h6 className="meeting">What happens now?</h6>
 

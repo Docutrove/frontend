@@ -4,10 +4,10 @@ export default function CustomiseExplore() {
   return (
     <Service
       className="customise__explore"
-      title="Explore our other services headline lorem"
-      description="Lorem ipsum dolor sit amet consectetur. Mattis ante feugiat facilisis arcu elit. Fames adipiscing lorem ultrices faucibus fusce sagittis sed imperdiet dolor. Nulla morbi tempor enim vitae."
+      title="Not what you are looking for?"
+      description="Explore our other services or schedule a consultation with an expert to guide you through your situation."
       path="/services"
-      buttonText="Discover more"
+      buttonText="Schedule A Consultation"
       imageURL="/images/explore.png"
     />
   );

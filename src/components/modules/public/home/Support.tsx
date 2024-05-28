@@ -12,7 +12,7 @@ export default function HomeSupport() {
 
         <div className="home__support__content__links">
           <Link to="/customise" className="home__support__content__links__link">
-            <h5>Create documents</h5>
+            <h5>Customize documents</h5>
             <div className="home__support__content__links__link__icon">
               <Icon name="caret-right" />
             </div>
@@ -26,7 +26,7 @@ export default function HomeSupport() {
           </Link>
 
           <Link to="/consultation" className="home__support__content__links__link">
-            <h5>Consultations</h5>
+            <h5>Consultations & secondments</h5>
             <div className="home__support__content__links__link__icon">
               <Icon name="caret-right" />
             </div>

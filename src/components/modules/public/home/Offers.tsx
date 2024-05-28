@@ -25,8 +25,8 @@ const offers: Offers[] = [
     variant: "purple",
     iconName: "document",
     path: "/customise",
-    title: "Customize a document",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum.",
+    title: "Create Customized Legal Documents",
+    description: "Choose from our templates, answer a few questions and get lawyer-vetted documents tailored to your needs.",
   },
 
   {
@@ -34,8 +34,8 @@ const offers: Offers[] = [
     variant: "green",
     iconName: "pie",
     path: "/business",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum.",
-    title: "Business services",
+    description: "From registration to compliance, DocuTrove provides everything your business needs to stay on the right side of the law.",
+    title: "Business Legal Support",
   },
 
   {
@@ -43,8 +43,8 @@ const offers: Offers[] = [
     variant: "blue",
     iconName: "user",
     path: "/consultation",
-    title: "Consult with an expert",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum.",
+    title: "Schedule a Consultation",
+    description: "Speak to qualified experts on legal matters across several disciplines. Consult with top legal minds in the Country and find a resolution easily.",
   },
 ];
 

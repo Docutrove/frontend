@@ -8,7 +8,7 @@ interface ThankYouProps {
   iconName: "document_tick" | "pie" | "user" | "plane";
   header: string;
   children: ReactNode;
-  linkTo: string
+  linkTo?: string
 }
 
 export default function ThankYou({
@@ -24,7 +24,7 @@ export default function ThankYou({
         <h2 className="thank-you__title">{header}</h2>
         {children}
 
-        <Link to={linkTo} className="invoice-back-button thank-you__back">
+        <Link to={linkTo || '/'} className="invoice-back-button thank-you__back">
           <div className="back-button">
             <Icon name="caret-right" className="back-icon" />
           </div>

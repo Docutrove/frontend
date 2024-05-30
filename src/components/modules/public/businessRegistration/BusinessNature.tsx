@@ -47,7 +47,7 @@ export default function BusinessNature() {
             Note: Only the first typed in Nature of Business Description will show on the Certificate.
           </div>
           <form>
-            {businessNatures.map((business, index) => (
+            {businessNatures.map((_, index) => (
               <div key={index}>
                 {index > 0 && <div className="partition"></div>}
                 {index > 0 && <h5>Nature of Business - {index + 1}</h5>}

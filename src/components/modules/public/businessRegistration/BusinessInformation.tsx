@@ -94,7 +94,7 @@ export default function BusinessInformation() {
             />
             <div className="partition"></div>
             <h5>Branch Address (if any)</h5>
-            {branchAddresses.map((branch, index) => (
+            {branchAddresses.map((_, index) => (
               <div key={index}>
                 {index > 0 && <div className="partition"></div>}
                 {index > 0 && <h5>Branch Address - {index + 1}</h5>}

@@ -6,18 +6,19 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function ChooseTemplate() {
-  const { goNext, setTemplateId, categoryId } = useCustomiseDocContext();
+  const { goNext, categoryId } = useCustomiseDocContext();
   const { makeRequest } = useRequest(getTemplatesByCategory, categoryId);
   const [templates, setTemplates] = useState<[{name: string, id: string}]>()
 
   const requestTemplateByCategory = async () => {
-    const [templates, err] = await makeRequest();
+    const [allTemplates, err] = await makeRequest();
 
     if (err) {
       toast.error(err.message);
     }
-    console.log(templates.data)
-    setTemplates(templates?.data)
+    console.log(allTemplates.data)
+    setTemplates(allTemplates?.data)
+    console.log(templates)
   };
 
   useEffect(() => {

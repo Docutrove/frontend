@@ -53,6 +53,9 @@ $border-buttom-color: #f4f4f6;
       ul {
         li {
           @extend %navlink-styles;
+          img {
+            padding-top: 1rem;
+          }
         }
       }
     }

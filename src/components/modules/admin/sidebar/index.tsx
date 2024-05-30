@@ -1,24 +1,17 @@
-// export default function Sidebar() {
-
-//     return (
-//         <div className="admin_sidebar">
-//             <div className="sidebar-logo">
-
-//             </div>
-//             <div className="sidebar-menu">
-//                 <ul>
-//                     <li>Dashboard</li>
-//                     <li>Products</li>
-//                     <li>Orders</li>
-//                     <li>Customers</li>
-//                     <li>Settings</li>
-//                 </ul>
-//         </div>
-//     )
-// }
-
 import './index.scss'
-import { Logo } from '../../../../assets'
+import {
+  Logo,
+  Tiles,
+  Sidebar1,
+  Sidebar2,
+  Sidebar3,
+  Sidebar4,
+  Tiles1,
+  Tiles2,
+  Tiles3,
+  Tiles4,
+  ArrowUp,
+} from '../../../../assets'
 export default function Sidebar() {
   return (
     <div className="admin-panel">
@@ -29,15 +22,35 @@ export default function Sidebar() {
       <div className="navlinks">
         <div className="first-navlinks">
           <ul>
-            <li>Dashboard</li>
-            <li>Business Services</li>
+            <li>
+              <img src={Sidebar1} alt="Dashboard" className="sidebar-icon" />{' '}
+              Dashboard
+            </li>
+            <li>
+              <img
+                src={Sidebar2}
+                alt="Business Services"
+                className="sidebar-icon"
+              />{' '}
+              Business Services
+            </li>
           </ul>
         </div>
         <div className="second-navlinks">
           <div className="heading-text">Template Management</div>
           <ul>
-            <li>All Templates</li>
-            <li>Downloads</li>
+            <li>
+              <img
+                src={Sidebar3}
+                alt="All Templates"
+                className="sidebar-icon"
+              />{' '}
+              All Templates
+            </li>
+            <li>
+              <img src={Sidebar4} alt="Downloads" className="sidebar-icon" />{' '}
+              Downloads
+            </li>
           </ul>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, ChangeEvent } from "react";
 import "./index.scss";
 
 interface BaseInputProps {
@@ -11,35 +11,46 @@ interface BaseInputProps {
   value?: string;
   name?: string;
   errorMessage?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
 export default function BaseInput({
-  className,
-  placeholder,
-  label,
-  type,
+  className = "",
+  placeholder = "",
+  label = "",
+  type = "text",
   children,
-  textarea,
-  name,
-  value,
-  errorMessage,
+  textarea = false,
+  name = "",
+  value = "",
+  errorMessage = "",
+  onChange,
   ...props
 }: BaseInputProps) {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (onChange) {
+      onChange(e);
+    }
+  };
+
   return (
     <label className={`base-input ${className}`}>
-      <span className="label text--2xs">{label}</span>
+      {label && <span className="label text--2xs">{label}</span>}
       <div className="input-container">
         {textarea ? (
-          <textarea className="textarea input"></textarea>
+          <textarea
+            className={`textarea input ${errorMessage ? "error-input" : ""}`}
+            {...{ placeholder, name, value, onChange: handleChange, ...props }}
+          />
         ) : (
           <input
             className={`input ${errorMessage ? "error-input" : ""}`}
-            {...{ placeholder, type, name, value, ...props }}
+            {...{ placeholder, type, name, value, onChange: handleChange, ...props }}
           />
         )}
         <div className="input-icons">{children}</div>
       </div>
-      <p className="error-message text--2xs">{errorMessage}</p>
+      {errorMessage && <p className="error-message text--2xs">{errorMessage}</p>}
     </label>
   );
 }

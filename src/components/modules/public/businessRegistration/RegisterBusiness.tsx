@@ -7,11 +7,13 @@ import BusinessReview from "./BusinessReview";
 import BusinessPayment from "./BusinessPayment";
 import BusinessPersonalDetails from "./BusinessPersonalDetails";
 import BusinessComplete from "./BusinessComplete";
+import BusinessNameReservation from "./BusinessNameReservation";
 
 export default function RegisterBusiness() {
   const { activeScreen } = useBusinessRegistrationContext();
   return (
     <>
+      {activeScreen === "business_name_reservation" && <BusinessNameReservation />}
       {activeScreen === "business_information" && <BusinessInformation />}
       {activeScreen === "business_particulars" && <BusinessParticulars />}
       {activeScreen === "business_nature" && <BusinessNature/>}

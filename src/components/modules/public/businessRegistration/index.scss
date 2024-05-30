@@ -220,6 +220,24 @@ $userInfoBcg: linear-gradient(265.33deg, #D6F5FC 16.76%, #E6FAF4 104.26%);
     margin: 0px 0px 25px 0px;
 }
 
+@media screen and (min-width: 1024px){
+    .user--information{
+        width: calc(70% - 5rem);
+    } 
+}
+
+@media screen and (max-width: 1025px){
+    .user--information{
+        width: calc(85% - 5rem);
+    }
+}
+
+@media screen and (max-width: 480px){
+    .user--information{
+        width: calc(100% - 2.5rem);
+    }
+}
+
 $userInfoBcg: linear-gradient(265.33deg, #D6F5FC 16.76%, #E6FAF4 104.26%);
 
 .user--content{

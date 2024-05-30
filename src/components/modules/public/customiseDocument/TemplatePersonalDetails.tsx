@@ -1,11 +1,11 @@
-import { useBusinessNameReservationContext } from ".";
+import { useCustomiseDocContext } from ".";
 import BaseButton from "../../ui/button";
 import BaseInput from "../../ui/input";
 import Footer from "../footer";
 import BusinessNavbar from '../businessNavbar';
 
-export default function NamePersonalDetails() {
-  const { goBack, goNext } = useBusinessNameReservationContext();
+export default function TemplatePersonalDetails() {
+  const { goBack, goNext } = useCustomiseDocContext();
   return (
     <div className="user--content">
        <BusinessNavbar/>

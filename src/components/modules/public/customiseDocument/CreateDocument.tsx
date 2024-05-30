@@ -4,6 +4,9 @@ import ChooseTemplate from "./ChooseTemplate";
 import ConfirmTemplate from "./ConfirmTemplate";
 import TemplateDetails from "./TemplateDetails";
 import TemplateInvoice from "./TemplateInvoice";
+import TemplatePayment from "./TemplatePayment";
+import TemplatePersonalDetails from "./TemplatePersonalDetails";
+import DocumentThank from "./DocumentThank";
 
 export default function CreateDocument() {
   const { activeScreen } = useCustomiseDocContext();
@@ -15,6 +18,9 @@ export default function CreateDocument() {
       {activeScreen === "template_invoice" && <TemplateInvoice />}
       {activeScreen === "template_details" && <TemplateDetails />}
       {activeScreen === "confirm_template" && <ConfirmTemplate />}
+      {activeScreen === "template_payment" && <TemplatePayment />}
+      {activeScreen === "template_personal_details" && <TemplatePersonalDetails />}
+      {activeScreen === "template_thank" && <DocumentThank />}
     </>
   );
 }

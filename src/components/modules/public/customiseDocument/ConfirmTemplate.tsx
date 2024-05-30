@@ -1,7 +1,9 @@
+import { useCustomiseDocContext } from ".";
 import InvoiceDetails from "../../ui/invoiceDetails";
 import BaseButton from "../../ui/button";
 
 export default function ConfirmTemplate() {
+  const { goBack, goNext } = useCustomiseDocContext();
   return (
     <InvoiceDetails
       subtitle="Customize and download a legal document"
@@ -13,10 +15,10 @@ export default function ConfirmTemplate() {
         your document to ensure all the details are correct.
       </p>
       <div className="confirm-buttons">
-        <BaseButton variant="inverted" href="/coming">
+        <BaseButton variant="inverted" onClick={goBack}>
           Edit information
         </BaseButton>
-        <BaseButton variant="primary" href="/payment">
+        <BaseButton variant="primary" onClick={goNext}>
           Proceed to payment
         </BaseButton>
       </div>

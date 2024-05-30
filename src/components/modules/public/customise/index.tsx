@@ -3,7 +3,8 @@ import CustomiseExplore from "./Explore";
 import CustomiseFAQ from "./FAQ";
 import CustomiseHero from "./Hero";
 import CustomiseHow from "./How";
-import CustomiseSearch from "./Search";
+import Category from "./Category";
+// import CustomiseSearch from "./Search";
 import "./index.scss";
 
 export default function Customise() {
@@ -11,7 +12,8 @@ export default function Customise() {
     <Layout>
       <CustomiseHero />
       <CustomiseHow />
-      <CustomiseSearch />
+      <Category />
+      {/* <CustomiseSearch /> */}
       <CustomiseExplore />
       <CustomiseFAQ />
     </Layout>

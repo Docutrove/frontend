@@ -3,7 +3,7 @@ import ThankYou from "../../ui/thankYou";
 
 export default function DocumentThank() {
   return (
-    <ThankYou iconName="document_tick" header="Thank you for using Docutrove">
+    <ThankYou iconName="document_tick" header="Thank you for using Docutrove" linkTo="/customise">
         <h6 className="thank-you__subtitle">Your document is not ready to be downloaded</h6>
       <BaseButton variant="primary" className="thank-you__button">Download</BaseButton>
 

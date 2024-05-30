@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Icon } from "../Icon";
 import BaseButton from "../button";
 import "./index.scss";
@@ -9,12 +9,12 @@ interface OfferProps {
   iconName?: "document" | "pie" | "user";
   title: string;
   description: string;
-  path: string;
+  path?: string;
   lists?: string[];
   amount?: number;
   amountSuffix?: string;
-  buttonVariant: "primary" | "secondary";
-  buttonText: string;
+  buttonVariant?: "primary" | "secondary";
+  buttonText?: string;
 }
 
 export function Offer({
@@ -30,7 +30,7 @@ export function Offer({
   buttonVariant,
   buttonText,
 }: OfferProps) {
-  const [showMore, setShowMore] = useState(false);
+  // const [showMore, setShowMore] = useState(false);
 
   return (
     <div className={`offer--${variant}`}>
@@ -42,14 +42,15 @@ export function Offer({
         ) : null}
         <h4 className="offer__title">{title}</h4>
         <p className="offer__description text--sm">
-          {showMore ? description : `${description.substring(0, 100)}...`}
+          { description }
+          {/* {showMore ? description : `${description.substring(0, 100)}...`}
           <span
             onClick={() => {
               setShowMore((prev) => !prev);
             }}
           >
             {showMore ? "Show less" : "Show more"}
-          </span>
+          </span> */}
         </p>
 
         <div className="lists">
@@ -76,6 +77,7 @@ export function Offer({
             <p className="text--xs amount-suffix">{amountSuffix}</p>
           </div>
         ) : null}
+        {buttonVariant? (
         <BaseButton
           href={path}
           variant={buttonVariant}
@@ -83,6 +85,7 @@ export function Offer({
         >
           {buttonText}
         </BaseButton>
+        ) : null}
       </div>
     </div>
   );

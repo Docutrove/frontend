@@ -3,13 +3,13 @@ import ThankYou from "../../ui/thankYou";
 export default function BusinessThank() {
   return (
     <ThankYou
-      iconName="user"
-      header="Thank you for using Docutrove to register your business"
+      iconName="document_tick"
+      header="Business Name Registration Completed!"
       linkTo="/business"
     >
       <p className="text--sm thank-you__description">
-        A copy of your document has also been emailed to email@addresslorem.com
-        for your records.
+      Your business name application has been and has begun processing. 
+      You’ll be notified once it is successful.
       </p>
     </ThankYou>
   );

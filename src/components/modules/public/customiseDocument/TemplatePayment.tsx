@@ -1,11 +1,11 @@
-import { useBusinessNameReservationContext } from ".";
+import { useCustomiseDocContext } from ".";
 import Footer from "../footer";
 import { Icon } from "../../ui/Icon";
 import BaseButton from "../../ui/button";
 import NavBar from "../navbar";
 
-export default function NamePayment() {
-  const { goBack, goNext } = useBusinessNameReservationContext();
+export default function TemplatePayment() {
+  const { goBack, goNext } = useCustomiseDocContext();
   return (
     <div className="payment bg-gradient">
       <NavBar />
@@ -25,10 +25,10 @@ export default function NamePayment() {
             <div className="payment__order__summary">
               <div className="payment__order__summary__title">
                 <Icon name="document" />
-                <p className="text--2xs">Business Reservation Fee</p>
+                <p className="text--2xs">Template Customization Fee</p>
               </div>
 
-              <h6 className="payment-price text--sm">₦25,000.00</h6>
+              <h6 className="payment-price text--sm">₦10,000.00</h6>
             </div>
             <div className="payment__order__summary">
               <div className="payment__order__summary__title">
@@ -45,7 +45,7 @@ export default function NamePayment() {
                   <h6 className="text--4xs">Total</h6>
                 </div>
 
-                <h6 className="payment-price text--sm">₦30,000.00</h6>
+                <h6 className="payment-price text--sm">₦15,000.00</h6>
               </div>
             </div>
           </div>

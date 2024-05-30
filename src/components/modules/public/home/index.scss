@@ -77,6 +77,7 @@
 
   &__subscription {
     padding-top: 94px;
+    padding-bottom: 94px;
 
     @include mobile(756px) {
       padding-top: 60px;

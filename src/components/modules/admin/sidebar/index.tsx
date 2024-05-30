@@ -33,7 +33,6 @@ export default function Sidebar() {
             <li>Business Services</li>
           </ul>
         </div>
-
         <div className="second-navlinks">
           <div className="heading-text">Template Management</div>
           <ul>

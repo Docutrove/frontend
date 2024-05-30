@@ -1,4 +1,5 @@
 import StatisticsCard from '../../ui/statisticsCard/StatisticsCard'
+import './index.scss'
 //import { FaArrowUpRight } from 'react-icons/fa'; // Import the arrow icon from react-icons library
 
 export default function Main() {
@@ -8,19 +9,72 @@ export default function Main() {
         <StatisticsCard />
       </div>
       <div className="table-section">
+        <div className="table-top">
+          <span className="table-heading"> New Template Download </span>{' '}
+          <span className="view_all"> View all </span>
+        </div>
         <table className="striped-table">
           <thead>
-            <tr>
-              <td style={{ textAlign: 'left' }}>New Template Download</td>{' '}
-              {/* Text aligned to the left */}
-              <td style={{ textAlign: 'right' }}>
-                {' '}
-                {/* Text aligned to the right */}
-                View all {/*<FaArrowUpRight />*/} {/* Arrow icon */}
-              </td>
-            </tr>
+            <td> Date & Time</td>
+            <td> Template Type</td>
+            <td> Registered by</td>
+            <td> Amount </td>
           </thead>
           <tbody>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+              <td>Data 4</td>
+            </tr>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+              <td>Data 4</td>
+            </tr>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+              <td>Data 4</td>
+            </tr>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+              <td>Data 4</td>
+            </tr>
+            {/* Add more rows as needed */}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="table-section second-table">
+        <div className="table-top">
+          <span className="table-heading"> New Business Registrations </span>{' '}
+          <span className="view_all"> View all </span>
+        </div>
+        <table className="striped-table">
+          <thead>
+            <td> Date & Time</td>
+            <td> Template Type</td>
+            <td> Registered by</td>
+            <td> Amount </td>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+              <td>Data 4</td>
+            </tr>
+            <tr>
+              <td>Data 1</td>
+              <td>Data 2</td>
+              <td>Data 3</td>
+              <td>Data 4</td>
+            </tr>
             <tr>
               <td>Data 1</td>
               <td>Data 2</td>

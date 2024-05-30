@@ -25,7 +25,7 @@ export default function Layout({ className, children }: LayoutProps) {
           </div>
         </nav>
         <div className="content">
-          <header >
+          <header>
             <Header />
           </header>
           {children}

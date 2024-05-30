@@ -16,7 +16,6 @@ export default function ChooseTemplate() {
     if (err) {
       toast.error(err.message);
     }
-    console.log(allTemplates.data)
     setTemplates(allTemplates?.data)
     console.log(templates)
   };

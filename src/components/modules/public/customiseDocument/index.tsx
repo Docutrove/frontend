@@ -20,11 +20,9 @@ const customiseDocContext = createContext<{
 }>({
   setCategoryId: function (categoryId: string): void {
     console.log(categoryId)
-    throw new Error("Function not implemented.");
   },
   setTemplateId: function (templateId: string): void {
     console.log(templateId)
-    throw new Error("Function not implemented.");
   }
 });
 

@@ -11,12 +11,16 @@ export default function BusinessNameReservation() {
     const { goNext } = useBusinessRegistrationContext();
     const goBack = () => {
         navigate('/business/formation')
-      };
+    };
 
-    return (
+    const goToNameReservation = () => {
+        navigate('/business/reservation')
+    };
+
+      return (
         <div className='business--information--container'>
-            <BusinessNavbar/>
-            <div className="business--information--content">
+             <BusinessNavbar/>
+             <div className="business--information--content">
                 <header className='business--information--header'>Business Name Registration</header>
 
                 <div className="business--information--form">
@@ -28,10 +32,10 @@ export default function BusinessNameReservation() {
 
                     <div className="business--note">
                         Note: Input your business name that was approved by CAC. If the name does not correspond, your registration might not be successful. If you are yet to reserve a name, click the button below to reserve name. 
-
-                        <div className="reserve--button">
+                        <br />
+                        <button className="reserve--button" onClick={goToNameReservation}>
                             Reserve a Name
-                        </div>
+                        </button>
                     </div>
                     
                     <BaseInput
@@ -41,19 +45,19 @@ export default function BusinessNameReservation() {
                         
                     />
                 </div>
-            </div>
+             </div>
 
-            <div className="button--container">
-                <div className="bottom--buttons">
-                    <BaseButton onClick={goBack} variant="inverted" className='back--button'>
-                    Back
-                    </BaseButton>
-                    <BaseButton onClick={goNext} variant="primary" className='save--button'>
-                    Save and Continue
-                    </BaseButton>
-                </div>
+             <div className="button--container">
+            <div className="bottom--buttons">
+                <BaseButton onClick={goBack} variant="inverted" className='back--button'>
+                Back
+                </BaseButton>
+                <BaseButton onClick={goNext} variant="primary" className='save--button'>
+                Save and Continue
+                </BaseButton>
             </div>
-            <Footer/>
+        </div>
+             <Footer/>
         </div>
     )
 }

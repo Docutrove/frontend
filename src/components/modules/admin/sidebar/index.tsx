@@ -6,11 +6,6 @@ import {
   Sidebar2,
   Sidebar3,
   Sidebar4,
-  Tiles1,
-  Tiles2,
-  Tiles3,
-  Tiles4,
-  ArrowUp,
 } from '../../../../assets'
 export default function Sidebar() {
   return (

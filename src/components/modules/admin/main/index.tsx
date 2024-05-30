@@ -1,6 +1,5 @@
 import StatisticsCard from '../../ui/statisticsCard/StatisticsCard'
 import './index.scss'
-//import { FaArrowUpRight } from 'react-icons/fa'; // Import the arrow icon from react-icons library
 
 export default function Main() {
   return (

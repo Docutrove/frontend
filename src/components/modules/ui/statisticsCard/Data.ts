@@ -3,28 +3,29 @@
 interface StatisticsCardData {
   title: string
   value: number
-  icon: string
+  //icon: string
+  backgroundColor: string
 }
 
 export const StatisticsCardData: StatisticsCardData[] = [
   {
     title: 'Total Users',
     value: 1000,
-    icon: '👥',
+    backgroundColor: '#F2FBFC',
   },
   {
     title: 'Total Posts',
     value: 2000,
-    icon: '📝',
+    backgroundColor: '#F3F4F6',
   },
   {
     title: 'Total Comments',
     value: 3000,
-    icon: '💬',
+    backgroundColor: '#F9FAFA',
   },
   {
     title: 'Total Likes',
     value: 4000,
-    icon: '👍',
+    backgroundColor: '#F2F8F8',
   },
 ]

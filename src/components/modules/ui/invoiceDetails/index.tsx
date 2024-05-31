@@ -31,7 +31,7 @@ export default function InvoiceDetails({
                 <div className="back-button">
                   <Icon name="caret-right" className="back-icon" />
                 </div>
-                <p className="text--xs">All business registration templates</p>
+                <p className="text--xs">All templates</p>
               </button>
             ) : (
               ""

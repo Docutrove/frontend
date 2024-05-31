@@ -4,43 +4,17 @@ import BaseButton from "../../ui/button";
 import BaseInput from "../../ui/input";
 import InvoiceDetails from "../../ui/invoiceDetails";
 import { useState } from "react";
-// import useRequest from "../../../hooks/useRequest";
-// import { getTemplate } from "../../../../api/templates";
 
 export default function TemplateDetails() {
   const { goBack, setTemplateData, templateData, template } = useCustomiseDocContext();
-  // const { makeRequest } = useRequest(getTemplate, templateId);
   const [ data, setData ] = useState(templateData);
 
   let bs: any;
-
-  // const [template, setTemplate] = useState<{
-  //   name: string,
-  //   price: number,
-  //   description: string,
-  //   configuration: {
-  //     fields: [],
-  //     previewHtml: string,
-  //   },
-  // }>()
-
-  // const getTemplateLocal = async () => {
-  //   const [thisTemplate, err] = await makeRequest();
-
-  //   if (err) {
-  //     toast.error(err.message);
-  //   }
-  //   setTemplate(thisTemplate?.data)
-  // }
 
   const handleInputChange = (field: string, value: string) => {
     const obj = {...data, [field]: value};
     setData(obj);
   }
-
-  // useEffect(() => {
-  //   getTemplateLocal();
-  // }, []);
 
   return (
     <InvoiceDetails

@@ -1,0 +1,40 @@
+$main-font-family: Inter, sans-serif;
+
+%view_styles {
+  float: right;
+  color: #00b8bf;
+}
+
+%table-data-styles {
+  padding: 10px;
+  order: none !important;
+  color: #425669;
+  font-weight: 500;
+  font-family: $main-font-family;
+}
+
+%table-section-styles {
+  margin-top: 20px;
+  border: 1px solid #f4f4f6;
+  border-radius: 0.7rem;
+  background-color: #ffffff;
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+}
+
+%table-heading {
+  font-family: $main-font-family;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+%striped-table {
+  margin-top: 1.4rem;
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 20px 10px;
+  }
+}

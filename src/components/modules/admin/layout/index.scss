@@ -8,16 +8,16 @@
 .wrapper {
   display: flex;
   flex: 1;
-  height: 100%; /* Set height to cover the entire viewport */
-  overflow: hidden; /* Hide any overflow content */
+  height: 100%;
+  overflow: hidden;
 }
 
 // Navigation Sidebar
 .nav {
   display: flex;
 
-  flex: 0 0 19%; /* Adjusted flex properties */
-  background-color: #f0f0f0; /* Optional: Add a background color */
+  flex: 0 0 19%;
+  background-color: #f0f0f0;
 }
 
 // Main Content Area

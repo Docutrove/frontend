@@ -1,22 +1,7 @@
-%view_styles {
-  float: right;
-  color: #00b8bf;
-}
-%table-data-styles {
-  padding: 10px;
-  order: none !important;
-}
+//@use 'tablestyles';
 
-%table-section-styles {
-  margin-top: 20px;
-  border: 1px solid #f4f4f6;
-  border-radius: 0.7rem;
-  background-color: #ffffff;
-  padding: 2rem 1rem;
-  margin-bottom: 2rem;
-}
+@import '../../../../assets/styles/_tablestyles.scss';
 
-$main-font-family: Inter, sans-serif;
 .main-content {
   //overflow: scroll;
 }
@@ -48,9 +33,7 @@ $main-font-family: Inter, sans-serif;
 
   .table-top {
     .table-heading {
-      font-family: $main-font-family;
-      font-weight: 700;
-      margin-bottom: 1rem;
+      @extend %table-heading;
     }
     .view_all {
       @extend %view_styles;
@@ -58,15 +41,9 @@ $main-font-family: Inter, sans-serif;
   }
 
   .striped-table {
-    margin-top: 1.4rem;
-    width: 100%;
-    border-collapse: collapse;
-
+    @extend %striped-table;
     thead {
       @extend %table-data-styles;
-      color: #425669;
-      font-weight: 500;
-      font-family: $main-font-family;
     }
 
     td {

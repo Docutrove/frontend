@@ -1,5 +1,8 @@
 import StatisticsCard from '../../ui/statisticsCard/StatisticsCard'
+import '../../../../assets/styles/_tablestyles.scss'
 import './index.scss'
+
+import { ArrowUp } from '../../../../assets'
 
 export default function Main() {
   return (
@@ -9,8 +12,10 @@ export default function Main() {
       </div>
       <div className="table-section">
         <div className="table-top">
-          <span className="table-heading"> New Template Download </span>{' '}
-          <span className="view_all"> View all </span>
+          <span className="table-heading"> New Template Download </span>
+          <span className="view_all">
+            View all <img src={ArrowUp} className="arrow-icon" />
+          </span>
         </div>
         <table className="striped-table">
           <thead>
@@ -52,7 +57,10 @@ export default function Main() {
       <div className="table-section second-table">
         <div className="table-top">
           <span className="table-heading"> New Business Registrations </span>{' '}
-          <span className="view_all"> View all </span>
+          <span className="view_all">
+            {' '}
+            View all <img src={ArrowUp} className="arrow-icon" />
+          </span>
         </div>
         <table className="striped-table">
           <thead>

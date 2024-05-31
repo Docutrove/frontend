@@ -8,7 +8,7 @@ import Sidebar3 from './Images/note-favorite.svg'
 import Sidebar4 from './Images/sidebar4.svg'
 import Tiles1 from './Images/tiles1.svg'
 import Tiles2 from './Images/tiles2.png'
-import Tiles3 from './Images/tiles3.png'
+import Tiles3 from './Images/tiles3.svg'
 import Tiles4 from './Images/tiles4.svg'
 import ArrowUp from './Images/arrow-up.svg'
 

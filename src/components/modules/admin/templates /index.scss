@@ -1,0 +1,85 @@
+@import '../../../../assets/styles/_tablestyles.scss';
+
+// .main-content {
+//   //overflow: scroll;
+// }
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.control-item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.search-bar {
+  position: relative;
+}
+
+.search-bar input {
+  padding-left: 30px;
+}
+
+.search-bar .search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.filter-dropdown span {
+  margin-right: 10px;
+}
+
+.date-filters form {
+  display: flex;
+  align-items: center;
+}
+
+.date-filters input {
+  margin-right: 5px;
+}
+
+.date-filters .calendar-icon {
+  margin-left: 5px;
+}
+
+.table-section {
+  @extend %table-section-styles;
+
+  .table-top {
+    .table-heading {
+      @extend %table-heading;
+    }
+    .view_all {
+      @extend %view_styles;
+    }
+  }
+
+  .striped-table {
+    @extend %striped-table;
+    thead {
+      @extend %table-data-styles;
+    }
+
+    td {
+      @extend %table-data-styles;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #f9fafa;
+    }
+  }
+}
+
+.second-table {
+  //@extend %table-section-styles;
+  border: none;
+}

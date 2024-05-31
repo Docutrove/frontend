@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { getPaymentStatus } from "../../../../api/payment";
 import useRequest from "../../../hooks/useRequest";
-// import BaseButton from "../../ui/button";
+import BaseButton from "../../ui/button";
 import ThankYou from "../../ui/thankYou";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -11,6 +11,7 @@ export default function DocumentThank() {
   const { makeRequest: paymentStatusRequest } = useRequest(getPaymentStatus, queryParameters.get('trxref'));
   const [ payCompleted, setPayCompleted ] = useState(false);
   const [ email, setEmail ] = useState('');
+  const [ value, setValue ] = useState('');
 
   const getPaymentStatusLocal = async () => {
     const [resp, err] = await paymentStatusRequest();
@@ -21,6 +22,7 @@ export default function DocumentThank() {
     if (resp.data.status == 'completed') {
       setPayCompleted(true);
       setEmail(resp.data.email);
+      setValue(resp.data.value);
     }
   }
 
@@ -40,7 +42,7 @@ export default function DocumentThank() {
     display = 
     <ThankYou iconName="document_tick" header="Thank you for using Docutrove" linkTo="/customise">
         <h6 className="thank-you__subtitle">Your document is now ready to be downloaded</h6>
-      {/* <BaseButton variant="primary" className="thank-you__button">Download</BaseButton> */}
+      <BaseButton variant="primary" className="thank-you__button" href={value}>Download</BaseButton>
 
       <p className="text--sm thank-you__description">
         A copy of your document has also been emailed to {email} for your records.

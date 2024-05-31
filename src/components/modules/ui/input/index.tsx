@@ -29,14 +29,14 @@ export default function BaseInput({
 }: BaseInputProps) {
   return (
     <label className={`base-input ${className}`}>
-      <span className="label text--2xs">{label}</span>
+      <span className="label text--2xs">{label?.replace(/_/g, ' ')}</span>
       <div className="input-container">
         {textarea ? (
           <textarea
             className="textarea input"
             value={value}
             name={name}
-            placeholder={placeholder}
+            placeholder={placeholder?.replace(/_/g, ' ')}
             onChange={onChange}
             {...props}
           ></textarea>
@@ -46,7 +46,7 @@ export default function BaseInput({
             type={type}
             value={value}
             name={name}
-            placeholder={placeholder}
+            placeholder={placeholder?.replace(/_/g, ' ')}
             onChange={onChange}
             {...props}
           />

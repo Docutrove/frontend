@@ -27,12 +27,13 @@ export default function DocumentThank() {
   let display: any;
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      getPaymentStatusLocal()
-    }, 5000);
+    while (!payCompleted) {
+      const interval = setInterval(() => {
+        getPaymentStatusLocal()
+      }, 5000);
 
-    return () => clearInterval(interval);
-    getPaymentStatusLocal()
+      return () => clearInterval(interval);
+    }
   }, []);
   <>
   { payCompleted ? (

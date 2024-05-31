@@ -59,7 +59,7 @@ function App() {
         <Route path="/faq/topic" element={<FAQTopic />} />
         <Route path="/editpayment" element={<EditPayment />} />
         <Route path="/changeplan" element={<ChangePlan />} />
-        <Route path="/documentthankyou" element={<DocumentThank />} />
+        <Route path="/document/thankyou" element={<DocumentThank />} />
         {/* <Route path="/businessthankyou" element={<BusinessThank />} /> */}
         <Route path="/consultationthankyou" element={<ConsultationThank />} />
 

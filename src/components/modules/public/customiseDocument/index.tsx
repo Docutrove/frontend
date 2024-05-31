@@ -5,25 +5,56 @@ import "./index.scss";
 import useRequest from "../../../hooks/useRequest";
 import { getTemplateCategories } from "../../../../api/templates";
 import toast from "react-hot-toast";
+import { useSearchParams } from "react-router-dom";
+
+interface AuthData {
+  firstName: string, 
+  lastName: string, 
+  email: string, 
+  phone: string
+}
+
+interface Template {
+  name: string,
+  price: number,
+  description: string,
+  configuration: {
+    fields: [],
+    previewHtml: string,
+  }
+}
 
 const customiseDocContext = createContext<{
   activeScreen?: string;
   goNext?: () => void;
   goBack?: () => void;
-  // getTemplatesByCategoryId: (categoryId: string) => {};
-  // templates?: [];
   categories?: [{name: string, id: string}];
   categoryId?: string;
   templateId?: string;
+  template?: Template | undefined;
+  templateData?: object;
+  authData?: AuthData;
+  setTemplate: (data: Template | undefined) => void;
+  setAuthData: (data: AuthData) => void;
+  setTemplateData: (data: any) => void;
   setCategoryId: (categoryId: string) => void;
   setTemplateId: (templateId: string) => void;
 }>({
+  setTemplateData: function (data: any): void {
+    console.log(data)
+  },
   setCategoryId: function (categoryId: string): void {
     console.log(categoryId)
   },
   setTemplateId: function (templateId: string): void {
     console.log(templateId)
-  }
+  },
+  setAuthData: function (data: AuthData): void {
+    console.log(data)
+  },
+  setTemplate: function (data: Template | undefined): void {
+    console.log(data)
+  },
 });
 
 export default function CustomiseDocumentProvider() {
@@ -33,18 +64,21 @@ export default function CustomiseDocumentProvider() {
     "template_invoice",
     "template_details",
     "confirm_template",
-    "template_payment",
     "template_personal_details",
+    "template_payment",
     "template_thank",
   ];
   const [activeScreen, setActiveScreen] = useState(SCREENS[0]);
-  const { makeRequest } = useRequest(getTemplateCategories);
+  const { makeRequest: templateCategoriesRequest } = useRequest(getTemplateCategories);
   const [categories, setCategories] = useState()
   const [categoryId, setCategoryId] = useState("")
   const [templateId, setTemplateId] = useState("")
+  const [templateData, setTemplateData] = useState()
+  const [template, setTemplate] = useState<Template | undefined>()
+  const [authData, setAuthData] = useState<AuthData>()
 
   const requestTemplateCategories = async () => {
-    const [categories, err] = await makeRequest();
+    const [categories, err] = await templateCategoriesRequest();
 
     if (err) {
       toast.error(err.message);
@@ -52,7 +86,15 @@ export default function CustomiseDocumentProvider() {
     setCategories(categories?.data)
   };
 
+  const [queryParameters] = useSearchParams()
+  const checkParams = () => {
+    if (queryParameters.get('trxref')) {
+      setActiveScreen('template_thank')
+    }
+  }
+
   useEffect(() => {
+    checkParams();
     requestTemplateCategories();
   }, []);
 
@@ -78,20 +120,32 @@ export default function CustomiseDocumentProvider() {
     const nextScreen = SCREENS[idx + 1];
     setActiveScreen(nextScreen);
   }
-  // const getTemplatesByCategoryId = async (categoryId: string) => {
-  //   const [templates, err] = await getTemplatesByCategory(categoryId);
-  //   if (err) {
-  //     toast.error(err.message);
-  //   }
-  //   setTemplates(templates?.data);
-  //   setActiveScreen("choose_template");
-  // }
+  const setTemplateDataReal = (data: any) => {
+    setTemplateData(data)
+    const idx = SCREENS.findIndex((s) => s === activeScreen);
+    const nextScreen = SCREENS[idx + 1];
+    setActiveScreen(nextScreen);
+  }
+  const setAuthDataReal = (data: AuthData) => {
+    setAuthData(data)
+    const idx = SCREENS.findIndex((s) => s === activeScreen);
+    const nextScreen = SCREENS[idx + 1];
+    setActiveScreen(nextScreen);
+  }
+  const setTemplateReal = (data: Template | undefined) => {
+    setTemplate(data)
+    const idx = SCREENS.findIndex((s) => s === activeScreen);
+    const nextScreen = SCREENS[idx + 1];
+    setActiveScreen(nextScreen);
+  }
   return (
     <customiseDocContext.Provider
       value={{
         activeScreen, goNext, goBack, setCategoryId: setCategoryIdReal, 
-        setTemplateId: setTemplateIdReal, categories: categories,
-        categoryId: categoryId, templateId: templateId,
+        setTemplateId: setTemplateIdReal, setTemplateData: setTemplateDataReal,
+        setAuthData: setAuthDataReal, setTemplate: setTemplateReal,
+        categories: categories, categoryId: categoryId, templateId: templateId, 
+        templateData: templateData, authData: authData, template: template,
       }}
     >
       <CreateDocument />

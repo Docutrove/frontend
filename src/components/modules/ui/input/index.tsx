@@ -1,4 +1,4 @@
-import { ReactNode, ChangeEvent } from "react";
+import { ReactNode } from "react";
 import "./index.scss";
 
 interface BaseInputProps {
@@ -11,46 +11,49 @@ interface BaseInputProps {
   value?: string;
   name?: string;
   errorMessage?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
 export default function BaseInput({
-  className = "",
-  placeholder = "",
-  label = "",
-  type = "text",
+  className,
+  placeholder,
+  label,
+  type,
   children,
-  textarea = false,
-  name = "",
-  value = "",
-  errorMessage = "",
+  textarea,
+  name,
+  value,
+  errorMessage,
   onChange,
   ...props
 }: BaseInputProps) {
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    if (onChange) {
-      onChange(e);
-    }
-  };
-
   return (
     <label className={`base-input ${className}`}>
-      {label && <span className="label text--2xs">{label}</span>}
+      <span className="label text--2xs">{label}</span>
       <div className="input-container">
         {textarea ? (
           <textarea
-            className={`textarea input ${errorMessage ? "error-input" : ""}`}
-            {...{ placeholder, name, value, onChange: handleChange, ...props }}
-          />
+            className="textarea input"
+            value={value}
+            name={name}
+            placeholder={placeholder}
+            onChange={onChange}
+            {...props}
+          ></textarea>
         ) : (
           <input
             className={`input ${errorMessage ? "error-input" : ""}`}
-            {...{ placeholder, type, name, value, onChange: handleChange, ...props }}
+            type={type}
+            value={value}
+            name={name}
+            placeholder={placeholder}
+            onChange={onChange}
+            {...props}
           />
         )}
         <div className="input-icons">{children}</div>
       </div>
-      {errorMessage && <p className="error-message text--2xs">{errorMessage}</p>}
+      <p className="error-message text--2xs">{errorMessage}</p>
     </label>
   );
 }

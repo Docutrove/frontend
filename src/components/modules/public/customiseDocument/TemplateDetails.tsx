@@ -3,63 +3,77 @@ import { Icon } from "../../ui/Icon";
 import BaseButton from "../../ui/button";
 import BaseInput from "../../ui/input";
 import InvoiceDetails from "../../ui/invoiceDetails";
-import Radio from "../../ui/radio";
-import Select from "../../ui/select";
+import { useState } from "react";
+// import useRequest from "../../../hooks/useRequest";
+// import { getTemplate } from "../../../../api/templates";
 
 export default function TemplateDetails() {
-  const { goBack, goNext } = useCustomiseDocContext();
+  const { goBack, setTemplateData, templateData, template } = useCustomiseDocContext();
+  // const { makeRequest } = useRequest(getTemplate, templateId);
+  const [ data, setData ] = useState(templateData);
+
+  let bs: any;
+
+  // const [template, setTemplate] = useState<{
+  //   name: string,
+  //   price: number,
+  //   description: string,
+  //   configuration: {
+  //     fields: [],
+  //     previewHtml: string,
+  //   },
+  // }>()
+
+  // const getTemplateLocal = async () => {
+  //   const [thisTemplate, err] = await makeRequest();
+
+  //   if (err) {
+  //     toast.error(err.message);
+  //   }
+  //   setTemplate(thisTemplate?.data)
+  // }
+
+  const handleInputChange = (field: string, value: string) => {
+    const obj = {...data, [field]: value};
+    setData(obj);
+  }
+
+  // useEffect(() => {
+  //   getTemplateLocal();
+  // }, []);
+
   return (
     <InvoiceDetails
       subtitle="Customize and download a legal document"
-      title="Template name"
+      title={template?.name}
       back_button
       backClick={goBack}
-      document_text="Template One"
+      document_text={template?.name}
     >
       <div className="document-details">
-        <BaseInput
-          className="document-details__input"
-          label="1. Forem ipsum dolor sit amet, consectetur?"
-          placeholder="DD/MM/YY"
-          type="date"
-        >
-          <Icon name="calendar" />
-        </BaseInput>
-
-        <BaseInput
-          className="document-details__input"
-          label="2. Ipsum dolor sit amet, consectetur?"
-          placeholder="Free text field answer"
-        />
-        <Select
-          label="3. Forem ipsum dolor sit amet, consectetur?"
-          options={["Dropdown selection"]}
-        />
-        <BaseInput
-          className="document-details__input"
-          label="4. Ipsum dolor sit amet, consectetur?"
-          placeholder="Free text field answer"
-        />
-        <Select
-          label="5. Forem ipsum dolor sit amet, consectetur?"
-          options={["Dropdown selection"]}
-        />
-        <div>
-          <h6 className="document-details__input">
-            6. Ipsum dolor sit amet, consectetur?
-          </h6>
-          <div className="document-check">
-            <Radio variant="inverted" isChecked>
-              <p>Choice one lorem ipsum</p>
-            </Radio>
-            <Radio variant="inverted">
-              <p>Choice two</p>
-            </Radio>
-            <Radio variant="inverted">
-              <p>Choice three</p>
-            </Radio>
-          </div>
-        </div>
+        <>
+        { template?.configuration.fields.map((field) => {
+          { templateData ? (
+            bs = <BaseInput
+              className="document-details__input"
+              label={field}
+              placeholder={field}
+              value={templateData[field]}
+              onChange={(e) => handleInputChange(field, e.target.value)}
+            />
+          ) : (
+            bs = <BaseInput
+              className="document-details__input"
+              label={field}
+              placeholder={field}
+              onChange={(e) => handleInputChange(field, e.target.value)}
+            />
+          )}
+          return (
+            bs
+          )
+        })}
+        </>
       </div>
       <div className="direction-buttons">
         <button className="invoice-back-button" onClick={goBack}>
@@ -68,8 +82,8 @@ export default function TemplateDetails() {
           </div>
           <p className="text--xs">Back</p>
         </button>
-        <BaseButton variant="primary" onClick={goNext}>
-          Next
+        <BaseButton variant="primary" onClick={() => setTemplateData(data)}>
+            Next
         </BaseButton>
       </div>
     </InvoiceDetails>

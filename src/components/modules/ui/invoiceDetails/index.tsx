@@ -4,10 +4,10 @@ import { ReactNode } from "react";
 
 interface InvoiceDetailsProps {
   subtitle: string;
-  title: string;
+  title: string | undefined;
   back_button?: boolean;
   children: ReactNode;
-  document_text: string;
+  document_text: string | undefined;
   backClick?: () => void;
 }
 

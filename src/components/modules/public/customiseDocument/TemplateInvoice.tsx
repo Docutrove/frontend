@@ -2,34 +2,61 @@ import { Link } from "react-router-dom";
 import { useCustomiseDocContext } from ".";
 import BaseButton from "../../ui/button";
 import InvoiceDetails from "../../ui/invoiceDetails";
+import { useEffect, useState } from "react";
+import useRequest from "../../../hooks/useRequest";
+import { getTemplate } from "../../../../api/templates";
+import toast from "react-hot-toast";
 
 export default function TemplateInvoice() {
-  const { goBack, goNext } = useCustomiseDocContext();
+  const { goBack, setTemplate, templateId } = useCustomiseDocContext();
+  const { makeRequest } = useRequest(getTemplate, templateId);
+
+  const [localTemplate, setLocalTemplate] = useState<{
+    name: string,
+    price: number,
+    description: string,
+    configuration: {
+      fields: [],
+      previewHtml: string,
+    },
+  }>()
+
+  const getTemplateLocal = async () => {
+    const [thisTemplate, err] = await makeRequest();
+
+    if (err) {
+      toast.error(err.message);
+    }
+    setLocalTemplate(thisTemplate?.data)
+  }
+
+  useEffect(() => {
+    getTemplateLocal();
+  }, []);
+
+
   return (
     <InvoiceDetails
       subtitle="Customize and download a legal document"
-      title="Template name"
+      title={localTemplate?.name}
       back_button
-      document_text="Template One"
+      document_text={localTemplate?.name}
       backClick={goBack}
     >
-      <h5 className="invoice-price">Price: ₦0,000.00</h5>
+      <h5 className="invoice-price">Price: ₦{localTemplate?.price}</h5>
       <p className="text--sm">
-        Description of the template and what it’s used for lorem ipsum dolor sit
-        amet, consectetur adipiscing elit.
+        {localTemplate?.description}
       </p>
       <div className="privacy-info">
         <p className="privacy-info__title text--2xs">
           We value your privacy and information
         </p>
         <p className="privacy-info__description text--2xs">
-          Description of the template and what it’s used for lorem ipsum dolor
-          sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit
-          interdum, ac aliquet odio mattis. View our{" "}
+          {localTemplate?.description}. View our{" "}
           <Link to="/coming" className="underline">Privacy and Information Policy.</Link>
         </p>
       </div>
-      <BaseButton variant="primary" className="privacy-info__button" onClick={goNext}>
+      <BaseButton variant="primary" className="privacy-info__button" onClick={() => setTemplate(localTemplate)}>
         Customize a document
       </BaseButton>
     </InvoiceDetails>

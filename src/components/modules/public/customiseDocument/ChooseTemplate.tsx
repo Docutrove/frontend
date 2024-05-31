@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function ChooseTemplate() {
-  const { goNext, categoryId } = useCustomiseDocContext();
+  const { setTemplateId, categoryId } = useCustomiseDocContext();
   const { makeRequest } = useRequest(getTemplatesByCategory, categoryId);
   const [templates, setTemplates] = useState<[{name: string, id: string}]>()
 
@@ -17,7 +17,6 @@ export default function ChooseTemplate() {
       toast.error(err.message);
     }
     setTemplates(allTemplates?.data)
-    console.log(templates)
   };
 
   useEffect(() => {
@@ -38,7 +37,7 @@ export default function ChooseTemplate() {
           Tech / Startup agreement templates:
         </p>
         <div className="options-grid">
-          {/* <>
+          <>
           { templates?.map((template) => {
             return (
               <div className="option" onClick={() => setTemplateId(template.id)}>
@@ -46,25 +45,7 @@ export default function ChooseTemplate() {
               </div>
             )
           })}
-          </> */}
-          <div className="option" onClick={goNext}>
-            <p>Template one</p>
-          </div>
-          <div className="option" onClick={goNext}>
-            <p>Template two</p>
-          </div>
-          <div className="option" onClick={goNext}>
-            <p>Template three</p>
-          </div>
-          <div className="option" onClick={goNext}>
-            <p>Template four</p>
-          </div>
-          <div className="option" onClick={goNext}>
-            <p>Template five</p>
-          </div>
-          <div className="option" onClick={goNext}>
-            <p>Template six</p>
-          </div>
+          </>
         </div>
       </div>
     </GradientLayout>

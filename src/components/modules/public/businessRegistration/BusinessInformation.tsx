@@ -72,7 +72,7 @@ export default function BusinessInformation() {
               />
               <BaseInput
                 label="City / Town / Village"
-                 className="user--input"
+                className="user--input"
               />
             </div>
             <div className='double--input'>
@@ -94,7 +94,7 @@ export default function BusinessInformation() {
             />
             <div className="partition"></div>
             <h5>Branch Address (if any)</h5>
-            {branchAddresses.map((_, index) => (
+            {branchAddresses.map((branch, index) => (
               <div key={index}>
                 {index > 0 && <div className="partition"></div>}
                 {index > 0 && <h5>Branch Address - {index + 1}</h5>}
@@ -102,17 +102,20 @@ export default function BusinessInformation() {
                 <div className='triple--input'>
                   <BaseInput
                     label="Branch State"
-                     className="user--input"
+                    className="user--input"
+                    value={branch.state}
                     onChange={(e) => handleInputChange(index, 'state', e.target.value)}
                   />
                   <BaseInput
                     label="Branch LGA"
-                     className="user--input"
+                    className="user--input"
+                    value={branch.lga}
                     onChange={(e) => handleInputChange(index, 'lga', e.target.value)}
                   />
                   <BaseInput
                     label="Branch City / Town / Village"
-                     className="user--input"
+                    className="user--input"
+                    value={branch.city}
                     onChange={(e) => handleInputChange(index, 'city', e.target.value)}
                   />
                 </div>
@@ -121,12 +124,14 @@ export default function BusinessInformation() {
                     className="user--input"
                     label="Branch Post Code"
                     placeholder="Enter post code"
+                    value={branch.postCode}
                     onChange={(e) => handleInputChange(index, 'postCode', e.target.value)}
                   />
                   <BaseInput
                     className="user--input"
                     label="Branch House Number / Building Name"
                     placeholder="Enter house number / building"
+                    value={branch.houseNumber}
                     onChange={(e) => handleInputChange(index, 'houseNumber', e.target.value)}
                   />
                 </div>
@@ -134,6 +139,7 @@ export default function BusinessInformation() {
                   className="user--input"
                   label="Branch Street Name"
                   placeholder="Enter street name"
+                  value={branch.streetName}
                   onChange={(e) => handleInputChange(index, 'streetName', e.target.value)}
                 />
               </div>
@@ -143,15 +149,15 @@ export default function BusinessInformation() {
         </div>
       </div>
       <div className="button--container">
-            <div className="bottom--buttons">
-                <BaseButton onClick={goBack} variant="inverted" className='back--button'>
-                Back
-                </BaseButton>
-                <BaseButton onClick={goNext} variant="primary" className='save--button'>
-                Save and Continue
-                </BaseButton>
-            </div>
+        <div className="bottom--buttons">
+          <BaseButton onClick={goBack} variant="inverted" className='back--button'>
+            Back
+          </BaseButton>
+          <BaseButton onClick={goNext} variant="primary" className='save--button'>
+            Save and Continue
+          </BaseButton>
         </div>
+      </div>
       <Footer />
     </div>
   );

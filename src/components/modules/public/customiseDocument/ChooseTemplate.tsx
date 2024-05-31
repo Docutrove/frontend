@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export default function ChooseTemplate() {
-  const { setTemplateId, categoryId } = useCustomiseDocContext();
+  const { setTemplateId, categoryId, categories } = useCustomiseDocContext();
   const { makeRequest } = useRequest(getTemplatesByCategory, categoryId);
   const [templates, setTemplates] = useState<[{name: string, id: string}]>()
+  const [ category, setCategory ] = useState<string | undefined>('')
 
   const requestTemplateByCategory = async () => {
     const [allTemplates, err] = await makeRequest();
@@ -17,6 +18,8 @@ export default function ChooseTemplate() {
       toast.error(err.message);
     }
     setTemplates(allTemplates?.data)
+    const cat = categories?.filter(item => item.id === categoryId)[0];
+    setCategory(cat?.name)
   };
 
   useEffect(() => {
@@ -34,7 +37,7 @@ export default function ChooseTemplate() {
           Select the specific template you need
         </h2>
         <p className="choose-document-type__text text--sm">
-          Tech / Startup agreement templates:
+          {category}
         </p>
         <div className="options-grid">
           <>

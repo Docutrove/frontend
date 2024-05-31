@@ -28,7 +28,7 @@ export default function ThankYou({
           <div className="back-button">
             <Icon name="caret-right" className="back-icon" />
           </div>
-          <p className="text--xs">Back To Dashboard</p>
+          <p className="text--xs">Back</p>
         </Link>
       </div>
     </GradientLayout>

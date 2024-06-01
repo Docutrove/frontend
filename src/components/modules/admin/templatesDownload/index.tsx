@@ -34,9 +34,6 @@ export default function TempDownloadView() {
         </div>
       </div>
       <div className="table-section">
-        <div className="table-top">
-          <span className="table-heading"> New Template Download </span>
-        </div>
         <table className="striped-table">
           <thead>
             <td> Date & Time</td>

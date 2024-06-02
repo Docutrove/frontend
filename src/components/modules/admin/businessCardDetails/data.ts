@@ -34,12 +34,45 @@ export interface BranchName {
   streetName: string
 }
 
+export interface PersonalDetails {
+  surname: string
+  firstName: string
+  otherName: string
+  dateOfBirth: string
+  gender: string
+  nationality: string
+}
+
+export interface Address {
+  country: string
+  state: string
+  lga: string
+  city: string
+  postCode: string
+  houseNumber: string
+  streetName: string
+}
+
+export interface MeansOfIdentification {
+  type: string
+  identityNumber: string
+}
+
+export interface ParticularsOfProprietors {
+  personalDetails: PersonalDetails
+  address: Address
+  residentialAddress: Address
+  meansOfIdentification: MeansOfIdentification
+  proprietorPartner: string
+}
+
 export interface Data {
   companyType: CompanyType
   proposedNames: ProposedNames
   businessDetails: BusinessDetails
   principalPlaceOfBusiness: PrincipalPlaceOfBusiness
   branchName: BranchName
+  particularsOfProprietors: ParticularsOfProprietors
 }
 
 export const data: Data = {
@@ -73,5 +106,38 @@ export const data: Data = {
     postCode: '123456',
     houseNumber: 'House 123',
     streetName: 'Street Name',
+  },
+  particularsOfProprietors: {
+    personalDetails: {
+      surname: 'Doe',
+      firstName: 'John',
+      otherName: 'A',
+      dateOfBirth: '01/01/1980',
+      gender: 'Male',
+      nationality: 'Country',
+    },
+    address: {
+      country: 'Country',
+      state: 'State Name',
+      lga: 'Local Government Area',
+      city: 'City Name',
+      postCode: '123456',
+      houseNumber: 'House 123',
+      streetName: 'Street Name',
+    },
+    residentialAddress: {
+      country: 'Country',
+      state: 'State Name',
+      lga: 'Local Government Area',
+      city: 'City Name',
+      postCode: '123456',
+      houseNumber: 'House 123',
+      streetName: 'Street Name',
+    },
+    meansOfIdentification: {
+      type: 'Passport',
+      identityNumber: 'A1234567',
+    },
+    proprietorPartner: 'Found',
   },
 }

@@ -25,12 +25,21 @@ export interface PrincipalPlaceOfBusiness {
   streetName: string
 }
 
+export interface BranchName {
+  state: string
+  lga: string
+  city: string
+  postCode: string
+  houseNumber: string
+  streetName: string
+}
+
 export interface Data {
   companyType: CompanyType
   proposedNames: ProposedNames
   businessDetails: BusinessDetails
   principalPlaceOfBusiness: PrincipalPlaceOfBusiness
-  branchName: string
+  branchName: BranchName
 }
 
 export const data: Data = {
@@ -57,5 +66,12 @@ export const data: Data = {
     houseNumber: 'House 123',
     streetName: 'Street Name',
   },
-  branchName: 'Main Branch',
+  branchName: {
+    state: 'State Name',
+    lga: 'Local Government Area',
+    city: 'City Name',
+    postCode: '123456',
+    houseNumber: 'House 123',
+    streetName: 'Street Name',
+  },
 }

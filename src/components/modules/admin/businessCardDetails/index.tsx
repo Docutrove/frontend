@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './index.scss'
 import { CaretDown, CaretUp } from '../../../../assets'
 import {
   data,
-  Data,
   BusinessDetails as BusinessDetailsType,
   PrincipalPlaceOfBusiness,
 } from './data'
@@ -154,7 +153,25 @@ const BusinessDetails: React.FC = () => {
           </div>
           {branchNameOpen && (
             <div className="accordion-content">
-              <p>{branchNameData}</p>
+              <p>
+                <strong>State:</strong> {branchNameData.state}
+              </p>
+              <p>
+                <strong>LGA:</strong> {branchNameData.lga}
+              </p>
+              <p>
+                <strong>City/Town/Village:</strong> {branchNameData.city}
+              </p>
+              <p>
+                <strong>Post Code:</strong> {branchNameData.postCode}
+              </p>
+              <p>
+                <strong>House Number/Building Name:</strong>{' '}
+                {branchNameData.houseNumber}
+              </p>
+              <p>
+                <strong>Street Name:</strong> {branchNameData.streetName}
+              </p>
             </div>
           )}
         </div>

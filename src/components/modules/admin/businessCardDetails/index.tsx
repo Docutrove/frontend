@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import './index.scss'
 import { CaretDown, CaretUp } from '../../../../assets'
-import { data } from './data'
+import { data, CompanyType, ProposedNames } from './data'
 
 const BusinessDetails: React.FC = () => {
   const [companyTypeOpen, setCompanyTypeOpen] = useState(false)
   const [proposedNameOpen, setProposedNameOpen] = useState(false)
-  const [companyTypeData, setCompanyTypeData] = useState<any>({})
-  const [proposedNamesData, setProposedNamesData] = useState<any>({})
+  const [companyTypeData, setCompanyTypeData] = useState<CompanyType | null>(
+    null
+  )
+  const [proposedNamesData, setProposedNamesData] =
+    useState<ProposedNames | null>(null)
 
   useEffect(() => {
     // Fetching data from JSON file
@@ -30,7 +33,7 @@ const BusinessDetails: React.FC = () => {
               alt="toggle icon"
             />
           </div>
-          {companyTypeOpen && (
+          {companyTypeOpen && companyTypeData && (
             <div className="accordion-content">
               <p>
                 <strong>Classification:</strong>{' '}
@@ -53,7 +56,7 @@ const BusinessDetails: React.FC = () => {
               alt="toggle icon"
             />
           </div>
-          {proposedNameOpen && (
+          {proposedNameOpen && proposedNamesData && (
             <div className="accordion-content">
               <p>
                 <strong>Option 1:</strong> {proposedNamesData.option1}

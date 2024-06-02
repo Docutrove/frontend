@@ -8,13 +8,11 @@ export default function TemplatesAll() {
       <div className="table-section">
         <table className="striped-table">
           <thead>
-            <tr>
-              <th>Template Type</th>
-              <th>Category</th>
-              <th>Price</th>
-              <th>Downloads</th>
-              <th>Status</th>
-            </tr>
+            <td>Template Type</td>
+            <td>Category</td>
+            <td>Price</td>
+            <td>Downloads</td>
+            <td>Status</td>
           </thead>
           <tbody>
             {StatisticsCardData.map((data, index) => (
@@ -22,7 +20,7 @@ export default function TemplatesAll() {
                 <td>{data.templateType}</td>
                 <td>{data.category}</td>
                 <td>{`$${data.price.toFixed(2)}`}</td>
-                <td>{data.downloads}</td>
+                <td className="downloads">{data.downloads}</td>
                 <td>
                   <button
                     style={{

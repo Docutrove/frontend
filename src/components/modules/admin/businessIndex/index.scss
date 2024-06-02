@@ -1,0 +1,75 @@
+//@use 'tablestyles';
+
+@import '../../../../assets/styles/_tablestyles.scss';
+
+.main-content {
+  //overflow: scroll;
+}
+
+.dashboard-stats {
+  // display: flex;
+  justify-content: space-between;
+
+  .statistics-card {
+    display: flex;
+
+    //   flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    margin: 10px 0;
+    transition: all 0.3s;
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      border-radius: 0.76rem;
+      padding: 20px;
+      margin-right: 10px;
+      transition: all 0.3s;
+    }
+  }
+}
+
+.table-section {
+  @extend %table-section-styles;
+  margin-top: 0;
+
+  .table-top {
+    .table-heading {
+      @extend %table-heading;
+    }
+    .view_all {
+      @extend %view_styles;
+    }
+  }
+
+  .striped-table {
+    @extend %striped-table;
+    margin-top: 0;
+
+    thead {
+      @extend %table-data-styles;
+      padding-top: -2rem;
+    }
+
+    td {
+      @extend %table-data-styles;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #f9fafa;
+    }
+  }
+}
+
+.second-table {
+  //@extend %table-section-styles;
+  border: none;
+}

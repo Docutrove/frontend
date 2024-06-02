@@ -1,0 +1,46 @@
+.business-details {
+  padding: 2rem;
+
+  .section-heading {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .accordion-section {
+    .accordion {
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      overflow: hidden;
+
+      .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: #f7f7f7;
+        cursor: pointer;
+
+        h2 {
+          margin: 0;
+          font-size: 1.5rem;
+        }
+
+        img {
+          width: 1rem;
+          height: 1rem;
+        }
+      }
+
+      .accordion-content {
+        padding: 1rem;
+        background-color: #fff;
+
+        p {
+          margin: 0.5rem 0;
+        }
+      }
+    }
+  }
+}

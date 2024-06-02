@@ -39,6 +39,14 @@
 
     td {
       @extend %table-data-styles;
+      .downloads {
+      }
+    }
+
+    tr {
+      .downloads {
+        padding-left: 3rem;
+      }
     }
 
     tr:nth-child(odd) {

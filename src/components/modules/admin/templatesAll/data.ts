@@ -15,8 +15,8 @@ export const StatisticsCardData: StatisticsCardData[] = [
     price: 29.99,
     downloads: '100',
     buttonState: 'active',
-    buttonBackgroundColor: '#4CAF50', // Green
-    buttonTextColor: '#FFFFFF', // White
+    buttonBackgroundColor: '#F2FBFC',
+    buttonTextColor: '#00B8BF',
   },
   {
     templateType: 'Type B',
@@ -24,8 +24,8 @@ export const StatisticsCardData: StatisticsCardData[] = [
     price: 19.99,
     downloads: '200',
     buttonState: 'inactive',
-    buttonBackgroundColor: '#F44336', // Red
-    buttonTextColor: '#FFFFFF', // White
+    buttonBackgroundColor: '#FDF2F4',
+    buttonTextColor: '#D30021',
   },
   {
     templateType: 'Type C',
@@ -33,8 +33,8 @@ export const StatisticsCardData: StatisticsCardData[] = [
     price: 39.99,
     downloads: '150',
     buttonState: 'active',
-    buttonBackgroundColor: '#4CAF50', // Green
-    buttonTextColor: '#FFFFFF', // White
+    buttonBackgroundColor: '#F2FBFC',
+    buttonTextColor: '#00B8BF',
   },
   {
     templateType: 'Type D',
@@ -42,7 +42,7 @@ export const StatisticsCardData: StatisticsCardData[] = [
     price: 49.99,
     downloads: '250',
     buttonState: 'inactive',
-    buttonBackgroundColor: '#F44336', // Red
-    buttonTextColor: '#FFFFFF', // White
+    buttonBackgroundColor: '#FDF2F4',
+    buttonTextColor: '#D30021',
   },
 ]

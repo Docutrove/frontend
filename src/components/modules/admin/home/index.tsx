@@ -3,6 +3,8 @@ import './index.scss'
 import Main from '../main'
 import TempDownloadView from '../templatesDownload'
 import TemplatesAll from '../templatesAll'
+import BusinessCardIndex from '../businessIndex'
+import BusinessDetails from '../businessCardDetails'
 
 // import AdminPanel from "../adminPanel";
 
@@ -11,7 +13,9 @@ export default function Admin() {
     <Layout>
       {/* <Main /> */}
       {/* <TempDownloadView /> */}
-      <TemplatesAll />
+      {/* <TemplatesAll /> */}
+      {/* <BusinessCardIndex /> */}
+      <BusinessDetails />
     </Layout>
   )
 }

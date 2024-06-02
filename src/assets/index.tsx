@@ -11,6 +11,8 @@ import Tiles2 from './Images/tiles2.png'
 import Tiles3 from './Images/tiles3.svg'
 import Tiles4 from './Images/tiles4.svg'
 import ArrowUp from './Images/arrow-up.svg'
+import CaretUp from './Images/CaretUp.svg'
+import CaretDown from './Images/CaretDown.png'
 
 export {
   Logo,
@@ -26,4 +28,6 @@ export {
   Tiles3,
   Tiles4,
   ArrowUp,
+  CaretUp,
+  CaretDown,
 }

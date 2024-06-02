@@ -10,12 +10,30 @@ export interface ProposedNames {
   option4: string
 }
 
-export interface BusinessData {
-  companyType: CompanyType
-  proposedNames: ProposedNames
+export interface BusinessDetails {
+  commencementDate: string
+  emailAddress: string
+  phoneNumber: string
 }
 
-export const data: BusinessData = {
+export interface PrincipalPlaceOfBusiness {
+  state: string
+  lga: string
+  city: string
+  postCode: string
+  houseNumber: string
+  streetName: string
+}
+
+export interface Data {
+  companyType: CompanyType
+  proposedNames: ProposedNames
+  businessDetails: BusinessDetails
+  principalPlaceOfBusiness: PrincipalPlaceOfBusiness
+  branchName: string
+}
+
+export const data: Data = {
   companyType: {
     classification: 'Private',
     specificType: 'Limited',
@@ -26,4 +44,18 @@ export const data: BusinessData = {
     option3: 'Example Name 3',
     option4: 'Example Name 4',
   },
+  businessDetails: {
+    commencementDate: '2024-01-01',
+    emailAddress: 'example@business.com',
+    phoneNumber: '123-456-7890',
+  },
+  principalPlaceOfBusiness: {
+    state: 'State Name',
+    lga: 'Local Government Area',
+    city: 'City Name',
+    postCode: '123456',
+    houseNumber: 'House 123',
+    streetName: 'Street Name',
+  },
+  branchName: 'Main Branch',
 }

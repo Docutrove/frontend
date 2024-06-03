@@ -1,6 +1,17 @@
 $section-heading-text-color: #00b8bf;
 $section-heading-border-color: #f0ecf5;
 
+@media (max-width: 768px) {
+  .business-details {
+    padding: 0 0.5rem;
+    margin: 1.5rem 1rem;
+  }
+
+  .accordion-section .accordion .accordion-header h2 {
+    font-size: 1.2rem;
+  }
+}
+
 .business-details {
   padding: 0 1rem;
   margin: 2.2rem 2rem;
@@ -8,8 +19,9 @@ $section-heading-border-color: #f0ecf5;
   .section-heading {
     text-align: center;
     font-size: 1.5rem;
-    margin-bottom: 2rem;
-    padding: 0 0rem;
+    margin-bottom: 1rem; /* Reduced margin-bottom to decrease vertical spacing */
+    padding: 0;
+    font-weight: 500;
     color: $section-heading-text-color;
     border-top: 1px solid $section-heading-border-color;
     border-bottom: 1px solid $section-heading-border-color;
@@ -44,9 +56,11 @@ $section-heading-border-color: #f0ecf5;
       .accordion-content {
         padding: 1rem;
         background-color: #fff;
+        width: 100%; /* Ensure the content takes the full width of the accordion */
 
         p {
           margin: 0.5rem 0;
+
           strong {
             display: inline-block;
             width: 150px; /* adjust width as needed for alignment */

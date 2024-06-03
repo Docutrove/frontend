@@ -29,7 +29,7 @@ import ChangePlan from './components/modules/app/settings/ChangePlan'
 import DocumentThank from './components/modules/public/customiseDocument/DocumentThank'
 import BusinessThank from './components/modules/public/businessRegistration/BusinessThank'
 import ConsultationThank from './components/modules/public/bookConsultation/ConsultationThank'
-import Admin from './components/modules/admin/home'
+import Admin from './components/modules/admin/index'
 import { useAuthContext } from './components/context/authContext'
 import { useEffect } from 'react'
 
@@ -103,11 +103,10 @@ function AdminRoutes() {
   return (
     <Routes>
       {/* Nested routes for admin */}
-      <Route path="/" element={<Admin />} />
+      <Route path="/*" element={<Admin />} />
       {/* Add more admin sub-routes as needed */}
     </Routes>
   )
 }
-
 
 export default App

@@ -1,6 +1,6 @@
-import { ReactNode, useEffect } from 'react'
-import Header from '../header'
-import Sidebar from '../sidebar'
+import { ReactNode, useEffect, useState } from 'react'
+import Header from './header'
+import Sidebar from './sidebar'
 import { useLocation } from 'react-router'
 import './index.scss' // Import the SCSS file
 
@@ -16,17 +16,26 @@ export default function Layout({ className, children }: LayoutProps) {
     window.scrollTo(0, 0)
   }, [location])
 
+  const [showSidebar, setShowSideBar] = useState(false)
+
+  const openSideBarHandler = () => {
+    setShowSideBar((prev) => !prev)
+  }
+
   return (
     <div className={`layout ${className}`}>
       <div className="wrapper">
-        <nav className="nav">
+        <nav className={`nav ${!showSidebar ? 'inactive' : 'active'}`}>
           <div className="sidebar">
             <Sidebar />
           </div>
         </nav>
         <div className="content">
           <header>
-            <Header />
+            <Header
+              showSidebar={showSidebar}
+              openSideBar={openSideBarHandler}
+            />
           </header>
           {children}
         </div>

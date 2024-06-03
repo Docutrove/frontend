@@ -28,14 +28,18 @@
   //   padding: 48px; /* Adjusted padding */
   //   overflow-y: auto;
 }
-// @media (min-width: 768px) {
-//   .content {
-//     padding-left: 48px;
-//   }
-// }
 
-// @media (min-width: 1024px) {
-//   .content {
-//     padding-left: 25%; /* Adjusted */
-//   }
-// }
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    padding: 0 1rem;
+  }
+
+  .nav.active {
+    display: flex;
+  }
+}

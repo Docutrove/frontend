@@ -36,6 +36,7 @@
     .profile {
       display: flex;
       align-items: center;
+      gap: 1.2rem;
 
       .notification-icon {
         margin-right: 20px;
@@ -59,5 +60,26 @@
       }
     }
   }
+
+  .ham-icon {
+    font-size: 1.8rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: none;
+  }
 }
-// }
+
+@media (max-width: 900px) {
+  .header {
+    .header-right {
+      .search-component {
+        display: none;
+      }
+    }
+    padding: 1rem 1.2rem;
+    .ham-icon {
+      display: flex;
+    }
+  }
+}

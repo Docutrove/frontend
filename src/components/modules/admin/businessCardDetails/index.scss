@@ -22,6 +22,7 @@ $section-heading-border-color: #f0ecf5;
     margin-bottom: 1rem; /* Reduced margin-bottom to decrease vertical spacing */
     padding: 0;
     font-weight: 500;
+    padding: 0 -1.5rem;
     color: $section-heading-text-color;
     border-top: 1px solid $section-heading-border-color;
     border-bottom: 1px solid $section-heading-border-color;
@@ -38,9 +39,12 @@ $section-heading-border-color: #f0ecf5;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem;
-        background-color: #f7f7f7;
+        // padding: 1rem;
+        background-color: #f9fafa;
         cursor: pointer;
+        width: calc(100% + 2px); /* Full width plus border */
+        margin-left: -1px; /* Align with border */
+        margin-right: -1px; /* Align with border */
 
         h2 {
           margin: 0;
@@ -56,14 +60,26 @@ $section-heading-border-color: #f0ecf5;
       .accordion-content {
         padding: 1rem;
         background-color: #fff;
-        width: 100%; /* Ensure the content takes the full width of the accordion */
+        /* Ensure the content takes the full width of the accordion */
+        width: 100%;
 
         p {
           margin: 0.5rem 0;
+          border-bottom: 1px solid $section-heading-border-color;
+          padding: 2rem 0; /* Adjust padding to center the content vertically */
 
           strong {
             display: inline-block;
             width: 150px; /* adjust width as needed for alignment */
+          }
+
+          /* Center the option value */
+          span {
+            display: inline-block;
+            text-align: center;
+            width: calc(
+              100% - 150px
+            ); /* Subtract the width of the option for proper alignment */
           }
         }
       }

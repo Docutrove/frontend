@@ -1,12 +1,12 @@
 $section-heading-text-color: #00b8bf;
 $section-heading-border-color: #f0ecf5;
 
+//responsive styles f
 @media (max-width: 768px) {
   .business-details {
     padding: 0 0.5rem;
     margin: 1.5rem 1rem;
   }
-
   .accordion-section .accordion .accordion-header h2 {
     font-size: 1.2rem;
   }
@@ -30,15 +30,20 @@ $section-heading-border-color: #f0ecf5;
 
   .accordion-section {
     .accordion {
+      padding: 0 0;
       margin-bottom: 1.3rem;
       border: 1px solid #ddd;
       border-radius: 0.5rem;
       overflow: hidden;
 
+      // &:last-child {
+      //   margin-bottom: 0;
+      // }
+
       .accordion-header {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        //align-items: stretch;
         // padding: 1rem;
         background-color: #f9fafa;
         cursor: pointer;
@@ -54,6 +59,10 @@ $section-heading-border-color: #f0ecf5;
         img {
           width: 1rem;
           height: 1rem;
+        }
+
+        &__text {
+          padding: 0 1rem;
         }
       }
 

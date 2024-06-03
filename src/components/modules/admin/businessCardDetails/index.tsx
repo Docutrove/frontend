@@ -58,7 +58,7 @@ const BusinessDetails: React.FC = () => {
             className="accordion-header"
             onClick={() => setCompanyTypeOpen(!companyTypeOpen)}
           >
-            <h2>Company Type</h2>
+            <h2 className="accordion-header-text">Company Type</h2>
             <img
               src={companyTypeOpen ? CaretUp : CaretDown}
               alt="toggle icon"

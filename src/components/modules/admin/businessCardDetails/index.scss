@@ -1,15 +1,23 @@
+$section-heading-text-color: #00b8bf;
+$section-heading-border-color: #f0ecf5;
+
 .business-details {
-  padding: 2rem;
+  padding: 0 1rem;
+  margin: 2.2rem 2rem;
 
   .section-heading {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 2rem;
+    padding: 0 0rem;
+    color: $section-heading-text-color;
+    border-top: 1px solid $section-heading-border-color;
+    border-bottom: 1px solid $section-heading-border-color;
   }
 
   .accordion-section {
     .accordion {
-      margin-bottom: 1rem;
+      margin-bottom: 1.3rem;
       border: 1px solid #ddd;
       border-radius: 0.5rem;
       overflow: hidden;

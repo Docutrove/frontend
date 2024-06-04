@@ -9,7 +9,7 @@ const TemplateDownloadDetails: React.FC = () => {
   return (
     <div className="template-download-details">
       <div className="card-section">
-        <div className="card">
+        <div className="downloadcard">
           <div className="card-header">
             <h2 className="card-header-text">Company Type</h2>
           </div>
@@ -28,7 +28,7 @@ const TemplateDownloadDetails: React.FC = () => {
             </p>
           </div>
         </div>
-        <div className="card">
+        <div className="downloadcard">
           <div className="card-header">
             <h2 className="card-header-text">Proposed Name</h2>
           </div>

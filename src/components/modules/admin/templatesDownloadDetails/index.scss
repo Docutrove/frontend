@@ -1,7 +1,6 @@
-$section-heading-text-color: #00b8bf;
 $section-heading-border-color: #f0ecf5;
 
-// Responsive styles
+//Responsive styles
 @media (max-width: 768px) {
   .template-download-details {
     padding: 0 0.5rem;
@@ -15,19 +14,25 @@ $section-heading-border-color: #f0ecf5;
   }
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .template-download-details {
   padding: 0 1rem;
   margin: 2.2rem 2rem;
 
   .card-section {
-    .card {
+    .downloadcard {
       margin-bottom: 1.3rem;
       border: 1px solid #ddd;
       border-radius: 0.5rem;
-      overflow: hidden;
-
+      //overflow: hidden;
       .card-header {
-        padding: 0.65rem 1rem;
+        // padding: 0.65rem 1rem;
+        display: block;
         background-color: #f9fafa;
         border-bottom: 1px solid $section-heading-border-color;
 

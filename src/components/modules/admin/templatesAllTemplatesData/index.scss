@@ -1,7 +1,11 @@
-here's the most recent css, i updated it, see it here
-```
 $section-heading-border-color: #f0ecf5;
 $border-buttom: 1px solid $section-heading-border-color;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 //Responsive styles
 @media (max-width: 768px) {
@@ -13,14 +17,8 @@ $border-buttom: 1px solid $section-heading-border-color;
     font-size: 1.2rem;
   }
   .card-content-row-value {
-    padding-left: 0 !important; // Add !important to override other styles if necessary
+    padding-left: 0 !important;
   }
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 
 .template-download-details {
@@ -35,7 +33,7 @@ $border-buttom: 1px solid $section-heading-border-color;
       //overflow: hidden;
       .card-header {
         padding: 0.5rem 1rem;
-        display: block;
+        // display: block;
         background-color: #f9fafa;
         border-bottom: $border-buttom;
 
@@ -47,24 +45,22 @@ $border-buttom: 1px solid $section-heading-border-color;
 
       .card-content {
         background-color: #fff;
-        padding: 1rem;
 
         p {
           margin: 0.5rem 0;
-          padding: 0.7rem 0;
+          padding: 0.7rem 2rem;
           display: flex;
           //  justify-content: space-between;
           border-bottom: $border-buttom;
-
-          // padding: 0.7rem 2rem; /* Adjust padding to center the content vertically */
 
           &:last-child {
             border-bottom: none;
           }
 
-          strong {
-            width: 150px; // adjust width as needed for alignment
-          }
+          // strong {
+          //   display: inline-flex;
+          //   width: 150px; // adjust width as needed for alignment
+          // }
 
           .card-content-row-value {
             padding-left: 17.5rem;
@@ -77,6 +73,3 @@ $border-buttom: 1px solid $section-heading-border-color;
     }
   }
 }
-```
-
-wait let me tell you what next to do 

@@ -2,7 +2,7 @@ import React from 'react'
 import './index.scss'
 import { userData } from './data'
 
-const TemplateDownloadDetails: React.FC = () => {
+const TemplateDownloadAllDetails: React.FC = () => {
   const { templateDetails } = userData // Destructure only templateDetails since userDetails is not used
 
   return (
@@ -80,4 +80,4 @@ const TemplateDownloadDetails: React.FC = () => {
   )
 }
 
-export default TemplateDownloadDetails
+export default TemplateDownloadAllDetails

@@ -1,58 +1,83 @@
-import '../../../../assets/styles/_tablestyles.scss'
-
+import React from 'react'
 import './index.scss'
-import { StatisticsCardData } from './Data/downloads'
+import { userData } from './data'
 
-export default function TempDownloadView() {
+const TemplateDownloadDetails: React.FC = () => {
+  const { templateDetails } = userData // Destructure only templateDetails since userDetails is not used
+
   return (
-    <div className="main-content">
-      <div className="controls">
-        <div className="control-item search-bar">
-          <input type="text" placeholder="Search..." />
-          <i className="search-icon">🔍</i>
+    <div className="template-download-details">
+      <div className="card-section">
+        <div className="downloadcard">
+          <div className="card-header">
+            <h2 className="card-header-text">Template Details</h2>
+          </div>
+          <div className="card-content">
+            <p>
+              <strong>Template Title:</strong>{' '}
+              <span className="card-content-row-value">
+                {templateDetails.templateTitle}
+              </span>
+            </p>
+            <p>
+              <strong>Description:</strong>{' '}
+              <span className="card-content-row-value">
+                {templateDetails.description}
+              </span>
+            </p>
+            <p>
+              <strong>Category:</strong>{' '}
+              <span className="card-content-row-value">
+                {templateDetails.category}
+              </span>
+            </p>
+            <p>
+              <strong>Amount:</strong>{' '}
+              <span className="card-content-row-value">
+                {templateDetails.amount}
+              </span>
+            </p>
+            <p>
+              <strong>Template File:</strong>{' '}
+              <span className="card-content-row-value">
+                <a
+                  href={templateDetails.templateFile}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Link to File
+                </a>
+              </span>
+            </p>
+            <p>
+              <strong>Date Created:</strong>{' '}
+              <span className="card-content-row-value">
+                {templateDetails.dateCreated}
+              </span>
+            </p>
+            <p>
+              <strong>Total Downloads:</strong>{' '}
+              <span className="card-content-row-value">
+                {templateDetails.totalDownloads}
+              </span>
+            </p>
+            <p>
+              <strong>Total Amount Received:</strong>{' '}
+              <span className="card-content-row-value">
+                {templateDetails.totalAmountReceived}
+              </span>
+            </p>
+            <p>
+              <strong>Status:</strong>{' '}
+              <span className="card-content-row-value">
+                {templateDetails.status}
+              </span>
+            </p>
+          </div>
         </div>
-        <div className="control-item filter-dropdown">
-          <span>Filter by:</span>
-          <select>
-            <option value="all">All</option>
-            <option value="typeA">Type A</option>
-            <option value="typeB">Type B</option>
-            <option value="typeC">Type C</option>
-            <option value="typeD">Type D</option>
-          </select>
-        </div>
-        <div className="control-item date-filters">
-          <form>
-            <input type="text" placeholder="Start date" />
-            <i className="calendar-icon">📅</i>
-          </form>
-          <span> --- </span>
-          <form>
-            <input type="text" placeholder="End date" />
-            <i className="calendar-icon">📅</i>
-          </form>
-        </div>
-      </div>
-      <div className="table-section">
-        <table className="striped-table">
-          <thead>
-            <td> Date & Time</td>
-            <td> Template Type</td>
-            <td> Registered by</td>
-            <td> Amount </td>
-          </thead>
-          <tbody>
-            {StatisticsCardData.map((data, index) => (
-              <tr key={index}>
-                <td>{data.datetime}</td>
-                <td>{data.templateType}</td>
-                <td>{data.registeredBy}</td>
-                <td>{data.amount}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
     </div>
   )
 }
+
+export default TemplateDownloadDetails

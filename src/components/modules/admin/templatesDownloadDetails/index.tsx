@@ -1,60 +1,71 @@
 import React from 'react'
 import './index.scss'
-import { data } from './data'
+import { userData } from './data'
 
 const TemplateDownloadDetails: React.FC = () => {
-  const companyTypeData = data.companyType
-  const proposedNamesData = data.proposedNames
+  const { templateDetails, userDetails } = userData
 
   return (
     <div className="template-download-details">
       <div className="card-section">
         <div className="downloadcard">
           <div className="card-header">
-            <h2 className="card-header-text">Company Type</h2>
+            <h2 className="card-header-text">Template Details</h2>
           </div>
           <div className="card-content">
             <p>
-              <strong>Classification:</strong>{' '}
+              <strong>Template Type:</strong>{' '}
               <span className="card-content-row-value">
-                {companyTypeData.classification}
+                {templateDetails.templateType}
               </span>
             </p>
             <p>
-              <strong>Specific Type:</strong>{' '}
+              <strong>Template File:</strong>{' '}
               <span className="card-content-row-value">
-                {companyTypeData.specificType}
+                <a
+                  href={templateDetails.templateFile}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {templateDetails.templateFile}
+                </a>
+              </span>
+            </p>
+            <p>
+              <strong>Amount Paid:</strong>{' '}
+              <span className="card-content-row-value">
+                {templateDetails.amountPaid}
+              </span>
+            </p>
+            <p>
+              <strong>Date:</strong>{' '}
+              <span className="card-content-row-value">
+                {templateDetails.date}
               </span>
             </p>
           </div>
         </div>
         <div className="downloadcard">
           <div className="card-header">
-            <h2 className="card-header-text">Proposed Name</h2>
+            <h2 className="card-header-text">User Details</h2>
           </div>
           <div className="card-content">
             <p>
-              <strong>Option 1:</strong>{' '}
+              <strong>Full Name:</strong>{' '}
               <span className="card-content-row-value">
-                {proposedNamesData.option1}
+                {userDetails.fullName}
               </span>
             </p>
             <p>
-              <strong>Option 2:</strong>
+              <strong>Email Address:</strong>{' '}
               <span className="card-content-row-value">
-                {proposedNamesData.option2}
+                {userDetails.emailAddress}
               </span>
             </p>
             <p>
-              <strong>Option 3:</strong>
+              <strong>Phone Number:</strong>{' '}
               <span className="card-content-row-value">
-                {proposedNamesData.option3}
-              </span>
-            </p>
-            <p>
-              <strong>Option 4:</strong>{' '}
-              <span className="card-content-row-value">
-                {proposedNamesData.option4}
+                {userDetails.phoneNumber}
               </span>
             </p>
           </div>

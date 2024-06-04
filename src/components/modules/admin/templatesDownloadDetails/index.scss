@@ -1,0 +1,77 @@
+$section-heading-text-color: #00b8bf;
+$section-heading-border-color: #f0ecf5;
+
+// Responsive styles
+@media (max-width: 768px) {
+  .template-download-details {
+    padding: 0 0.5rem;
+    margin: 1.5rem 1rem;
+  }
+  .card-section .card .card-header h2 {
+    font-size: 1.2rem;
+  }
+  .card-content-row-value {
+    padding-left: 0 !important; // Add !important to override other styles if necessary
+  }
+}
+
+.template-download-details {
+  padding: 0 1rem;
+  margin: 2.2rem 2rem;
+
+  .section-heading {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: -10px 0;
+    color: $section-heading-text-color;
+    border-top: 1px solid $section-heading-border-color;
+    border-bottom: 1px solid $section-heading-border-color;
+  }
+
+  .card-section {
+    .card {
+      margin-bottom: 1.3rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      overflow: hidden;
+
+      .card-header {
+        padding: 0.65rem 1rem;
+        background-color: #f9fafa;
+        border-bottom: 1px solid $section-heading-border-color;
+
+        h2 {
+          margin: 0;
+          font-size: 1.5rem;
+        }
+      }
+
+      .card-content {
+        background-color: #fff;
+        padding: 1rem;
+
+        p {
+          margin: 0.5rem 0;
+          padding: 0.7rem 0;
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid $section-heading-border-color;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          strong {
+            width: 150px; // adjust width as needed for alignment
+          }
+
+          .card-content-row-value {
+            padding-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

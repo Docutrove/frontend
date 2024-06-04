@@ -49,6 +49,11 @@ export default function Sidebar() {
                   icon={Sidebar4}
                   topic="Downloads"
                 />
+                <SidebarNavLink
+                  to="TemplateDownloads"
+                  icon={Sidebar4}
+                  topic="DownloadDetails"
+                />
               </ul>
             </div>
           </div>

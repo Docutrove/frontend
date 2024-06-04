@@ -6,6 +6,7 @@ import TempDownloadView from '../templatesDownload'
 import TemplatesAll from '../templatesAll'
 import BusinessCardIndex from '../businessIndex'
 import BusinessDetails from '../businessCardDetails'
+import TemplateDownloadDetails from '../templatesDownloadDetails'
 
 // import AdminPanel from "../adminPanel";
 
@@ -18,6 +19,7 @@ export default function Admin() {
         <Route path="Downloads" element={<TempDownloadView />} />
         <Route path="Business-Services" element={<BusinessCardIndex />} />
         <Route path="Business-Details" element={<BusinessDetails />} />
+        <Route path="TemplateDownloads" element={<TemplateDownloadDetails />} />
       </Routes>
     </Layout>
   )

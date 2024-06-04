@@ -61,9 +61,6 @@ $section-heading-border-color: #f0ecf5;
         &-text {
           padding: 0 2rem;
         }
-        // &-caret {
-        //   //padding-right: 2rem;
-        // }
       }
 
       .accordion-content {
@@ -74,6 +71,10 @@ $section-heading-border-color: #f0ecf5;
           margin: 0.5rem 0;
           border-bottom: 1px solid $section-heading-border-color;
           padding: 0.7rem 2rem; /* Adjust padding to center the content vertically */
+
+          &:last-child {
+            border-bottom: none; /* Remove border from last child */
+          }
 
           strong {
             display: inline-flex;

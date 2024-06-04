@@ -19,17 +19,6 @@ $section-heading-border-color: #f0ecf5;
   padding: 0 1rem;
   margin: 2.2rem 2rem;
 
-  .section-heading {
-    text-align: center;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: -10px 0;
-    color: $section-heading-text-color;
-    border-top: 1px solid $section-heading-border-color;
-    border-bottom: 1px solid $section-heading-border-color;
-  }
-
   .card-section {
     .card {
       margin-bottom: 1.3rem;

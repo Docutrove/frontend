@@ -8,10 +8,6 @@ const TemplateDownloadDetails: React.FC = () => {
 
   return (
     <div className="template-download-details">
-      <div>
-        <h1 className="section-heading">TEMPLATE DOWNLOAD DETAILS</h1>
-      </div>
-
       <div className="card-section">
         <div className="card">
           <div className="card-header">

@@ -18,11 +18,12 @@ $section-heading-border-color: #f0ecf5;
 
   .section-heading {
     text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 1rem; /* Reduced margin-bottom to decrease vertical spacing */
-    padding: 0;
-    font-weight: 500;
-    padding: 0 -1.5rem;
+    // font-size: 1.5rem;
+    margin-bottom: 1rem;
+    //padding: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: -10px 0;
     color: $section-heading-text-color;
     border-top: 1px solid $section-heading-border-color;
     border-bottom: 1px solid $section-heading-border-color;
@@ -36,20 +37,13 @@ $section-heading-border-color: #f0ecf5;
       border-radius: 0.5rem;
       overflow: hidden;
 
-      // &:last-child {
-      //   margin-bottom: 0;
-      // }
-
       .accordion-header {
         display: flex;
         justify-content: space-between;
         //align-items: stretch;
-        // padding: 1rem;
+        padding: 0.65rem 0;
         background-color: #f9fafa;
         cursor: pointer;
-        width: calc(100% + 2px); /* Full width plus border */
-        margin-left: -1px; /* Align with border */
-        margin-right: -1px; /* Align with border */
 
         h2 {
           margin: 0;
@@ -57,38 +51,48 @@ $section-heading-border-color: #f0ecf5;
         }
 
         img {
+          margin-right: 2.2rem;
+          margin-top: 0.75rem;
+          // padding-top: 0.6rem;
           width: 1rem;
           height: 1rem;
         }
 
-        &__text {
-          padding: 0 1rem;
+        &-text {
+          padding: 0 2rem;
         }
+        // &-caret {
+        //   //padding-right: 2rem;
+        // }
       }
 
       .accordion-content {
-        padding: 1rem;
         background-color: #fff;
-        /* Ensure the content takes the full width of the accordion */
-        width: 100%;
+        overflow-x: scroll;
 
         p {
           margin: 0.5rem 0;
           border-bottom: 1px solid $section-heading-border-color;
-          padding: 2rem 0; /* Adjust padding to center the content vertically */
+          padding: 0.7rem 2rem; /* Adjust padding to center the content vertically */
 
           strong {
-            display: inline-block;
+            display: inline-flex;
             width: 150px; /* adjust width as needed for alignment */
           }
 
           /* Center the option value */
-          span {
-            display: inline-block;
-            text-align: center;
-            width: calc(
-              100% - 150px
-            ); /* Subtract the width of the option for proper alignment */
+          // span {
+          //   display: inline-block;
+          //   text-align: center;
+          //   width: calc(
+          //     100% - 150px
+          //   ); /* Subtract the width of the option for proper alignment */
+          // }
+        }
+        &-row-value {
+          padding-left: 17.5rem;
+          @media (max-width: 768px) {
+            padding-left: 1rem;
           }
         }
       }

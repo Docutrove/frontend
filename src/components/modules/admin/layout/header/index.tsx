@@ -27,7 +27,7 @@ export default function Header({
             <div className="user-icon">U</div>
 
             <div onClick={openSideBar} className="ham-icon">
-              {showSidebar ? <RiMenu3Fill /> : <RiCloseLargeLine />}
+              {showSidebar ? <RiCloseLargeLine /> : <RiMenu3Fill />}
             </div>
           </div>
         </div>

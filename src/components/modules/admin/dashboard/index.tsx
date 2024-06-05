@@ -1,5 +1,5 @@
 import StatisticsCard from '../../ui/statisticsCard/StatisticsCard'
-import '../../../../assets/styles/_tablestyles.scss'
+
 import './index.scss'
 
 import { ArrowUp } from '../../../../assets'
@@ -21,10 +21,10 @@ export default function Main() {
         <table className="striped-table">
           <thead>
             <tr>
-              <td> Date & Time</td>
-              <td> Template Type</td>
-              <td> Registered by</td>
-              <td> Amount </td>
+              <th> Date & Time</th>
+              <th> Template Type</th>
+              <th> Registered by</th>
+              <th> Amount </th>
             </tr>
           </thead>
           <tbody>
@@ -50,11 +50,11 @@ export default function Main() {
         <table className="striped-table">
           <thead>
             <tr>
-              <td> Date & Time</td>
-              <td> Company Type</td>
-              <td> Registered by</td>
-              <td> Amount </td>
-              <td></td>
+              <th> Date & Time</th>
+              <th> Company Type</th>
+              <th> Registered by</th>
+              <th> Amount </th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -65,7 +65,9 @@ export default function Main() {
                 <td>{item.registeredBy}</td>
                 <td>{item.amount}</td>
                 <td>
-                  <button style={{ backgroundColor: 'white' }}>View</button>
+                  <span>
+                    <button className="view-button">View</button>{' '}
+                  </span>
                 </td>
               </tr>
             ))}

@@ -1,10 +1,17 @@
 @import '../../../../assets/styles/mixins.scss';
 @import '../../../../assets/styles/admin.scss';
+@import '../../../../assets/styles/_tablestyles.scss';
 
 $input-border-radius: 4px;
-$input-background-color: #f0f2f3;
-$input-border: 1px solid #f0ecf5;
 
+//@extend %main-font-family;
+//font-size: 16px;
+
+%input-styles {
+  $input-background-color: #f0f2f3;
+  $input-border: 1px solid #f0ecf5;
+  $input-padding: 0.7rem 2.4rem;
+}
 // Responsive styles
 @media (max-width: 768px) {
   .controls {
@@ -124,7 +131,7 @@ $input-border: 1px solid #f0ecf5;
       padding: 0.7rem 2.4rem;
       border-radius: $input-border-radius;
       background-color: #f0f2f3;
-      border: $input-border;
+      @extend %input-styles;
 
       option {
         margin-right: 2rem;
@@ -135,147 +142,180 @@ $input-border: 1px solid #f0ecf5;
   }
 
   .date-filters {
-    form {
-      display: flex;
-      align-items: center;
-
-      input {
-        //   margin-right: 5px;
-        display: block;
-        border-radius: 4px;
-        background-color: $input-background-color;
-        border: $input-border;
-        padding: 1.2rem 2.5rem;
-        position: relative;
-
-        &.start-date::before,
-        &.end-date::before {
-          content: '';
-          position: absolute;
-          left: 10px;
-          top: 50%;
-          transform: translateY(-50%);
-          //  background: url('../../../../assets/Calendar.svg') no-repeat;
-          width: 20px;
-          height: 20px;
-        }
-
-        placeholder {
-          padding-top: 1rem;
-        }
-      }
-
-      .calendar-icon {
-        margin-left: 5px;
-      }
-    }
-  }
-}
-
-.table-section {
-  table {
-    width: 100%;
-    border-collapse: collapse;
-
-    th,
-    td {
-      padding: 8px 12px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-
-    th {
-      background-color: #f9f9f9;
-    }
-
-    tbody tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-  }
-}
-
-@media (min-width: 769px) {
-  .controls {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 1rem;
-    max-width: 80%;
 
-    .control-item {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      margin-right: 1rem;
+    span {
+      display: inline-block;
+      margin: 0 0.5rem;
+    }
+
+    form {
+      position: relative;
+      margin-right: 0.5rem;
 
       &:last-child {
         margin-right: 0;
       }
 
-      .search-bar,
-      select,
-      form {
-        width: auto;
-      }
-
       input {
-        width: auto;
+        @extend %input-styles;
+        width: 10rem;
+        padding-right: 2.5rem;
+        padding-left: 2.5rem;
       }
 
-      .search-bar {
-        position: relative;
-        input {
-          width: 15rem;
-          padding-right: 2.5rem;
-          padding-left: 2.5rem;
-        }
-        .search-icon {
-          position: absolute;
-          right: 0.5rem;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-      }
-    }
-
-    .filter-dropdown {
-      select {
-        padding: 0.7rem 1rem;
-        margin-left: -1rem;
-      }
-    }
-
-    .date-filters {
-      display: flex;
-      align-items: center;
-
-      span {
-        display: inline-block;
-        margin: 0 0.5rem;
-      }
-
-      form {
-        position: relative;
-        margin-right: 0.5rem;
-
-        &:last-child {
-          margin-right: 0;
-        }
-
-        input {
-          width: 10rem;
-          padding-right: 2.5rem;
-          padding-left: 2.5rem;
-        }
-
-        .calendar-icon {
-          position: absolute;
-          left: 0.5rem;
-          top: 50%;
-          transform: translateY(-50%);
-        }
+      .calendar-icon {
+        position: absolute;
+        left: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
       }
     }
   }
 }
+
+// .table-section {
+//   .striped-table {
+//     @extend %striped-table;
+//     width: 100%;
+//     border-collapse: collapse;
+
+//     // th,
+//     // td {
+//     //   padding: 8px 12px;
+//     //   text-align: left;
+//     //   border-bottom: 1px solid #ddd;
+//     // }
+
+//     th {
+//       background-color: #f9f9f9;
+//     }
+
+//     tbody tr:nth-child(even) {
+//       background-color: #f2f2f2;
+//     }
+//   }
+// }
+
+.table-section {
+  @extend %table-section-styles;
+
+  .table-top {
+    .table-heading {
+      @extend %table-heading;
+    }
+    .view_all {
+      @extend %view_styles;
+    }
+  }
+
+  .striped-table {
+    @extend %striped-table;
+    thead {
+      @extend %table-data-styles;
+    }
+
+    td {
+      @extend %table-data-styles;
+      .downloads {
+      }
+    }
+
+    tr {
+      .downloads {
+        padding-left: 3rem;
+      }
+    }
+
+    tr:nth-child(odd) {
+      background-color: #f9fafa;
+    }
+  }
+}
+
+// @media (min-width: 769px) {
+//   .controls {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 0 1rem;
+//     max-width: 80%;
+
+//     .control-item {
+//       flex: 1;
+//       display: flex;
+//       align-items: center;
+//       margin-right: 1rem;
+
+//       &:last-child {
+//         margin-right: 0;
+//       }
+
+//       .search-bar,
+//       select,
+//       form {
+//         width: auto;
+//       }
+
+//       input {
+//         width: auto;
+//       }
+
+//       .search-bar {
+//         position: relative;
+//         input {
+//           width: 15rem;
+//           padding-right: 2.5rem;
+//           padding-left: 2.5rem;
+//         }
+//         .search-icon {
+//           position: absolute;
+//           right: 0.5rem;
+//           top: 50%;
+//           transform: translateY(-50%);
+//         }
+//       }
+//     }
+
+//     .filter-dropdown {
+//       select {
+//         padding: 0.7rem 1rem;
+//         margin-left: -1rem;
+//       }
+//     }
+
+//     .date-filters {
+//       display: flex;
+//       align-items: center;
+
+//       span {
+//         display: inline-block;
+//         margin: 0 0.5rem;
+//       }
+
+//       form {
+//         position: relative;
+//         margin-right: 0.5rem;
+
+//         &:last-child {
+//           margin-right: 0;
+//         }
+
+//         input {
+//           width: 10rem;
+//           padding-right: 2.5rem;
+//           padding-left: 2.5rem;
+//         }
+
+//         .calendar-icon {
+//           position: absolute;
+//           left: 0.5rem;
+//           top: 50%;
+//           transform: translateY(-50%);
+//         }
+//       }
+//     }
+//   }
+// }

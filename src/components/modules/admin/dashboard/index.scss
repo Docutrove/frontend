@@ -1,6 +1,8 @@
-@import '../../../../assets/styles/mixins.scss';
 @import '../../../../assets/styles/_tablestyles.scss';
+@import '../../../../assets/styles/mixins.scss';
+
 @import '../../../../assets/styles/admin.scss';
+
 .main-content {
   //overflow: scroll;
 }
@@ -8,7 +10,7 @@
 .dashboard-stats {
   // display: flex;
   justify-content: space-between;
-
+  font-family: 'Inter', sans-serif;
   .stat {
     background-color: #f4f4f4;
     padding: 20px;
@@ -60,9 +62,10 @@
       @extend %table-data-styles;
     }
 
-    tr:nth-child(odd) {
-      background-color: #f9fafa;
-    }
+    // thead tr,
+    // tbody tr:nth-child(odd) {
+    //   background-color: #f9fafa;
+    // }
   }
 }
 

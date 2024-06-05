@@ -1,3 +1,5 @@
+@import './_admin.scss';
+
 $main-font-family: Inter, sans-serif;
 
 %view_styles {
@@ -26,15 +28,43 @@ $main-font-family: Inter, sans-serif;
   font-family: $main-font-family;
   font-weight: 700;
   margin-bottom: 1rem;
+  border-radius: 2rem;
 }
 
 %striped-table {
+  background-color: none;
   margin-top: 1.4rem;
   width: 100%;
   border-collapse: collapse;
 
+  // th {
+  //   padding: 0;
+  //   margin-left: -2rem;
+  // }
+  tbody {
+    tr:nth-child(odd) {
+      background-color: #f9fafa;
+    }
+  }
   th,
   td {
     padding: 20px 10px;
+    text-align: left; // Ensure the text is aligned left for consistency
+  }
+  // thead tr,
+  // tbody tr {
+  //   &:nth-child(odd) {
+  //     background-color: #f9fafa;
+  //   }
+  // }
+
+  .view-button {
+    background-color: #fff;
+    color: #6b7280;
+    padding: 7px 0.9rem;
+    border-radius: 0.2rem;
+    border: 1px solid #f0ecf5;
+    font-family: $main-font-family;
+    font-weight: 400;
   }
 }

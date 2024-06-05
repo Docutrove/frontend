@@ -48,6 +48,7 @@ export default function BaseInput({
             name={name}
             placeholder={placeholder?.replace(/_/g, ' ')}
             onChange={onChange}
+            onFocus={(e) => e.target.value = ''}
             {...props}
           />
         )}

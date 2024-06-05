@@ -7,6 +7,11 @@ import useRequest from "../../../hooks/useRequest";
 import { getTemplate } from "../../../../api/templates";
 import toast from "react-hot-toast";
 
+interface TemplateModule {
+  name: string,
+  label: string,
+}
+
 export default function TemplateInvoice() {
   const { goBack, setTemplate, templateId } = useCustomiseDocContext();
   const { makeRequest } = useRequest(getTemplate, templateId);
@@ -17,8 +22,11 @@ export default function TemplateInvoice() {
     description: string,
     configuration: {
       fields: [],
+      formConfig: {
+        modules: TemplateModule[],
+      },
       previewHtml: string,
-    },
+    }
   }>()
 
   const getTemplateLocal = async () => {
@@ -40,7 +48,7 @@ export default function TemplateInvoice() {
       subtitle="Customize and download a legal document"
       title={localTemplate?.name}
       back_button
-      document_text={localTemplate?.name}
+      document_text={localTemplate?.configuration.previewHtml}
       backClick={goBack}
     >
       <h5 className="invoice-price">Price: ₦{localTemplate?.price}</h5>

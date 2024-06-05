@@ -1,6 +1,7 @@
 import { Icon } from "../Icon";
 import NavBar from "../../public/navbar";
 import { ReactNode } from "react";
+import parse from 'html-react-parser';
 
 interface InvoiceDetailsProps {
   subtitle: string;
@@ -45,7 +46,9 @@ export default function InvoiceDetails({
           </div>
           <div className="template-container">
             <div className="template-image">
-              <p className="text--sm template-image__text">{document_text}</p>
+              <p className="text--sm template-image__text">
+              {parse(document_text || "")}
+              </p>
             </div>
           </div>
         </div>

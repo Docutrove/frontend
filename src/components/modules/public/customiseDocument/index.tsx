@@ -14,14 +14,26 @@ interface AuthData {
   phone: string
 }
 
+interface TemplateModule {
+  name: string,
+  label: string,
+}
+
 interface Template {
   name: string,
   price: number,
   description: string,
   configuration: {
     fields: [],
+    formConfig: {
+      modules: TemplateModule[],
+    },
     previewHtml: string,
   }
+}
+
+interface DynamicObject {
+  [key: string]: any;
 }
 
 const customiseDocContext = createContext<{
@@ -32,15 +44,15 @@ const customiseDocContext = createContext<{
   categoryId?: string;
   templateId?: string;
   template?: Template | undefined;
-  templateData?: object;
+  templateData?: DynamicObject | undefined;
   authData?: AuthData;
   setTemplate: (data: Template | undefined) => void;
   setAuthData: (data: AuthData) => void;
-  setTemplateData: (data: any) => void;
+  setTemplateData: (data: DynamicObject | undefined) => void;
   setCategoryId: (categoryId: string) => void;
   setTemplateId: (templateId: string) => void;
 }>({
-  setTemplateData: function (data: any): void {
+  setTemplateData: function (data: DynamicObject | undefined): void {
     console.log(data)
   },
   setCategoryId: function (categoryId: string): void {
@@ -73,7 +85,7 @@ export default function CustomiseDocumentProvider() {
   const [categories, setCategories] = useState()
   const [categoryId, setCategoryId] = useState("")
   const [templateId, setTemplateId] = useState("")
-  const [templateData, setTemplateData] = useState()
+  const [templateData, setTemplateData] = useState<DynamicObject | undefined>()
   const [template, setTemplate] = useState<Template | undefined>()
   const [authData, setAuthData] = useState<AuthData>()
 
@@ -120,7 +132,8 @@ export default function CustomiseDocumentProvider() {
     const nextScreen = SCREENS[idx + 1];
     setActiveScreen(nextScreen);
   }
-  const setTemplateDataReal = (data: any) => {
+  const setTemplateDataReal = (data: DynamicObject | undefined) => {
+    console.log(data)
     setTemplateData(data)
     const idx = SCREENS.findIndex((s) => s === activeScreen);
     const nextScreen = SCREENS[idx + 1];

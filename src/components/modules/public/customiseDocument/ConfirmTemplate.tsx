@@ -8,7 +8,7 @@ export default function ConfirmTemplate() {
     <InvoiceDetails
       subtitle="Customize and download a legal document"
       title={template?.name}
-      document_text={template?.name}
+      document_text={template?.configuration.previewHtml}
     >
       <p className="text--sm confirm-text">
         Your document is complete, we recommend that you preview

@@ -30,8 +30,15 @@
   .card-container {
     .statistics-card {
       .card {
+        .title {
+          font-family: $main-font-family;
+          font-weight: 500;
+          font-size: 14px;
+          color: #425669;
+        }
         .value {
-          font-size: 23px;
+          font-size: 22px;
+          font-family: $main-font-family;
           font-weight: 700;
         }
       }

@@ -27,6 +27,8 @@ $main-font-family: Inter, sans-serif;
 %table-heading {
   font-family: $main-font-family;
   font-weight: 700;
+  font-size: 22px;
+  color: #425669;
   margin-bottom: 1rem;
   border-radius: 2rem;
 }
@@ -37,11 +39,17 @@ $main-font-family: Inter, sans-serif;
   width: 100%;
   border-collapse: collapse;
 
-  // th {
-  //   padding: 0;
-  //   margin-left: -2rem;
-  // }
+  thead {
+    font-family: $main-font-family;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #425669;
+  }
   tbody {
+    font-family: $main-font-family;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #1c1c1c;
     tr:nth-child(odd) {
       background-color: #f9fafa;
     }

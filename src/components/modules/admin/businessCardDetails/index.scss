@@ -1,4 +1,5 @@
 @import '../../../../assets/styles/mixins.scss';
+@import '../../../../assets/styles/_admin.scss';
 
 $section-heading-text-color: #00b8bf;
 $section-heading-border-color: #f0ecf5;
@@ -23,7 +24,8 @@ $section-heading-border-color: #f0ecf5;
     // font-size: 1.5rem;
     margin-bottom: 1rem;
     //padding: 0;
-    font-size: 1rem;
+    font-family: $main-font-family;
+    font-size: 22px;
     font-weight: 600;
     padding: -10px 0;
     color: $section-heading-text-color;

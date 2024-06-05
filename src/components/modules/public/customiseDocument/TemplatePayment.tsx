@@ -13,8 +13,8 @@ export default function TemplatePayment() {
   const { goBack, authData, template, templateData, templateId } = useCustomiseDocContext();
   const { makeRequest: signupRequest } = useRequest(signup, authData);
   const itemID = Number(templateId);
-  const callbackUrl = "https://2e32-102-89-22-245.ngrok-free.app/customise/document";
-  // const callbackUrl = "https://docutrove.vercel.app/customise/document";
+  // const callbackUrl = "https://2e32-102-89-22-245.ngrok-free.app/customise/document";
+  const callbackUrl = "https://docutrove.vercel.app/customise/document";
   const { makeRequest: paymentRequest } = useRequest(initiatePayment, {itemID, paymentData: templateData, callbackUrl})
 
   const signUp = async () => {

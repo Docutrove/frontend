@@ -9,6 +9,8 @@ import {
   Address,
   MeansOfIdentification,
   ParticularsOfProprietors,
+  NatureOfBusiness,
+  DocumentUploads,
 } from './data'
 
 const BusinessDetails: React.FC = () => {
@@ -17,6 +19,8 @@ const BusinessDetails: React.FC = () => {
   const [businessDetailsOpen, setBusinessDetailsOpen] = useState(false)
   const [principalPlaceOpen, setPrincipalPlaceOpen] = useState(false)
   const [branchNameOpen, setBranchNameOpen] = useState(false)
+  const [natureOfBusinessOpen, setNatureOfBusinessOpen] = useState(false)
+  const [documentUploadsOpen, setDocumentUploadsOpen] = useState(false)
 
   const [companyTypeData, setCompanyTypeData] = useState(data.companyType)
   const [proposedNamesData, setProposedNamesData] = useState(data.proposedNames)
@@ -25,6 +29,10 @@ const BusinessDetails: React.FC = () => {
   const [principalPlaceData, setPrincipalPlaceData] =
     useState<PrincipalPlaceOfBusiness>(data.principalPlaceOfBusiness)
   const [branchNameData, setBranchNameData] = useState(data.branchName)
+  const [natureOfBusinessData, setNatureOfBusinessData] =
+    useState<NatureOfBusiness>(data.natureOfBusiness)
+  const [documentUploadsData, setDocumentUploadsData] =
+    useState<DocumentUploads>(data.documentUploads)
 
   const [personalDetailsOpen, setPersonalDetailsOpen] = useState(false)
   const [addressOpen, setAddressOpen] = useState(false)
@@ -149,17 +157,17 @@ const BusinessDetails: React.FC = () => {
               <p>
                 <strong>Commencement Date:</strong>
                 <span className="accordion-content-row-value">
-                  {businessDetailsData.commencementDate}{' '}
+                  {businessDetailsData.commencementDate}
                 </span>
               </p>
               <p>
                 <strong>Email Address:</strong>
                 <span className="accordion-content-row-value">
-                  {businessDetailsData.emailAddress}{' '}
+                  {businessDetailsData.emailAddress}
                 </span>
               </p>
               <p>
-                <strong>Phone Number:</strong>{' '}
+                <strong>Phone Number:</strong>
                 <span className="accordion-content-row-value">
                   {businessDetailsData.phoneNumber}
                 </span>
@@ -183,41 +191,39 @@ const BusinessDetails: React.FC = () => {
           {principalPlaceOpen && (
             <div className="accordion-content">
               <p>
-                <strong>State:</strong>{' '}
+                <strong>State:</strong>
                 <span className="accordion-content-row-value">
                   {principalPlaceData.state}
                 </span>
               </p>
               <p>
-                <strong>LGA:</strong>{' '}
+                <strong>LGA:</strong>
                 <span className="accordion-content-row-value">
                   {principalPlaceData.lga}
                 </span>
               </p>
               <p>
-                <strong>City/Town/Village:</strong>
+                <strong>City:</strong>
                 <span className="accordion-content-row-value">
-                  {' '}
-                  {principalPlaceData.city}{' '}
+                  {principalPlaceData.city}
                 </span>
               </p>
               <p>
                 <strong>Post Code:</strong>
                 <span className="accordion-content-row-value">
-                  {' '}
-                  {principalPlaceData.postCode}{' '}
+                  {principalPlaceData.postCode}
                 </span>
               </p>
               <p>
-                <strong>House Number/Building Name:</strong>
+                <strong>House Number:</strong>
                 <span className="accordion-content-row-value">
-                  {principalPlaceData.houseNumber}{' '}
+                  {principalPlaceData.houseNumber}
                 </span>
               </p>
               <p>
-                <strong>Street Name:</strong>{' '}
+                <strong>Street Name:</strong>
                 <span className="accordion-content-row-value">
-                  {principalPlaceData.streetName}{' '}
+                  {principalPlaceData.streetName}
                 </span>
               </p>
             </div>
@@ -234,40 +240,39 @@ const BusinessDetails: React.FC = () => {
           {branchNameOpen && (
             <div className="accordion-content">
               <p>
-                <strong>State:</strong>{' '}
+                <strong>State:</strong>
                 <span className="accordion-content-row-value">
-                  {' '}
-                  {branchNameData.state}{' '}
+                  {branchNameData.state}
                 </span>
               </p>
               <p>
-                <strong>LGA:</strong>{' '}
+                <strong>LGA:</strong>
                 <span className="accordion-content-row-value">
                   {branchNameData.lga}
                 </span>
               </p>
               <p>
-                <strong>City/Town/Village:</strong>{' '}
+                <strong>City:</strong>
                 <span className="accordion-content-row-value">
-                  {branchNameData.city}{' '}
+                  {branchNameData.city}
                 </span>
               </p>
               <p>
-                <strong>Post Code:</strong>{' '}
+                <strong>Post Code:</strong>
                 <span className="accordion-content-row-value">
                   {branchNameData.postCode}
                 </span>
               </p>
               <p>
-                <strong>House Number/Building Name:</strong>
+                <strong>House Number:</strong>
                 <span className="accordion-content-row-value">
-                  {branchNameData.houseNumber}{' '}
+                  {branchNameData.houseNumber}
                 </span>
               </p>
               <p>
-                <strong>Street Name:</strong>{' '}
+                <strong>Street Name:</strong>
                 <span className="accordion-content-row-value">
-                  {branchNameData.streetName}{' '}
+                  {branchNameData.streetName}
                 </span>
               </p>
             </div>
@@ -275,223 +280,80 @@ const BusinessDetails: React.FC = () => {
         </div>
       </div>
 
-      <h1 className="section-heading">PARTICULARS OF PROPRIETORS</h1>
+      <h1 className="section-heading">NATURE OF BUSINESS</h1>
       <div className="accordion-section">
         <div className="accordion">
           <div
             className="accordion-header"
-            onClick={() => setPersonalDetailsOpen(!personalDetailsOpen)}
+            onClick={() => setNatureOfBusinessOpen(!natureOfBusinessOpen)}
           >
-            <h2 className="accordion-header-text">Personal Details</h2>
+            <h2 className="accordion-header-text">Nature of Business</h2>
             <img
-              src={personalDetailsOpen ? CaretUp : CaretDown}
+              src={natureOfBusinessOpen ? CaretUp : CaretDown}
               alt="toggle icon"
             />
           </div>
-          {personalDetailsOpen && (
+          {natureOfBusinessOpen && (
             <div className="accordion-content">
               <p>
-                <strong>Surname:</strong>
+                <strong>Category:</strong>{' '}
                 <span className="accordion-content-row-value">
-                  {' '}
-                  {personalDetailsData.surname}{' '}
+                  {natureOfBusinessData.category}
                 </span>
               </p>
               <p>
-                <strong>First Name:</strong>{' '}
+                <strong>Specific Nature:</strong>{' '}
                 <span className="accordion-content-row-value">
-                  {personalDetailsData.firstName}{' '}
+                  {natureOfBusinessData.specificNature}
                 </span>
               </p>
               <p>
-                <strong>Other Name:</strong>{' '}
+                <strong>Other Description:</strong>{' '}
                 <span className="accordion-content-row-value">
-                  {personalDetailsData.otherName}{' '}
-                </span>
-              </p>
-              <p>
-                <strong>Date of Birth:</strong>{' '}
-                <span className="accordion-content-row-value">
-                  {personalDetailsData.dateOfBirth}{' '}
-                </span>
-              </p>
-              <p>
-                <strong>Gender:</strong>{' '}
-                <span className="accordion-content-row-value">
-                  {personalDetailsData.gender}
-                </span>
-              </p>
-              <p>
-                <strong>Nationality:</strong>
-                <span className="accordion-content-row-value">
-                  {' '}
-                  {personalDetailsData.nationality}{' '}
+                  {natureOfBusinessData.otherDescription}
                 </span>
               </p>
             </div>
           )}
         </div>
+      </div>
+
+      <h1 className="section-heading">DOCUMENT UPLOADS</h1>
+      <div className="accordion-section">
         <div className="accordion">
           <div
             className="accordion-header"
-            onClick={() => setAddressOpen(!addressOpen)}
+            onClick={() => setDocumentUploadsOpen(!documentUploadsOpen)}
           >
-            <h2 className="accordion-header-text">Address</h2>
-            <img src={addressOpen ? CaretUp : CaretDown} alt="toggle icon" />
-          </div>
-          {addressOpen && (
-            <div className="accordion-content">
-              <p>
-                <strong>Country:</strong>{' '}
-                <span className="accordion-content-row-value">
-                  {addressData.country}{' '}
-                </span>
-              </p>
-              <p>
-                <strong>State:</strong>
-                <span className="accordion-content-row-value">
-                  {' '}
-                  {addressData.state}{' '}
-                </span>
-              </p>
-              <p>
-                <strong>LGA:</strong>{' '}
-                <span className="accordion-content-row-value">
-                  {addressData.lga}{' '}
-                </span>
-              </p>
-              <p>
-                <strong>City/Town/Village:</strong>{' '}
-                <span className="accordion-content-row-value">
-                  {' '}
-                  {addressData.city}{' '}
-                </span>
-              </p>
-              <p>
-                <strong>Post Code:</strong>{' '}
-                <span className="accordion-content-row-value">
-                  {addressData.postCode}{' '}
-                </span>
-              </p>
-              <p>
-                <strong>House Number/Building Name:</strong>{' '}
-                <span className="accordion-content-row-value">
-                  {' '}
-                  {addressData.houseNumber}{' '}
-                </span>
-              </p>
-              <p>
-                <strong>Street Name:</strong>{' '}
-                <span className="accordion-content-row-value">
-                  {addressData.streetName}{' '}
-                </span>
-              </p>
-            </div>
-          )}
-        </div>
-        <div className="accordion">
-          <div
-            className="accordion-header"
-            onClick={() => setResidentialAddressOpen(!residentialAddressOpen)}
-          >
-            <h2 className="accordion-header-text">Residential Address</h2>
+            <h2 className="accordion-header-text">Document Uploads</h2>
             <img
-              src={residentialAddressOpen ? CaretUp : CaretDown}
+              src={documentUploadsOpen ? CaretUp : CaretDown}
               alt="toggle icon"
             />
           </div>
-          {residentialAddressOpen && (
+          {documentUploadsOpen && (
             <div className="accordion-content">
               <p>
-                <strong>Country:</strong>{' '}
-                <span className="accordion-content-row-value">
-                  {residentialAddressData.country}{' '}
+                <strong>Means of Identification:</strong>{' '}
+                <span className="accordion-content-row-value document-data">
+                  {documentUploadsData.meansOfIdentification}
                 </span>
               </p>
               <p>
-                <strong>State:</strong>{' '}
-                <span className="accordion-content-row-value">
-                  {residentialAddressData.state}{' '}
+                <strong>Proprietor Signature:</strong>{' '}
+                <span className="accordion-content-row-value document-data">
+                  {documentUploadsData.proprietorSignature}
                 </span>
               </p>
               <p>
-                <strong>LGA:</strong>{' '}
-                <span className="accordion-content-row-value">
-                  {residentialAddressData.lga}{' '}
+                <strong>Proprietor Photo:</strong>{' '}
+                <span className="accordion-content-row-value document-data">
+                  <span className="document-data">
+                    {' '}
+                    {documentUploadsData.proprietorPhoto}
+                  </span>
                 </span>
               </p>
-              <p>
-                <strong>City/Town/Village:</strong>{' '}
-                <span className="accordion-content-row-value">
-                  {residentialAddressData.city}{' '}
-                </span>
-              </p>
-              <p>
-                <strong>Post Code:</strong>{' '}
-                <span className="accordion-content-row-value">
-                  {residentialAddressData.postCode}{' '}
-                </span>
-              </p>
-              <p>
-                <strong>House Number/Building Name:</strong>{' '}
-                <span className="accordion-content-row-value">
-                  {residentialAddressData.houseNumber}{' '}
-                </span>
-              </p>
-              <p>
-                <strong>Street Name:</strong>
-                <span className="accordion-content-row-value">
-                  {residentialAddressData.streetName}{' '}
-                </span>
-              </p>
-            </div>
-          )}
-        </div>
-        <div className="accordion">
-          <div
-            className="accordion-header"
-            onClick={() =>
-              setMeansOfIdentificationOpen(!meansOfIdentificationOpen)
-            }
-          >
-            <h2 className="accordion-header-text">Means of Identification</h2>
-            <img
-              src={meansOfIdentificationOpen ? CaretUp : CaretDown}
-              alt="toggle icon"
-            />
-          </div>
-          {meansOfIdentificationOpen && (
-            <div className="accordion-content">
-              <p>
-                <strong>Type:</strong>
-                <span className="accordion-content-row-value">
-                  {' '}
-                  {meansOfIdentificationData.type}{' '}
-                </span>
-              </p>
-              <p>
-                <strong>Identity Number:</strong>
-                <span className="accordion-content-row-value">
-                  {meansOfIdentificationData.identityNumber}{' '}
-                </span>
-              </p>
-            </div>
-          )}
-        </div>
-        <div className="accordion">
-          <div
-            className="accordion-header"
-            onClick={() => setProprietorPartnerOpen(!proprietorPartnerOpen)}
-          >
-            <h2 className="accordion-header-text">Proprietor / Partner</h2>
-            <img
-              src={proprietorPartnerOpen ? CaretUp : CaretDown}
-              alt="toggle icon"
-            />
-          </div>
-          {proprietorPartnerOpen && (
-            <div className="accordion-content">
-              <p>{proprietorPartnerData} </p>
             </div>
           )}
         </div>

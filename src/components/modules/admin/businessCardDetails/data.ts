@@ -66,6 +66,12 @@ export interface ParticularsOfProprietors {
   proprietorPartner: string
 }
 
+export interface DocumentUploads {
+  meansOfIdentification: string
+  proprietorSignature: string
+  proprietorPhoto: string
+}
+
 export interface Data {
   companyType: CompanyType
   proposedNames: ProposedNames
@@ -73,6 +79,12 @@ export interface Data {
   principalPlaceOfBusiness: PrincipalPlaceOfBusiness
   branchName: BranchName
   particularsOfProprietors: ParticularsOfProprietors
+  natureOfBusiness: {
+    category: string
+    specificNature: string
+    otherDescription: string
+  }
+  documentUploads: DocumentUploads
 }
 
 export const data: Data = {
@@ -139,5 +151,15 @@ export const data: Data = {
       identityNumber: 'A1234567',
     },
     proprietorPartner: 'Found',
+  },
+  natureOfBusiness: {
+    category: 'Category',
+    specificNature: 'Specific Nature',
+    otherDescription: 'Other Description',
+  },
+  documentUploads: {
+    meansOfIdentification: 'means-of-identification.pdf',
+    proprietorSignature: 'proprietor-signature.pdf',
+    proprietorPhoto: 'proprietor-photo.pdf',
   },
 }

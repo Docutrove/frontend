@@ -19,7 +19,7 @@ export default function TemplatesAll() {
               <tr key={index}>
                 <td>{data.templateType}</td>
                 <td>{data.category}</td>
-                <td>{`$${data.price.toFixed(2)}`}</td>
+                <td>{`₦${data.price.toLocaleString()}`}</td>
                 <td className="downloads">{data.downloads}</td>
                 <td>
                   <button

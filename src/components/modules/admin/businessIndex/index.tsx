@@ -15,7 +15,10 @@ function BusinessCard() {
             >
               <div className="content">
                 <p className="title">{item.title}</p>
-                <p className="value">{item.amount}</p>
+
+                <p className="value" style={{ color: item.fontColor }}>
+                  {item.amount.toLocaleString()}
+                </p>
               </div>
             </div>
           )
@@ -35,34 +38,34 @@ export default function BusinessCardIndex() {
         <table className="striped-table">
           <thead>
             <td> Date & Time</td>
-            <td> Template Type</td>
+            <td> Company Type</td>
             <td> Registered by</td>
             <td> Amount </td>
           </thead>
           <tbody>
             <tr>
-              <td>Data 1</td>
-              <td>Data 2</td>
-              <td>Data 3</td>
-              <td>Data 4</td>
+              <td>Sept 29, 2023 11:00 AM</td>
+              <td>Limited Liability</td>
+              <td>Ronald Richards</td>
+              <td>#24,350</td>
             </tr>
             <tr>
-              <td>Data 1</td>
-              <td>Data 2</td>
-              <td>Data 3</td>
-              <td>Data 4</td>
+              <td>Sept 29, 2023 11:00 AM</td>
+              <td>Incorporated Trusted</td>
+              <td>Stella Richards</td>
+              <td>#24,350</td>
             </tr>
             <tr>
-              <td>Data 1</td>
-              <td>Data 2</td>
-              <td>Data 3</td>
-              <td>Data 4</td>
+              <td>Sept 29, 2023 11:00 AM</td>
+              <td>Limited Liability</td>
+              <td>Ronald Richards</td>
+              <td>#24,350</td>
             </tr>
             <tr>
-              <td>Data 1</td>
-              <td>Data 2</td>
-              <td>Data 3</td>
-              <td>Data 4</td>
+              <td>Sept 29, 2023 11:00 AM</td>
+              <td>Incorporated Trusted</td>
+              <td>Stella Richards</td>
+              <td>#24,350</td>
             </tr>
             {/* Add more rows as needed */}
           </tbody>

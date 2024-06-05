@@ -8,6 +8,7 @@ import BusinessCardIndex from '../businessIndex'
 import BusinessDetails from '../businessCardDetails'
 import TemplateDownloadDetails from '../templatesDownloadDetails'
 import TemplateDownloadAllDetails from '../templatesAllTemplatesData'
+// import Login from '../login'
 
 // import AdminPanel from "../adminPanel";
 
@@ -16,6 +17,7 @@ export default function Admin() {
     <Layout>
       <Routes>
         <Route index path="Dashboard" element={<Main />} />
+        {/* <Route path="Login" element={<Login />} /> */}
         <Route path="All-templates" element={<TemplatesAll />} />
         <Route path="Downloads" element={<TempDownloadView />} />
         <Route path="Business-Services" element={<BusinessCardIndex />} />

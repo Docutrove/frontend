@@ -67,7 +67,8 @@ export default function Sidebar() {
       <div className="sidebar-profile">
         <div className="name">AC </div>
         <div className="details">
-          Alize Cornet <span className="email">email@gmail.com</span>
+          <span className="user-name"> Alize Cornet</span>
+          <span className="email">email@gmail.com</span>
         </div>
       </div>
     </div>

@@ -16,14 +16,14 @@ export interface UserData {
 
 export const userData: UserData = {
   templateDetails: {
-    templateTitle: 'Updated Template Title',
-    description: 'This is an updated description.',
-    category: 'New Category',
-    amount: '$200',
-    templateFile: 'https://example.com/new-template.docx',
+    templateTitle: 'Graphic Design Contract',
+    description: 'Description goes here...',
+    category: 'Labour & Employment Agreement',
+    amount: ' ₦ 5,000.00',
+    templateFile: 'myloanagreement.docx',
     dateCreated: 'NOVEMBER 15, 2024 12:00 AM',
-    totalDownloads: 150,
-    totalAmountReceived: '$3000',
+    totalDownloads: 15,
+    totalAmountReceived: '₦500,0000,000',
     status: 'Active',
   },
 }

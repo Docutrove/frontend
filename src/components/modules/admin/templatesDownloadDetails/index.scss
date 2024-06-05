@@ -1,13 +1,10 @@
+@import '../../../../assets/styles/mixins.scss';
+@import '../../../../assets/styles/admin.scss';
+
 $section-heading-border-color: #f0ecf5;
 $border-buttom: 1px solid $section-heading-border-color;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-//Responsive styles
+// Responsive styles
 @media (max-width: 768px) {
   .template-download-details {
     padding: 0 0.5rem;
@@ -19,6 +16,12 @@ $border-buttom: 1px solid $section-heading-border-color;
   .card-content-row-value {
     padding-left: 0 !important;
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .template-download-details {
@@ -64,6 +67,7 @@ $border-buttom: 1px solid $section-heading-border-color;
 
           .card-content-row-value {
             padding-left: 17.5rem;
+
             @media (max-width: 768px) {
               padding-left: 3rem;
             }

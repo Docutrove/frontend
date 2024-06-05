@@ -1,8 +1,10 @@
+@import '../../../../../assets/styles/mixins.scss';
+
 $sidebar-links-color: #425669;
 $main-font-family: Inter, sans-serif;
 $border-buttom-color: #f4f4f6;
 $navbar-background-color: white;
-$sidebar-padding: 16px 3rem;
+$sidebar-padding: 16px 2rem;
 $navlink-bg: #0e2557;
 
 %sidebar-flex {
@@ -97,6 +99,7 @@ $navlink-bg: #0e2557;
         padding: 0 2rem;
         .heading-text {
           color: $sidebar-links-color;
+          display: block;
           font-weight: 700;
           font-family: $main-font-family;
           font-size: 1rem;
@@ -124,18 +127,36 @@ $navlink-bg: #0e2557;
   }
   .sidebar-profile {
     @extend %nav-cont-styles;
-    @extend %sidebar-border;
+    //@extend %sidebar-border;
     @extend %sidebar-flex;
 
     margin-top: 2rem;
     //width: inherit;
     padding: $sidebar-padding;
-    max-width: 15.2rem;
+    max-width: 15.5rem;
     flex-direction: row;
-    ///align-items: space-between;
-    // justify-content: space-between;
+    gap: 0.8rem;
+
     .name {
-      padding: 0 rem;
+      padding: 1rem;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background-color: #00b8bf;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .details {
+      .user-name {
+        color: #1c1c1c;
+        display: block;
+        font-weight: 600;
+      }
+      .email {
+      }
     }
   }
 }

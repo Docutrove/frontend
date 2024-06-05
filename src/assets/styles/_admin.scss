@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+%table_icon_styles {
+}
+
+%main-font-family {
+  font-family: 'Inter', sans-serif;
+}
+
+.my-element {
+  @extend %main-font-family;
+  font-size: 16px;
+}
+
+.table-icons {
+  @extend %table_icon_styles;
+}

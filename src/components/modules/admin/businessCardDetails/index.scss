@@ -1,3 +1,5 @@
+@import '../../../../assets/styles/mixins.scss';
+
 $section-heading-text-color: #00b8bf;
 $section-heading-border-color: #f0ecf5;
 
@@ -95,6 +97,9 @@ $section-heading-border-color: #f0ecf5;
           @media (max-width: 768px) {
             padding-left: 1rem;
           }
+        }
+        .document-data {
+          color: $section-heading-text-color;
         }
       }
     }

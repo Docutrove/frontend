@@ -15,10 +15,12 @@ function StatisticsCard() {
       <div className="statistics-card">
         {StatisticsCardData.map((item, index) => {
           let iconSrc
-          if (item.title === 'Total Users') iconSrc = icons.money
-          else if (item.title === 'Total Posts') iconSrc = icons.posts
-          else if (item.title === 'Total Comments') iconSrc = icons.comments
-          else if (item.title === 'Total Likes') iconSrc = icons.likes
+          if (item.title === 'Total Amount Recieved') iconSrc = icons.money
+          else if (item.title === 'Total Business Registrations')
+            iconSrc = icons.posts
+          else if (item.title === 'Total Template Downloads')
+            iconSrc = icons.comments
+          else if (item.title === 'Total Lawyer Bookings') iconSrc = icons.likes
 
           return (
             <div
@@ -31,7 +33,13 @@ function StatisticsCard() {
               </div>
               <div className="content">
                 <p className="title">{item.title}</p>
-                <p className="value">₦{item.value}</p>
+                <p className="value" style={{ color: item.fontColor }}>
+                  {item.title === 'Total Amount Received' ||
+                  item.title === 'Total Lawyer Bookings'
+                    ? '₦'
+                    : ''}
+                  {item.value.toLocaleString()}
+                </p>
               </div>
             </div>
           )

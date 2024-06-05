@@ -18,14 +18,14 @@ export interface UserData {
 
 export const userData: UserData = {
   templateDetails: {
-    templateType: 'Example Type', // Placeholder value
-    templateFile: 'https://example.com/template.docx', // Example URL
-    amountPaid: '$100', // Example amount
+    templateType: 'Loan Agreement', // Placeholder value
+    templateFile: 'myloanagreement.docx', // Example URL
+    amountPaid: '₦ 5,000.00', // Example amount
     date: 'OCTOBER 28, 2024 11:30 PM', // Example date
   },
   userDetails: {
     fullName: 'John Doe',
     emailAddress: 'john.doe@example.com',
-    phoneNumber: '+1234567890',
+    phoneNumber: '+23470345890',
   },
 }

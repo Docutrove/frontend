@@ -29,6 +29,7 @@ import ChangePlan from './components/modules/app/settings/ChangePlan'
 import DocumentThank from './components/modules/public/customiseDocument/DocumentThank'
 import BusinessThank from './components/modules/public/businessRegistration/BusinessThank'
 import ConsultationThank from './components/modules/public/bookConsultation/ConsultationThank'
+import AdminLogin from './components/modules/admin/login'
 import Admin from './components/modules/admin/index'
 import { useAuthContext } from './components/context/authContext'
 import { useEffect } from 'react'
@@ -64,6 +65,9 @@ function App() {
         <Route path="/businessthankyou" element={<BusinessThank />} />
         <Route path="/consultationthankyou" element={<ConsultationThank />} />
 
+        {/* Admin Login page route */}
+        <Route path="/Adminlogin" element={<AdminLogin />} />
+
         {/* Temporarily removing admin route from protected route */}
         <Route path="/admin/*" element={<AdminRoutes />} />
 
@@ -74,7 +78,6 @@ function App() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/login" element={<Redirect to="/" />} />
         </> : 
-        
         
         <Route path="/login" element={<Login />} /> 
 

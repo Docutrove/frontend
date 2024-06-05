@@ -1,5 +1,5 @@
 import './index.scss'
-import { SearchIcon } from '../../../../../assets'
+import { SearchIcon, Notification, Line2 } from '../../../../../assets'
 import { useLocation } from 'react-router'
 import { RiCloseLargeLine } from 'react-icons/ri'
 import { RiMenu3Fill } from 'react-icons/ri'
@@ -22,8 +22,13 @@ export default function Header({
             <img src={SearchIcon} alt="search" className="search-icon" />
             <input type="text" placeholder="Search" className="search-bar" />
           </div>
+          <div className="second-line">
+            <img src={Line2} alt="line-bar" className="linebar-icon" />
+          </div>
           <div className="profile">
-            <div className="notification-icon">🔔</div>
+            <div className="notification-icon">
+              <img src={Notification} />
+            </div>
             <div className="user-icon">U</div>
 
             <div onClick={openSideBar} className="ham-icon">

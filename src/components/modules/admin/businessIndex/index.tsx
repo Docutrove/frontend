@@ -10,6 +10,10 @@ function BusinessCard() {
           return (
             <div
               key={index}
+              onClick={() =>
+                (window.location.href =
+                  'http://localhost:5173/admin/Business-Details')
+              }
               className="card"
               style={{ backgroundColor: item.backgroundColor }}
             >

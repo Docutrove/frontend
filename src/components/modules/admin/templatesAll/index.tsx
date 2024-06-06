@@ -16,7 +16,13 @@ export default function TemplatesAll() {
           </thead>
           <tbody>
             {StatisticsCardData.map((data, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                onClick={() =>
+                  (window.location.href =
+                    'http://localhost:5173/admin/Templates-All-Details')
+                }
+              >
                 <td>{data.templateType}</td>
                 <td>{data.category}</td>
                 <td>{`₦${data.price.toLocaleString()}`}</td>

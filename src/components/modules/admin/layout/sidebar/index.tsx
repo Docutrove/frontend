@@ -43,7 +43,7 @@ export default function Sidebar() {
                   icon={Sidebar4}
                   topic="Downloads"
                 />
-                <SidebarNavLink
+                {/* <SidebarNavLink
                   to="TemplateDownloads"
                   icon={Sidebar4}
                   topic="DownloadDetails"
@@ -52,7 +52,7 @@ export default function Sidebar() {
                   to="Templates-All-Details"
                   icon={Sidebar4}
                   topic="TemplateDetails"
-                />
+                /> */}
               </ul>
             </div>
           </div>

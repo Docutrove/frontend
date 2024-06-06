@@ -68,10 +68,15 @@ const SignIn: React.FC = () => {
                 placeholder="Enter your Password..."
                 required
               />
+              <div>
+                <img
+                  className="passwordimg"
+                  src={PasswordImage}
+                  alt="Password"
+                />
+              </div>
             </div>
-            <div>
-              <img className="passwordimg" src={PasswordImage} alt="Password" />
-            </div>
+
             <button type="submit" className="button-cta">
               Login
             </button>

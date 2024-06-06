@@ -60,7 +60,13 @@ export default function TempDownloadView() {
               <td> Amount </td>
             </tr>
             {StatisticsCardData.map((data, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                onClick={() =>
+                  (window.location.href =
+                    'http://localhost:5173/admin/TemplateDownloads')
+                }
+              >
                 <td>{data.datetime}</td>
                 <td>{data.templateType}</td>
                 <td>{data.registeredBy}</td>

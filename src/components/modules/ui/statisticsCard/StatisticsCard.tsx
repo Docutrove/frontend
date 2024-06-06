@@ -31,6 +31,7 @@ function StatisticsCard() {
               <div className="icon">
                 <img src={iconSrc} alt={`${item.title} icon`} />
               </div>
+              <br />
               <div className="content">
                 <p className="title">{item.title}</p>
                 <p className="value" style={{ color: item.fontColor }}>

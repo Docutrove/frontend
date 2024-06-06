@@ -15,6 +15,11 @@ import CaretUp from './Images/CaretUp.svg'
 import CaretDown from './Images/CaretDown.svg'
 import Line2 from './Images/Line2.svg'
 import Calendar from './Images/Calendar.svg'
+import FirstLoginImage from './Images/firstImg.svg'
+import SecondLoginImage from './Images/secondimage.svg'
+import ThirdLoginImage from './Images/thirdimage.png'
+import FourthLoginImage from './Images/fourthimage.png'
+import PasswordImage from './Images/passwordimg.jpeg'
 
 export {
   Logo,
@@ -34,4 +39,9 @@ export {
   CaretDown,
   Line2,
   Calendar,
+  FirstLoginImage,
+  SecondLoginImage,
+  ThirdLoginImage,
+  FourthLoginImage,
+  PasswordImage,
 }

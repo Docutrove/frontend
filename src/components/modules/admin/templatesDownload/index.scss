@@ -221,29 +221,6 @@ $input-border-radius: 4px;
   }
 }
 
-// .table-section {
-//   .striped-table {
-//     @extend %striped-table;
-//     width: 100%;
-//     border-collapse: collapse;
-
-//     // th,
-//     // td {
-//     //   padding: 8px 12px;
-//     //   text-align: left;
-//     //   border-bottom: 1px solid #ddd;
-//     // }
-
-//     th {
-//       background-color: #f9f9f9;
-//     }
-
-//     tbody tr:nth-child(even) {
-//       background-color: #f2f2f2;
-//     }
-//   }
-// }
-
 .table-section {
   @extend %table-section-styles;
 

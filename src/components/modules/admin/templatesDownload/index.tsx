@@ -52,13 +52,13 @@ export default function TempDownloadView() {
       </div>
       <div className="table-section">
         <table className="striped-table">
-          <thead>
-            <td> Date & Time</td>
-            <td> Template Type</td>
-            <td> Registered by</td>
-            <td> Amount </td>
-          </thead>
           <tbody>
+            <tr>
+              <td> Date & Time</td>
+              <td> Template Type</td>
+              <td> Registered by</td>
+              <td> Amount </td>
+            </tr>
             {StatisticsCardData.map((data, index) => (
               <tr key={index}>
                 <td>{data.datetime}</td>

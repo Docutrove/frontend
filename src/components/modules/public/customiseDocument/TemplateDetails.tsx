@@ -3,7 +3,7 @@ import { Icon } from "../../ui/Icon";
 import BaseButton from "../../ui/button";
 import BaseInput from "../../ui/input";
 import InvoiceDetails from "../../ui/invoiceDetails";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface TemplateModule {
   name: string,
@@ -33,9 +33,10 @@ const Records = (props: RecordsProps) => {
   // useEffect(())
   return (
     <>
-      { props.payload?.map((field) => {
+      { props.payload?.map((field, index) => {
         { props.templateData ? (
           bs = <BaseInput
+            key={index}
             className="document-details__input"
             label={field?.label}
             placeholder={field?.name}
@@ -45,6 +46,7 @@ const Records = (props: RecordsProps) => {
         ) : (
           props.data ? (
             bs = <BaseInput
+              key={index}
               className="document-details__input"
               label={field?.label}
               placeholder={field?.name}
@@ -53,6 +55,7 @@ const Records = (props: RecordsProps) => {
             />
           ) : (
             bs = <BaseInput
+              key={index}
               className="document-details__input"
               label={field?.label}
               placeholder={field?.name}
@@ -70,7 +73,10 @@ const Records = (props: RecordsProps) => {
 
 const Pagination = (props: PaginationProps) => {
     const goToNextPage = () => {
+      // console.log(props.currentPage)
+      // console.log(props.nPages)
       if(props.currentPage !== props.nPages) props.setCurrentPage(props.currentPage + 1)
+      // console.log(props.currentPage)
     }
     const goToPrevPage = () => {
       if(props.currentPage !== 1) props.setCurrentPage(props.currentPage - 1)
@@ -80,13 +86,13 @@ const Pagination = (props: PaginationProps) => {
         <ul className='pagination justify-content-center'>
           <li className="page-item">
             <button className="page-link" onClick={goToPrevPage}>  
-              &#8592;
+              Previous
             </button>
             &nbsp;
             ||
             &nbsp;
             <button className="page-link" onClick={goToNextPage}>
-              &#8594;
+              Next
             </button>
           </li>
         </ul>
@@ -99,18 +105,28 @@ export default function TemplateDetails() {
   const [ data, setData ] = useState<DynamicObject>();
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(3);
+  const [nPages, setNPages] = useState(1);
 
   const templateRequestData = template?.configuration.formConfig.modules
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentRecords = templateRequestData?.slice(indexOfFirstRecord, indexOfLastRecord);
-  const nPages = Math.ceil(templateRequestData?.length || recordsPerPage / recordsPerPage)
+
+  const getNPages = () => {
+    if (templateRequestData?.length) {
+      setNPages(Math.ceil(templateRequestData?.length / recordsPerPage))
+    }
+  }
 
   const handleInputChange = (field: string, value: string) => {
     const obj = {...data, [field]: value};
     setData(obj);
   }
+
+  useEffect(() => {
+    getNPages()
+  }, []);
 
   return (
     <InvoiceDetails
@@ -132,9 +148,16 @@ export default function TemplateDetails() {
           </div>
           <p className="text--xs">Back</p>
         </button>
-        <BaseButton variant="primary" onClick={() => setTemplateData(data)}>
-            Next
-        </BaseButton>
+        {
+        currentPage == nPages ? (
+          <BaseButton variant="primary" onClick={() => setTemplateData(data)}>
+            Next Page
+          </BaseButton>
+          ) : (
+            <></>
+          )
+        }
+        
       </div>
     </InvoiceDetails>
   );

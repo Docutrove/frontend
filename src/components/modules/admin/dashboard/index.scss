@@ -61,8 +61,33 @@
   .striped-table {
     @extend %striped-table;
 
-    thead {
-      @extend %table-data-styles;
+    // tbody,
+    // tr {
+    //   .first-row {
+    //     font-family: $main-font-family;
+    //     font-weight: 500;
+    //     font-size: 1rem;
+    //     color: #425669;
+    //   }
+    // }
+
+    // .first-row {
+    //   @extend %first-row-styles;
+    //   font-family: $main-font-family;
+    //   font-weight: 500;
+    //   font-size: 1rem;
+    //   color: #425669;
+    // }
+    tbody {
+      tr {
+        &.first-row {
+          @extend %first-row-styles;
+        }
+      }
+    }
+
+    .first-row {
+      @extend %first-row-styles;
     }
 
     td {

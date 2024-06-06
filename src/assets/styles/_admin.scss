@@ -1,13 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
 $main-font-family: 'Inter', sans-serif;
+
+$section-heading-text-color: #00b8bf;
 %main-font-family {
   font-family: $main-font-family;
 }
 
-.my-element {
-  @extend %main-font-family;
-  font-size: 16px;
+%accordion_card_content {
+  font-family: $main-font-family;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #1c1c1c;
+  border-bottom: 1px solid #f0ecf580;
+}
+
+%accordion_card_alignment {
+  padding-left: 27rem;
+  text-align: left;
+
+  display: flex;
+  justify-content: space-between;
 }
 
 // .table-icons {

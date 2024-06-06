@@ -9,9 +9,9 @@ $main-font-family: Inter, sans-serif;
 
 %table-data-styles {
   padding: 10px;
-  order: none !important;
-  color: #425669;
-  font-weight: 500;
+  //order: none !important;
+  color: #1c1c1c;
+  font-weight: 400;
   font-family: $main-font-family;
 }
 
@@ -32,6 +32,14 @@ $main-font-family: Inter, sans-serif;
   margin-bottom: 1rem;
   border-radius: 2rem;
 }
+%first-row-styles {
+  font-family: $main-font-family;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #425669;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+}
 
 %striped-table {
   background-color: none;
@@ -39,26 +47,21 @@ $main-font-family: Inter, sans-serif;
   width: 100%;
   border-collapse: collapse;
 
-  thead {
-    font-family: $main-font-family;
-    font-weight: 500;
-    font-size: 1rem;
-    color: #425669;
-  }
   tbody {
-    font-family: $main-font-family;
-    font-weight: 400;
-    font-size: 1rem;
-    color: #1c1c1c;
+    @extend %table-data-styles;
+
+    tr {
+      td {
+        padding: 20px 10px;
+        text-align: left; // Ensure the text is aligned left for consistency
+      }
+    }
+
     tr:nth-child(odd) {
       background-color: #f9fafa;
     }
   }
-  th,
-  td {
-    padding: 20px 10px;
-    text-align: left; // Ensure the text is aligned left for consistency
-  }
+
   // thead tr,
   // tbody tr {
   //   &:nth-child(odd) {

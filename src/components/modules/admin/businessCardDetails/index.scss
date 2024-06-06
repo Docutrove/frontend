@@ -1,7 +1,6 @@
 @import '../../../../assets/styles/mixins.scss';
 @import '../../../../assets/styles/_admin.scss';
 
-$section-heading-text-color: #00b8bf;
 $section-heading-border-color: #f0ecf5;
 
 //responsive styles f
@@ -16,8 +15,9 @@ $section-heading-border-color: #f0ecf5;
 }
 
 .business-details {
-  padding: 0 1rem;
+  padding: 1rem 1rem;
   margin: 2.2rem 2rem;
+  border: 0px solid #f7f5fa;
 
   .section-heading {
     text-align: center;
@@ -51,7 +51,10 @@ $section-heading-border-color: #f0ecf5;
 
         h2 {
           margin: 0;
-          font-size: 1.5rem;
+          font-size: 1.25rem;
+          font-family: $main-font-family;
+          font-weight: 600;
+          color: #1c1c1c;
         }
 
         img {
@@ -72,30 +75,19 @@ $section-heading-border-color: #f0ecf5;
         overflow-x: scroll;
 
         p {
+          @extend %accordion_card_content;
           margin: 0.5rem 0;
-          border-bottom: 1px solid $section-heading-border-color;
-          padding: 0.7rem 2rem; /* Adjust padding to center the content vertically */
+          //   border-bottom: 1px solid $section-heading-border-color;
+          padding: 1.4rem 2rem;
+          display: grid;
 
+          grid-template-columns: 1fr 1fr;
           &:last-child {
             border-bottom: none; /* Remove border from last child */
           }
-
-          strong {
-            display: inline-flex;
-            width: 150px; /* adjust width as needed for alignment */
-          }
-
-          /* Center the option value */
-          // span {
-          //   display: inline-block;
-          //   text-align: center;
-          //   width: calc(
-          //     100% - 150px
-          //   ); /* Subtract the width of the option for proper alignment */
-          // }
         }
         &-row-value {
-          padding-left: 17.5rem;
+          //  @extend %accordion_card_alignment;
           @media (max-width: 768px) {
             padding-left: 1rem;
           }

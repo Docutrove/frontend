@@ -14,31 +14,35 @@ const TemplateDownloadDetails: React.FC = () => {
           </div>
           <div className="card-content">
             <p>
-              <strong>Template Type:</strong>{' '}
+              <span> Template Type </span>
+
               <span className="card-content-row-value">
+                {' '}
                 {templateDetails.templateType}
               </span>
             </p>
             <p>
-              <strong>Template File:</strong>{' '}
+              Template File
               <span className="card-content-row-value">
-                <a
-                  href={templateDetails.templateFile}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {templateDetails.templateFile}
-                </a>
+                <span className="templates-data">
+                  <a
+                    href={templateDetails.templateFile}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {templateDetails.templateFile}
+                  </a>
+                </span>
               </span>
             </p>
             <p>
-              <strong>Amount Paid:</strong>{' '}
+              Amount Paid
               <span className="card-content-row-value">
                 {templateDetails.amountPaid}
               </span>
             </p>
             <p>
-              <strong>Date:</strong>{' '}
+              Date
               <span className="card-content-row-value">
                 {templateDetails.date}
               </span>
@@ -51,19 +55,19 @@ const TemplateDownloadDetails: React.FC = () => {
           </div>
           <div className="card-content">
             <p>
-              <strong>Full Name:</strong>{' '}
+              Full Name
               <span className="card-content-row-value">
                 {userDetails.fullName}
               </span>
             </p>
             <p>
-              <strong>Email Address:</strong>{' '}
+              Email Address
               <span className="card-content-row-value">
                 {userDetails.emailAddress}
               </span>
             </p>
             <p>
-              <strong>Phone Number:</strong>{' '}
+              Phone Number
               <span className="card-content-row-value">
                 {userDetails.phoneNumber}
               </span>

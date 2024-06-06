@@ -19,15 +19,13 @@ export default function Main() {
           </span>
         </div>
         <table className="striped-table">
-          <thead>
-            <tr>
-              <th> Date & Time</th>
-              <th> Template Type</th>
-              <th> Registered by</th>
-              <th> Amount </th>
-            </tr>
-          </thead>
           <tbody>
+            <tr className="first-row">
+              <td> Date & Time</td>
+              <td> Template Type</td>
+              <td> Registered by</td>
+              <td> Amount </td>
+            </tr>
             {StatisticsCardData.map((item, index) => (
               <tr key={index}>
                 <td>{item.datetime}</td>
@@ -48,16 +46,14 @@ export default function Main() {
           </span>
         </div>
         <table className="striped-table">
-          <thead>
-            <tr>
-              <th> Date & Time</th>
-              <th> Company Type</th>
-              <th> Registered by</th>
-              <th> Amount </th>
-              <th></th>
-            </tr>
-          </thead>
           <tbody>
+            <tr>
+              <td> Date & Time</td>
+              <td> Company Type</td>
+              <td> Registered by</td>
+              <td> Amount </td>
+              <td></td>
+            </tr>
             {BusinessRegistrationsData.map((item, index) => (
               <tr key={index}>
                 <td>{item.datetime}</td>

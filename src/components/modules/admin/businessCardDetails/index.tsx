@@ -79,13 +79,13 @@ const BusinessDetails: React.FC = () => {
           {companyTypeOpen && (
             <div className="accordion-content">
               <p>
-                <strong>Classification:</strong>{' '}
+                Classification
                 <span className="accordion-content-row-value">
                   {companyTypeData.classification}{' '}
                 </span>
               </p>
               <p>
-                <strong>Specific Type:</strong>{' '}
+                Specific Type{' '}
                 <span className="accordion-content-row-value">
                   {companyTypeData.specificType}
                 </span>{' '}
@@ -107,27 +107,27 @@ const BusinessDetails: React.FC = () => {
           {proposedNameOpen && (
             <div className="accordion-content">
               <p>
-                <strong>Option 1:</strong>{' '}
+                Option 1{' '}
                 <span className="accordion-content-row-value">
                   {proposedNamesData.option1}
                 </span>
               </p>
               <p>
-                <strong>Option 2:</strong>
+                Option 2
                 <span className="accordion-content-row-value">
                   {' '}
                   {proposedNamesData.option2}
                 </span>
               </p>
               <p>
-                <strong>Option 3:</strong>
+                Option 3
                 <span className="accordion-content-row-value">
                   {' '}
                   {proposedNamesData.option3}{' '}
                 </span>
               </p>
               <p>
-                <strong>Option 4:</strong>{' '}
+                Option 4{' '}
                 <span className="accordion-content-row-value">
                   {proposedNamesData.option4}{' '}
                 </span>
@@ -155,19 +155,19 @@ const BusinessDetails: React.FC = () => {
           {businessDetailsOpen && (
             <div className="accordion-content">
               <p>
-                <strong>Commencement Date:</strong>
+                Commencement Date
                 <span className="accordion-content-row-value">
                   {businessDetailsData.commencementDate}
                 </span>
               </p>
               <p>
-                <strong>Email Address:</strong>
+                Email Address
                 <span className="accordion-content-row-value">
                   {businessDetailsData.emailAddress}
                 </span>
               </p>
               <p>
-                <strong>Phone Number:</strong>
+                Phone Number
                 <span className="accordion-content-row-value">
                   {businessDetailsData.phoneNumber}
                 </span>
@@ -191,37 +191,37 @@ const BusinessDetails: React.FC = () => {
           {principalPlaceOpen && (
             <div className="accordion-content">
               <p>
-                <strong>State:</strong>
+                State
                 <span className="accordion-content-row-value">
                   {principalPlaceData.state}
                 </span>
               </p>
               <p>
-                <strong>LGA:</strong>
+                LGA
                 <span className="accordion-content-row-value">
                   {principalPlaceData.lga}
                 </span>
               </p>
               <p>
-                <strong>City:</strong>
+                City
                 <span className="accordion-content-row-value">
                   {principalPlaceData.city}
                 </span>
               </p>
               <p>
-                <strong>Post Code:</strong>
+                Post Code
                 <span className="accordion-content-row-value">
                   {principalPlaceData.postCode}
                 </span>
               </p>
               <p>
-                <strong>House Number:</strong>
+                House Number
                 <span className="accordion-content-row-value">
                   {principalPlaceData.houseNumber}
                 </span>
               </p>
               <p>
-                <strong>Street Name:</strong>
+                Street Name
                 <span className="accordion-content-row-value">
                   {principalPlaceData.streetName}
                 </span>
@@ -240,37 +240,37 @@ const BusinessDetails: React.FC = () => {
           {branchNameOpen && (
             <div className="accordion-content">
               <p>
-                <strong>State:</strong>
+                State
                 <span className="accordion-content-row-value">
                   {branchNameData.state}
                 </span>
               </p>
               <p>
-                <strong>LGA:</strong>
+                LGA
                 <span className="accordion-content-row-value">
                   {branchNameData.lga}
                 </span>
               </p>
               <p>
-                <strong>City:</strong>
+                City
                 <span className="accordion-content-row-value">
                   {branchNameData.city}
                 </span>
               </p>
               <p>
-                <strong>Post Code:</strong>
+                Post Code
                 <span className="accordion-content-row-value">
                   {branchNameData.postCode}
                 </span>
               </p>
               <p>
-                <strong>House Number:</strong>
+                House Number
                 <span className="accordion-content-row-value">
                   {branchNameData.houseNumber}
                 </span>
               </p>
               <p>
-                <strong>Street Name:</strong>
+                Street Name
                 <span className="accordion-content-row-value">
                   {branchNameData.streetName}
                 </span>
@@ -296,19 +296,19 @@ const BusinessDetails: React.FC = () => {
           {natureOfBusinessOpen && (
             <div className="accordion-content">
               <p>
-                <strong>Category:</strong>{' '}
+                Category{' '}
                 <span className="accordion-content-row-value">
                   {natureOfBusinessData.category}
                 </span>
               </p>
               <p>
-                <strong>Specific Nature:</strong>{' '}
+                Specific Nature{' '}
                 <span className="accordion-content-row-value">
                   {natureOfBusinessData.specificNature}
                 </span>
               </p>
               <p>
-                <strong>Other Description:</strong>{' '}
+                Other Description{' '}
                 <span className="accordion-content-row-value">
                   {natureOfBusinessData.otherDescription}
                 </span>
@@ -334,19 +334,19 @@ const BusinessDetails: React.FC = () => {
           {documentUploadsOpen && (
             <div className="accordion-content">
               <p>
-                <strong>Means of Identification:</strong>{' '}
+                Means of Identification{' '}
                 <span className="accordion-content-row-value document-data">
                   {documentUploadsData.meansOfIdentification}
                 </span>
               </p>
               <p>
-                <strong>Proprietor Signature:</strong>{' '}
+                Proprietor Signature{' '}
                 <span className="accordion-content-row-value document-data">
                   {documentUploadsData.proprietorSignature}
                 </span>
               </p>
               <p>
-                <strong>Proprietor Photo:</strong>{' '}
+                Proprietor Photo{' '}
                 <span className="accordion-content-row-value document-data">
                   <span className="document-data">
                     {' '}

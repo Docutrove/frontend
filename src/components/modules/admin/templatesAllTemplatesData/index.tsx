@@ -14,63 +14,67 @@ const TemplateDownloadAllDetails: React.FC = () => {
           </div>
           <div className="card-content">
             <p>
-              <strong>Template Title:</strong>{' '}
+              Template Title
               <span className="card-content-row-value">
-                {templateDetails.templateTitle}
+                <strong> {templateDetails.templateTitle} </strong>
               </span>
             </p>
             <p>
-              <strong>Description:</strong>{' '}
+              Description
               <span className="card-content-row-value">
                 {templateDetails.description}
               </span>
             </p>
             <p>
-              <strong>Category:</strong>{' '}
+              Category
               <span className="card-content-row-value">
                 {templateDetails.category}
               </span>
             </p>
             <p>
-              <strong>Amount:</strong>{' '}
+              Amount{' '}
               <span className="card-content-row-value">
                 {templateDetails.amount}
               </span>
             </p>
             <p>
-              <strong>Template File:</strong>{' '}
+              Template File:
               <span className="card-content-row-value">
-                <a
-                  href={templateDetails.templateFile}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Link to File
-                </a>
+                <span className="template-identifier">
+                  <a
+                    href={templateDetails.templateFile}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    myloanagreement.docx
+                  </a>
+                </span>
               </span>
             </p>
             <p>
-              <strong>Date Created:</strong>{' '}
+              Date Created
               <span className="card-content-row-value">
                 {templateDetails.dateCreated}
               </span>
             </p>
             <p>
-              <strong>Total Downloads:</strong>{' '}
+              Total Downloads
               <span className="card-content-row-value">
                 {templateDetails.totalDownloads}
               </span>
             </p>
             <p>
-              <strong>Total Amount Received:</strong>{' '}
+              Total Amount Received
               <span className="card-content-row-value">
                 {templateDetails.totalAmountReceived}
               </span>
             </p>
             <p>
-              <strong>Status:</strong>{' '}
+              Status
               <span className="card-content-row-value">
-                {templateDetails.status}
+                <span className="template-identifier">
+                  {templateDetails.status}
+                </span>
               </span>
             </p>
           </div>

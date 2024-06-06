@@ -18,13 +18,13 @@ export default function Sidebar() {
             <div className="first-navlinks">
               <ul>
                 <SidebarNavLink
-                  to="Dashboard"
+                  to="dashboard"
                   topic="Dashboard"
                   icon={Sidebar1}
                 />
 
                 <SidebarNavLink
-                  to="Business-Services"
+                  to="business-services"
                   topic="Business Services"
                   icon={Sidebar2}
                 />
@@ -34,22 +34,22 @@ export default function Sidebar() {
               <h2 className="heading-text">Template Management</h2>
               <ul>
                 <SidebarNavLink
-                  to="All-Templates"
+                  to="all-templates"
                   icon={Sidebar3}
                   topic="All Templates"
                 />
                 <SidebarNavLink
-                  to="Downloads"
+                  to="downloads"
                   icon={Sidebar4}
                   topic="Downloads"
                 />
                 {/* <SidebarNavLink
-                  to="TemplateDownloads"
+                  to="templatedownloads"
                   icon={Sidebar4}
                   topic="DownloadDetails"
                 />
                 <SidebarNavLink
-                  to="Templates-All-Details"
+                  to="templates-all-details"
                   icon={Sidebar4}
                   topic="TemplateDetails"
                 /> */}

@@ -71,6 +71,11 @@ export interface DocumentUploads {
   proprietorSignature: string
   proprietorPhoto: string
 }
+export interface NatureOfBusiness {
+  category: string
+  specificNature: string
+  otherDescription: string
+}
 
 export interface Data {
   companyType: CompanyType
@@ -79,11 +84,13 @@ export interface Data {
   principalPlaceOfBusiness: PrincipalPlaceOfBusiness
   branchName: BranchName
   particularsOfProprietors: ParticularsOfProprietors
-  natureOfBusiness: {
-    category: string
-    specificNature: string
-    otherDescription: string
-  }
+  // natureOfBusiness: {
+  //   category: string
+  //   specificNature: string
+  //   otherDescription: string
+  // }
+  natureOfBusiness: NatureOfBusiness
+
   documentUploads: DocumentUploads
 }
 

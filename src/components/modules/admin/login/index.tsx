@@ -8,11 +8,6 @@ import {
   FourthLoginImage,
   PasswordImage,
 } from '../../../../assets'
-// import passwordImage from './passwordimg.jpeg'
-// import firstImage from './firstImg.svg'
-// import secondImage from './secondimage.svg'
-// import thirdImage from './thirdimage.png'
-// import fourthImage from './fourthimage.png'
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState<string>('')

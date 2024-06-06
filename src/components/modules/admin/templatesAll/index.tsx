@@ -20,7 +20,7 @@ export default function TemplatesAll() {
                 key={index}
                 onClick={() =>
                   (window.location.href =
-                    'http://localhost:5173/admin/Templates-All-Details')
+                    'http://localhost:5173/admin/templates-all-details')
                 }
               >
                 <td>{data.templateType}</td>

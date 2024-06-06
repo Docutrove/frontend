@@ -55,6 +55,10 @@ $main-font-family: Inter, sans-serif;
         padding: 20px 10px;
         text-align: left; // Ensure the text is aligned left for consistency
       }
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     tr:nth-child(odd) {

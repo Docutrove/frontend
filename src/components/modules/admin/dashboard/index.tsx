@@ -18,7 +18,7 @@ export default function Main() {
             className="view_all"
             onClick={() =>
               (window.location.href =
-                'http://localhost:5173/admin/All-Templates')
+                'http://localhost:5173/admin/all-templates')
             }
           >
             View all <img src={ArrowUp} className="arrow-icon" />
@@ -37,7 +37,7 @@ export default function Main() {
                 key={index}
                 onClick={() =>
                   (window.location.href =
-                    'http://localhost:5173/admin/Templates-All-Details')
+                    'http://localhost:5173/admin/templates-all-details')
                 }
               >
                 <td>{item.datetime}</td>
@@ -57,7 +57,7 @@ export default function Main() {
             className="view_all"
             onClick={() =>
               (window.location.href =
-                'http://localhost:5173/admin/Business-Details')
+                'http://localhost:5173/admin/business-details')
             }
           >
             View all <img src={ArrowUp} className="arrow-icon" />
@@ -84,7 +84,7 @@ export default function Main() {
                       className="view-button"
                       onClick={() =>
                         (window.location.href =
-                          'http://localhost:5173/admin/Business-Details')
+                          'http://localhost:5173/admin/business-details')
                       }
                     >
                       View

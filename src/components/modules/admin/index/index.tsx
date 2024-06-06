@@ -18,13 +18,13 @@ export default function Admin() {
       <Routes>
         <Route index path="Dashboard" element={<Main />} />
         {/* <Route path="Login" element={<Login />} /> */}
-        <Route path="All-templates" element={<TemplatesAll />} />
-        <Route path="Downloads" element={<TempDownloadView />} />
-        <Route path="Business-Services" element={<BusinessCardIndex />} />
-        <Route path="Business-Details" element={<BusinessDetails />} />
-        <Route path="TemplateDownloads" element={<TemplateDownloadDetails />} />
+        <Route path="all-templates" element={<TemplatesAll />} />
+        <Route path="downloads" element={<TempDownloadView />} />
+        <Route path="business-services" element={<BusinessCardIndex />} />
+        <Route path="business-details" element={<BusinessDetails />} />
+        <Route path="templatedownloads" element={<TemplateDownloadDetails />} />
         <Route
-          path="Templates-All-Details"
+          path="templates-all-details"
           element={<TemplateDownloadAllDetails />}
         />
       </Routes>

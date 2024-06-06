@@ -5,11 +5,11 @@ import {
   data,
   BusinessDetails as BusinessDetailsType,
   PrincipalPlaceOfBusiness,
-  PersonalDetails,
-  Address,
-  MeansOfIdentification,
-  ParticularsOfProprietors,
   NatureOfBusiness,
+  // PersonalDetails,
+  // Address,
+  // MeansOfIdentification,
+  // ParticularsOfProprietors,
   DocumentUploads,
 } from './data'
 
@@ -34,28 +34,28 @@ const BusinessDetails: React.FC = () => {
   const [documentUploadsData, setDocumentUploadsData] =
     useState<DocumentUploads>(data.documentUploads)
 
-  const [personalDetailsOpen, setPersonalDetailsOpen] = useState(false)
-  const [addressOpen, setAddressOpen] = useState(false)
-  const [residentialAddressOpen, setResidentialAddressOpen] = useState(false)
-  const [meansOfIdentificationOpen, setMeansOfIdentificationOpen] =
-    useState(false)
-  const [proprietorPartnerOpen, setProprietorPartnerOpen] = useState(false)
+  // const [personalDetailsOpen, setPersonalDetailsOpen] = useState(false)
+  // const [addressOpen, setAddressOpen] = useState(false)
+  // const [residentialAddressOpen, setResidentialAddressOpen] = useState(false)
+  // const [meansOfIdentificationOpen, setMeansOfIdentificationOpen] =
+  //   useState(false)
+  // const [proprietorPartnerOpen, setProprietorPartnerOpen] = useState(false)
 
-  const [personalDetailsData, setPersonalDetailsData] = useState(
-    data.particularsOfProprietors.personalDetails
-  )
-  const [addressData, setAddressData] = useState(
-    data.particularsOfProprietors.address
-  )
-  const [residentialAddressData, setResidentialAddressData] = useState(
-    data.particularsOfProprietors.residentialAddress
-  )
-  const [meansOfIdentificationData, setMeansOfIdentificationData] = useState(
-    data.particularsOfProprietors.meansOfIdentification
-  )
-  const [proprietorPartnerData, setProprietorPartnerData] = useState(
-    data.particularsOfProprietors.proprietorPartner
-  )
+  // const [personalDetailsData, setPersonalDetailsData] = useState(
+  //   data.particularsOfProprietors.personalDetails
+  // )
+  // const [addressData, setAddressData] = useState(
+  //   data.particularsOfProprietors.address
+  // )
+  // const [residentialAddressData, setResidentialAddressData] = useState(
+  //   data.particularsOfProprietors.residentialAddress
+  // )
+  // const [meansOfIdentificationData, setMeansOfIdentificationData] = useState(
+  //   data.particularsOfProprietors.meansOfIdentification
+  // )
+  // const [proprietorPartnerData, setProprietorPartnerData] = useState(
+  //   data.particularsOfProprietors.proprietorPartner
+  // )
 
   return (
     <div className="business-details">

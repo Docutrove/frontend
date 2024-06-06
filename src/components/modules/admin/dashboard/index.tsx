@@ -14,7 +14,13 @@ export default function Main() {
       <div className="table-section">
         <div className="table-top">
           <span className="table-heading"> New Template Download </span>
-          <span className="view_all">
+          <span
+            className="view_all"
+            onClick={() =>
+              (window.location.href =
+                'http://localhost:5173/admin/All-Templates')
+            }
+          >
             View all <img src={ArrowUp} className="arrow-icon" />
           </span>
         </div>
@@ -27,7 +33,13 @@ export default function Main() {
               <td> Amount </td>
             </tr>
             {StatisticsCardData.map((item, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                onClick={() =>
+                  (window.location.href =
+                    'http://localhost:5173/admin/Templates-All-Details')
+                }
+              >
                 <td>{item.datetime}</td>
                 <td>{item.templateType}</td>
                 <td>{item.registeredBy}</td>
@@ -41,7 +53,13 @@ export default function Main() {
       <div className="table-section second-table">
         <div className="table-top">
           <span className="table-heading"> New Business Registrations </span>
-          <span className="view_all">
+          <span
+            className="view_all"
+            onClick={() =>
+              (window.location.href =
+                'http://localhost:5173/admin/Business-Details')
+            }
+          >
             View all <img src={ArrowUp} className="arrow-icon" />
           </span>
         </div>
@@ -62,7 +80,15 @@ export default function Main() {
                 <td>{item.amount}</td>
                 <td>
                   <span>
-                    <button className="view-button">View</button>{' '}
+                    <button
+                      className="view-button"
+                      onClick={() =>
+                        (window.location.href =
+                          'http://localhost:5173/admin/Business-Details')
+                      }
+                    >
+                      View
+                    </button>
                   </span>
                 </td>
               </tr>

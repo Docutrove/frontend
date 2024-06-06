@@ -28,12 +28,6 @@ export default function Sidebar() {
                   topic="Business Services"
                   icon={Sidebar2}
                 />
-
-                <SidebarNavLink
-                  to="Business-Details"
-                  topic="Business-Details"
-                  icon={Sidebar2}
-                />
               </ul>
             </div>
             <div className="second-navlinks">

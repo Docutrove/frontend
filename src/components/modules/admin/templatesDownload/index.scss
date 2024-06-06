@@ -189,6 +189,8 @@ $input-border-radius: 4px;
       display: inline-block;
       margin: 0 0rem;
       margin-right: -1.7rem;
+      font-family: $main-font-family;
+      color: #727272;
     }
 
     form {
@@ -202,11 +204,11 @@ $input-border-radius: 4px;
       input {
         background-color: #f0f2f3; // Adding background color
         border: 1px solid #f0ecf5; // Adding border
-        padding: 0.7rem 2.4rem; // Adding padding
+        padding: 0.7rem 2.1rem; // Adding padding
         border-radius: 4px;
         width: 10rem;
-        padding-right: 2.5rem;
-        padding-left: 2.5rem;
+        // padding-right: 1.5rem;
+        // padding-left: 2.5rem;
       }
 
       .calendar-icon {

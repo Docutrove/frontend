@@ -84,11 +84,7 @@ export interface Data {
   principalPlaceOfBusiness: PrincipalPlaceOfBusiness
   branchName: BranchName
   particularsOfProprietors: ParticularsOfProprietors
-  // natureOfBusiness: {
-  //   category: string
-  //   specificNature: string
-  //   otherDescription: string
-  // }
+
   natureOfBusiness: NatureOfBusiness
 
   documentUploads: DocumentUploads

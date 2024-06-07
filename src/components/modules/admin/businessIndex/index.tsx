@@ -34,15 +34,13 @@ export default function BusinessCardIndex() {
       </div>
       <div className="table-section">
         <table className="striped-table">
-          <thead>
-            <tr>
-              <th>Date & Time</th>
-              <th>Company Type</th>
-              <th>Registered by</th>
-              <th>Amount</th>
-            </tr>
-          </thead>
           <tbody>
+            <tr>
+              <td>Date & Time</td>
+              <td>Company Type</td>
+              <td>Registered by</td>
+              <td>Amount</td>
+            </tr>
             {BusinessCardData.map((rowData, index) => (
               <tr
                 key={index}

@@ -60,17 +60,17 @@ $border-buttom: 1px solid $section-heading-border-color;
           &:last-child {
             border-bottom: none;
           }
-
-          // strong {
+          a {
+            .template-identifier {
+              color: $section-heading-text-color#00b8bf;
+            }
+          }
 
           .card-content-row-value {
             //  padding-left: 17.5rem;
             @media (max-width: 768px) {
               padding-left: 3rem;
             }
-          }
-          .template-identifier {
-            color: $section-heading-text-color#00b8bf;
           }
         }
       }

@@ -39,16 +39,15 @@ const TemplateDownloadAllDetails: React.FC = () => {
             </p>
             <p>
               Template File:
-              <span className="card-content-row-value">
-                <span className="template-identifier">
-                  <a
-                    href={templateDetails.templateFile}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    myloanagreement.docx
-                  </a>
-                </span>
+              <span className="card-content-row-value template-identifier">
+                <a
+                  className="template-identifier"
+                  href={templateDetails.templateFile}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  myloanagreement.docx
+                </a>
               </span>
             </p>
             <p>

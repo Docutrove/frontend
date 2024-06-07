@@ -300,19 +300,19 @@ const BusinessDetails: React.FC = () => {
             <div className="accordion-content">
               <p>
                 Means of Identification
-                <span className="accordion-content-row-value">
+                <span className="accordion-content-row-value document-data">
                   {documentUploads.meansOfIdentification}
                 </span>
               </p>
               <p>
                 Proprietor Signature
-                <span className="accordion-content-row-value">
+                <span className="accordion-content-row-value document-data">
                   {documentUploads.proprietorSignature}
                 </span>
               </p>
               <p>
                 Proprietor Photo
-                <span className="accordion-content-row-value">
+                <span className="accordion-content-row-value document-data">
                   {documentUploads.proprietorPhoto}
                 </span>
               </p>

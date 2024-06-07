@@ -1,4 +1,3 @@
-import React from 'react'
 import '../../../../assets/styles/_tablestyles.scss'
 import './index.scss'
 import { BusinessCardData } from './data'

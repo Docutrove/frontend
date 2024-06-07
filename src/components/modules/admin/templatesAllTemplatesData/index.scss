@@ -1,0 +1,79 @@
+@import '../../../../assets/styles/mixins.scss';
+@import '../../../../assets/styles/_admin.scss';
+
+$section-heading-border-color: #f0ecf5;
+$border-buttom: 1px solid $section-heading-border-color;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+//Responsive styles
+@media (max-width: 768px) {
+  .template-download-details {
+    padding: 0 0.5rem;
+    margin: 1.5rem 1rem;
+  }
+  .card-section .card .card-header h2 {
+    font-size: 1.2rem;
+  }
+  .card-content-row-value {
+    padding-left: 0 !important;
+  }
+}
+
+.template-download-details {
+  padding: 0 1rem;
+  margin: 2.2rem 2rem;
+
+  .card-section {
+    .downloadcard {
+      margin-bottom: 1.3rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      //overflow: hidden;
+      .card-header {
+        padding: 0.5rem 1rem;
+        // display: block;
+        background-color: #f9fafa;
+        border-bottom: $border-buttom;
+
+        h2 {
+          margin: 0;
+          font-size: 1.5rem;
+        }
+      }
+
+      .card-content {
+        background-color: #fff;
+
+        p {
+          @extend %accordion_card_content;
+          margin: 0.5rem 0;
+          padding: 1.4rem 2rem;
+
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+
+          &:last-child {
+            border-bottom: none;
+          }
+          a {
+            .template-identifier {
+              color: $section-heading-text-color#00b8bf;
+            }
+          }
+
+          .card-content-row-value {
+            //  padding-left: 17.5rem;
+            @media (max-width: 768px) {
+              padding-left: 3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

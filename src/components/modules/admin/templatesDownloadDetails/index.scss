@@ -1,0 +1,88 @@
+@import '../../../../assets/styles/mixins.scss';
+//@import '../../../../assets/styles/_tablestyles.scss';
+@import '../../../../assets/styles/_admin.scss';
+
+$section-heading-border-color: #f0ecf5;
+
+// Responsive styles
+// @media (max-width: 768px) {
+//   .template-download-details {
+//     padding: 0 0.5rem;
+//     margin: 1.5rem 1rem;
+//   }
+//   .card-section .card .card-header h2 {
+//     font-size: 1.2rem;
+//   }
+//   .card-content-row-value {
+//     padding-left: 0 !important;
+//   }
+// }
+
+.template-download-details {
+  padding: 0 1rem;
+  margin: 2.2rem 2rem;
+
+  .card-section {
+    .downloadcard {
+      margin-bottom: 1.3rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      //overflow: hidden;
+      .card-header {
+        // padding: 0.5rem 1rem;
+        // display: block;
+        // background-color: #f9fafa;
+        // border-bottom: $border-buttom;
+
+        &-text {
+          margin: 0;
+          font-size: 1.25rem;
+          padding-left: 1rem;
+          font-family: $main-font-family;
+          font-weight: 600;
+          color: #1c1c1c;
+        }
+      }
+
+      .card-content {
+        background-color: #fff;
+        overflow-x: scroll;
+        //  @extend %accordion_card_content;
+
+        //font-family: $main-font-family;
+        font-size: 1.125rem;
+        font-weight: 400;
+
+        p {
+          @extend %accordion_card_content;
+          margin: 0.5rem 0;
+          padding: 2rem 2rem;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          //   flex: 0;
+          //  justify-content: space-between;
+
+          .card-content-row-value {
+            //    @extend %accordion_card_alignment;
+
+            //   //  padding-left: 27rem;
+            //     text-align: left;
+            //     display: flex;
+            //     justify-content: space-between;
+
+            @media (max-width: 768px) {
+              //   padding-left: 2rem;
+            }
+          }
+          .templates-data {
+            color: $section-heading-text-color;
+          }
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}

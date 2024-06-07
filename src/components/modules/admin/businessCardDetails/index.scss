@@ -1,0 +1,101 @@
+@import '../../../../assets/styles/mixins.scss';
+@import '../../../../assets/styles/_admin.scss';
+
+$section-heading-border-color: #f0ecf5;
+
+//responsive styles f
+@media (max-width: 768px) {
+  .business-details {
+    padding: 0 0.5rem;
+    margin: 1.5rem 1rem;
+  }
+  .accordion-section .accordion .accordion-header h2 {
+    font-size: 1.2rem;
+  }
+}
+
+.business-details {
+  padding: 1rem 1rem;
+  margin: 2.2rem 2rem;
+  border: 0px solid #f7f5fa;
+
+  .section-heading {
+    text-align: center;
+    // font-size: 1.5rem;
+    margin-bottom: 1rem;
+    //padding: 0;
+    font-family: $main-font-family;
+    font-size: 22px;
+    font-weight: 600;
+    padding: -10px 0;
+    color: $section-heading-text-color;
+    border-top: 1px solid $section-heading-border-color;
+    border-bottom: 1px solid $section-heading-border-color;
+  }
+
+  .accordion-section {
+    .accordion {
+      padding: 0 0;
+      margin-bottom: 1.3rem;
+      border: 1px solid #ddd;
+      border-radius: 0.5rem;
+      overflow: hidden;
+
+      .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        //align-items: stretch;
+        padding: 0.65rem 0;
+        background-color: #f9fafa;
+        cursor: pointer;
+
+        h2 {
+          margin: 0;
+          font-size: 1.25rem;
+          font-family: $main-font-family;
+          font-weight: 600;
+          color: #1c1c1c;
+        }
+
+        img {
+          margin-right: 2.2rem;
+          margin-top: 0.75rem;
+          // padding-top: 0.6rem;
+          width: 1rem;
+          height: 1rem;
+        }
+
+        &-text {
+          padding: 0 2rem;
+        }
+      }
+
+      .accordion-content {
+        background-color: #fff;
+        overflow-x: scroll;
+
+        p {
+          @extend %accordion_card_content;
+          margin: 0.5rem 0;
+          //   border-bottom: 1px solid $section-heading-border-color;
+          padding: 1.4rem 2rem;
+          display: grid;
+
+          grid-template-columns: 1fr 1fr;
+          &:last-child {
+            border-bottom: none; /* Remove border from last child */
+          }
+        }
+        &-row-value {
+          //  @extend %accordion_card_alignment;
+          @media (max-width: 768px) {
+            padding-left: 1rem;
+          }
+        }
+        .document-data {
+          color: $section-heading-text-color;
+        }
+      }
+    }
+  }
+}

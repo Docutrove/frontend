@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+// body {
+//   max-width: 100%;
+//   margin: 0;
+// }
+
+.grid-container-signIn {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  margin: 0;
+  background-color: white;
+
+  .container-images {
+    position: relative;
+    height: 824px;
+    width: 800px;
+    background-color: #00b8bf0d;
+    margin-left: 200px;
+    .big-image {
+      width: 500px;
+      height: 100%;
+      position: absolute;
+      top: 95px;
+      left: -100px;
+      z-index: 10;
+
+      .image-wrapper {
+        border-bottom: 6px solid white;
+        border-right: 6px solid white;
+        border-top: 6px solid white;
+        border-radius: 10px;
+        overflow: hidden;
+
+        img {
+          border-radius: 10px;
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    .sec-image {
+      position: absolute;
+      right: 0;
+      height: 320px;
+      width: 550px;
+      top: 350px;
+      left: -20px;
+      border-radius: 10px;
+    }
+
+    .third-image {
+      position: absolute;
+      top: 35px;
+      height: 240px;
+      width: 195px;
+      left: 253px;
+    }
+
+    .fourth-image {
+      position: absolute;
+      top: 130px;
+      right: 0;
+      height: 280px;
+      width: 270px;
+      top: 570px;
+      left: -130px;
+    }
+  }
+}
+
+.grid-item-signin {
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  background-color: white;
+  margin-top: 0px;
+  height: 80vh;
+}
+
+.form-tables {
+  background-color: white;
+  margin-top: -250px;
+  height: 70vh;
+  width: 55%;
+  display: grid;
+  gap: 20px;
+  margin-left: 10px;
+
+  .docuadmin {
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    height: 40%;
+    margin-left: 30px;
+
+    .logoImage {
+      width: 180px;
+      height: 44px;
+      margin-left: 30px;
+    }
+
+    .admins {
+      font-family: 'Inter';
+      font-weight: 500;
+      font-size: 22px;
+      text-align: -70px;
+      margin-right: -90px;
+      background: white;
+    }
+  }
+
+  .form-propers {
+    margin-left: 120px;
+    margin-top: -20px;
+    background-color: white;
+    height: 40vh;
+    width: 70%;
+
+    .signintxt {
+      font-weight: bold;
+      color: #162650;
+      font-family: 'PT Serif', serif;
+      font-weight: 700;
+      font-size: 44px;
+    }
+
+    .bongus {
+      margin: 20px 0;
+      // background-color: #f4f4f6;
+      border-radius: 4px;
+      border: 1px transparent;
+    }
+
+    .label {
+      color: #000;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      letter-spacing: -0.16px;
+    }
+
+    .bolala {
+      color: grey;
+      width: 450px;
+      height: 48px;
+      display: flex;
+      font-family: 'Lato', sans-serif;
+      line-height: 24px;
+      letter-spacing: -0.16px;
+      border: 1px transparent;
+      background-color: #f4f4f6;
+      border-radius: 6px;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .bolala::placeholder {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      padding-left: 16px;
+      padding-top: 15px;
+    }
+
+    .passwordimg {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      left: 538px;
+      z-index: 1;
+    }
+
+    .button-cta {
+      margin-top: 65px;
+      display: flex;
+      width: 450px;
+      height: 44px;
+      padding: 12px 16px;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border-radius: 8px;
+      background: #162650;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+    }
+  }
+}

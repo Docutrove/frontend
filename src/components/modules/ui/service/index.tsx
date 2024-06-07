@@ -5,8 +5,10 @@ interface ServiceProps {
   className?: string;
   title: string;
   description: string;
+  description2?: string;
+  description3?: string;
   path?: string;
-  buttonText: string;
+  buttonText?: string;
   imageURL: string;
 }
 
@@ -14,6 +16,8 @@ export default function Service({
   className,
   title,
   description,
+  description2,
+  description3,
   path,
   buttonText,
   imageURL,
@@ -26,9 +30,17 @@ export default function Service({
           <p className="service__content__text__description text--sm">
             {description}
           </p>
-          <BaseButton href={path} variant="primary" className="service-button">
-            {buttonText}
-          </BaseButton>
+          <p className="service__content__text__description text--sm">
+            {description2}
+          </p>
+          <p className="service__content__text__description text--sm">
+            {description3}
+          </p>
+          {buttonText? (
+            <BaseButton href={path} variant="primary" className="service-button">
+              {buttonText}
+            </BaseButton>
+          ) : null}
         </div>
         <img src={imageURL} alt="" className="service__content__image" />
       </div>

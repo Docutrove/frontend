@@ -17,15 +17,16 @@ export default function SubscriptionServices({
       >
         <Offer
           variant="plain"
-          title="Tier 1 name lorem"
-          description="Fames adipiscing lorem ultrices faucibus fusce sagittis sed imperdiet dolor sagittis."
-          amount={0}
+          title="Tier 1 - Templates"
+          description="Purchase individual templates for a one-time fee. Perfect for one-off legal needs."
+          amount={10000}
           buttonText="Subscribe to Tier 1"
           path="/coming"
           lists={[
-            "Tortor interdum condimentum nunc",
-            "Purus orci netus suscipit",
-            "Feugiat in nunc nunc eget sit eus agit",
+            "Lawyer-approved templates",
+            "Easy Customisation",
+            "Multiple download formats",
+            "Secure document storage",
           ]}
           buttonVariant="primary"
           iconVariant="gradient"
@@ -33,16 +34,16 @@ export default function SubscriptionServices({
 
         <Offer
           variant="plain"
-          title="Tier 1 name lorem"
-          description="Fames adipiscing lorem ultrices faucibus fusce sagittis sed imperdiet dolor sagittis."
+          title="Tier 2 - Business Registration"
+          description="Ensure a smooth launch with expert guidance on registration and ongoing compliance."
           buttonText="Subscribe to Tier 2"
-          amount={0}
+          amount={25000}
           path="/coming"
           lists={[
-            "Tortor interdum condimentum nunc",
-            "Purus orci netus suscipit",
-            "Feugiat in nunc nunc eget sit eus agit",
-            "Purus orci netus suscipit",
+            "Expert guidance on entity selection and business registration process.",
+            "Assistance with completing all necessary paperwork.",
+            "Timely filing with government agencies.",
+            "Ensure accuracy and ongoing compliance with industry standards.",
           ]}
           buttonVariant="primary"
           iconVariant="gradient"
@@ -50,17 +51,16 @@ export default function SubscriptionServices({
 
         <Offer
           variant="plain"
-          title="Tier 1 name lorem"
-          description="Fames adipiscing lorem ultrices faucibus fusce sagittis sed imperdiet dolor sagittis."
+          title="Tier 3 - All Inclusive"
+          description="Get personalised advice and navigate legal challenges with our experienced lawyers - and more."
           buttonText="Subscribe to Tier 3"
-          amount={0}
+          amount={50000}
           path="/coming"
           lists={[
-            "Tortor interdum condimentum nunc",
-            "Purus orci netus suscipit",
-            "Feugiat in nunc nunc eget sit eus agit",
-            "Purus orci netus suscipit",
-            "Justo et in sagittis pharetra tellus",
+            "Expert legal consultations",
+            "Unlimited templates",
+            "Cloud storage for legal documents",
+            "Timely filing with government agencies.",
           ]}
           buttonVariant="primary"
           iconVariant="gradient"

@@ -5,8 +5,8 @@ export default function BusinessHero() {
     <HeroTitle
       className="business__hero"
       imgSrc="/images/Polygon_5.png"
-      title="Business services"
-      description="Lorem ipsum dolor sit amet consectetur. Sollicitudin massa risus blandit ac leo. Feugiat in nunc nunc eget sit eu. Purus orci netus suscipit sagittis nec duis. Justo et in sagittis pharetra tellus."
+      title="Legal support for your business needs"
+      description="Start your business with expert legal assistance relevant to your business and industry."
     />
   );
 }

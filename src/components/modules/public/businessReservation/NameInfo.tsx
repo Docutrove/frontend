@@ -1,9 +1,9 @@
 import { useBusinessNameReservationContext } from ".";
 import BaseInput from "../../ui/input";
-import { Icon } from "../../ui/Icon";
 import BaseButton from "../../ui/button";
 import { useNavigate } from "react-router";
-import Select from "../../ui/select";
+import BusinessNavbar from '../businessNavbar';
+import Footer from "../footer";
 
 export default function BusinessType() {
   const navigate = useNavigate();
@@ -14,66 +14,72 @@ export default function BusinessType() {
   };
 
   return (
-    <div className="payment bg-gradient">
-    <div className="app-container">
-    <h4>Business Name Registration</h4>
-      <div className="login__content">
-          <div className="payment__method">
-            <h6>Company Type</h6>
+    <div className='business--information--container'>
+      <BusinessNavbar />
+      <div className="business--information--content">
+        <header className='business--information--header'>Business Name Reservation</header>
 
-            <div className="card-details">
-              <div className="card-date">
-                <Select label="Classification" options={classificationOptions} />
-                <Select label="Specific Type" options={specificTypeOptions} />
-              </div>
-              <p className="text--2xs login__content__border">-</p>
-              <h6>Proposed Names</h6>
-              <div className="card-date">
-                <BaseInput
-                  className=""
-                  label="Option 1"
-                  placeholder="option 1"
-                />
-                <BaseInput
-                  className=""
-                  label="Option 2"
-                  placeholder="option 2"
-                />
-              </div>
-              <div className="card-date">
-                <BaseInput
-                  className=""
-                  label="Option 3"
-                  placeholder="option 3"
-                />
-                <BaseInput
-                  className=""
-                  label="Option 4"
-                  placeholder="option 4"
-                />
-              </div>
+        <div className="business--information--form">
+          <form>
+            <div className="partition"></div>
+            <h5>Company Type</h5>
+            <div className="partition mb"></div>
+
+            <div className='double--input'>
+              <BaseInput
+                label="Classification"
+                className="user--input"
+              />
+              <BaseInput
+                label="Specific Type"
+                className="user--input"
+              />
             </div>
-          </div>
 
-        <div>
-          <div className="login__content__socials">
-            <button className="invoice-back-button" onClick={goBack}>
-              <div className="back-button">
-                <Icon name="caret-right" className="back-icon" />
-              </div>
-              <p className="text--xs">Back</p>
-            </button>
-            <BaseButton variant="primary" onClick={goNext}>
-              Save and Continue
-            </BaseButton>
-          </div>
+            <div className="partition"></div>
+            <h5>Proposed Names</h5>
+            <div className="partition mb"></div>
+
+            <div className='double--input'>
+              <BaseInput
+                label="Option 1"
+                className="user--input"
+                placeholder="Name option 1"
+              />
+              <BaseInput
+                label="Option 2"
+                className="user--input"
+                placeholder="Name option 2"
+              />
+            </div>
+            <div className='double--input'>
+              <BaseInput
+                className="user--input"
+                label="Option 3"
+                placeholder="Name option 3"
+              />
+              <BaseInput
+                className="user--input"
+                label="Option 4"
+                placeholder="Name option 3"
+              />
+            </div>
+
+          </form> {/* Closing the form element here */}
         </div>
       </div>
-    </div>
+      <div className="button--container">
+        <div className="bottom--buttons">
+          <BaseButton onClick={goBack} variant="inverted" className='back--button'>
+            Back
+          </BaseButton>
+          <BaseButton onClick={goNext} variant="primary" className='save--button'>
+            Save and Continue
+          </BaseButton>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 }
-
-const classificationOptions = ['--select option--', '', '']
-const specificTypeOptions = ['--select option--', '', '']
 

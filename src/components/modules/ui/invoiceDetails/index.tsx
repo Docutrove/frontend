@@ -1,13 +1,14 @@
 import { Icon } from "../Icon";
 import NavBar from "../../public/navbar";
 import { ReactNode } from "react";
+import parse from 'html-react-parser';
 
 interface InvoiceDetailsProps {
   subtitle: string;
-  title: string;
+  title: string | undefined;
   back_button?: boolean;
   children: ReactNode;
-  document_text: string;
+  document_text: string | undefined;
   backClick?: () => void;
 }
 
@@ -31,7 +32,7 @@ export default function InvoiceDetails({
                 <div className="back-button">
                   <Icon name="caret-right" className="back-icon" />
                 </div>
-                <p className="text--xs">All business registration templates</p>
+                <p className="text--xs">All templates</p>
               </button>
             ) : (
               ""
@@ -45,7 +46,9 @@ export default function InvoiceDetails({
           </div>
           <div className="template-container">
             <div className="template-image">
-              <p className="text--sm template-image__text">{document_text}</p>
+              <p className="text--sm template-image__text">
+              {parse(document_text || "")}
+              </p>
             </div>
           </div>
         </div>

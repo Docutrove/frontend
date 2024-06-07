@@ -2,7 +2,8 @@ import { useCustomiseDocContext } from ".";
 import GradientLayout from "../../ui/gradientLayout";
 
 export default function ChooseDocumentType() {
-    const {goNext} = useCustomiseDocContext()
+  const {setCategoryId, categories} = useCustomiseDocContext()
+    
   return (
     <GradientLayout arrow>
       <div className="choose-document-type">
@@ -13,21 +14,15 @@ export default function ChooseDocumentType() {
           What type of legal document would you like to create?
         </h2>
         <div className="options-grid">
-          <div className="option" onClick={goNext}>
-            <p className="text--sm">Tech / Startup agreements</p>
-          </div>
-          <div className="option">
-            <p className="text--sm">Loan agreements</p>
-          </div>
-          <div className="option">
-            <p className="text--sm">General commercial contracts</p>
-          </div>
-          <div className="option">
-            <p className="text--sm">Real Estate / Property contracts</p>
-          </div>
-          <div className="option">
-            <p className="text--sm">Labour and Employment</p>
-          </div>
+          <>
+          { categories?.map((category) => {
+            return (
+              <div className="option" onClick={() => setCategoryId(category.id)}>
+                <p className="text--sm">{category?.name}</p>
+              </div>
+            )
+          })}
+          </>
         </div>
       </div>
     </GradientLayout>

@@ -1,17 +1,27 @@
 import { useBusinessRegistrationContext } from ".";
-import BusinessDetails from "./BusinessDetails";
-import BusinessInvoice from "./BusinessInvoice";
-import BusinessType from "./BusinessType";
-import ConfirmBusiness from "./ConfirmBusiness";
+import BusinessNature from "./BusinessNature";
+import BusinessParticulars from "./BusinessParticulars";
+import BusinessInformation from "./BusinessInformation";
+import BusinessDocument from "./BusinessDocument";
+import BusinessReview from "./BusinessReview";
+import BusinessPayment from "./BusinessPayment";
+import BusinessPersonalDetails from "./BusinessPersonalDetails";
+import BusinessComplete from "./BusinessComplete";
+import BusinessNameReservation from "./BusinessNameReservation";
 
 export default function RegisterBusiness() {
   const { activeScreen } = useBusinessRegistrationContext();
   return (
     <>
-      {activeScreen === "business_type" && <BusinessType />}
-      {activeScreen === "business_invoice" && <BusinessInvoice />}
-      {activeScreen === "business_details" && <BusinessDetails/>}
-      {activeScreen === "confirm_business" && <ConfirmBusiness/>}
+      {activeScreen === "business_name_reservation" && <BusinessNameReservation />}
+      {activeScreen === "business_information" && <BusinessInformation />}
+      {activeScreen === "business_particulars" && <BusinessParticulars />}
+      {activeScreen === "business_nature" && <BusinessNature/>}
+      {activeScreen === "business_document" && <BusinessDocument/>}
+      {activeScreen === "business_review" && <BusinessReview/>}
+      {activeScreen === "business_payment" && <BusinessPayment/>}
+      {activeScreen === "business_personal_details" && <BusinessPersonalDetails/>}
+      {activeScreen === "business_complete" && <BusinessComplete/>}
     </>
   );
 }

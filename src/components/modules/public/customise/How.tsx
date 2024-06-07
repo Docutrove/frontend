@@ -7,33 +7,32 @@ export default function CustomiseHow() {
         <p className="customise-subtitle subtitle">How it works</p>
         <div className="customise__how__content">
           <ServiceSection
-            title="Lorem ipsum dolor sit amet consectetur"
+            title="Browse our template Library"
             buttonText="Customize a document"
             imgSrc="/images/How1.png"
             subtitle="How it works"
             path="/customise/document"
-            description=" Lorem ipsum dolor sit amet consectetur. Mattis ante feugiat
-            facilisis arcu elit. Fames adipiscing lorem ultrices faucibus fusce
-            sagittis sed imperdiet dolor. Nulla morbi tempor enim vitae."
+            description="Explore a wide range of lawyer-approved templates categorised by 
+            business type. Find the document you need, whether it's a client contract for 
+            independent contractors, a non-disclosure agreement (NDA) for startups, or 
+            website terms & conditions for SMEs."
           />
 
           <ServiceSection
-            title="Lorem ipsum dolor sit amet consectetur"
+            title="Easy Customization"
             buttonText="Customize a document"
             imgSrc="/images/How2.png"
             path="/customise/document"
-            description="Nulla morbi tempor enim vitae, mattis ante feugiat facilisis arcu
-            elit. Fames adipiscing lorem ultrices faucibus fusce sagittis sed
-            imperdiet dolor."
+            description="Answer a few simple questions to tailor the template to your needs. 
+            We guide you through the process, ensuring you put the right information in the right places.."
           />
 
           <ServiceSection
-            title="Lorem ipsum dolor sit amet consectetur"
+            title="Download and Use"
             buttonText="Customize a document"
             imgSrc="/images/How3.png"
             path="/customise/document"
-            description="Fames adipiscing lorem ultrices faucibus fusce sagittis sed
-            imperdiet dolor. Nulla morbi tempor enim vitae."
+            description="Once customized, download your document in a format that's easy to use and share."
           />
         </div>
       </div>

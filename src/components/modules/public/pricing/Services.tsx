@@ -7,15 +7,14 @@ export default function PricingServices() {
         <Offer
           variant="purple"
           title="Customize a document"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum. 
-          "
-          amount={1000000}
-          buttonText="Customize a document"
+          description="Easy-to-use document templates - save time with our library of lawyer-approved templates."
+          amount={10000}
+          buttonText="Find a Template"
           path="/customise"
           lists={[
-            "Tortor interdum condimentum nunc",
-            "Purus orci netus suscipit",
-            "Feugiat in nunc nunc eget sit eus agit",
+            "Edit the templates to your specific needs in minutes.",
+            "Download your documents in convenient formats like Word or PDF.",
+            "Store your documents securely in the cloud for easy access.",
           ]}
           buttonVariant="secondary"
           amountSuffix="per document"
@@ -26,15 +25,14 @@ export default function PricingServices() {
         <Offer
           variant="green"
           title="Business services"
-          description="Tincidunt nulla in hac viverra lobortis proin. Magna nibh turpis facilisi urna nisi. Nulla morbi tempor enim vitae."
-          buttonText="Register a business"
-          amount={1000000}
+          description="The whole nine yards - get comprehensive business registration and compliance services."
+          buttonText="Register A business"
+          amount={25000}
           path="/services"
           lists={[
-            "Tortor interdum condimentum nunc",
-            "Purus orci netus suscipit",
-            "Feugiat in nunc nunc eget sit eus agit",
-            "Purus orci netus suscipit",
+            "Avoid delays and errors in completing necessary paperwork",
+            "Ensure timely filiing with government agencies",
+            "Maintain good legal standing with ongoing compliance support",
           ]}
           buttonVariant="secondary"
           amountSuffix="per service"
@@ -44,17 +42,15 @@ export default function PricingServices() {
 
         <Offer
           variant="blue"
-          title="Consult with an expert"
-          description="Fames adipiscing lorem ultrices faucibus fusce sagittis sed imperdiet dolor sagittis."
-          buttonText="Book a consultation"
-          amount={1000000}
+          title="Expert Consultation"
+          description="Top-notch legal consultations - Recommendations and Strategies to address legal challenges."
+          buttonText="Schedule a Call"
+          amount={20000}
           path="/consultation"
           lists={[
-            "Tortor interdum condimentum nunc",
-            "Purus orci netus suscipit",
-            "Feugiat in nunc nunc eget sit eus agit",
-            "Purus orci netus suscipit",
-            "Justo et in sagittis pharetra tellus",
+            "Personalised legal advice.",
+            "Clear explanations of complex legal issues.",
+            "Secure communication platform for confidential consultations. ",
           ]}
           buttonVariant="secondary"
           amountSuffix="per hour"

@@ -10,8 +10,8 @@ export default function Business() {
     <Layout>
       <BusinessHero />
       <BusinessServices />
-      <BusinessFAQ />
       <CustomiseExplore />
+      <BusinessFAQ />
     </Layout>
   );
 }

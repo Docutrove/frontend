@@ -1,22 +1,24 @@
+import { useCustomiseDocContext } from ".";
 import InvoiceDetails from "../../ui/invoiceDetails";
 import BaseButton from "../../ui/button";
 
 export default function ConfirmTemplate() {
+  const { goBack, goNext, template } = useCustomiseDocContext();
   return (
     <InvoiceDetails
       subtitle="Customize and download a legal document"
-      title="Template name"
-      document_text="Template One"
+      title={template?.name}
+      document_text={template?.configuration.previewHtml}
     >
       <p className="text--sm confirm-text">
-        Your registration document is complete, we recommend that you preview
+        Your document is complete, we recommend that you preview
         your document to ensure all the details are correct.
       </p>
       <div className="confirm-buttons">
-        <BaseButton variant="inverted" href="/coming">
+        <BaseButton variant="inverted" onClick={goBack}>
           Edit information
         </BaseButton>
-        <BaseButton variant="primary" href="/payment">
+        <BaseButton variant="primary" onClick={goNext}>
           Proceed to payment
         </BaseButton>
       </div>

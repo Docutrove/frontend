@@ -11,6 +11,7 @@ interface BaseInputProps {
   value?: string;
   name?: string;
   errorMessage?: string;
+  required?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
@@ -24,6 +25,7 @@ export default function BaseInput({
   name,
   value,
   errorMessage,
+  required,
   onChange,
   ...props
 }: BaseInputProps) {
@@ -36,6 +38,7 @@ export default function BaseInput({
             className="textarea input"
             value={value}
             name={name}
+            required={required}
             placeholder={placeholder?.replace(/_/g, ' ')}
             onChange={onChange}
             {...props}

@@ -83,3 +83,40 @@ $main-font-family: Inter, sans-serif;
     font-weight: 400;
   }
 }
+
+// @media (max-width: 900px) {
+//   .striped-table {
+//     overflow-x: auto;
+
+//     tbody tr {
+//       td {
+//         white-space: nowrap;
+//       }
+//     }
+//   }
+// }
+@media (max-width: 900px) {
+  .striped-table {
+    tbody tr {
+      td {
+        white-space: nowrap; // Prevent text wrapping
+        overflow: hidden; // Hide overflow
+        text-overflow: ellipsis; // Add ellipsis for overflowed text
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .striped-table {
+    // Add horizontal scrolling for smaller screens
+
+    tbody tr {
+      td {
+        overflow-x: scroll;
+        font-size: 14px; // Decrease font size for smaller screens
+        padding: 8px; // Adjust padding for smaller screens
+      }
+    }
+  }
+}

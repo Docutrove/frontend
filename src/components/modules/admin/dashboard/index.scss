@@ -105,3 +105,21 @@
   //@extend %table-section-styles;
   border: none;
 }
+
+@media (max-width: 900px) {
+  .dashboard-stats {
+    flex-direction: column;
+
+    .stat {
+      margin: 10px 0;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-stats {
+    .stat {
+      padding: 15px;
+    }
+  }
+}

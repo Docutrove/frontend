@@ -28,3 +28,27 @@
     }
   }
 }
+
+@media (max-width: 900px) {
+  .card-container {
+    flex-wrap: wrap;
+
+    .statistics-card {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .card-container {
+    .statistics-card {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+}

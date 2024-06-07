@@ -75,3 +75,26 @@
   //@extend %table-section-styles;
   border: none;
 }
+
+@media (max-width: 900px) {
+  .table-section .striped-table {
+    overflow-x: auto; // Add horizontal scrolling for smaller screens
+  }
+}
+
+/************** RESPONSIVE STYLES **************/
+@media (max-width: 600px) {
+  .dashboard-stats .statistics-card .card {
+    width: 90%; // Adjust width of cards for smaller screens
+    margin-right: 5px; // Reduce right margin for smaller screens
+  }
+
+  .table-section .striped-table {
+    overflow-x: auto; // Add horizontal scrolling for smaller screens
+  }
+
+  .table-section .striped-table tbody tr td {
+    font-size: 14px; // Decrease font size for smaller screens
+    padding: 8px; // Adjust padding for smaller screens
+  }
+}

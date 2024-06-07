@@ -71,18 +71,135 @@
     cursor: pointer;
     display: none;
   }
+
+  //tab styles
+  @media (max-width: 900px) {
+    .header {
+      padding: 1rem 1.2rem;
+
+      h1 {
+        font-size: 20px;
+      }
+
+      .header-right {
+        .search-component {
+          display: none;
+        }
+
+        .profile {
+          .notification-icon {
+            width: 2rem;
+            height: 2rem;
+            padding: 5px;
+          }
+
+          .user-icon {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+
+      .ham-icon {
+        display: flex;
+      }
+    }
+  }
 }
 
+//mobile styles
+@media (max-width: 600px) {
+  .header {
+    padding: 0.5rem 0.8rem;
+
+    h1 {
+      font-size: 18px;
+    }
+
+    .profile {
+      .notification-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        padding: 3px;
+      }
+
+      .user-icon {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+}
 @media (max-width: 900px) {
   .header {
+    padding: 1rem 1.2rem;
+
+    h1 {
+      font-size: 20px;
+    }
+
     .header-right {
       .search-component {
         display: none;
       }
+
+      .profile {
+        .notification-icon {
+          width: 2rem;
+          height: 2rem;
+          padding: 5px;
+        }
+
+        .user-icon {
+          width: 30px;
+          height: 30px;
+        }
+      }
     }
-    padding: 1rem 1.2rem;
+
     .ham-icon {
       display: flex;
     }
   }
 }
+
+// @media (max-width: 600px) {
+//   .header {
+//     padding: 0.5rem 0.8rem;
+
+//     h1 {
+//       font-size: 18px;
+//     }
+
+//     .profile {
+//       .notification-icon {
+//         width: 1.5rem;
+//         height: 1.5rem;
+//         padding: 3px;
+//       }
+
+//       .user-icon {
+//         width: 25px;
+//         height: 25px;
+//       }
+//     }
+
+//     .ham-icon {
+//       display: flex;
+//       font-size: 1.5rem;
+//     }
+//   }
+// }
+// @media (max-width: 900px) {
+//   .header {
+//     .header-right {
+//       .search-component {
+//         display: none;
+//       }
+//     }
+//     padding: 1rem 1.2rem;
+//     .ham-icon {
+//       display: flex;
+//     }
+//   }
+// }

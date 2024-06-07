@@ -66,7 +66,7 @@ function App() {
         <Route path="/consultationthankyou" element={<ConsultationThank />} />
 
         {/* Admin Login page route */}
-        <Route path="/adminlogin" element={<AdminLogin />} />
+        <Route path="/admin" element={<AdminLogin />} />
 
         {/* Temporarily removing admin route from protected route */}
         <Route path="/admin/*" element={<AdminRoutes />} />
@@ -82,7 +82,6 @@ function App() {
         <Route path="/login" element={<Login />} /> 
 
         }
-
 
         <Route path="/*" element={<Redirect />} />
 

@@ -8,7 +8,6 @@ import BusinessCardIndex from '../businessIndex'
 import BusinessDetails from '../businessCardDetails'
 import TemplateDownloadDetails from '../templatesDownloadDetails'
 import TemplateDownloadAllDetails from '../templatesAllTemplatesData'
-// import Login from '../login'
 
 // import AdminPanel from "../adminPanel";
 
@@ -16,7 +15,9 @@ export default function Admin() {
   return (
     <Layout>
       <Routes>
-        <Route index path="Dashboard" element={<Main />} />
+        <Route index path="dashboard" element={<Main />} />
+        {/* Temporary till authenticationhas been integrated*/}
+        {/* <Route index path="Dashboard" element={<Main />} /> */}
         {/* <Route path="Login" element={<Login />} /> */}
         <Route path="all-templates" element={<TemplatesAll />} />
         <Route path="downloads" element={<TempDownloadView />} />

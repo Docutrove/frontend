@@ -54,12 +54,13 @@ const SignIn: React.FC = () => {
                 required
               />
             </div>
-            <div className="bongus">
+            <div className="bonga">
               <label className="label" htmlFor="password">
                 Password:
               </label>
+              <div className="password-input-container">
               <input
-                className="bolala"
+                className="bolale"
                 type="password"
                 name="password"
                 value={password}
@@ -67,14 +68,20 @@ const SignIn: React.FC = () => {
                 placeholder="Enter your Password..."
                 required
               />
-              <div>
-                <img
+
+              <img
                   className="passwordimg"
                   src={PasswordImage}
                   alt="Password"
                 />
+                
               </div>
             </div>
+
+
+
+
+
 
             <button type="submit" className="button-cta">
               Login

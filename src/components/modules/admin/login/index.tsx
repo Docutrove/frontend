@@ -59,29 +59,23 @@ const SignIn: React.FC = () => {
                 Password:
               </label>
               <div className="password-input-container">
-              <input
-                className="bolale"
-                type="password"
-                name="password"
-                value={password}
-                onChange={handlePasswordChange}
-                placeholder="Enter your Password..."
-                required
-              />
+                <input
+                  className="bolale"
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  placeholder="Enter your Password..."
+                  required
+                />
 
-              <img
+                <img
                   className="passwordimg"
                   src={PasswordImage}
                   alt="Password"
                 />
-                
               </div>
             </div>
-
-
-
-
-
 
             <button type="submit" className="button-cta">
               Login

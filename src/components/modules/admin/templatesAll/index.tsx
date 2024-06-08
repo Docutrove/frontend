@@ -1,10 +1,12 @@
 import '../../../../assets/styles/_tablestyles.scss'
 import './index.scss'
 import { StatisticsCardData } from './data.ts'
+import SearchBar from '../bodySearchBar/index.tsx'
 
 export default function TemplatesAll() {
   return (
     <div className="main-content">
+      <SearchBar />
       <div className="table-section">
         <table className="striped-table">
           <thead></thead>

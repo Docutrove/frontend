@@ -1,58 +1,44 @@
-@import '../../../../assets/styles/mixins.scss';
-@import '../../../../assets/styles/admin.scss';
-@import '../../../../assets/styles/_tablestyles.scss';
-
 .search-bar {
   position: relative;
-}
+  //width: 100%; /* Ensure the search bar takes full width */
+  margin-bottom: 1rem;
 
-.search-bar input {
-  padding-left: 30px;
-}
-
-.search-bar .search-icon {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.filter-dropdown span {
-  margin-right: 10px;
-}
-
-.table-section {
-  @extend %table-section-styles;
-
-  .table-top {
-    .table-heading {
-      @extend %table-heading;
-    }
-    .view_all {
-      @extend %view_styles;
-    }
+  input {
+    padding: 0.7rem 2.4rem;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #f0ecf5;
+  //  width: 100%; /* Ensure the input takes full width */
   }
 
-  .striped-table {
-    @extend %striped-table;
-    thead {
-      @extend %table-data-styles;
-    }
+  .search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
 
-    td {
-      @extend %table-data-styles;
-      .downloads {
-      }
+@media (max-width: 768px) {
+  .search-bar {
+    margin-bottom: 1rem; /* Adjust margin for better spacing */
+    input {
+      padding-left: 2.5rem; /* Adjust padding for search icon */
     }
-
-    tr {
-      .downloads {
-        padding-left: 3rem;
-      }
+    .search-icon {
+      left: 0.5rem; /* Adjust position of search icon */
     }
+  }
+}
 
-    tr:nth-child(odd) {
-      background-color: #f9fafa;
+@media (min-width: 769px) and (max-width: 1024px) {
+  .search-bar {
+    margin-bottom: 1rem; /* Adjust margin for better spacing */
+    input {
+      padding-left: 2.5rem; /* Adjust padding for search icon */
+    }
+    .search-icon {
+      left: 10px; /* Adjust position of search icon */
     }
   }
 }

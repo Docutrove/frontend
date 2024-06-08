@@ -16,11 +16,24 @@
   }
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .unique-search-bar {
     margin-bottom: 1rem;
     input {
       padding-left: 2.5rem;
+    }
+    .unique-search-icon {
+      left: 0.5rem;
+    }
+  }
+} */
+
+@media (max-width: 768px) {
+  .unique-search-bar {
+    margin-bottom: 1rem;
+    input {
+      width: 100%; /* Ensure the input field takes full width */
+      //padding-left: 2.5rem; /* Adjust padding as needed */
     }
     .unique-search-icon {
       left: 0.5rem;

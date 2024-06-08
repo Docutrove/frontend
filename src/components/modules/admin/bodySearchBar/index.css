@@ -1,0 +1,40 @@
+.unique-search-bar {
+  position: relative;
+
+  input {
+    padding: 0.7rem 2.4rem;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #f0ecf5;
+  }
+
+  .unique-search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .unique-search-bar {
+    margin-bottom: 1rem;
+    input {
+      padding-left: 2.5rem;
+    }
+    .unique-search-icon {
+      left: 0.5rem;
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .unique-search-bar {
+    input {
+      padding-left: 2.5rem;
+    }
+    .unique-search-icon {
+      left: 10px;
+    }
+  }
+}

@@ -26,7 +26,7 @@ export default function Main() {
         </div>
         <table className="striped-table">
           <tbody>
-            <tr className="first-row">
+            <tr>
               <td> Date & Time</td>
               <td> Template Type</td>
               <td> Registered by</td>

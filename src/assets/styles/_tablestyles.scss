@@ -5,11 +5,11 @@ $main-font-family: Inter, sans-serif;
 %view_styles {
   float: right;
   color: #00b8bf;
+  margin-bottom: 1rem;
 }
 
 %table-data-styles {
   padding: 10px;
-  //order: none !important;
   color: #1c1c1c;
   font-weight: 400;
   font-family: $main-font-family;
@@ -32,6 +32,7 @@ $main-font-family: Inter, sans-serif;
   margin-bottom: 1rem;
   border-radius: 2rem;
 }
+
 %first-row-styles {
   font-family: $main-font-family;
   font-weight: 500;
@@ -42,7 +43,6 @@ $main-font-family: Inter, sans-serif;
 }
 
 %striped-table {
-  background-color: none;
   margin-top: 1.4rem;
   width: 100%;
   border-collapse: collapse;
@@ -52,7 +52,7 @@ $main-font-family: Inter, sans-serif;
 
     tr {
       td {
-        padding: 20px 10px;
+        padding: 20px 10px; // Adjust the padding as needed
         text-align: left; // Ensure the text is aligned left for consistency
       }
 
@@ -61,17 +61,16 @@ $main-font-family: Inter, sans-serif;
       }
     }
 
-    tr:nth-child(odd) {
+    tr:first-child { // Table Heading
+      font-size: 18px;
+      font-weight: 500;
+      color: #425669;
+    }
+
+    tr:nth-child(odd) { //zebra effect table 
       background-color: #f9fafa;
     }
   }
-
-  // thead tr,
-  // tbody tr {
-  //   &:nth-child(odd) {
-  //     background-color: #f9fafa;
-  //   }
-  // }
 
   .view-button {
     background-color: #fff;
@@ -84,39 +83,49 @@ $main-font-family: Inter, sans-serif;
   }
 }
 
-// @media (max-width: 900px) {
-//   .striped-table {
-//     overflow-x: auto;
-
-//     tbody tr {
-//       td {
-//         white-space: nowrap;
-//       }
-//     }
-//   }
-// }
 @media (max-width: 900px) {
-  .striped-table {
-    tbody tr {
-      td {
-        white-space: nowrap; // Prevent text wrapping
-        overflow: hidden; // Hide overflow
-        text-overflow: ellipsis; // Add ellipsis for overflowed text
+  .table-section {
+    overflow-x: auto;
+
+    .striped-table {
+      tbody tr {
+        td {
+          white-space: nowrap; // Prevent text wrapping
+          text-overflow: ellipsis; // Add ellipsis for overflowed text
+        }
       }
     }
   }
 }
 
 @media (max-width: 600px) {
-  .striped-table {
-    // Add horizontal scrolling for smaller screens
+  .table-section {
+    overflow-x: auto;
 
-    tbody tr {
-      td {
-        overflow-x: scroll;
-        font-size: 14px; // Decrease font size for smaller screens
-        padding: 8px; // Adjust padding for smaller screens
+    .view_all {
+      margin: 1rem 0;
+    }
+
+    .striped-table {
+      tbody tr {
+        td {
+          padding: 20px 10px; // Maintain consistent padding
+          font-size: 14px; 
+          white-space: nowrap; // Prevent text wrapping
+          text-overflow: ellipsis; // Add ellipsis for overflowed text
+        }
       }
     }
   }
 }
+
+
+// // Styles for the first row (table heading)
+// .striped-table {
+//   thead tr, // If your table uses thead
+//   tbody tr:first-child { // Fallback for tbody if thead is not used
+//     font-size: 18px;
+//     font-weight: 500;
+//     color: #425669;
+//   }
+// }

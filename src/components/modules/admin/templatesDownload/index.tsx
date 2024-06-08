@@ -1,20 +1,16 @@
 import '../../../../assets/styles/_tablestyles.scss'
 
 import './index.scss'
-import { SearchIcon, Calendar } from '../../../../assets'
+import { Calendar } from '../../../../assets'
 import { StatisticsCardData } from './Data/downloads'
+import SearchBar from '../bodySearchBar' 
 
 export default function TempDownloadView() {
   return (
     <div className="main-content">
       <div className="controls">
         <div className="control-item search-div">
-          <div className="search-bar">
-            <input type="text" placeholder="Search..." />
-            <i className="search-icon">
-              <img src={SearchIcon} alt="Search Icon" />
-            </i>
-          </div>
+        <SearchBar />
         </div>
 
         <div className="control-item filter-dropdown">

@@ -1,16 +1,21 @@
+import 'react-datepicker/dist/react-datepicker.css'
+import DatePicker from 'react-datepicker'
+import { useState } from 'react'
 import '../../../../assets/styles/_tablestyles.scss'
-
 import './index.scss'
 import { Calendar } from '../../../../assets'
 import { StatisticsCardData } from './Data/downloads'
-import SearchBar from '../bodySearchBar' 
+import SearchBar from '../bodySearchBar'
 
 export default function TempDownloadView() {
+  const [startDate, setStartDate] = useState(null)
+  const [endDate, setEndDate] = useState(null)
+
   return (
     <div className="main-content">
       <div className="controls">
         <div className="control-item search-div">
-        <SearchBar />
+          <SearchBar />
         </div>
 
         <div className="control-item filter-dropdown">
@@ -26,34 +31,42 @@ export default function TempDownloadView() {
 
         <div className="control-item date-filters">
           <form>
-            {/* <div className="date-input"> */}
-            <input type="text" placeholder="Start date" />
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              placeholderText="Start date"
+              className="date-input"
+            />
             <i className="calendar-icon">
               <img src={Calendar} />
             </i>
-            {/* </div> */}
           </form>
-          <span> --- </span>
+          <span>---</span>
         </div>
+
         <div className="control-item date-filters">
           <form>
-            {/* <div className="date-input"> */}
-            <input type="text" placeholder="End date" />
+            <DatePicker
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+              placeholderText="End date"
+              className="date-input"
+            />
             <i className="calendar-icon">
               <img src={Calendar} />
             </i>
-            {/* </div> */}
           </form>
         </div>
       </div>
+
       <div className="table-section">
         <table className="striped-table">
           <tbody>
             <tr>
-              <td> Date & Time</td>
-              <td> Template Type</td>
-              <td> Registered by</td>
-              <td> Amount </td>
+              <td>Date & Time</td>
+              <td>Template Type</td>
+              <td>Registered by</td>
+              <td>Amount</td>
             </tr>
             {StatisticsCardData.map((data, index) => (
               <tr

@@ -16,7 +16,13 @@ export default function Header({
   return (
     <div className="Header">
       <header className="header">
-        <h1>{title && title.split('-').join(' ')}</h1>
+        <h1>
+          {title &&
+            title
+              .split('-')
+              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(' ')}
+        </h1>
         <div className="header-right">
           <div className="search-component">
             <img src={SearchIcon} alt="search" className="search-icon" />

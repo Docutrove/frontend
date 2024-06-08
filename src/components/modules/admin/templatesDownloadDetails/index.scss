@@ -4,20 +4,6 @@
 
 $section-heading-border-color: #f0ecf5;
 
-// Responsive styles
-// @media (max-width: 768px) {
-//   .template-download-details {
-//     padding: 0 0.5rem;
-//     margin: 1.5rem 1rem;
-//   }
-//   .card-section .card .card-header h2 {
-//     font-size: 1.2rem;
-//   }
-//   .card-content-row-value {
-//     padding-left: 0 !important;
-//   }
-// }
-
 .template-download-details {
   padding: 0 1rem;
   margin: 2.2rem 2rem;
@@ -80,6 +66,61 @@ $section-heading-border-color: #f0ecf5;
 
           &:last-child {
             border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}
+// Responsive styles for mobile view (max-width: 768px)
+@media (max-width: 768px) {
+  .template-download-details {
+    padding: 0 0.5rem;
+    margin: 1.5rem 1rem;
+  }
+  .card-section {
+    .downloadcard {
+      .card-header {
+        &-text {
+          font-size: 1.2rem;
+        }
+      }
+      .card-content {
+        p {
+          margin: 0.5rem 0;
+          padding: 1rem 1rem;
+          display: grid;
+          grid-template-columns: 1fr;
+          .card-content-row-value {
+            padding-left: 2rem !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive styles for tab view (769px to 1024px)
+@media (min-width: 769px) and (max-width: 1024px) {
+  .template-download-details {
+    padding: 0 1rem;
+    margin: 1.5rem 1rem;
+  }
+  .card-section {
+    .downloadcard {
+      .card-header {
+        &-text {
+          font-size: 1.2rem;
+        }
+      }
+      .card-content {
+        p {
+          margin: 0.5rem 0;
+          padding: 1rem 1rem;
+          display: grid;
+          grid-template-columns: 1fr;
+          .card-content-row-value {
+            padding-left: 0 !important;
           }
         }
       }

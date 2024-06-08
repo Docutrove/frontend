@@ -64,7 +64,7 @@ export default function TempDownloadView() {
                 key={index}
                 onClick={() =>
                   (window.location.href =
-                    'http://localhost:5173/admin/templatedownloads')
+                    'http://localhost:5173/admin/template-downloads')
                 }
               >
                 <td>{data.datetime}</td>

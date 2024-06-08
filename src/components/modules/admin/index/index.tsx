@@ -23,7 +23,10 @@ export default function Admin() {
         <Route path="downloads" element={<TempDownloadView />} />
         <Route path="business-services" element={<BusinessCardIndex />} />
         <Route path="business-details" element={<BusinessDetails />} />
-        <Route path="templatedownloads" element={<TemplateDownloadDetails />} />
+        <Route
+          path="template-downloads"
+          element={<TemplateDownloadDetails />}
+        />
         <Route
           path="templates-all-details"
           element={<TemplateDownloadAllDetails />}

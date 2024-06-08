@@ -7,14 +7,15 @@ export default function TemplatesAll() {
     <div className="main-content">
       <div className="table-section">
         <table className="striped-table">
-          <thead>
-            <td>Template Type</td>
-            <td>Category</td>
-            <td>Price</td>
-            <td>Downloads</td>
-            <td>Status</td>
-          </thead>
+          <thead></thead>
           <tbody>
+            <tr>
+              <td>Template Type</td>
+              <td>Category</td>
+              <td>Price</td>
+              <td>Downloads</td>
+              <td>Status</td>
+            </tr>
             {StatisticsCardData.map((data, index) => (
               <tr
                 key={index}

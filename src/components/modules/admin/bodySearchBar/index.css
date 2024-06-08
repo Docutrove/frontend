@@ -16,18 +16,6 @@
   }
 }
 
-/* @media (max-width: 768px) {
-  .unique-search-bar {
-    margin-bottom: 1rem;
-    input {
-      padding-left: 2.5rem;
-    }
-    .unique-search-icon {
-      left: 0.5rem;
-    }
-  }
-} */
-
 @media (max-width: 768px) {
   .unique-search-bar {
     margin-bottom: 1rem;

@@ -138,63 +138,6 @@ $input-border-radius: 4px;
   }
 }
 
-// @media (max-width: 768px) {
-//   .controls {
-//     flex-direction: column;
-//     align-items: stretch;
-//     padding: 0;
-//     .control-item {
-//       margin-bottom: 10px;
-//       flex: 1;
-//       justify-content: center;
-//     }
-//     // .search-div {
-//     //   .search-bar {
-//     //     width: 100%;
-//     //     position: relative;
-//     //     input {
-//     //       width: 100%;
-//     //       padding-left: 2.5rem;
-//     //     }
-//     //     .search-icon {
-//     //       position: absolute;
-//     //       left: 0.5rem;
-//     //       top: 50%;
-//     //       transform: translateY(-50%);
-//     //     }
-//     //   }
-//     // }
-//     .filter-dropdown {
-//       select {
-//         width: 90%;
-//         // margin-left: 1rem;
-//       }
-//     }
-//     .date-filters {
-//       display: flex;
-//       flex-direction: column;
-//       align-items: center;
-//       form {
-//         width: 100%;
-//         position: relative;
-//         .date-input {
-//           width: 100%;
-//           padding-left: 2.5rem;
-//           margin-bottom: 0.5rem;
-//         }
-//         .calendar-icon {
-//           position: absolute;
-//           left: 0.5rem;
-//           top: 50%;
-//           transform: translateY(-50%);
-//         }
-//       }
-//       span {
-//         display: none;
-//       }
-//     }
-//   }
-// }
 @media (max-width: 768px) {
   .controls {
     flex-direction: column;
@@ -206,12 +149,12 @@ $input-border-radius: 4px;
       justify-content: center;
     }
     .search-div {
-      .search-bar {
-        width: 100%; /* Ensure the search bar takes full width */
+      .unique-search-bar {
+        width: 100%;
         position: relative;
         input {
-          width: 100%; /* Make the input field take full width */
-          padding-left: 2.5rem; /* Adjust padding as needed */
+          width: 100%;
+          padding-left: 2.5rem;
         }
         .unique-search-icon {
           position: absolute;
@@ -231,13 +174,16 @@ $input-border-radius: 4px;
       flex-direction: column;
       align-items: center;
       form {
+        .react-datepicker-wrapper {
+          width: 100%;
+        }
         width: 100%; /* Ensure the form takes full width */
         position: relative;
         .date-input {
           display: grid;
           grid-template-row: 1fr 1fr;
-          width: 100%; /* Make the date input field take full width */
-          padding-left: 2.5rem; /* Adjust padding as needed */
+          width: 100%;
+          padding-left: 2.5rem;
           margin-bottom: 0.5rem;
         }
         .calendar-icon {
@@ -254,185 +200,68 @@ $input-border-radius: 4px;
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  .controls {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-    padding: 0;
-
-    .control-item {
-      align-items: center;
-      padding: 0;
-      justify-content: center;
-    }
-
-    .filter-dropdown {
-      select {
-        width: 100%;
-        padding: 0.7rem 1rem;
-      }
-    }
-
-    .date-filters {
-      form {
-        position: relative;
-        .date-input {
-          width: 100vw;
-          padding-left: 2.5rem;
-        }
-        .calendar-icon {
-          position: absolute;
-          left: 10px;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-      }
-      span {
-        display: none;
-      }
-    }
-  }
-}
-
-@media (min-width: 820px) and (max-width: 1024px) {
-  .controls {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0;
-
-    .control-item {
-      margin-bottom: 10px;
-    }
-
-    // .search-div {
-    //   .search-bar {
-    //     width: 100%;
-    //     position: relative;
-    //     input {
-    //       width: calc(100% - 2.5rem);
-    //       padding-left: 2.5rem;
-    //     }
-    //     .search-icon {
-    //       position: absolute;
-    //       left: 10px;
-    //       top: 50%;
-    //       transform: translateY(-50%);
-    //     }
-    //   }
-    // }
-
-    .filter-dropdown {
-      select {
-        width: 100%;
-        margin-left: 0;
-      }
-    }
-
-    .date-filters {
-      form {
-        width: 100%;
-        position: relative;
-        .date-input {
-          width: 46rem;
-          padding-left: 2.5rem;
-        }
-        .calendar-icon {
-          position: absolute;
-          left: 10px;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-      }
-      span {
-        display: none;
-      }
-    }
-  }
-}
-
-// @media (max-width: 768px) {
+// @media (min-width: 769px) and (max-width: 1024px) {
 //   .controls {
-//     flex-direction: column;
-//     align-items: stretch;
+//     display: grid;
+//     grid-template-columns: repeat(2, 1fr);
+//     gap: 1rem;
 //     padding: 0;
 
 //     .control-item {
-//       margin-bottom: 10px;
-//       flex: 1;
-//       justify-content: center;
-//     }
-
-//     .filter-dropdown {
-//       select {
-//         //   width: 80%;
-//         width: 13rem;
-//         //  margin-left: 2rem;
-//         //  padding: 0.7rem 1rem;
-//       }
-//     }
-
-//     .date-filters {
 //       display: flex;
-//       flex-direction: column;
-//       align-items: stretch;
+//       align-items: center;
+//       justify-content: center;
+//       padding: 0;
+//     }
 
-//       form {
+//     .search-div,
+//     .filter-dropdown {
+//       grid-column: span 2;
+//     }
+
+//     .search-div {
+//       .search-bar {
 //         width: 100%;
 //         position: relative;
 
-//         .date-input {
-//           width: 20rem;
+//         input {
+//           width: 100%;
 //           padding-left: 2.5rem;
-//           margin-bottom: 0.5rem;
 //         }
 
-//         .calendar-icon {
+//         .unique-search-icon {
 //           position: absolute;
 //           left: 0.5rem;
 //           top: 50%;
 //           transform: translateY(-50%);
 //         }
 //       }
-
-//       span {
-//         display: none;
-//       }
-//     }
-//   }
-// }
-
-// @media (min-width: 769px) and (max-width: 1024px) {
-//   .controls {
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     justify-content: space-between;
-//     padding: 0;
-
-//     .control-item {
-//       align-items: center;
-//       padding: 0;
 //     }
 
 //     .filter-dropdown {
 //       select {
-//         width: 50%;
+//         width: 100%;
 //         padding: 0.7rem 1rem;
 //       }
 //     }
 
 //     .date-filters {
 //       display: flex;
+//       flex-direction: row;
 //       align-items: center;
+//       justify-content: space-between;
+//       grid-column: span 2;
 
 //       form {
 //         position: relative;
-//         margin-right: 1rem;
+//         width: 100%;
+
+//         .react-datepicker-wrapper {
+//           width: 48%;
+//         }
 
 //         .date-input {
-//           width: calc(50% - 2.5rem);
+//           width: 100%;
 //           padding-left: 2.5rem;
 //         }
 
@@ -446,7 +275,131 @@ $input-border-radius: 4px;
 
 //       span {
 //         margin: 0 1rem;
+//         display: inline-block;
 //       }
 //     }
 //   }
 // }
+
+// @media (min-width: 820px) and (max-width: 1024px) {
+//   .controls {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: stretch;
+//     padding: 0;
+
+//     .control-item {
+//       margin-bottom: 10px;
+//     }
+
+//     .filter-dropdown {
+//       select {
+//         width: 100%;
+//         margin-left: 0;
+//       }
+//     }
+
+//     .date-filters {
+//       form {
+//         width: 100%;
+//         position: relative;
+
+//         .react-datepicker-wrapper {
+//           width: 100%;
+//         }
+
+//         .date-input {
+//           width: 46rem;
+//           padding-left: 2.5rem;
+//         }
+
+//         .calendar-icon {
+//           position: absolute;
+//           left: 10px;
+//           top: 50%;
+//           transform: translateY(-50%);
+//         }
+//       }
+
+//       span {
+//         display: none;
+//       }
+//     }
+//   }
+// }
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+
+    .control-item {
+      margin-bottom: 10px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .search-div {
+      width: 100%;
+
+      .unique-search-bar {
+        position: relative;
+        width: 100%;
+        input {
+          width: 100%;
+          padding-left: 2.5rem;
+        }
+
+        .unique-search-icon {
+          position: absolute;
+          left: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+
+    .filter-dropdown {
+      width: 100%;
+
+      select {
+        width: 100%;
+        padding: 0.7rem 1rem;
+      }
+    }
+
+    .date-filters {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+
+      form {
+        width: 100%;
+        position: relative;
+
+        .react-datepicker-wrapper {
+          width: 100%;
+        }
+
+        .date-input {
+          width: 100%;
+          padding-left: 2.5rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .calendar-icon {
+          position: absolute;
+          left: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+
+      span {
+        display: none;
+      }
+    }
+  }
+}

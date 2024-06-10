@@ -10,6 +10,8 @@ import toast from "react-hot-toast";
 interface TemplateModule {
   name: string,
   label: string,
+  dropDownOptions: string[],
+  isDropDown: boolean,
 }
 
 export default function TemplateInvoice() {

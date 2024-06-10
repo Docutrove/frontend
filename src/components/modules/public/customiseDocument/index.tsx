@@ -17,6 +17,8 @@ interface AuthData {
 interface TemplateModule {
   name: string,
   label: string,
+  dropDownOptions: string[],
+  isDropDown: boolean,
 }
 
 interface Template {

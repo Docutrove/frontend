@@ -4,10 +4,13 @@ import BaseButton from "../../ui/button";
 import BaseInput from "../../ui/input";
 import InvoiceDetails from "../../ui/invoiceDetails";
 import { useEffect, useState } from "react";
+import Select from "../../ui/select";
 
 interface TemplateModule {
   name: string,
   label: string,
+  dropDownOptions: string[],
+  isDropDown: boolean,
 }
 
 interface DynamicObject {
@@ -30,21 +33,15 @@ interface PaginationProps {
 const Records = (props: RecordsProps) => {
   let bs: any;
 
-  // useEffect(())
   return (
     <>
       { props.payload?.map((field, index) => {
-        { props.templateData ? (
-          bs = <BaseInput
-            key={index}
-            className="document-details__input"
-            label={field?.label}
-            placeholder={field?.name}
-            value={props.templateData[field?.name]}
-            onChange={(e) => props.handleInputChange(field?.name, e.target.value)}
-          />
-        ) : (
-          props.data ? (
+        {
+          field.isDropDown ? (
+            bs = 
+            <Select key={index} label={field?.label} options={field?.dropDownOptions}/>
+          ) : (
+            props.data ? (
             bs = <BaseInput
               key={index}
               className="document-details__input"
@@ -53,16 +50,17 @@ const Records = (props: RecordsProps) => {
               value={props.data[field?.name]}
               onChange={(e) => props.handleInputChange(field?.name, e.target.value)}
             />
-          ) : (
+            ) : (
             bs = <BaseInput
               key={index}
               className="document-details__input"
               label={field?.label}
               placeholder={field?.name}
               onChange={(e) => props.handleInputChange(field?.name, e.target.value)}
-            />
+          />
+            )
           )
-        )}
+        }
         return (
           bs
         )
@@ -73,10 +71,7 @@ const Records = (props: RecordsProps) => {
 
 const Pagination = (props: PaginationProps) => {
     const goToNextPage = () => {
-      // console.log(props.currentPage)
-      // console.log(props.nPages)
       if(props.currentPage !== props.nPages) props.setCurrentPage(props.currentPage + 1)
-      // console.log(props.currentPage)
     }
     const goToPrevPage = () => {
       if(props.currentPage !== 1) props.setCurrentPage(props.currentPage - 1)
@@ -108,6 +103,10 @@ export default function TemplateDetails() {
   const [nPages, setNPages] = useState(1);
 
   const templateRequestData = template?.configuration.formConfig.modules
+  const initialValues = templateRequestData?.reduce((values: {[key: string]: string}, field) => {
+    values[field.name] = '';
+    return values;
+  }, {});
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
@@ -120,11 +119,14 @@ export default function TemplateDetails() {
   }
 
   const handleInputChange = (field: string, value: string) => {
-    const obj = {...data, [field]: value};
-    setData(obj);
+    setData({
+      ...data,
+      [field]: value,
+    });
   }
 
   useEffect(() => {
+    setData(initialValues)
     getNPages()
   }, []);
 

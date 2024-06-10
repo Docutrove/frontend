@@ -4,9 +4,10 @@ import { getTemplatesByCategory } from "../../../../api/templates";
 import useRequest from "../../../hooks/useRequest";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { Icon } from "../../ui/Icon";
 
 export default function ChooseTemplate() {
-  const { setTemplateId, categoryId, categories } = useCustomiseDocContext();
+  const { setTemplateId, categoryId, categories, goBack } = useCustomiseDocContext();
   const { makeRequest } = useRequest(getTemplatesByCategory, categoryId);
   const [templates, setTemplates] = useState<[{name: string, id: string}]>()
   const [ category, setCategory ] = useState<string | undefined>('')
@@ -50,6 +51,15 @@ export default function ChooseTemplate() {
           })}
           </>
         </div>
+      </div>
+      <div className="direction-buttons direction-buttons__noboder">
+        <button className="invoice-back-button" onClick={goBack}>
+          <div className="back-button">
+            <Icon name="caret-right" className="back-icon" />
+          </div>
+          <p className="text--xs">Back</p>
+        </button>
+        
       </div>
     </GradientLayout>
   );

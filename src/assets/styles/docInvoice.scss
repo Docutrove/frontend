@@ -222,6 +222,10 @@
   border-top: 1px solid var(--border3);
   padding-top: 40px;
 
+  &__noboder {
+    border-top: none !important;
+  }
+
   @include mobile(1105px) {
     justify-content: space-between;
   }

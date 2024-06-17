@@ -1,0 +1,78 @@
+import React, { useState, useEffect } from 'react';
+import QuestionForm from './QuestionForm';
+import TemplateDisplay from './TemplateDisplay';
+
+import './index.css';
+
+interface Question {
+  label: string;
+  name: string;
+  type: string;
+  options?: string[];
+}
+
+const App: React.FC = () => {
+  const [formData, setFormData] = useState<{ [key: string]: string | string[] }>({});
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [templateHtml, setTemplateHtml] = useState<string>('');
+  const [prompts, setPrompts] = useState<string[]>([]);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
+  useEffect(() => {
+    const savedData = localStorage.getItem('formData');
+    if (savedData) {
+      setFormData(JSON.parse(savedData));
+    }
+
+    fetch('http://ec2-3-141-13-187.us-east-2.compute.amazonaws.com/api/v1/item/27')
+      .then((response) => response.json())
+      .then((data) => {
+        const fields = data.data.configuration.formConfig.modules;
+        const html = data.data.configuration.html;
+
+        setQuestions(fields);
+        setTemplateHtml(html);
+        setPrompts(extractPrompts(html));
+        setIsLoaded(true);
+      });
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('formData', JSON.stringify(formData));
+  }, [formData]);
+
+  const handleChange = (field: string, value: string | string[]) => {
+    setFormData((prevFormData) => ({ ...prevFormData, [field]: value }));
+  };
+
+  const handleSubmit = () => {
+    console.log('Form submitted:', formData);
+  };
+
+  const extractPrompts = (html: string): string[] => {
+    const promptList = html.match(/<li>(.*?)<\/li>/g);
+    if (!promptList) return [];
+    return promptList.map(prompt => prompt.replace(/<\/?li>/g, '').trim());
+  };
+
+  return (
+    <div className="container">
+      <div className="form-section">
+        {isLoaded && (
+          <QuestionForm
+            questions={questions}
+            prompts={prompts}
+            formData={formData}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+        )}
+      </div>
+      <div className="template-section">
+        <TemplateDisplay formData={formData as { [key: string]: string }} templateHtml={templateHtml} />
+      </div>
+    </div>
+  );
+};
+
+export default App;

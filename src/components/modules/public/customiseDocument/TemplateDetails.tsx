@@ -99,7 +99,7 @@ export default function TemplateDetails() {
   const { goBack, setTemplateData, templateData, template } = useCustomiseDocContext();
   const [ data, setData ] = useState<DynamicObject>();
   const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage] = useState(3);
+  const [recordsPerPage] = useState(1);
   const [nPages, setNPages] = useState(1);
 
   const templateRequestData = template?.configuration.formConfig.modules

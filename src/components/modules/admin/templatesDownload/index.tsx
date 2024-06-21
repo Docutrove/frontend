@@ -8,8 +8,8 @@ import { StatisticsCardData } from './Data/downloads'
 import SearchBar from '../bodySearchBar'
 
 export default function TempDownloadView() {
-  const [startDate, setStartDate] = useState(null)
-  const [endDate, setEndDate] = useState(null)
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
 
   return (
     <div className="main-content">
@@ -33,7 +33,7 @@ export default function TempDownloadView() {
           <form>
             <DatePicker
               selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              onChange={(date) => setStartDate(date!)}
               placeholderText="Start date"
               className="date-input"
             />
@@ -48,7 +48,7 @@ export default function TempDownloadView() {
           <form>
             <DatePicker
               selected={endDate}
-              onChange={(date) => setEndDate(date)}
+              onChange={(date) => setEndDate(date!)}
               placeholderText="End date"
               className="date-input"
             />

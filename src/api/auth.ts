@@ -9,7 +9,6 @@ function signup(payload: {
   lastName: string;
   email: string;
   phone: string;
-  password: string;
 }) {
   return createRequest("/api/v1/auth/register", "post", payload);
 }

@@ -1,0 +1,344 @@
+@import '../../../../assets/styles/mixins.scss';
+@import '../../../../assets/styles/admin.scss';
+@import '../../../../assets/styles/_tablestyles.scss';
+
+$input-border-radius: 4px;
+
+//@extend %main-font-family;
+//font-size: 16px;
+
+%input-styles {
+  $input-background-color: #f0f2f3;
+  $input-border: 1px solid #f0ecf5;
+  $input-padding: 0.7rem 2.4rem;
+}
+// Responsive styles
+// @media (max-width: 768px) {
+//   .controls {
+//     flex-direction: column;
+//     align-items: stretch;
+//     padding: 0;
+
+//     .control-item {
+//       margin-bottom: 10px;
+//       flex: 1;
+//       justify-content: center;
+//     }
+
+//     .search-div {
+//       .search-bar {
+//         width: 100%;
+//         position: relative;
+//         input {
+//           width: calc(100% - 2.4rem); // Adjust for padding
+//           padding-left: 2.5rem; // Adjust padding to accommodate the search icon
+//         }
+//         .search-icon {
+//           position: absolute;
+//           left: 0.5rem;
+//           top: 50%;
+//           transform: translateY(-50%);
+//         }
+//       }
+//     }
+
+//     .filter-dropdown {
+//       select {
+//         width: 90%;
+//         margin-left: 1rem;
+//       }
+//     }
+
+//     .date-filters {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+
+//       form {
+//         width: 100%;
+//         position: relative;
+//         input {
+//           width: 100%; // Adjust for padding
+//           padding-left: 2.5rem;
+//           margin-bottom: 0.5rem;
+//         }
+//         .calendar-icon {
+//           position: absolute;
+//           left: 0.5rem;
+//           top: 50%;
+//           transform: translateY(-50%);
+//         }
+//       }
+
+//       span {
+//         display: none; // Hide the separator on small screens
+//       }
+//     }
+//   }
+// }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.controls {
+  display: flex;
+  //justify-content: start;
+  //align-items: flex-start;
+  margin-bottom: 20px;
+  //padding: 10px;
+  border-radius: 5px;
+  flex-wrap: wrap;
+  //padding-right: 2rem;
+  .control-item {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    //margin-right: 0.5rem;
+    // display: inline-flex;
+    // flex-wrap: wrap-reverse;
+  }
+
+  .search-div {
+    //background-color: #f9fafa;
+    // border: 1px solid #bcc6cc26;
+    // margin-right: 48px;
+    // padding: 10px 2rem;
+    // width: 100%;
+    // display: flex;
+    // border-radius: 4px;
+
+    .search-bar {
+      //  margin-right: 0.1rem;
+      background-color: #f9fafa;
+
+      input {
+        padding: 0.7rem 2.4rem;
+        border-radius: 4px;
+        background-color: #fff;
+        border: 1px solid #f0ecf5;
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .filter-dropdown {
+    select {
+      padding: 0.7rem 3rem;
+      border-radius: $input-border-radius;
+      background-color: #f0f2f3;
+      @extend %input-styles;
+
+      option {
+        margin-right: 2rem;
+        color: red;
+        font-size: 14px;
+      }
+    }
+  }
+
+  // .date-filters {
+  //   display: flex;
+  //   align-items: center;
+  //   @extend %input-styles;
+
+  //   span {
+  //     display: inline-block;
+  //     margin: 0 0rem;
+  //   }
+
+  //   form {
+  //     position: relative;
+  //     margin-right: 0.5rem;
+  //     @extend %input-styles;
+
+  //     &:last-child {
+  //       margin-right: 0;
+  //     }
+
+  //     input {
+  //       @extend %input-styles;
+  //       width: 10rem;
+  //       padding-right: 2.5rem;
+  //       padding-left: 2.5rem;
+  //     }
+
+  //     .calendar-icon {
+  //       position: absolute;
+  //       left: 0.5rem;
+  //       top: 50%;
+  //       transform: translateY(-50%);
+  //     }
+  //   }
+  // }
+
+  .date-filters {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    span {
+      display: inline-block;
+      margin: 0 0rem;
+      margin-right: -1.7rem;
+      font-family: $main-font-family;
+      color: #727272;
+    }
+
+    form {
+      position: relative;
+      margin-right: 0.5rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      input {
+        background-color: #f0f2f3; // Adding background color
+        border: 1px solid #f0ecf5; // Adding border
+        padding: 0.7rem 2.1rem; // Adding padding
+        border-radius: 4px;
+        width: 10rem;
+        // padding-right: 1.5rem;
+        // padding-left: 2.5rem;
+      }
+
+      .calendar-icon {
+        position: absolute;
+        left: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
+.table-section {
+  @extend %table-section-styles;
+
+  .table-top {
+    .table-heading {
+      @extend %table-heading;
+    }
+    .view_all {
+      @extend %view_styles;
+    }
+  }
+
+  .striped-table {
+    @extend %striped-table;
+    thead {
+      @extend %table-data-styles;
+    }
+
+    td {
+      @extend %table-data-styles;
+      .downloads {
+      }
+    }
+
+    tr {
+      .downloads {
+        padding-left: 3rem;
+      }
+    }
+
+    tr:nth-child(odd) {
+      background-color: #f9fafa;
+    }
+  }
+}
+
+// @media (min-width: 769px) {
+//   .controls {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 0 1rem;
+//     max-width: 80%;
+
+//     .control-item {
+//       flex: 1;
+//       display: flex;
+//       align-items: center;
+//       margin-right: 1rem;
+
+//       &:last-child {
+//         margin-right: 0;
+//       }
+
+//       .search-bar,
+//       select,
+//       form {
+//         width: auto;
+//       }
+
+//       input {
+//         width: auto;
+//       }
+
+//       .search-bar {
+//         position: relative;
+//         input {
+//           width: 15rem;
+//           padding-right: 2.5rem;
+//           padding-left: 2.5rem;
+//         }
+//         .search-icon {
+//           position: absolute;
+//           right: 0.5rem;
+//           top: 50%;
+//           transform: translateY(-50%);
+//         }
+//       }
+//     }
+
+//     .filter-dropdown {
+//       select {
+//         padding: 0.7rem 1rem;
+//         margin-left: -1rem;
+//       }
+//     }
+
+//     .date-filters {
+//       display: flex;
+//       align-items: center;
+
+//       span {
+//         display: inline-block;
+//         margin: 0 0.5rem;
+//       }
+
+//       form {
+//         position: relative;
+//         margin-right: 0.5rem;
+
+//         &:last-child {
+//           margin-right: 0;
+//         }
+
+//         input {
+//           width: 10rem;
+//           padding-right: 2.5rem;
+//           padding-left: 2.5rem;
+//         }
+
+//         .calendar-icon {
+//           position: absolute;
+//           left: 0.5rem;
+//           top: 50%;
+//           transform: translateY(-50%);
+//         }
+//       }
+//     }
+//   }
+// }

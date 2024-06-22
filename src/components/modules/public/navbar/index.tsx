@@ -1,9 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import { Icon } from "../../ui/Icon";
-import BaseButton from "../../ui/button";
+// import BaseButton from "../../ui/button";
 import "./index.scss";
 import { useState } from "react";
-import { useAuthContext } from "../../../context/authContext";
+// import { useAuthContext } from "../../../context/authContext";
 
 interface NavBarProps {
   hasBorder?: boolean;
@@ -11,17 +11,17 @@ interface NavBarProps {
 
 export default function NavBar({ hasBorder }: NavBarProps) {
   const [openMenu, setOpenMenu] = useState(false);
-  const { user, logout } = useAuthContext();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  // const { user, logout } = useAuthContext();
+  // const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setDropdownOpen((prev) => !prev);
-  };
+  // const toggleDropdown = () => {
+  //   setDropdownOpen((prev) => !prev);
+  // };
 
-  const Logout = () => {
-    logout();
-    location.replace("/login");
-  };
+  // const Logout = () => {
+  //   logout();
+  //   location.replace("/login");
+  // };
 
   const handleToggle = () => {
     setOpenMenu((prev) => !prev);
@@ -60,7 +60,7 @@ export default function NavBar({ hasBorder }: NavBarProps) {
             </NavLink>
           </li>
 
-          {user ? (
+          {/* {user ? (
             <div className="user-container">
               <div className="user" onClick={toggleDropdown}>
                 <Icon name="dark_user" className="user__icon" />
@@ -92,7 +92,7 @@ export default function NavBar({ hasBorder }: NavBarProps) {
                 Sign in
               </BaseButton>
             </li>
-          )}
+          )} */}
         </ul>
       </div>
     </div>

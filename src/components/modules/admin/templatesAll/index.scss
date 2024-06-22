@@ -1,0 +1,58 @@
+@import '../../../../assets/styles/mixins.scss';
+@import '../../../../assets/styles/admin.scss';
+@import '../../../../assets/styles/_tablestyles.scss';
+
+.search-bar {
+  position: relative;
+}
+
+.search-bar input {
+  padding-left: 30px;
+}
+
+.search-bar .search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.filter-dropdown span {
+  margin-right: 10px;
+}
+
+.table-section {
+  @extend %table-section-styles;
+
+  .table-top {
+    .table-heading {
+      @extend %table-heading;
+    }
+    .view_all {
+      @extend %view_styles;
+    }
+  }
+
+  .striped-table {
+    @extend %striped-table;
+    thead {
+      @extend %table-data-styles;
+    }
+
+    td {
+      @extend %table-data-styles;
+      .downloads {
+      }
+    }
+
+    tr {
+      .downloads {
+        padding-left: 3rem;
+      }
+    }
+
+    tr:nth-child(odd) {
+      background-color: #f9fafa;
+    }
+  }
+}

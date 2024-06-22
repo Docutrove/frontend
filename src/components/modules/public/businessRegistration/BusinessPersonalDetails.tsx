@@ -48,7 +48,7 @@ export default function NamePersonalDetails() {
                 </div>
 
                 <BaseButton variant="inverted" className='user--submit--button' onClick={goBack}>
-                    Continue with Google
+                    Go Back
                 </BaseButton>
             </form>
 

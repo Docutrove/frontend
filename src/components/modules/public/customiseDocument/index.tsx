@@ -3,37 +3,113 @@ import { createContext, useContext, useEffect, useState } from "react";
 import CreateDocument from "./CreateDocument";
 import "./index.scss";
 import useRequest from "../../../hooks/useRequest";
-import { getTemplates } from "../../../../api/templates";
+import { getTemplateCategories } from "../../../../api/templates";
 import toast from "react-hot-toast";
+import { useSearchParams } from "react-router-dom";
+
+interface AuthData {
+  firstName: string, 
+  lastName: string, 
+  email: string, 
+  phone: string
+}
+
+interface TemplateModule {
+  name: string,
+  label: string,
+  dropDownOptions: string[],
+  isDropDown: boolean,
+}
+
+interface Template {
+  name: string,
+  price: number,
+  description: string,
+  configuration: {
+    fields: [],
+    formConfig: {
+      modules: TemplateModule[],
+    },
+    previewHtml: string,
+  }
+}
+
+interface DynamicObject {
+  [key: string]: any;
+}
 
 const customiseDocContext = createContext<{
   activeScreen?: string;
   goNext?: () => void;
   goBack?: () => void;
-  templates?: {}[];
-}>({});
+  categories?: [{name: string, id: string}];
+  categoryId?: string;
+  templateId?: string;
+  template?: Template | undefined;
+  templateData?: DynamicObject | undefined;
+  authData?: AuthData;
+  setTemplate: (data: Template | undefined) => void;
+  setAuthData: (data: AuthData) => void;
+  setTemplateData: (data: DynamicObject | undefined) => void;
+  setCategoryId: (categoryId: string) => void;
+  setTemplateId: (templateId: string) => void;
+}>({
+  setTemplateData: function (data: DynamicObject | undefined): void {
+    console.log(data)
+  },
+  setCategoryId: function (categoryId: string): void {
+    console.log(categoryId)
+  },
+  setTemplateId: function (templateId: string): void {
+    console.log(templateId)
+  },
+  setAuthData: function (data: AuthData): void {
+    console.log(data)
+  },
+  setTemplate: function (data: Template | undefined): void {
+    console.log(data)
+  },
+});
 
 export default function CustomiseDocumentProvider() {
   const SCREENS = [
     "choose_document_type",
-    // "choose_template",
+    "choose_template",
     "template_invoice",
     "template_details",
     "confirm_template",
+    "template_personal_details",
+    "template_payment",
+    "template_thank",
   ];
   const [activeScreen, setActiveScreen] = useState(SCREENS[0]);
-  const { makeRequest, response } = useRequest(getTemplates);
+  const { makeRequest: templateCategoriesRequest } = useRequest(getTemplateCategories);
+  const [categories, setCategories] = useState()
+  const [categoryId, setCategoryId] = useState("")
+  const [templateId, setTemplateId] = useState("")
+  const [templateData, setTemplateData] = useState<DynamicObject | undefined>()
+  const [template, setTemplate] = useState<Template | undefined>()
+  const [authData, setAuthData] = useState<AuthData>()
 
-  const getTemplate = async () => {
-    const [_, err] = await makeRequest();
+  const requestTemplateCategories = async () => {
+    const [categories, err] = await templateCategoriesRequest();
 
     if (err) {
       toast.error(err.message);
     }
+    setCategories(categories?.data)
   };
 
+  const [queryParameters] = useSearchParams()
+  const checkParams = () => {
+    if (queryParameters.get('trxref')) {
+      setActiveScreen('template_thank')
+    }
+  }
+
   useEffect(() => {
-    getTemplate();
+    checkParams();
+    requestTemplateCategories();
   }, []);
 
   const goNext = () => {
@@ -46,9 +122,46 @@ export default function CustomiseDocumentProvider() {
     const nextScreen = SCREENS[idx - 1];
     setActiveScreen(nextScreen);
   };
+  const setCategoryIdReal = (categoryId: string) => {
+    setCategoryId(categoryId)
+    const idx = SCREENS.findIndex((s) => s === activeScreen);
+    const nextScreen = SCREENS[idx + 1];
+    setActiveScreen(nextScreen);
+  }
+  const setTemplateIdReal = (templateId: string) => {
+    setTemplateId(templateId)
+    const idx = SCREENS.findIndex((s) => s === activeScreen);
+    const nextScreen = SCREENS[idx + 1];
+    setActiveScreen(nextScreen);
+  }
+  const setTemplateDataReal = (data: DynamicObject | undefined) => {
+    console.log(data)
+    setTemplateData(data)
+    const idx = SCREENS.findIndex((s) => s === activeScreen);
+    const nextScreen = SCREENS[idx + 1];
+    setActiveScreen(nextScreen);
+  }
+  const setAuthDataReal = (data: AuthData) => {
+    setAuthData(data)
+    const idx = SCREENS.findIndex((s) => s === activeScreen);
+    const nextScreen = SCREENS[idx + 1];
+    setActiveScreen(nextScreen);
+  }
+  const setTemplateReal = (data: Template | undefined) => {
+    setTemplate(data)
+    const idx = SCREENS.findIndex((s) => s === activeScreen);
+    const nextScreen = SCREENS[idx + 1];
+    setActiveScreen(nextScreen);
+  }
   return (
     <customiseDocContext.Provider
-      value={{ activeScreen, goNext, goBack, templates: response }}
+      value={{
+        activeScreen, goNext, goBack, setCategoryId: setCategoryIdReal, 
+        setTemplateId: setTemplateIdReal, setTemplateData: setTemplateDataReal,
+        setAuthData: setAuthDataReal, setTemplate: setTemplateReal,
+        categories: categories, categoryId: categoryId, templateId: templateId, 
+        templateData: templateData, authData: authData, template: template,
+      }}
     >
       <CreateDocument />
     </customiseDocContext.Provider>

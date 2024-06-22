@@ -1,0 +1,45 @@
+// Layout component styles
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Set height to cover the entire viewport */
+}
+
+.wrapper {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+}
+
+// Navigation Sidebar
+.nav {
+  display: flex;
+
+  flex: 0 0 19%;
+  background-color: #f0f0f0;
+}
+
+// Main Content Area
+.content {
+  flex: 2;
+  overflow: scroll;
+
+  //   padding: 48px; /* Adjusted padding */
+  //   overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    bottom: 0;
+    padding: 0 1rem;
+  }
+
+  .nav.active {
+    display: flex;
+  }
+}

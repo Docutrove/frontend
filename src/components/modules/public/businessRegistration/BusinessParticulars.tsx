@@ -1,13 +1,13 @@
 import { useBusinessRegistrationContext } from ".";
 import BaseButton from "../../ui/button"
 import Footer from "../footer";
-import Select from "../../ui/select";
 import BaseInput from "../../ui/input";
 import Radio from "../../ui/radio";
 import BusinessNavbar from '../businessNavbar';
 
 export default function BusinessParticulars() {
   const { goBack, goNext } = useBusinessRegistrationContext();
+  
   return (
     <div className='business--information--container'>
           <BusinessNavbar/>
@@ -62,9 +62,9 @@ export default function BusinessParticulars() {
                     placeholder="Gender"
                     />
 
-                    <Select
+                    <BaseInput
                     label="Nationality"
-                    options={["Dropdown selection"]}
+                    className="user--input"
                     />
 
                 </div>
@@ -128,19 +128,19 @@ export default function BusinessParticulars() {
                 </div>
 
                 <div className='triple--input'>
-                    <Select
+                    <BaseInput
                     label="Country"
-                    options={["Dropdown selection"]}
+                    className="user--input"
                     />
 
-                    <Select
+                    <BaseInput
                     label="State"
-                    options={["Dropdown selection"]}
+                    className="user--input"
                     />
 
-                    <Select
+                    <BaseInput
                     label="LGA"
-                    options={["Dropdown selection"]}
+                    className="user--input"
                     />
 
                 </div>
@@ -195,19 +195,19 @@ export default function BusinessParticulars() {
                 </div>
 
                 <div className='triple--input'>
-                    <Select
+                    <BaseInput
                     label="Country"
-                    options={["Dropdown selection"]}
+                    className="user--input"
                     />
 
-                    <Select
+                    <BaseInput
                     label="State"
-                    options={["Dropdown selection"]}
+                    className="user--input"
                     />
 
-                    <Select
+                    <BaseInput
                     label="LGA"
-                    options={["Dropdown selection"]}
+                    className="user--input"
                     />
 
                 </div>
@@ -240,7 +240,7 @@ export default function BusinessParticulars() {
                     placeholder="Enter street name "
                 />
 
-                <Radio
+                <Radio 
                 variant='primary'>
                    Hide Residential Address From Public Record?
                 </Radio>
@@ -254,9 +254,9 @@ export default function BusinessParticulars() {
 
                 <div className='double--input'>
                    
-                    <Select
+                    <BaseInput
                     label="Type"
-                    options={["Dropdown selection"]}
+                    className="user--input"
                     />
 
                     <BaseInput
@@ -266,9 +266,9 @@ export default function BusinessParticulars() {
                     />
                 </div>
 
-                    <Select
+                    <BaseInput
                     label="Type"
-                    options={["Dropdown selection"]}
+                    className="user--input"
                     />
 
 
@@ -278,15 +278,16 @@ export default function BusinessParticulars() {
             </div>
           </div>
 
-          <div className="bottom--buttons">
+          <div className="button--container">
+                <div className="bottom--buttons">
                     <BaseButton onClick={goBack} variant="inverted" className='back--button'>
-                        Back
+                    Back
                     </BaseButton>
-        
                     <BaseButton onClick={goNext} variant="primary" className='save--button'>
-                        Save and Continue
+                    Save and Continue
                     </BaseButton>
                 </div>
+            </div>
           <Footer/>
     </div>
 )

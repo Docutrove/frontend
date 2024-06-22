@@ -36,9 +36,11 @@ export default function Service({
           <p className="service__content__text__description text--sm">
             {description3}
           </p>
-          <BaseButton href={path} variant="primary" className="service-button">
-            {buttonText}
-          </BaseButton>
+          {buttonText? (
+            <BaseButton href={path} variant="primary" className="service-button">
+              {buttonText}
+            </BaseButton>
+          ) : null}
         </div>
         <img src={imageURL} alt="" className="service__content__image" />
       </div>

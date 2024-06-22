@@ -12,7 +12,7 @@ export default async function createRequest(
       headers["Authorization"] = `Bearer ${localStorage.getItem("AUTH_TOKEN")}`;
     }
 
-    const res = await fetch(`http://3.142.252.101${url}`, {
+    const res = await fetch(`https://api.docutrove.co${url}`, {
       method,
       headers,
       body: JSON.stringify(body),

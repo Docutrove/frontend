@@ -43,9 +43,7 @@ export default function HomeBenefits() {
           <div>
             <div className="web-header">
               <p className="subtitle">Benefits</p>
-              <h2 className="home__benefits__title">
-                Sorem Ipsum dolor sit amet
-              </h2>
+              <h2 className="home__benefits__title">Our Benefits</h2>
             </div>
             <div className="home__benefits__benefit purple">
               <h4>Expert Legal Consultation</h4>

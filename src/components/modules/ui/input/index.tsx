@@ -11,6 +11,8 @@ interface BaseInputProps {
   value?: string;
   name?: string;
   errorMessage?: string;
+  required?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 }
 
 export default function BaseInput({
@@ -23,18 +25,33 @@ export default function BaseInput({
   name,
   value,
   errorMessage,
+  required,
+  onChange,
   ...props
 }: BaseInputProps) {
   return (
     <label className={`base-input ${className}`}>
-      <span className="label text--2xs">{label}</span>
+      <span className="label text--2xs">{label?.replace(/_/g, ' ')}</span>
       <div className="input-container">
         {textarea ? (
-          <textarea className="textarea input"></textarea>
+          <textarea
+            className="textarea input"
+            value={value}
+            name={name}
+            required={required}
+            placeholder={placeholder?.replace(/_/g, ' ')}
+            onChange={onChange}
+            {...props}
+          ></textarea>
         ) : (
           <input
             className={`input ${errorMessage ? "error-input" : ""}`}
-            {...{ placeholder, type, name, value, ...props }}
+            type={type}
+            value={value}
+            name={name}
+            placeholder={placeholder?.replace(/_/g, ' ')}
+            onChange={onChange}
+            {...props}
           />
         )}
         <div className="input-icons">{children}</div>

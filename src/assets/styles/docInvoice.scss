@@ -135,10 +135,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     border: 1px solid #f6f6f6;
     min-height: 100vh;
     margin: 0 auto;
-    max-width: 512px;
+    // max-width: 512px;
+    max-width: 90%;
 
     @include mobile(1105px) {
       min-height: 50vh;
@@ -149,8 +151,9 @@
     }
 
     &__text {
-      max-width: 260px;
+      max-width: 70%;
       opacity: 30%;
+      overflow: hidden;
       text-align: center;
     }
   }
@@ -218,6 +221,10 @@
   gap: 32px;
   border-top: 1px solid var(--border3);
   padding-top: 40px;
+
+  &__noboder {
+    border-top: none !important;
+  }
 
   @include mobile(1105px) {
     justify-content: space-between;

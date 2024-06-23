@@ -1,4 +1,4 @@
-@import "../styles/mixins.scss";
+@import '../styles/mixins.scss';
 
 .invoice-details {
   &__content {
@@ -11,10 +11,10 @@
   }
 
   &__text {
-    max-width: 721px;
-    margin-left: auto;
+    max-width: 30%;
+    //margin-left: auto;
     padding: 80px 73px 54px;
-    width: 50vw;
+    width: 35vw;
 
     @include mobile(1105px) {
       margin-left: unset;
@@ -118,7 +118,7 @@
 .template-container {
   background: linear-gradient(282.33deg, #eafafe 52.56%, #f2fdfa 115.44%);
   flex: 1;
-  max-width: 50vw;
+  max-width: 70vw;
   padding: 40px 20px 0;
 
   @include mobile(1105px) {
@@ -131,7 +131,7 @@
   }
 
   .template-image {
-    background: var(--white);
+    background: var(--white) !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,6 +141,7 @@
     margin: 0 auto;
     // max-width: 512px;
     max-width: 90%;
+    //width: 70%;
 
     @include mobile(1105px) {
       min-height: 50vh;
@@ -192,6 +193,12 @@
   gap: 24px;
   margin: 40px 0;
 
+  //max-width: 511px;
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 10px; // Adjust radius as needed
+  border: 1px solid #f0ecf5;
+
   @include mobile(600px) {
     margin: 30px 0;
     gap: 20px;
@@ -200,7 +207,7 @@
   &__input {
     .label {
       font-weight: 700;
-      font-family: "PT Serif", serif;
+      font-family: 'PT Serif', serif;
       font-size: 20px;
       line-height: 27px;
       margin-bottom: 12px;

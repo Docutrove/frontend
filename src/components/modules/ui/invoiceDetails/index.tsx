@@ -1,19 +1,21 @@
-import { Icon } from "../Icon";
-import NavBar from "../../public/navbar";
-import { ReactNode } from "react";
-import parse from 'html-react-parser';
+import { Icon } from '../Icon'
+import NavBar from '../../public/navbar'
+import { ReactNode } from 'react'
+import parse from 'html-react-parser'
 
 interface InvoiceDetailsProps {
-  subtitle: string;
-  title: string | undefined;
-  back_button?: boolean;
-  children: ReactNode;
-  document_text: string | undefined;
-  backClick?: () => void;
+  subtitle?: string
+  categories?: string
+  title?: string | undefined
+  back_button?: boolean
+  children: ReactNode
+  document_text: string | undefined
+  backClick?: () => void
 }
 
 export default function InvoiceDetails({
   subtitle,
+  categories,
   title,
   back_button,
   children,
@@ -32,10 +34,11 @@ export default function InvoiceDetails({
                 <div className="back-button">
                   <Icon name="caret-right" className="back-icon" />
                 </div>
-                <p className="text--xs">All templates</p>
+
+                <p className="text--xs">All templates / {categories} </p>
               </button>
             ) : (
-              ""
+              ''
             )}
 
             <div className="invoice-description">
@@ -47,12 +50,12 @@ export default function InvoiceDetails({
           <div className="template-container">
             <div className="template-image">
               <p className="text--sm template-image__text">
-              {parse(document_text || "")}
+                {parse(document_text || '')}
               </p>
             </div>
           </div>
         </div>
       </div>
     </>
-  );
+  )
 }

@@ -78,7 +78,7 @@ const TemplateModal: React.FC<TemplateModalProps> = ({ isOpen, onClose }) => {
               <input type="text" placeholder="Last Name" required />
               <input type="email" placeholder="Email Address" required />
               <input type="tel" placeholder="Phone Number" required />
-              <textarea placeholder="Message" required></textarea>
+              <textarea placeholder="Message"  required></textarea>
               <button type="submit">Submit</button>
             </form>
           )}

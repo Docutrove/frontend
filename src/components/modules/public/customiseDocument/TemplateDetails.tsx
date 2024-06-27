@@ -5,6 +5,8 @@ import BaseInput from '../../ui/input'
 import InvoiceDetails from '../../ui/invoiceDetails'
 import { useEffect, useState } from 'react'
 import Select from '../../ui/select'
+import ProgressBar from '../../ui/ProgressBar'
+import ContactSection from '../../ui/ContactSection'
 
 interface TemplateModule {
   name: string
@@ -31,44 +33,43 @@ interface PaginationProps {
 }
 
 const Records = (props: RecordsProps) => {
-  let bs: any
-
   return (
     <>
       {props.payload?.map((field, index) => {
-        {
-          field.isDropDown
-            ? (bs = (
-                <Select
-                  key={index}
-                  label={field?.label}
-                  options={field?.dropDownOptions}
-                />
-              ))
-            : props.data
-            ? (bs = (
-                <BaseInput
-                  key={index}
-                  className="document-details__input"
-                  label={field?.label}
-                  placeholder={field?.name}
-                  value={props.data[field?.name]}
-                  onChange={(e) =>
-                    props.handleInputChange(field?.name, e.target.value)
-                  }
-                />
-              ))
-            : (bs = (
-                <BaseInput
-                  key={index}
-                  className="document-details__input"
-                  label={field?.label}
-                  placeholder={field?.name}
-                  onChange={(e) =>
-                    props.handleInputChange(field?.name, e.target.value)
-                  }
-                />
-              ))
+        let bs
+        if (field.isDropDown) {
+          bs = (
+            <Select
+              key={index}
+              label={field?.label}
+              options={field?.dropDownOptions}
+            />
+          )
+        } else if (props.data) {
+          bs = (
+            <BaseInput
+              key={index}
+              className="document-details__input"
+              label={field?.label}
+              placeholder={field?.name}
+              value={props.data[field?.name]}
+              onChange={(e) =>
+                props.handleInputChange(field?.name, e.target.value)
+              }
+            />
+          )
+        } else {
+          bs = (
+            <BaseInput
+              key={index}
+              className="document-details__input"
+              label={field?.label}
+              placeholder={field?.name}
+              onChange={(e) =>
+                props.handleInputChange(field?.name, e.target.value)
+              }
+            />
+          )
         }
         return bs
       })}
@@ -148,7 +149,12 @@ export default function TemplateDetails() {
       back_button
       backClick={goBack}
       document_text={template?.configuration.previewHtml}
+      backgroundColor="#F9F9F9"
+      hideBackButton // Prop to hide the back button
+      //hideInvoiceDescription // Prop to hide the invoice description
+      //    showPrivacyInfo
     >
+      <div>{<ProgressBar />}</div>
       <div className="document-details">
         <Records
           payload={currentRecords}
@@ -169,14 +175,15 @@ export default function TemplateDetails() {
           </div>
           <p className="text--xs">Back</p>
         </button>
-        {currentPage == nPages ? (
+        {currentPage === nPages ? (
           <BaseButton variant="primary" onClick={() => setTemplateData(data)}>
-            Next Page
+            Next
           </BaseButton>
         ) : (
           <></>
         )}
       </div>
+      <div>{<ContactSection />}</div>
     </InvoiceDetails>
   )
 }

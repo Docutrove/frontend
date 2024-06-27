@@ -22,6 +22,7 @@ export default function TemplateInvoice() {
     name: string
     price: number
     description: string
+    category: string
     configuration: {
       fields: []
       formConfig: {
@@ -48,23 +49,27 @@ export default function TemplateInvoice() {
     <InvoiceDetails
       subtitle="Customize and download a legal document"
       title={localTemplate?.name}
+      categories={localTemplate?.category}
       back_button
       document_text={localTemplate?.configuration.previewHtml}
       backClick={goBack}
+      // fullWidth
     >
       <h5 className="invoice-price">Price: ₦{localTemplate?.price}</h5>
       <p className="text--sm">{localTemplate?.description}</p>
-      <div className="privacy-info">
-        <p className="privacy-info__title text--2xs">
-          We value your privacy and information
-        </p>
-        <p className="privacy-info__description text--2xs">
-          {localTemplate?.description}. View our{' '}
-          <Link to="/coming" className="underline">
-            Privacy and Information Policy.
-          </Link>
-        </p>
-      </div>
+      {localTemplate && (
+        <div className="privacy-info">
+          <p className="privacy-info__title text--2xs">
+            We value your privacy and information
+          </p>
+          <p className="privacy-info__description text--2xs">
+            {localTemplate?.description}. View our{' '}
+            <Link to="/coming" className="underline">
+              Privacy and Information Policy.
+            </Link>
+          </p>
+        </div>
+      )}
       <BaseButton
         variant="primary"
         className="privacy-info__button"

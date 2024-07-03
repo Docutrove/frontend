@@ -74,11 +74,20 @@ const TemplateModal: React.FC<TemplateModalProps> = ({ isOpen, onClose }) => {
             <TemplateAccordion items={accordionItems} />
           ) : (
             <form className="contact-form">
-              <input type="text" placeholder="First Name" required />
-              <input type="text" placeholder="Last Name" required />
-              <input type="email" placeholder="Email Address" required />
-              <input type="tel" placeholder="Phone Number" required />
-              <textarea placeholder="Message"  required></textarea>
+              <label className="label">First Name</label>
+              <input type="text" placeholder="Enter First Name" required />
+              <label>Last Name</label>
+              <input type="text" placeholder="Enter Last Name" required />
+              <label>Email </label>
+              <input
+                type="email"
+                placeholder="Andre.smith@templars.com"
+                required
+              />
+              <label>First Name</label>
+              <input type="tel" placeholder="+234 000 000 000" required />
+              <label>First Name</label>
+              <textarea placeholder="Write here" required></textarea>
               <button type="submit">Submit</button>
             </form>
           )}

@@ -26,12 +26,6 @@ interface RecordsProps {
   handleInputChange: any
 }
 
-interface PaginationProps {
-  nPages: number
-  currentPage: number
-  setCurrentPage: any
-}
-
 const Records = (props: RecordsProps) => {
   return (
     <>
@@ -77,31 +71,6 @@ const Records = (props: RecordsProps) => {
   )
 }
 
-const Pagination = (props: PaginationProps) => {
-  const goToNextPage = () => {
-    if (props.currentPage !== props.nPages)
-      props.setCurrentPage(props.currentPage + 1)
-  }
-  const goToPrevPage = () => {
-    if (props.currentPage !== 1) props.setCurrentPage(props.currentPage - 1)
-  }
-  return (
-    <nav>
-      <ul className="pagination justify-content-center">
-        <li className="page-item">
-          <button className="page-link" onClick={goToPrevPage}>
-            Previous
-          </button>
-          &nbsp; || &nbsp;
-          <button className="page-link" onClick={goToNextPage}>
-            Next
-          </button>
-        </li>
-      </ul>
-    </nav>
-  )
-}
-
 export default function TemplateDetails() {
   const { goBack, setTemplateData, templateData, template } =
     useCustomiseDocContext()
@@ -144,10 +113,18 @@ export default function TemplateDetails() {
     getNPages()
   }, [])
 
+  const goToNextPage = () => {
+    if (currentPage !== nPages) setCurrentPage(currentPage + 1)
+  }
+
+  const goToPrevPage = () => {
+    if (currentPage !== 1) setCurrentPage(currentPage - 1)
+  }
+
   return (
     <InvoiceDetails
       back_button
-      backClick={goBack}
+      backClick={currentPage === 1 ? goBack : goToPrevPage}
       document_text={template?.configuration.previewHtml}
       backgroundColor="#F9F9F9"
       hideBackButton // Prop to hide the back button
@@ -162,14 +139,12 @@ export default function TemplateDetails() {
           handleInputChange={handleInputChange}
           data={data}
         />
-        <Pagination
-          nPages={nPages}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
       </div>
       <div className="direction-buttons">
-        <button className="invoice-back-button" onClick={goBack}>
+        <button
+          className="invoice-back-button"
+          onClick={currentPage === 1 ? goBack : goToPrevPage}
+        >
           <div className="back-button">
             <Icon name="caret-right" className="back-icon" />
           </div>
@@ -180,7 +155,9 @@ export default function TemplateDetails() {
             Next
           </BaseButton>
         ) : (
-          <></>
+          <BaseButton variant="primary" onClick={goToNextPage}>
+            Next
+          </BaseButton>
         )}
       </div>
       <div>{<ContactSection />}</div>

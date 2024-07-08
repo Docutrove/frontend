@@ -1,14 +1,24 @@
-import React from 'react'
+import React from 'react';
 
-const ProgressBar = () => {
-  return (
-    <div className="progress-bar">
-      <p>Question 1/20</p>
-      <div className="progress-bar__container">
-        <div className="progress-bar__fill"></div>
-      </div>
-    </div>
-  )
+interface ProgressBarProps {
+  currentStep: number;
+  totalQuestions: number;
 }
 
-export default ProgressBar
+const ProgressBar: React.FC<ProgressBarProps> = ({ currentStep, totalQuestions }) => {
+  const progressPercentage = ((currentStep + 1) / totalQuestions) * 100;
+
+  return (
+    <div className="progress-bar">
+      <p>Question {currentStep + 1} / {totalQuestions}</p>
+      <div className="progress-bar__container">
+        <div
+          className="progress-bar__fill"
+          style={{ width: `${progressPercentage}%` }}
+        ></div>
+      </div>
+    </div>
+  );
+}
+
+export default ProgressBar;

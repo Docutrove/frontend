@@ -1,21 +1,26 @@
-import { useCustomiseDocContext } from ".";
-import Footer from "../footer";
-import { Icon } from "../../ui/Icon";
-import BaseButton from "../../ui/button";
-import NavBar from "../navbar";
-import useRequest from "../../../hooks/useRequest";
-import { signup } from "../../../../api/auth";
-import { initiatePayment } from "../../../../api/payment";
-import toast from "react-hot-toast";
-import { useEffect } from "react";
+import { useCustomiseDocContext } from '.'
+import Footer from '../footer'
+import { Icon } from '../../ui/Icon'
+import BaseButton from '../../ui/button'
+import NavBar from '../navbar'
+import useRequest from '../../../hooks/useRequest'
+import { signup } from '../../../../api/auth'
+import { initiatePayment } from '../../../../api/payment'
+import toast from 'react-hot-toast'
+import { useEffect } from 'react'
 
 export default function TemplatePayment() {
-  const { goBack, authData, template, templateData, templateId } = useCustomiseDocContext();
-  const { makeRequest: signupRequest } = useRequest(signup, authData);
-  const itemID = Number(templateId);
+  const { goBack, authData, template, templateData, templateId } =
+    useCustomiseDocContext()
+  const { makeRequest: signupRequest } = useRequest(signup, authData)
+  const itemID = Number(templateId)
   // const callbackUrl = "https://2e32-102-89-22-245.ngrok-free.app/customise/document";
-  const callbackUrl = "https://docutrove.vercel.app/customise/document";
-  const { makeRequest: paymentRequest } = useRequest(initiatePayment, {itemID, paymentData: templateData, callbackUrl})
+  const callbackUrl = 'https://docutrove.vercel.app/customise/document'
+  const { makeRequest: paymentRequest } = useRequest(initiatePayment, {
+    itemID,
+    paymentData: templateData,
+    callbackUrl,
+  })
 
   const signUp = async () => {
     const token = localStorage.getItem('AUTH_TOKEN')
@@ -23,12 +28,12 @@ export default function TemplatePayment() {
       localStorage.removeItem('AUTH_TOKEN')
     }
 
-    const [resp, err] = await signupRequest();
+    const [resp, err] = await signupRequest()
 
     if (err) {
-      toast.error(err.message);
+      toast.error(err.message)
     }
-    localStorage.setItem('AUTH_TOKEN', resp.data.token);
+    localStorage.setItem('AUTH_TOKEN', resp.data.token)
   }
 
   const initPayment = async () => {
@@ -41,8 +46,8 @@ export default function TemplatePayment() {
   }
 
   useEffect(() => {
-    signUp();
-  }, []);
+    signUp()
+  }, [])
 
   return (
     <div className="payment bg-gradient">
@@ -50,9 +55,7 @@ export default function TemplatePayment() {
       <div className="app-container">
         <div className="login__content">
           <h3>Payment</h3>
-          <p className="text--xs payment__description">
-            -
-          </p>
+          <p className="text--xs payment__description">-</p>
 
           <div className="payment__order">
             <h6>Order Summary</h6>
@@ -66,7 +69,7 @@ export default function TemplatePayment() {
                 <p className="text--2xs">{template?.name} Customization Fee</p>
               </div>
 
-              <h6 className="payment-price text--sm">₦{ template?.price }</h6>
+              <h6 className="payment-price text--sm">₦{template?.price}</h6>
             </div>
 
             <div className="payment__method">
@@ -75,13 +78,17 @@ export default function TemplatePayment() {
                   <h6 className="text--4xs">Total</h6>
                 </div>
 
-                <h6 className="payment-price text--sm">₦{ template?.price }</h6>
+                <h6 className="payment-price text--sm">₦{template?.price}</h6>
               </div>
             </div>
           </div>
 
           <div>
-            <BaseButton variant="primary" className="login__content__button" onClick={initPayment}>
+            <BaseButton
+              variant="primary"
+              className="login__content__button"
+              onClick={initPayment}
+            >
               Pay now
             </BaseButton>
             <p className="text--2xs login__content__border">or</p>
@@ -91,7 +98,7 @@ export default function TemplatePayment() {
                 className="login__content__socials__button"
                 onClick={goBack}
               >
-                {" "}
+                {' '}
                 Go Back
               </BaseButton>
             </div>
@@ -100,5 +107,5 @@ export default function TemplatePayment() {
       </div>
       <Footer />
     </div>
-  );
+  )
 }

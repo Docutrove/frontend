@@ -1,150 +1,136 @@
-import { Link } from 'react-router-dom';
-import { useCustomiseDocContext } from '.';
-import BaseButton from '../../ui/button';
-import InvoiceDetails from '../../ui/invoiceDetails';
-import { useEffect, useState, useMemo } from 'react';
-import useRequest from '../../../hooks/useRequest';
-import { getTemplate } from '../../../../api/templates';
-import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom'
+import { useCustomiseDocContext } from '.'
+import BaseButton from '../../ui/button'
+import InvoiceDetails from '../../ui/invoiceDetails'
+import { useEffect, useState, useMemo } from 'react'
+import useRequest from '../../../hooks/useRequest'
+import { getTemplate } from '../../../../api/templates'
+import toast from 'react-hot-toast'
 
 interface TemplateModule {
-  name: string;
-  label: string;
-  dropDownOptions: string[];
-  isDropDown: boolean;
+  name: string
+  label: string
+  dropDownOptions: string[]
+  isDropDown: boolean
 }
 
-// interface DynamicObject {
-//   [key: string]: any;
-// }
-
-// interface Template {
-//   name: string;
-//   price: number;
-//   description: string;
-//   configuration: {
-//     fields: any[];
-//     formConfig: {
-//       modules: any[];
-//     };
-//     previewHtml: string;
-//   };
-// }
-
 export default function TemplateInvoice() {
-  const { goBack, setTemplate, templateId } = useCustomiseDocContext();
-  const { makeRequest } = useRequest(getTemplate, 29);
+  const { goBack, setTemplate, templateId } = useCustomiseDocContext()
+  const { makeRequest } = useRequest(getTemplate, 29)
 
   const [localTemplate, setLocalTemplate] = useState<{
-    name: string;
-    price: number;
-    description: string;
+    name: string
+    price: number
+    description: string
     configuration: {
-      fields: [];
+      fields: []
       formConfig: {
-        modules: TemplateModule[];
-      };
-      previewHtml: string;
-    };
-  }>();
+        modules: TemplateModule[]
+      }
+      previewHtml: string
+    }
+  }>()
 
-  const [formData, setFormData] = useState<{ [key: string]: string | string[] }>({});
-  const [questions, setQuestions] = useState<any[]>([]);
-  const [templateHtml, setTemplateHtml] = useState<string>('');
-  const [_, setIsLoaded] = useState<boolean>(false);
+  const [formData, setFormData] = useState<{
+    [key: string]: string | string[]
+  }>({})
+  const [questions, setQuestions] = useState<any[]>([])
+  const [templateHtml, setTemplateHtml] = useState<string>('')
+  const [_, setIsLoaded] = useState<boolean>(false)
 
   const getTemplateLocal = async () => {
-    const [thisTemplate, err] = await makeRequest();
+    const [thisTemplate, err] = await makeRequest()
 
     if (err) {
-      toast.error(err.message);
+      toast.error(err.message)
     }
-    setLocalTemplate(thisTemplate?.data);
-  };
+    setLocalTemplate(thisTemplate?.data)
+  }
 
   useEffect(() => {
-    getTemplateLocal();
-  }, [templateId]);
+    getTemplateLocal()
+  }, [templateId])
 
   useEffect(() => {
     if (localTemplate) {
-      const fields = localTemplate.configuration.formConfig.modules;
-      const html = localTemplate.configuration.previewHtml;
+      const fields = localTemplate.configuration.formConfig.modules
+      const html = localTemplate.configuration.previewHtml
 
-      const initialFormData: { [key: string]: string | string[] } = {};
+      const initialFormData: { [key: string]: string | string[] } = {}
       fields.forEach((field: any) => {
         if (field.isConfig) {
-          initialFormData[field.name] = field.defaultValue;
+          initialFormData[field.name] = field.defaultValue
         } else {
-          initialFormData[field.name] = '';
+          initialFormData[field.name] = ''
         }
-      });
+      })
 
-      setQuestions(fields);
-      setFormData(initialFormData);
-      setTemplateHtml(html);
-      setIsLoaded(true);
+      setQuestions(fields)
+      setFormData(initialFormData)
+      setTemplateHtml(html)
+      setIsLoaded(true)
     }
-  }, [localTemplate]);
+  }, [localTemplate])
 
   const processedTemplate = useMemo(() => {
-    let processedHtml = templateHtml;
+    let processedHtml = templateHtml
 
     const getNestedQuestions = (configName: string, configValue: string) => {
-      const configQuestion = questions.find(q => q.name === configName && q.isConfig);
-      return configQuestion?.questions?.[configValue] || [];
-    };
+      const configQuestion = questions.find(
+        (q) => q.name === configName && q.isConfig
+      )
+      return configQuestion?.questions?.[configValue] || []
+    }
 
     const replaceDynamicSections = (html: string): string => {
       try {
-        return html.replace(/#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g, (_, condition, content) => {
-          const [key, value] = condition.split('=').map((str:string) => str.trim());
-          const formDataValue = typeof formData[key] === 'string' ? formData[key].trim() : '';
+        return html.replace(
+          /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g,
+          (_, condition, content) => {
+            const [key, value] = condition
+              .split('=')
+              .map((str: string) => str.trim())
+            const formDataValue =
+              typeof formData[key] === 'string' ? formData[key].trim() : ''
 
-          if (formDataValue === value) {
-            let processedContent = content;
+            if (formDataValue === value) {
+              let processedContent = content
 
-            const nestedQuestions = getNestedQuestions(key, value);
-            nestedQuestions.forEach((question: { name: string }) => {
-              const placeholderRegex = new RegExp(`{{${question.name}}}`, 'g');
-              processedContent = processedContent.replace(placeholderRegex, formData[question.name] || '------');
-            });
+              const nestedQuestions = getNestedQuestions(key, value)
+              nestedQuestions.forEach((question: { name: string }) => {
+                const placeholderRegex = new RegExp(`{{${question.name}}}`, 'g')
+                processedContent = processedContent.replace(
+                  placeholderRegex,
+                  formData[question.name] || '------'
+                )
+              })
 
-            return replaceDynamicSections(processedContent);
+              return replaceDynamicSections(processedContent)
+            }
+
+            return ''
           }
-
-          return '';
-        });
+        )
       } catch (error) {
-        console.error('Error in replaceDynamicSections:', error);
-        return ''; 
+        console.error('Error in replaceDynamicSections:', error)
+        return ''
       }
-    };
+    }
 
-    processedHtml = replaceDynamicSections(processedHtml);
-    console.log(processedHtml);
+    processedHtml = replaceDynamicSections(processedHtml)
+    //console.log(processedHtml)
 
-    // processedHtml = processedHtml.replace(/\[(.*?)\]/g, (match, key) => {
-    //   console.log("Match:", match);
-    //   console.log("Key:", key); 
-    //   const value = formData[key.trim()]; 
-    //   console.log("Value:", value); 
-    //   return value || '------';
-    // });
-    
-    
     processedHtml = processedHtml.replace(/{{(.*?)}}/g, (_, key) => {
-      const value = formData[key.trim()];
+      const value = formData[key.trim()]
       if (Array.isArray(value)) {
-        console.log(value);
-        return value.join(', ') || '------';
+        console.log(value)
+        return value.join(', ') || '------'
       }
-      return value || '------';
-    });
+      return value || '------'
+    })
 
-
-    return processedHtml;
-  }, [formData, templateHtml, questions]);
+    return processedHtml
+  }, [formData, templateHtml, questions])
 
   return (
     <InvoiceDetails
@@ -177,5 +163,5 @@ export default function TemplateInvoice() {
         Customize a document
       </BaseButton>
     </InvoiceDetails>
-  );
+  )
 }

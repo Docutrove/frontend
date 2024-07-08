@@ -34,6 +34,7 @@ const QuestionForm: React.FC<FormProps> = ({
     useState<Question[]>(questions)
   const { goBack, setTemplateData, templateData, template } =
     useCustomiseDocContext()
+  const [multiInsertValue, setMultiInsertValue] = useState('')
 
   useEffect(() => {
     const updateQuestions = () => {
@@ -79,131 +80,173 @@ const QuestionForm: React.FC<FormProps> = ({
     handleChange(field, values)
   }
 
+  const handleMultiInsertChange = (field: string, value: string) => {
+    setMultiInsertValue(value)
+    const values = value
+      .split(',')
+      .map((v) => v.trim())
+      .filter((v) => v !== '')
+    handleChange(field, values)
+  }
+
+  const handleMultiInsertKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
+    field: string
+  ) => {
+    if (e.key === 'Enter' && multiInsertValue.trim() !== '') {
+      e.preventDefault()
+      const newValues = [
+        ...((formData[field] as string[]) || []),
+        multiInsertValue.trim(),
+      ]
+      handleChange(field, newValues)
+      setMultiInsertValue('')
+    }
+  }
+
+  const removeMultiInsertValue = (field: string, valueToRemove: string) => {
+    const newValues = (formData[field] as string[]).filter(
+      (v) => v !== valueToRemove
+    )
+    handleChange(field, newValues)
+  }
+
   const currentQuestion = currentQuestions[currentStep]
   if (!currentQuestion) return null
 
   const { label, name, options, type } = currentQuestion
 
   return (
-    <>
-      <div>
-        <div>
-          {
-            <ProgressBar
-              currentStep={currentStep}
-              totalQuestions={currentQuestions.length}
-            />
-          }
-        </div>
-      </div>
-      <div>
-        <div>
-          <label>{label}</label>
-          {type === 'text' && (
-            <BaseInput
-              className="document-details__input"
-              type="text"
-              value={(formData[name] as string) || ''}
-              onChange={(e) => handleChange(name, e.target.value)}
-            />
-          )}
-          {type === 'date' && (
-            <BaseInput
-              className="document-details__input"
-              type="date"
-              value={(formData[name] as string) || ''}
-              onChange={(e) => handleChange(name, e.target.value)}
-            />
-          )}
-          {type === 'textarea' && (
-            <textarea
-              className="document-details__input"
-              value={(formData[name] as string) || ''}
-              onChange={(e) => handleChange(name, e.target.value)}
-            />
-          )}
-          {type === 'dropdown' && (
-            <select
-              value={(formData[name] as string) || ''}
-              onChange={(e) => handleChange(name, e.target.value)}
-            >
-              <option value="">Select an option</option>
-              {options?.map((option: string, index: number) => (
-                <option key={index} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          )}
-          {type === 'radio' && (
-            <div>
-              {options?.map((option: string, index: number) => (
-                <label key={index}>
-                  <input
-                    className="document-details__input"
-                    type="radio"
-                    name={name}
-                    value={option}
-                    checked={formData[name] === option}
-                    onChange={(e) => handleChange(name, e.target.value)}
-                  />
-                  {option}
-                </label>
-              ))}
-            </div>
-          )}
-          {type === 'select' && (
-            <select
-              multiple
-              value={(formData[name] as string[]) || []}
-              onChange={(e) => handleMultiSelectChange(name, e.target)}
-            >
-              {options?.map((option: string, index: number) => (
-                <option key={index} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          )}
-        </div>
-        {/* <div>
-        <button onClick={prevStep} disabled={currentStep === 0}>
-          Previous
-        </button>
-        {currentStep < currentQuestions.length - 1 ? (
-          <button onClick={nextStep}>
-            Next
-          </button>
-        ) : (
-          <button onClick={handleSubmit}>
-            Submit
-          </button>
+    <div className="document-details">
+      <div className="document-details__input">
+        <label className="label">{label}</label>
+        {type === 'text' && (
+          <BaseInput
+            className="text--xs"
+            type="text"
+            value={(formData[name] as string) || ''}
+            onChange={(e) => handleChange(name, e.target.value)}
+          />
         )}
-      </div> */}
-
-        <div className="direction-buttons">
-          <button className="invoice-back-button" onClick={prevStep}>
-            <div className="back-button">
-              <Icon name="caret-right" className="back-icon" />
+        {type === 'number' && (
+          <BaseInput
+            className="text--xs"
+            type="number"
+            value={(formData[name] as string) || ''}
+            onChange={(e) => handleChange(name, e.target.value)}
+          />
+        )}
+        {type === 'date' && (
+          <BaseInput
+            className="text--xs"
+            type="date"
+            value={(formData[name] as string) || ''}
+            onChange={(e) => handleChange(name, e.target.value)}
+          />
+        )}
+        {type === 'textarea' && (
+          <textarea
+            className="text--xs"
+            value={(formData[name] as string) || ''}
+            onChange={(e) => handleChange(name, e.target.value)}
+          />
+        )}
+        {type === 'dropdown' && (
+          <select
+            className="text--xs"
+            value={(formData[name] as string) || ''}
+            onChange={(e) => handleChange(name, e.target.value)}
+          >
+            <option value="">Select an option</option>
+            {options?.map((option: string, index: number) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        )}
+        {type === 'radio' && (
+          <div className="document-check">
+            {options?.map((option: string, index: number) => (
+              <label key={index}>
+                <input
+                  type="radio"
+                  name={name}
+                  value={option}
+                  checked={formData[name] === option}
+                  onChange={(e) => handleChange(name, e.target.value)}
+                />
+                {option}
+              </label>
+            ))}
+          </div>
+        )}
+        {type === 'select' && (
+          <select
+            multiple
+            className="text--xs"
+            value={(formData[name] as string[]) || []}
+            onChange={(e) => handleMultiSelectChange(name, e.target)}
+          >
+            {options?.map((option: string, index: number) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+        )}
+        {type === 'multi-insert' && (
+          <div className="document-details__multi-insert">
+            <BaseInput
+              className="text--xs"
+              type="text"
+              value={multiInsertValue}
+              onChange={(e) => handleMultiInsertChange(name, e.target.value)}
+              onKeyDown={(e) => handleMultiInsertKeyDown(e, name)}
+              placeholder="Type a value and press Enter or separate multiple values with commas"
+            />
+            <div className="document-details__multi-insert-tags">
+              {((formData[name] as string[]) || []).map((value, index) => (
+                <span
+                  key={index}
+                  className="document-details__multi-insert-tag"
+                >
+                  {value}
+                  <button
+                    className="document-details__multi-insert-tag-remove"
+                    onClick={() => removeMultiInsertValue(name, value)}
+                  >
+                    <Icon name="close" />
+                  </button>
+                </span>
+              ))}
             </div>
-            <p className="text--xs">Back</p>
-          </button>
-
-          {currentStep < currentQuestions.length - 1 ? (
-            <BaseButton variant="primary" onClick={nextStep}>
-              Next
-            </BaseButton>
-          ) : (
-            <BaseButton
-              variant="primary"
-              onClick={() => setTemplateData(finaldata)}
-            >
-              Next
-            </BaseButton>
-          )}
-        </div>
+          </div>
+        )}
       </div>
-    </>
+
+      <div className="direction-buttons">
+        <button className="invoice-back-button" onClick={prevStep}>
+          <div className="back-button">
+            <Icon name="caret-right" className="back-icon" />
+          </div>
+          <p className="text--xs">Back</p>
+        </button>
+
+        {currentStep < currentQuestions.length - 1 ? (
+          <BaseButton variant="primary" onClick={nextStep}>
+            Next
+          </BaseButton>
+        ) : (
+          <BaseButton
+            variant="primary"
+            onClick={() => setTemplateData(finaldata)}
+          >
+            Next
+          </BaseButton>
+        )}
+      </div>
+    </div>
   )
 }
 

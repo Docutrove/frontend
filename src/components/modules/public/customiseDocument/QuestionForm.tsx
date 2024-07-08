@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Icon } from '../../ui/Icon'
 import BaseButton from '../../ui/button'
 import { useCustomiseDocContext } from '.'
-import ProgressBar from '../../ui/ProgressBar'
 import BaseInput from '../../ui/input'
 
 interface Question {
@@ -26,13 +25,12 @@ const QuestionForm: React.FC<FormProps> = ({
   questions,
   formData,
   handleChange,
-  handleSubmit,
   finaldata,
 }) => {
   const [currentStep, setCurrentStep] = useState<number>(0)
   const [currentQuestions, setCurrentQuestions] =
     useState<Question[]>(questions)
-  const { goBack, setTemplateData, templateData, template } =
+  const { setTemplateData } =
     useCustomiseDocContext()
   const [multiInsertValue, setMultiInsertValue] = useState('')
 
@@ -41,7 +39,7 @@ const QuestionForm: React.FC<FormProps> = ({
       let updatedQuestions: Question[] = []
       let shouldUpdate = false
 
-      questions.forEach((question, index) => {
+      questions.forEach((question, ) => {
         updatedQuestions.push(question)
         if (question.isConfig && formData[question.name]) {
           const configValue = formData[question.name] as string

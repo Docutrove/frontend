@@ -1,18 +1,23 @@
-import { ReactNode } from "react";
-import "./index.scss";
+import { ReactNode } from 'react'
+import './index.scss'
 
 interface BaseInputProps {
-  className?: string;
-  placeholder?: string;
-  label?: string;
-  type?: string;
-  children?: ReactNode;
-  textarea?: boolean;
-  value?: string;
-  name?: string;
-  errorMessage?: string;
-  required?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  className?: string
+  placeholder?: string
+  label?: string
+  type?: string
+  children?: ReactNode
+  textarea?: boolean
+  value?: string
+  name?: string
+  errorMessage?: string
+  required?: boolean
+  onKeyDown?: (
+    e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void
+  onChange?: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void
 }
 
 export default function BaseInput({
@@ -27,6 +32,7 @@ export default function BaseInput({
   errorMessage,
   required,
   onChange,
+  onKeyDown,
   ...props
 }: BaseInputProps) {
   return (
@@ -45,7 +51,7 @@ export default function BaseInput({
           ></textarea>
         ) : (
           <input
-            className={`input ${errorMessage ? "error-input" : ""}`}
+            className={`input ${errorMessage ? 'error-input' : ''}`}
             type={type}
             value={value}
             name={name}
@@ -58,5 +64,5 @@ export default function BaseInput({
       </div>
       <p className="error-message text--2xs">{errorMessage}</p>
     </label>
-  );
+  )
 }

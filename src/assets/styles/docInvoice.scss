@@ -225,6 +225,44 @@
       margin-bottom: 12px;
     }
   }
+
+  &__input {
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      resize: vertical;
+      min-height: 100px;
+    }
+  }
+  &__multi-insert {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__multi-insert-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  &__multi-insert-tag {
+    background-color: var(--secondary);
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__multi-insert-tag-remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--dark);
+  }
 }
 
 .document-check {

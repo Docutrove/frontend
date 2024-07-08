@@ -249,7 +249,16 @@ export default function TemplateDetails() {
       return value || '------';
     });
 
-    localStorage.setItem('processedCompleteHtml', replaceDynamicSections(completeTemplateHtml))
+    let processedCompleteHtml = replaceDynamicSections(completeTemplateHtml);
+    processedCompleteHtml = processedCompleteHtml.replace(/{{(.*?)}}/g, (_match, key) => {
+      const value = formData[key.trim()];
+      if (Array.isArray(value)) {
+        // console.log(value);
+        return value.join(', ') || '------';
+      }
+      return value || '------';
+    });
+    localStorage.setItem('processedCompleteHtml', processedCompleteHtml)
 
     return processedHtml;
   }, [formData, templateHtml, questions]);

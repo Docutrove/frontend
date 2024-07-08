@@ -14,26 +14,10 @@ interface TemplateModule {
   isDropDown: boolean;
 }
 
-// interface DynamicObject {
-//   [key: string]: any;
-// }
-
-// interface Template {
-//   name: string;
-//   price: number;
-//   description: string;
-//   configuration: {
-//     fields: any[];
-//     formConfig: {
-//       modules: any[];
-//     };
-//     previewHtml: string;
-//   };
-// }
 
 export default function TemplateInvoice() {
   const { goBack, setTemplate, templateId } = useCustomiseDocContext();
-  const { makeRequest } = useRequest(getTemplate, 29);
+  const { makeRequest } = useRequest(getTemplate, templateId);
 
   const [localTemplate, setLocalTemplate] = useState<{
     name: string;
@@ -98,7 +82,7 @@ export default function TemplateInvoice() {
     const replaceDynamicSections = (html: string): string => {
       try {
         return html.replace(/#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g, (_, condition, content) => {
-          const [key, value] = condition.split('=').map((str:string) => str.trim());
+          const [key, value] = condition.split('=').map((str: string) => str.trim());
           const formDataValue = typeof formData[key] === 'string' ? formData[key].trim() : '';
 
           if (formDataValue === value) {
@@ -117,7 +101,7 @@ export default function TemplateInvoice() {
         });
       } catch (error) {
         console.error('Error in replaceDynamicSections:', error);
-        return ''; 
+        return '';
       }
     };
 
@@ -131,8 +115,8 @@ export default function TemplateInvoice() {
     //   console.log("Value:", value); 
     //   return value || '------';
     // });
-    
-    
+
+
     processedHtml = processedHtml.replace(/{{(.*?)}}/g, (_, key) => {
       const value = formData[key.trim()];
       if (Array.isArray(value)) {

@@ -91,7 +91,7 @@ interface DynamicObject {
 export default function TemplateDetails() {
   const { goBack, template, templateId } =
     useCustomiseDocContext()
-  const { makeRequest } = useRequest(getTemplate, 29);
+  const { makeRequest } = useRequest(getTemplate, templateId);
   const [, setData] = useState<DynamicObject>()
   const [currentPage, setCurrentPage] = useState(1)
   const [recordsPerPage] = useState(1)
@@ -100,13 +100,14 @@ export default function TemplateDetails() {
   const [formData, setFormData] = useState<{ [key: string]: string | string[] }>({});
   const [questions, setQuestions] = useState<any[]>([]);
   const [templateHtml, setTemplateHtml] = useState<string>('');
+  const [completeTemplateHtml, setCompleteTemplateHtml] = useState<string>('');
   const [, setIsLoaded] = useState<boolean>(false);
 
-//   const { goBack, setTemplateData, templateData, template } = useCustomiseDocContext();
-//   const [ data, setData ] = useState<DynamicObject>();
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const [recordsPerPage] = useState(1);
-//   const [nPages, setNPages] = useState(1);
+  //   const { goBack, setTemplateData, templateData, template } = useCustomiseDocContext();
+  //   const [ data, setData ] = useState<DynamicObject>();
+  //   const [currentPage, setCurrentPage] = useState(1);
+  //   const [recordsPerPage] = useState(1);
+  //   const [nPages, setNPages] = useState(1);
 
   const templateRequestData = template?.configuration.formConfig.modules
   const initialValues = templateRequestData?.reduce(
@@ -127,6 +128,7 @@ export default function TemplateDetails() {
         modules: TemplateModule[];
       };
       previewHtml: string;
+      html: string;
     };
   }>();
 
@@ -157,6 +159,7 @@ export default function TemplateDetails() {
     if (localTemplate) {
       const fields = localTemplate.configuration.formConfig.modules;
       const html = localTemplate.configuration.previewHtml;
+      const completeHtml = localTemplate.configuration.html;
 
       const initialFormData: { [key: string]: string | string[] } = {};
       fields.forEach((field: any) => {
@@ -170,6 +173,7 @@ export default function TemplateDetails() {
       setQuestions(fields);
       setFormData(initialFormData);
       setTemplateHtml(html);
+      setCompleteTemplateHtml(completeHtml);
       setIsLoaded(true);
     }
   }, [localTemplate]);
@@ -180,12 +184,12 @@ export default function TemplateDetails() {
     }
   }
 
-  
+
 
   const processedTemplate = useMemo(() => {
     let processedHtml = templateHtml;
-    
-    
+
+
 
     // Function to get nested questions for a given config question
     const getNestedQuestions = (configName: string, configValue: string) => {
@@ -200,30 +204,30 @@ export default function TemplateDetails() {
           // console.log("Match:", match);
           // console.log("Condition:", condition);
           // console.log("Content:", content);
-    
-          const [key, value] = condition.split('=').map((str:string) => str.trim());
+
+          const [key, value] = condition.split('=').map((str: string) => str.trim());
           // const formDataValue = formData[key]?.trim();
           const formDataValue = typeof formData[key] === 'string' ? formData[key].trim() : '';
 
           // console.log("Key:", key);
           // console.log("Value:", value);
           // console.log("formData[key]:", formDataValue);
-    
+
           if (formDataValue === value) {
             // console.log("Matching value of chakachak", formData);
             let processedContent = content;
-    
+
             // Handle nested questions
             const nestedQuestions = getNestedQuestions(key, value);
             nestedQuestions.forEach((question: { name: string | number }) => {
               const placeholderRegex = new RegExp(`{{${question.name}}}`, 'g');
               processedContent = processedContent.replace(placeholderRegex, formData[question.name] || '------');
             });
-    
+
             // console.log("Processed Content:", processedContent);
             return replaceDynamicSections(processedContent);
           }
-    
+
           return '';
         });
       } catch (error) {
@@ -231,9 +235,10 @@ export default function TemplateDetails() {
         return '';
       }
     };
-    
-    
+
+
     processedHtml = replaceDynamicSections(processedHtml);
+
 
     processedHtml = processedHtml.replace(/{{(.*?)}}/g, (_match, key) => {
       const value = formData[key.trim()];
@@ -244,7 +249,7 @@ export default function TemplateDetails() {
       return value || '------';
     });
 
-    localStorage.setItem('processedHtml', processedHtml)
+    localStorage.setItem('processedCompleteHtml', replaceDynamicSections(completeTemplateHtml))
 
     return processedHtml;
   }, [formData, templateHtml, questions]);
@@ -312,7 +317,7 @@ export default function TemplateDetails() {
       backClick={currentPage === 1 ? goBack : goToPrevPage}
       document_text={processedTemplate}
       backgroundColor="#F9F9F9"
-      hideBackButton 
+      hideBackButton
     >
       <div className="document-details">
         <QuestionForm
@@ -327,7 +332,7 @@ export default function TemplateDetails() {
       <div>{<ContactSection />}</div>
 
       <div>
-        
+
       </div>
     </InvoiceDetails>
   )

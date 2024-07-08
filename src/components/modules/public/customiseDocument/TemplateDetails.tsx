@@ -102,6 +102,12 @@ export default function TemplateDetails() {
   const [templateHtml, setTemplateHtml] = useState<string>('');
   const [, setIsLoaded] = useState<boolean>(false);
 
+//   const { goBack, setTemplateData, templateData, template } = useCustomiseDocContext();
+//   const [ data, setData ] = useState<DynamicObject>();
+//   const [currentPage, setCurrentPage] = useState(1);
+//   const [recordsPerPage] = useState(1);
+//   const [nPages, setNPages] = useState(1);
+
   const templateRequestData = template?.configuration.formConfig.modules
   const initialValues = templateRequestData?.reduce(
     (values: { [key: string]: string }, field) => {

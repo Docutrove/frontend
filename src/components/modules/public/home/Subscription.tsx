@@ -1,10 +1,10 @@
-import Service from "../../ui/service";
+import Service from '../../ui/service'
 
-interface HomeSubscriptionProps{
-  className?: string;
+interface HomeSubscriptionProps {
+  className?: string
 }
 
-export default function HomeSubscription({className}: HomeSubscriptionProps) {
+export default function HomeSubscription({ className }: HomeSubscriptionProps) {
   return (
     <Service
       className={`home__subscription ${className}`}
@@ -14,7 +14,6 @@ export default function HomeSubscription({className}: HomeSubscriptionProps) {
       imageURL="/images/subscription-banner.png"
       // path="/subscription"
       // buttonText="Discover our subscriptions services"
-
     />
-  );
+  )
 }

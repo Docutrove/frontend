@@ -1,16 +1,16 @@
-import { ReactNode } from "react";
-import { Link } from "react-router-dom";
-import "./index.scss";
-import { ClipLoader } from "react-spinners";
+import { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
+import './index.scss'
+import { ClipLoader } from 'react-spinners'
 
 interface ButtonProps {
-  variant: "primary" | "secondary" | "inverted";
-  children: ReactNode;
-  className?: string;
-  href?: string;
-  onClick?: () => void;
-  isLoading?: boolean;
-  disabled?: boolean;
+  variant: 'primary' | 'secondary' | 'inverted'
+  children: ReactNode
+  className?: string
+  href?: string
+  onClick?: () => void
+  isLoading?: boolean
+  disabled?: boolean
 }
 
 export default function BaseButton({
@@ -22,7 +22,7 @@ export default function BaseButton({
   isLoading,
   disabled,
 }: ButtonProps) {
-  const Component: any = href ? Link : "button";
+  const Component: any = href ? Link : 'button'
 
   return (
     <Component
@@ -43,5 +43,5 @@ export default function BaseButton({
         children
       )}
     </Component>
-  );
+  )
 }

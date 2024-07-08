@@ -1,4 +1,4 @@
-import BaseButton from "../../ui/button";
+import BaseButton from '../../ui/button'
 
 export default function HomeBenefits() {
   return (
@@ -6,7 +6,7 @@ export default function HomeBenefits() {
       <div className="home__benefits__content app-container__section">
         <div className="mobile-header">
           {/* <p className="subtitle">Benefits</p> */}
-          <h2 className="home__benefits__title">Benefits</h2>
+          <h1 className="home__benefits__title">Benefits</h1>
         </div>
 
         <div className="home__benefits__wrapper">
@@ -116,5 +116,5 @@ export default function HomeBenefits() {
         </BaseButton>
       </div>
     </div>
-  );
+  )
 }

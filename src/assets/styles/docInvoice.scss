@@ -1,4 +1,4 @@
-@import "../styles/mixins.scss";
+@import '../styles/mixins.scss';
 
 .invoice-details {
   &__content {
@@ -11,10 +11,12 @@
   }
 
   &__text {
-    max-width: 721px;
-    margin-left: auto;
-    padding: 80px 73px 54px;
-    width: 50vw;
+    //  max-width: 30%;
+    //margin-left: auto;
+    //padding: 80px 73px 54px;
+
+    padding: 6rem 3.5rem 3.5rem;
+    width: 35vw;
 
     @include mobile(1105px) {
       margin-left: unset;
@@ -24,6 +26,11 @@
     @include mobile(600px) {
       padding: 60px 20px;
     }
+  }
+
+  &.full-width {
+    max-width: 50%;
+    width: 60vw; // New style for full-width condition
   }
 }
 
@@ -38,7 +45,7 @@
 
 .invoice-back-button {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 8px;
 
   p {
@@ -61,6 +68,9 @@
       width: 5px;
       height: 9px;
     }
+  }
+  .back-button:hover {
+    background: #4eb9c0;
   }
 }
 
@@ -118,7 +128,7 @@
 .template-container {
   background: linear-gradient(282.33deg, #eafafe 52.56%, #f2fdfa 115.44%);
   flex: 1;
-  max-width: 50vw;
+  //max-width: 65vw;
   padding: 40px 20px 0;
 
   @include mobile(1105px) {
@@ -139,7 +149,6 @@
     border: 1px solid #f6f6f6;
     min-height: 100vh;
     margin: 0 auto;
-    // max-width: 512px;
     max-width: 90%;
 
     @include mobile(1105px) {
@@ -151,8 +160,12 @@
     }
 
     &__text {
-      max-width: 70%;
-      opacity: 30%;
+      // max-width: 70%;
+      //   opacity: 30%;
+      padding: 0 2.7rem;
+      font-family: Inter;
+      //  font-size: 0.8rem;
+      font-weight: 500;
       overflow: hidden;
       text-align: center;
     }
@@ -192,6 +205,12 @@
   gap: 24px;
   margin: 40px 0;
 
+  //max-width: 511px;
+  background-color: #ffffff;
+  padding: 1rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #f0ecf5;
+
   @include mobile(600px) {
     margin: 30px 0;
     gap: 20px;
@@ -200,7 +219,7 @@
   &__input {
     .label {
       font-weight: 700;
-      font-family: "PT Serif", serif;
+      font-family: 'PT Serif', serif;
       font-size: 20px;
       line-height: 27px;
       margin-bottom: 12px;
@@ -217,10 +236,8 @@
 
 .direction-buttons {
   display: flex;
-  align-items: center;
-  gap: 32px;
-  border-top: 1px solid var(--border3);
-  padding-top: 40px;
+  justify-content: flex-end; /* Aligns the buttons to the right */
+  gap: 10px; /* Optional: Adds space between the buttons */
 
   &__noboder {
     border-top: none !important;
@@ -232,6 +249,21 @@
 
   @include mobile(600px) {
     padding-top: 30px;
+  }
+
+  .invoice-back-button {
+    display: flex;
+    align-items: center;
+
+    .back-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .back-icon {
+      transform: rotate(180deg); /* Optional: Rotates the icon */
+    }
   }
 }
 
@@ -295,6 +327,258 @@
     p {
       max-width: 178px;
       color: var(--dark);
+    }
+  }
+}
+
+/* New styles for ProgressBar and ContactSection */
+.progress-bar {
+  margin-top: -7.2rem;
+  margin-bottom: 24px;
+  text-align: left;
+  width: 100%;
+
+  @include mobile(600px) {
+    padding-top: 3rem;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 1.375rem;
+    font-family: 'PT Serif', serif;
+  }
+
+  &__container {
+    background-color: #e0f3f3;
+    border-radius: 5px;
+    padding: 1px;
+    margin-top: 10px;
+  }
+
+  &__fill {
+    background-color: #4eb9c0;
+    width: 10%;
+    height: 10px;
+    border-radius: 5px;
+  }
+}
+
+/* Template Modal Styles */
+.template-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.template-modal-content {
+  background: #fff;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  padding: 2rem;
+  position: relative;
+
+  .template-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &-text {
+      display: block;
+      font-family: Inter;
+      color: #425669;
+      font-weight: 400;
+
+      h2 {
+        margin: 0;
+      }
+
+      p {
+        margin-top: 1.5rem;
+        margin-bottom: 0.85rem;
+      }
+    }
+
+    .template-modal-close {
+      background: none;
+      border: 2px solid #0e2557;
+      padding: 0.17rem 0.56rem;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+
+  .template-modal-body {
+    margin-top: 20px;
+
+    .template-accordion {
+      margin-top: 20px;
+
+      .template-accordion-item {
+        background: #f9fafa;
+        border-bottom: none;
+        margin-bottom: 1rem;
+        padding: 0.7rem 1.3rem;
+        border: 1px solid #f0f2f3;
+
+        border-radius: 0.6rem;
+
+        .template-accordion-header {
+          display: flex;
+          justify-content: space-between;
+          cursor: pointer;
+          padding: 10px 0;
+          font-family: PT Serif;
+          font-weight: 800;
+          font-size: 1.2rem;
+
+          svg {
+            border: 1px solid #cfd3dd;
+            border-radius: 50%;
+            padding: 0.15rem;
+          }
+        }
+
+        .template-accordion-body {
+          padding: 10px 0;
+          font-family: Inter;
+          color: #1c1c1c;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+
+  .template-modal-footer {
+    text-align: center;
+    margin-top: 20px;
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    .contact-button {
+      background-color: var(--primary);
+      padding: 1rem 0;
+      border-radius: 5px;
+      color: #00b8bf;
+      font-weight: 600;
+      text-decoration: underline;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      svg {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+/* Contact Section Styles */
+.contact-section {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #f0ecf5;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  margin-top: 10rem;
+
+  h1 {
+    margin-bottom: 8px;
+    font-family: PT Serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 31.06px;
+  }
+
+  p {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.36px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; // Align items to the start of the container
+    padding: 0.5rem 0.2rem;
+
+    label {
+      width: 100%; // Ensure the label takes up full width
+      font-family: Inter;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-align: left;
+      padding-bottom: 0.6rem;
+      margin-bottom: 5px; // Add margin to separate from input field
+
+      @include mobile(530px) {
+        // Adjustments for mobile view if needed
+      }
+
+      @include mobile(1040px) {
+        // Adjustments for mobile view if needed
+      }
+    }
+
+    input,
+    textarea {
+      width: 100%; // Ensure input fields take up full width
+      margin-bottom: 15px;
+      font-family: Inter;
+      font-weight: 400;
+      padding: 10px;
+      border: 1px solid #cfd3dd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%; // Ensure button takes up full width
+      margin-top: 1.2rem;
+      padding: 10px;
+      color: var(--white);
+      background-color: #0e2557;
+      border: none;
+      border-radius: 1.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+
+  .contact-button {
+    background-color: var(--primary);
+    padding: 1.7rem 0;
+    border-radius: 5px;
+    color: #00b8bf;
+    font-weight: 600;
+    text-decoration: underline;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    svg {
+      margin-left: 5px;
     }
   }
 }

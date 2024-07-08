@@ -1,14 +1,26 @@
 import { useCustomiseDocContext } from ".";
 import InvoiceDetails from "../../ui/invoiceDetails";
 import BaseButton from "../../ui/button";
+import { useState,useEffect } from "react";
 
 export default function ConfirmTemplate() {
   const { goBack, goNext, template } = useCustomiseDocContext();
+  const [documentText, setDocumentText] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    const storedHtml = localStorage.getItem('processedHtml');
+    if (storedHtml) {
+      setDocumentText(storedHtml);
+    } else {
+      setDocumentText(template?.configuration.previewHtml);
+    }
+  }, [template]);
+
   return (
     <InvoiceDetails
       subtitle="Customize and download a legal document"
       title={template?.name}
-      document_text={template?.configuration.previewHtml}
+      document_text={documentText}
     >
       <p className="text--sm confirm-text">
         Your document is complete, we recommend that you preview

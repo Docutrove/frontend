@@ -137,7 +137,8 @@ export default function TemplateDetails() {
 
           const [key, value] = condition.split('=').map((str: string) => str.trim());
           // const formDataValue = formData[key]?.trim();
-          const formDataValue = typeof formData[key] === 'string' ? formData[key].trim() : '';
+          const formDataValue = formData[key]
+          // const formDataValue = typeof formData[key] === 'string' ? formData[key].trim() : '';
 
           if (formDataValue === value) {
             // console.log("Matching value of chakachak", formData);

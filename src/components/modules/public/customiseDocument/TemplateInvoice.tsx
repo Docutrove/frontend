@@ -37,7 +37,7 @@ export default function TemplateInvoice() {
   }>({})
   const [questions, setQuestions] = useState<any[]>([])
   const [templateHtml, setTemplateHtml] = useState<string>('')
-  const [_, setIsLoaded] = useState<boolean>(false)
+  const [isLoaded, setIsLoaded] = useState<boolean>(false)
 
   const getTemplateLocal = async () => {
     const [thisTemplate, err] = await makeRequest()
@@ -49,6 +49,7 @@ export default function TemplateInvoice() {
   }
 
   useEffect(() => {
+    console.log(isLoaded);
     getTemplateLocal()
   }, [templateId])
 
@@ -87,7 +88,8 @@ export default function TemplateInvoice() {
       try {
         return html.replace(/#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g, (_, condition, content) => {
           const [key, value] = condition.split('=').map((str: string) => str.trim());
-          const formDataValue = typeof formData[key] === 'string' ? formData[key].trim() : '';
+          const formDataValue = formData[key];
+          // const formDataValue = typeof formData[key] === 'string' ? formData[key].trim() : '';
 
             if (formDataValue === value) {
               let processedContent = content

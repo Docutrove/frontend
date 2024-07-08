@@ -36,10 +36,11 @@ const TemplateDisplay: React.FC<TemplateDisplayProps> = ({
               .split('=')
               .map((str: string) => str.trim())
 
-            const formDataValue =
-              typeof formData[key] === 'string'
-                ? formData[key].trim()
-                : formData[key]
+            const formDataValue = formData[key]
+            // const formDataValue =
+            //   typeof formData[key] === 'string'
+            //     ? formData[key].trim()
+            //     : formData[key]
 
             console.log('Key:', key)
             console.log('Value:', value)
@@ -76,7 +77,7 @@ const TemplateDisplay: React.FC<TemplateDisplayProps> = ({
     processedHtml = replaceDynamicSections(processedHtml)
 
     // Replace placeholders with form data
-    processedHtml = processedHtml.replace(/{{(.*?)}}/g, (match, key) => {
+    processedHtml = processedHtml.replace(/{{(.*?)}}/g, (_, key) => {
       const value = formData[key.trim()]
       if (Array.isArray(value)) {
         console.log(value)

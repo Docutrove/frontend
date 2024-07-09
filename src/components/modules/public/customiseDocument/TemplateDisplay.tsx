@@ -56,7 +56,6 @@ const TemplateDisplay: React.FC<TemplateDisplayProps> = ({
                 )
               })
 
-              //console.log('Processed Content:', processedContent)
               return replaceDynamicSections(processedContent)
             }
 
@@ -82,23 +81,15 @@ const TemplateDisplay: React.FC<TemplateDisplayProps> = ({
       return value || '------'
     })
 
+    // Limit the number of characters to 3000
+    if (processedHtml.length > 3000) {
+      processedHtml = processedHtml.substring(0, 3000) + '...'
+    }
+
     return processedHtml
   }, [formData, templateHtml, questions])
 
-  return (
-    <div
-      // style={{
-      //   width: '70%',
-      //   padding: '20px',
-      //   backgroundColor: '#f9f9f9',
-      //   borderRadius: '8px',
-      //   boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-      //   overflowY: 'auto',
-      //   maxHeight: '90vh',
-      // }}
-      dangerouslySetInnerHTML={{ __html: processedTemplate }}
-    />
-  )
+  return <div dangerouslySetInnerHTML={{ __html: processedTemplate }} />
 }
 
 export default TemplateDisplay

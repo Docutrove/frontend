@@ -2,8 +2,11 @@
 
 export const replaceDynamicSectionsInPreview = (html: string): string => {
   try {
-    // Replace all dynamic sections with empty string
-    html = html.replace(/#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g, '')
+    // Replace all dynamic sections with empty string and remove any extra spaces left behind
+    html = html
+      .replace(/#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
 
     // Replace all placeholders with "______"
     html = html.replace(/{{(.*?)}}/g, '______')

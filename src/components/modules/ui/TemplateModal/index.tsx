@@ -66,7 +66,7 @@ const TemplateModal: React.FC<TemplateModalProps> = ({ isOpen, onClose }) => {
             </p>
           </div>
           <button className="template-modal-close" onClick={onClose}>
-            &times;
+            <Icon name="close" />
           </button>
         </div>
         <div className="template-modal-body">

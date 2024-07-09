@@ -180,7 +180,11 @@
   display: flex;
   gap: 20px;
   border-top: 1px solid var(--border3);
-  padding-top: 40px;
+  padding-top: 20px;
+
+  .confirm-button {
+    padding: 1rem;
+  }
 
   @include mobile(1105px) {
     justify-content: space-between;

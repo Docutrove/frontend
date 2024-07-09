@@ -1,20 +1,22 @@
-import { useCustomiseDocContext } from ".";
-import InvoiceDetails from "../../ui/invoiceDetails";
-import BaseButton from "../../ui/button";
-import { useState,useEffect } from "react";
+import { useCustomiseDocContext } from '.'
+import InvoiceDetails from '../../ui/invoiceDetails'
+import BaseButton from '../../ui/button'
+import { useState, useEffect } from 'react'
 
 export default function ConfirmTemplate() {
-  const { goBack, goNext, template } = useCustomiseDocContext();
-  const [documentText, setDocumentText] = useState<string | undefined>(undefined);
+  const { goBack, goNext, template } = useCustomiseDocContext()
+  const [documentText, setDocumentText] = useState<string | undefined>(
+    undefined
+  )
 
   useEffect(() => {
-    const storedHtml = localStorage.getItem('processedHtml');
+    const storedHtml = localStorage.getItem('processedHtml')
     if (storedHtml) {
-      setDocumentText(storedHtml);
+      setDocumentText(storedHtml)
     } else {
-      setDocumentText(template?.configuration.previewHtml);
+      setDocumentText(template?.configuration.previewHtml)
     }
-  }, [template]);
+  }, [template])
 
   return (
     <InvoiceDetails
@@ -23,17 +25,25 @@ export default function ConfirmTemplate() {
       document_text={documentText}
     >
       <p className="text--sm confirm-text">
-        Your document is complete, we recommend that you preview
-        your document to ensure all the details are correct.
+        Your document is complete, we recommend that you preview your document
+        to ensure all the details are correct.
       </p>
       <div className="confirm-buttons">
-        <BaseButton variant="inverted" onClick={goBack}>
+        <BaseButton
+          variant="inverted"
+          className="confirm-button"
+          onClick={goBack}
+        >
           Edit information
         </BaseButton>
-        <BaseButton variant="primary" onClick={goNext}>
+        <BaseButton
+          variant="primary"
+          className="confirm-button"
+          onClick={goNext}
+        >
           Proceed to payment
         </BaseButton>
       </div>
     </InvoiceDetails>
-  );
+  )
 }

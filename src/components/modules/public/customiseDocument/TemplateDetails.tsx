@@ -21,25 +21,20 @@ interface DynamicObject {
 }
 
 export default function TemplateDetails() {
-  const { goBack, template, templateId } =
-    useCustomiseDocContext()
-  const { makeRequest } = useRequest(getTemplate, templateId);
+  const { goBack, template, templateId } = useCustomiseDocContext()
+  const { makeRequest } = useRequest(getTemplate, templateId)
   const [, setData] = useState<DynamicObject>()
   const [currentPage, setCurrentPage] = useState(1)
   const [recordsPerPage] = useState(1)
   const [, setNPages] = useState(1)
-  // const [, setTemplateDatats] = useState<DynamicObject | undefined>(undefined);
-  const [formData, setFormData] = useState<{ [key: string]: string | string[] }>({});
-  const [questions, setQuestions] = useState<any[]>([]);
-  const [templateHtml, setTemplateHtml] = useState<string>('');
-  const [completeTemplateHtml, setCompleteTemplateHtml] = useState<string>('');
-  const [, setIsLoaded] = useState<boolean>(false);
 
-  //   const { goBack, setTemplateData, templateData, template } = useCustomiseDocContext();
-  //   const [ data, setData ] = useState<DynamicObject>();
-  //   const [currentPage, setCurrentPage] = useState(1);
-  //   const [recordsPerPage] = useState(1);
-  //   const [nPages, setNPages] = useState(1);
+  const [formData, setFormData] = useState<{
+    [key: string]: string | string[]
+  }>({})
+  const [questions, setQuestions] = useState<any[]>([])
+  const [templateHtml, setTemplateHtml] = useState<string>('')
+  const [completeTemplateHtml, setCompleteTemplateHtml] = useState<string>('')
+  const [, setIsLoaded] = useState<boolean>(false)
 
   const templateRequestData = template?.configuration.formConfig.modules
   const initialValues = templateRequestData?.reduce(
@@ -57,21 +52,12 @@ export default function TemplateDetails() {
     configuration: {
       fields: []
       formConfig: {
-        modules: TemplateModule[];
-      };
-      previewHtml: string;
-      html: string;
-    };
-  }>();
-
-  // const indexOfLastRecord = currentPage * recordsPerPage
-  // const indexOfFirstRecord = indexOfLastRecord - recordsPerPage
-  // const currentRecords = templateRequestData?.slice(
-  //   indexOfFirstRecord,
-  //   indexOfLastRecord
-
-  // )
-
+        modules: TemplateModule[]
+      }
+      previewHtml: string
+      html: string
+    }
+  }>()
 
   const getTemplateLocal = async () => {
     const [thisTemplate, err] = await makeRequest()
@@ -88,9 +74,9 @@ export default function TemplateDetails() {
 
   useEffect(() => {
     if (localTemplate) {
-      const fields = localTemplate.configuration.formConfig.modules;
-      const html = localTemplate.configuration.previewHtml;
-      const completeHtml = localTemplate.configuration.html;
+      const fields = localTemplate.configuration.formConfig.modules
+      const html = localTemplate.configuration.previewHtml
+      const completeHtml = localTemplate.configuration.html
 
       const initialFormData: { [key: string]: string | string[] } = {}
       fields.forEach((field: any) => {
@@ -101,11 +87,11 @@ export default function TemplateDetails() {
         }
       })
 
-      setQuestions(fields);
-      setFormData(initialFormData);
-      setTemplateHtml(html);
-      setCompleteTemplateHtml(completeHtml);
-      setIsLoaded(true);
+      setQuestions(fields)
+      setFormData(initialFormData)
+      setTemplateHtml(html)
+      setCompleteTemplateHtml(completeHtml)
+      setIsLoaded(true)
     }
   }, [localTemplate])
 
@@ -115,12 +101,8 @@ export default function TemplateDetails() {
     }
   }
 
-
-
   const processedTemplate = useMemo(() => {
-    let processedHtml = templateHtml;
-
-
+    let processedHtml = templateHtml
 
     // Function to get nested questions for a given config question
     const getNestedQuestions = (configName: string, configValue: string) => {
@@ -133,63 +115,66 @@ export default function TemplateDetails() {
     // Function to replace dynamic sections
     const replaceDynamicSections = (html: string): string => {
       try {
-        return html.replace(/#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g, (_, condition, content) => {
+        return html.replace(
+          /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g,
+          (_, condition, content) => {
+            const [key, value] = condition
+              .split('=')
+              .map((str: string) => str.trim())
 
-          const [key, value] = condition.split('=').map((str: string) => str.trim());
-          // const formDataValue = formData[key]?.trim();
-          const formDataValue = formData[key]
-          // const formDataValue = typeof formData[key] === 'string' ? formData[key].trim() : '';
+            const formDataValue = formData[key]
 
-          if (formDataValue === value) {
-            // console.log("Matching value of chakachak", formData);
-            let processedContent = content;
+            if (formDataValue === value) {
+              let processedContent = content
 
-            // Handle nested questions
-            const nestedQuestions = getNestedQuestions(key, value);
-            nestedQuestions.forEach((question: { name: string | number }) => {
-              const placeholderRegex = new RegExp(`{{${question.name}}}`, 'g');
-              processedContent = processedContent.replace(placeholderRegex, formData[question.name] || '------');
-            });
+              // Handle nested questions
+              const nestedQuestions = getNestedQuestions(key, value)
+              nestedQuestions.forEach((question: { name: string | number }) => {
+                const placeholderRegex = new RegExp(`{{${question.name}}}`, 'g')
+                processedContent = processedContent.replace(
+                  placeholderRegex,
+                  formData[question.name] || '------'
+                )
+              })
 
-            // console.log("Processed Content:", processedContent);
-            return replaceDynamicSections(processedContent);
+              return replaceDynamicSections(processedContent)
+            }
+
+            return ''
           }
-
-          return '';
-        });
+        )
       } catch (error) {
         console.error('Error in replaceDynamicSections:', error)
         return ''
       }
-    };
+    }
 
-
-    processedHtml = replaceDynamicSections(processedHtml);
-
+    processedHtml = replaceDynamicSections(processedHtml)
 
     processedHtml = processedHtml.replace(/{{(.*?)}}/g, (_match, key) => {
       const value = formData[key.trim()]
       if (Array.isArray(value)) {
-        // console.log(value);
         return value.join(', ') || '------'
       }
       return value || '------'
     })
 
-    let processedCompleteHtml = replaceDynamicSections(completeTemplateHtml);
-    processedCompleteHtml = processedCompleteHtml.replace(/{{(.*?)}}/g, (_match, key) => {
-      const value = formData[key.trim()];
-      if (Array.isArray(value)) {
-        // console.log(value);
-        return value.join(', ') || '------';
+    let processedCompleteHtml = replaceDynamicSections(completeTemplateHtml)
+    processedCompleteHtml = processedCompleteHtml.replace(
+      /{{(.*?)}}/g,
+      (_match, key) => {
+        const value = formData[key.trim()]
+        if (Array.isArray(value)) {
+          return value.join(', ') || '------'
+        }
+        return value || '------'
       }
-      return value || '------';
-    });
+    )
 
     localStorage.setItem('processedCompleteHtml', processedCompleteHtml)
 
-    return processedHtml;
-  }, [formData, templateHtml, questions]);
+    return processedHtml
+  }, [formData, templateHtml, questions])
 
   const handleChange = (field: string, value: string | string[]) => {
     setFormData((prevFormData) => ({ ...prevFormData, [field]: value }))
@@ -228,9 +213,7 @@ export default function TemplateDetails() {
 
       <div>{<ContactSection />}</div>
 
-      <div>
-
-      </div>
+      <div></div>
     </InvoiceDetails>
   )
 }

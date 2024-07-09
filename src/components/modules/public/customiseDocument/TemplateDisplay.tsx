@@ -37,10 +37,6 @@ const TemplateDisplay: React.FC<TemplateDisplayProps> = ({
               .map((str: string) => str.trim())
 
             const formDataValue = formData[key]
-            // const formDataValue =
-            //   typeof formData[key] === 'string'
-            //     ? formData[key].trim()
-            //     : formData[key]
 
             console.log('Key:', key)
             console.log('Value:', value)
@@ -91,15 +87,15 @@ const TemplateDisplay: React.FC<TemplateDisplayProps> = ({
 
   return (
     <div
-      style={{
-        width: '70%',
-        padding: '20px',
-        backgroundColor: '#f9f9f9',
-        borderRadius: '8px',
-        boxShadow: '0 0 10px rgba(0,0,0,0.1)',
-        overflowY: 'auto',
-        maxHeight: '90vh',
-      }}
+      // style={{
+      //   width: '70%',
+      //   padding: '20px',
+      //   backgroundColor: '#f9f9f9',
+      //   borderRadius: '8px',
+      //   boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+      //   overflowY: 'auto',
+      //   maxHeight: '90vh',
+      // }}
       dangerouslySetInnerHTML={{ __html: processedTemplate }}
     />
   )

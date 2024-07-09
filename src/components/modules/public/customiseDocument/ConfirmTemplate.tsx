@@ -12,12 +12,16 @@ export default function ConfirmTemplate() {
 
   useEffect(() => {
     const storedHtml = localStorage.getItem('processedCompleteHtml')
+    let textToSet = ''
+
     if (storedHtml) {
-      setDocumentText(replaceDynamicSectionsInPreview(storedHtml)) // Use the utility function
+      textToSet = replaceDynamicSectionsInPreview(storedHtml).slice(0, 2500)
     } else {
       const previewHtml = template?.configuration.previewHtml || ''
-      setDocumentText(replaceDynamicSectionsInPreview(previewHtml)) // Use the utility function
+      textToSet = replaceDynamicSectionsInPreview(previewHtml).slice(0, 2500)
     }
+
+    setDocumentText(textToSet)
   }, [template])
 
   return (

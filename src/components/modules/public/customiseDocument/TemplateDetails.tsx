@@ -8,6 +8,7 @@ import useRequest from '../../../hooks/useRequest'
 import { getTemplate } from '../../../../api/templates'
 import { useMemo } from 'react'
 import toast from 'react-hot-toast'
+import { replaceDynamicSectionsInPreview } from '../../../../utils/replaceDynamicSections' // Import the utility function
 
 interface TemplateModule {
   name: string
@@ -75,7 +76,7 @@ export default function TemplateDetails() {
   useEffect(() => {
     if (localTemplate) {
       const fields = localTemplate.configuration.formConfig.modules
-      const html = localTemplate.configuration.html //changed this from previewHtml
+      const html = localTemplate.configuration.previewHtml //changed this from previewHtml
       const completeHtml = localTemplate.configuration.html
 
       const initialFormData: { [key: string]: string | string[] } = {}

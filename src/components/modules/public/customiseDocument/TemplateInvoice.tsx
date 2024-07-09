@@ -28,6 +28,7 @@ export default function TemplateInvoice() {
         modules: TemplateModule[]
       }
       previewHtml: string
+      html: string
     }
   }>()
 

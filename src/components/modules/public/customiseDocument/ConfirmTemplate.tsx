@@ -10,7 +10,7 @@ export default function ConfirmTemplate() {
   )
 
   useEffect(() => {
-    const storedHtml = localStorage.getItem('processedHtml')
+    const storedHtml = localStorage.getItem('processedCompleteHtml')
     if (storedHtml) {
       setDocumentText(storedHtml)
     } else {

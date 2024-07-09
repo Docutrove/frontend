@@ -56,7 +56,7 @@ const TemplateDisplay: React.FC<TemplateDisplayProps> = ({
                 )
               })
 
-              console.log('Processed Content:', processedContent)
+              //console.log('Processed Content:', processedContent)
               return replaceDynamicSections(processedContent)
             }
 

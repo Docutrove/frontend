@@ -84,9 +84,9 @@ const TemplateModal: React.FC<TemplateModalProps> = ({ isOpen, onClose }) => {
                 placeholder="Andre.smith@templars.com"
                 required
               />
-              <label>First Name</label>
+              <label>Phone Number</label>
               <input type="tel" placeholder="+234 000 000 000" required />
-              <label>First Name</label>
+              <label>Message</label>
               <textarea placeholder="Write here" required></textarea>
               <button type="submit">Submit</button>
             </form>

@@ -131,6 +131,8 @@ export default function TemplateInvoice() {
       return value || '------'
     })
 
+    processedHtml.replace(/#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g, '')
+
     return processedHtml
   }, [formData, templateHtml, questions])
 

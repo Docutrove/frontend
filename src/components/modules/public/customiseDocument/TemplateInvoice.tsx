@@ -14,10 +14,9 @@ interface TemplateModule {
   isDropDown: boolean
 }
 
-
 export default function TemplateInvoice() {
-  const { goBack, setTemplate, templateId } = useCustomiseDocContext();
-  const { makeRequest } = useRequest(getTemplate, templateId);
+  const { goBack, setTemplate, templateId } = useCustomiseDocContext()
+  const { makeRequest } = useRequest(getTemplate, templateId)
 
   const [localTemplate, setLocalTemplate] = useState<{
     name: string
@@ -49,7 +48,7 @@ export default function TemplateInvoice() {
   }
 
   useEffect(() => {
-    console.log(isLoaded);
+    console.log(isLoaded)
     getTemplateLocal()
   }, [templateId])
 
@@ -86,10 +85,14 @@ export default function TemplateInvoice() {
 
     const replaceDynamicSections = (html: string): string => {
       try {
-        return html.replace(/#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g, (_, condition, content) => {
-          const [key, value] = condition.split('=').map((str: string) => str.trim());
-          const formDataValue = formData[key];
-          // const formDataValue = typeof formData[key] === 'string' ? formData[key].trim() : '';
+        return html.replace(
+          /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g,
+          (_, condition, content) => {
+            const [key, value] = condition
+              .split('=')
+              .map((str: string) => str.trim())
+            const formDataValue = formData[key]
+            // const formDataValue = typeof formData[key] === 'string' ? formData[key].trim() : '';
 
             if (formDataValue === value) {
               let processedContent = content
@@ -110,22 +113,13 @@ export default function TemplateInvoice() {
           }
         )
       } catch (error) {
-        console.error('Error in replaceDynamicSections:', error);
-        return '';
+        console.error('Error in replaceDynamicSections:', error)
+        return ''
       }
     }
 
-    processedHtml = replaceDynamicSections(processedHtml);
-    console.log(processedHtml);
-
-    // processedHtml = processedHtml.replace(/\[(.*?)\]/g, (match, key) => {
-    //   console.log("Match:", match);
-    //   console.log("Key:", key); 
-    //   const value = formData[key.trim()]; 
-    //   console.log("Value:", value); 
-    //   return value || '------';
-    // });
-
+    processedHtml = replaceDynamicSections(processedHtml)
+    console.log(processedHtml)
 
     processedHtml = processedHtml.replace(/{{(.*?)}}/g, (_, key) => {
       const value = formData[key.trim()]

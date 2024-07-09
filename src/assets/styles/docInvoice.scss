@@ -3,34 +3,42 @@
 .invoice-details {
   &__content {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
 
-    @include mobile(1105px) {
-      flex-direction: column-reverse;
-      align-items: center;
+  .template-container {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    text-align: center;
+
+    .template-image {
+      width: 100%;
+      max-width: 100%;
+      display: inline-block;
+      margin: 0 auto;
+
+      &__text {
+        word-wrap: break-word;
+        white-space: nowrap;
+        overflow-x: auto;
+      }
     }
   }
 
-  &__text {
-    //  max-width: 30%;
-    //margin-left: auto;
-    //padding: 80px 73px 54px;
-
-    padding: 6rem 3.5rem 3.5rem;
-    width: 35vw;
-
-    @include mobile(1105px) {
-      margin-left: unset;
-      width: unset;
+  @media (min-width: 768px) {
+    &__content {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 2rem;
     }
 
-    @include mobile(600px) {
-      padding: 60px 20px;
+    .template-container {
+      width: 50vw;
     }
-  }
-
-  &.full-width {
-    max-width: 50%;
-    width: 60vw; // New style for full-width condition
   }
 }
 
@@ -382,6 +390,9 @@
 
   @include mobile(600px) {
     padding-top: 3rem;
+    padding-top: 3rem;
+
+    margin-bottom: 1rem;
   }
 
   p {
@@ -395,6 +406,10 @@
     border-radius: 5px;
     padding: 1px;
     margin-top: 10px;
+
+    @include mobile(600px) {
+      margin-bottom: 1rem;
+    }
   }
 
   &__fill {
@@ -555,6 +570,10 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 19.36px;
+  }
+  @media (min-width: 768px) {
+    margin-top: 1rem;
+    //margin-bottom: 3rem;
   }
 
   .contact-form {

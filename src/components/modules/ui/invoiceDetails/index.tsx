@@ -13,10 +13,10 @@ interface InvoiceDetailsProps {
   children: ReactNode
   document_text: string | undefined
   backClick?: () => void
-  backgroundColor?: string // New prop for background color
-  fullWidth?: boolean // New prop for full width
-  hideBackButton?: boolean // New prop for hiding back button
-  showPrivacyInfo?: boolean // New prop for showing privacy info
+  backgroundColor?: string
+  fullWidth?: boolean
+  hideBackButton?: boolean
+  showPrivacyInfo?: boolean
 }
 
 export default function InvoiceDetails({
@@ -27,16 +27,15 @@ export default function InvoiceDetails({
   children,
   document_text,
   backClick,
-  backgroundColor, // Destructure backgroundColor from props
-  fullWidth, // Destructure fullWidth from props
-  hideBackButton, // Destructure hideBackButton from props
-}: // showPrivacyInfo = false, // Destructure showPrivacyInfo from props with default value
-InvoiceDetailsProps) {
+  backgroundColor,
+  fullWidth,
+  hideBackButton,
+}: InvoiceDetailsProps) {
   const invoiceDetailsClass = classNames('invoice-details', {
     'full-width': fullWidth, // Add 'full-width' class conditionally
   })
 
-  const templateContainerStyle = fullWidth ? { width: '50vw' } : {} // Adjust width style conditionally
+  const templateContainerStyle = fullWidth ? { width: '50vw' } : {}
 
   return (
     <>
@@ -46,15 +45,14 @@ InvoiceDetailsProps) {
           <div className="invoice-details__text">
             <p className="invoice-subtitle gradient-subtitle">{subtitle}</p>
 
-            {back_button &&
-              !hideBackButton && ( // Conditionally render back button section
-                <button className="invoice-back-button" onClick={backClick}>
-                  <div className="back-button">
-                    <Icon name="caret-right" className="back-icon" />
-                  </div>
-                  <p className="text--xs">All templates / {categories}</p>
-                </button>
-              )}
+            {back_button && !hideBackButton && (
+              <button className="invoice-back-button" onClick={backClick}>
+                <div className="back-button">
+                  <Icon name="caret-right" className="back-icon" />
+                </div>
+                <p className="text--xs">All templates / {categories}</p>
+              </button>
+            )}
 
             <div className="invoice-description">
               <h2 className="invoice-description__header">{title}</h2>

@@ -2,6 +2,7 @@ import { useCustomiseDocContext } from '.'
 import InvoiceDetails from '../../ui/invoiceDetails'
 import BaseButton from '../../ui/button'
 import { useState, useEffect } from 'react'
+import { replaceDynamicSectionsInPreview } from '../../../../utils/replaceDynamicSections' // Import the utility function
 
 export default function ConfirmTemplate() {
   const { goBack, goNext, template } = useCustomiseDocContext()
@@ -12,9 +13,10 @@ export default function ConfirmTemplate() {
   useEffect(() => {
     const storedHtml = localStorage.getItem('processedCompleteHtml')
     if (storedHtml) {
-      setDocumentText(storedHtml)
+      setDocumentText(replaceDynamicSectionsInPreview(storedHtml)) // Use the utility function
     } else {
-      setDocumentText(template?.configuration.previewHtml)
+      const previewHtml = template?.configuration.previewHtml || ''
+      setDocumentText(replaceDynamicSectionsInPreview(previewHtml)) // Use the utility function
     }
   }, [template])
 

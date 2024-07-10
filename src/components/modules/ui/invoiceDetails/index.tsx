@@ -21,7 +21,7 @@ interface InvoiceDetailsProps {
 
 export default function InvoiceDetails({
   subtitle,
-  categories,
+  // categories,
   title,
   back_button,
   children,

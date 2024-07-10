@@ -19,7 +19,7 @@ export default function SubscriptionServices({
           variant="plain"
           title="Tier 1 - Templates"
           description="Purchase individual templates for a one-time fee. Perfect for one-off legal needs."
-          amount={10000}
+          amount={5000}
           buttonText="Subscribe to Tier 1"
           path="/coming"
           lists={[

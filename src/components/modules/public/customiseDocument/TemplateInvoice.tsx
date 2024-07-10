@@ -138,7 +138,7 @@ export default function TemplateInvoice() {
 
   return (
     <InvoiceDetails
-      subtitle="Customize and download a legal document"
+      subtitle=""
       title={localTemplate?.name}
       back_button
       document_text={processedTemplate}

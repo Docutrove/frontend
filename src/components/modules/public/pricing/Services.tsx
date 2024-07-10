@@ -8,7 +8,7 @@ export default function PricingServices() {
           variant="purple"
           title="Customize a document"
           description="Easy-to-use document templates - save time with our library of lawyer-approved templates."
-          amount={10000}
+          amount={5000}
           buttonText="Find a Template"
           path="/customise"
           lists={[
@@ -35,7 +35,7 @@ export default function PricingServices() {
             "Maintain good legal standing with ongoing compliance support",
           ]}
           buttonVariant="secondary"
-          amountSuffix="per service"
+          amountSuffix="Base cost"
           iconName="pie"
           iconVariant="black"
         />

@@ -19,21 +19,21 @@ export default function HomeServices() {
 
           <ServiceSection
             title="Build a strong legal foundation for your startup"
-            buttonText="Schedule A Consultation"
+            buttonText="Schedule a Consultation"
             imgSrc="/images/How2.png"
             path="/consultation"
-            description="DocuTrove by Templars understands the unique legal needs of startups 
+            description="DocuTrove understands the unique legal needs of startups 
             and is here to help you navigate the legalities from day one. Start with everything 
             you need - business registration, employment contracts, shareholder agreements and more."
           />
 
           <ServiceSection
             title="Scale confidently with legal solutions"
-            buttonText="See how we can support you"
+            buttonText="Learn how we can support you"
             imgSrc="/images/How3.png"
             path="/business"
             description="Your legal needs become more complex as your small business or SME grows. 
-            DocuTrove by Templars provides the scalable legal support you need to get through 
+            DocuTrove provides the legal support you need to scale through 
             every stage of your journey."
           />
         </div>

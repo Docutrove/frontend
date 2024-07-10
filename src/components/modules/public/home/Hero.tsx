@@ -9,7 +9,7 @@ export default function HomeHero() {
             You & Docutrove: Better Together
           </h1>
           <h6 className="home__hero__content__text__description">
-            DocuTrove by Templars allows you to access easy-to-customise legal documents, 
+            DocuTrove allows you to access easy-to-customise legal documents, 
             quick business registration and the expertise of experienced lawyers putting 
             you in control of your legal matters
           </h6>

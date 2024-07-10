@@ -3,7 +3,7 @@ import Layout from "../layout";
 import HomeCTABanner from "./CTABanner";
 import HomeHero from "./Hero";
 import HomeOffers from "./Offers";
-import HomeSubscription from "./Subscription";
+// import HomeSubscription from "./Subscription";
 import HomeServices from "./Services";
 import HomeSupport from "./Support";
 import "./index.scss";
@@ -13,7 +13,7 @@ export default function Home() {
     <Layout>
       <HomeHero/>
       <HomeOffers />
-      <HomeSubscription/>
+      {/* <HomeSubscription/> */}
       <HomeServices />
       {/* <HomeBenefits/> */}
       <HomeCTABanner />

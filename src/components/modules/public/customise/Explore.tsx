@@ -7,7 +7,7 @@ export default function CustomiseExplore() {
       title="Not what you are looking for?"
       description="Explore our other services or schedule a consultation with an expert to guide you through your situation."
       path="/services"
-      buttonText="Schedule A Consultation"
+      buttonText="Schedule a Consultation"
       imageURL="/images/explore.png"
     />
   );

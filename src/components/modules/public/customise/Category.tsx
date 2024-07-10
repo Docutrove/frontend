@@ -9,20 +9,20 @@ interface Category {
 const categories: Category[] = [
   {
     variant: "purple",
-    title: "Independent Contractors & Freelancers:",
-    description: "Client contracts, independent contractor agreements, NDAs, copyright transfer agreements, and more.",
+    title: "Browse our template Library",
+    description: "Explore a wide range of lawyer-approved templates categorised by business type. Find the document you need, whether it's a client contract for independent contractors, a non-disclosure agreement (NDA) for startups, or website terms & conditions for SMEs.",
   },
 
   {
     variant: "green",
-    description: "Business registration documents, shareholder agreements, stock option plans, website terms & conditions, and privacy policies.",
-    title: "Startups",
+    description: "Answer a few simple questions to tailor the template to your needs. We guide you through the process, ensuring you put the right information in the right places..",
+    title: "Easy Customization",
   },
 
   {
     variant: "blue",
-    title: "Small Businesses & SMEs",
-    description: "Employment contracts, non-compete agreements, intellectual property protection documents, website legal, and business licenses.",
+    title: "Download and Use",
+    description: "Once customized, download your document in a format that's easy to use and share.",
   },
 ];
 
@@ -30,7 +30,7 @@ export default function HomeOffers() {
 
   return (
     <div className="home__offers app-container">
-    <h3 className="customise__category">Template Categories</h3>
+    <h3 className="customise__category">How it works</h3>
       <div className="home__offers__content app-container__section">
         <>
         { categories.map((category) => {

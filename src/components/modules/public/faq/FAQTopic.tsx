@@ -36,7 +36,7 @@ const DATA = [
   },
   {
     q: "Are the document templates lawyer-approved?",
-    a: "Yes, our document templates are created and reviewed by experienced lawyers at Templars to ensure accuracy and compliance.",
+    a: "Yes, our document templates are created and reviewed by experienced lawyers at TEMPLARS to ensure accuracy and compliance.",
   },
   {
     q: "How do I customise a document",

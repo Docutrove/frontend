@@ -40,7 +40,7 @@ export default function TemplateInvoice() {
   }>({})
   const [questions, setQuestions] = useState<any[]>([])
   const [templateHtml, setTemplateHtml] = useState<string>('')
-  const [isLoaded, setIsLoaded] = useState<boolean>(false)
+  const [, setIsLoaded] = useState<boolean>(false)
 
   const getTemplateLocal = async () => {
     const [thisTemplate, err] = await makeRequest()
@@ -90,7 +90,7 @@ export default function TemplateInvoice() {
       try {
         return html.replace(
           /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g,
-          (match, condition, content) => {
+          (condition, content) => {
             const [key, value] = condition
               .split('=')
               .map((str: string) => str.trim())

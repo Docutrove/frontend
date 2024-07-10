@@ -160,6 +160,21 @@ export default function TemplateDetails() {
       return value || '------'
     })
 
+    /*
+    TO be used 
+        processedHtml = processedHtml.replace(
+      /{{(.*?)}}|#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g,
+      (_match, p1, p2, _p3) => {
+        const key = p1 || p2 // Determine which capture group is matched
+        const value = formData[key.trim()]
+        if (Array.isArray(value)) {
+          return value.join(', ') || '------'
+        }
+        return value || '------'
+      }
+    )
+    */
+
     let processedCompleteHtml = replaceDynamicSections(completeTemplateHtml)
     processedCompleteHtml = processedCompleteHtml.replace(
       /{{(.*?)}}/g,

@@ -8,10 +8,18 @@
     padding: 1rem;
   }
 
+  &__text {
+    // border: 2px solid red;
+    // display: flex;
+    // align-items: flex-start;
+    // flex-direction: column;
+    // position: sticky;
+  }
+
   .template-container {
     width: 100%;
     overflow-x: auto;
-    overflow-y: hidden;
+    //overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     text-align: center;
 

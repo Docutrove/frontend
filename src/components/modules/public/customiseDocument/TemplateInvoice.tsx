@@ -12,6 +12,9 @@ interface TemplateModule {
   label: string
   dropDownOptions: string[]
   isDropDown: boolean
+  defaultValue?: string
+  questions?: { [key: string]: TemplateModule[] }
+  isConfig?: boolean
 }
 
 export default function TemplateInvoice() {
@@ -60,7 +63,7 @@ export default function TemplateInvoice() {
       const initialFormData: { [key: string]: string | string[] } = {}
       fields.forEach((field: any) => {
         if (field.isConfig) {
-          initialFormData[field.name] = field.defaultValue
+          initialFormData[field.name] = field.defaultValue || ''
         } else {
           initialFormData[field.name] = ''
         }
@@ -87,7 +90,7 @@ export default function TemplateInvoice() {
       try {
         return html.replace(
           /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g,
-          (_, condition, content) => {
+          (match, condition, content) => {
             const [key, value] = condition
               .split('=')
               .map((str: string) => str.trim())
@@ -118,19 +121,15 @@ export default function TemplateInvoice() {
     }
 
     processedHtml = replaceDynamicSections(processedHtml)
-    processedHtml = processedHtml.replace(/{{(.*?)}}/g, (_, key) => {
-      const value = formData[key.trim()]
-      if (Array.isArray(value)) {
-        return value.join(', ') || '------'
-      }
-      return value || '------'
-    })
-
-    // Ensure that any leftover dynamic tags are removed
-    processedHtml = processedHtml.replace(
-      /#Dynamic .*?#([\s\S]*?)\\Dynamic\\/g,
-      ''
-    )
+    processedHtml = processedHtml
+      .replace(/#Dynamic .*?#([\s\S]*?)\\Dynamic\\/g, '')
+      .replace(/{{(.*?)}}/g, (_, key) => {
+        const value = formData[key.trim()]
+        if (Array.isArray(value)) {
+          return value.join(', ') || '------'
+        }
+        return value || '------'
+      })
 
     return processedHtml
   }, [formData, templateHtml, questions])

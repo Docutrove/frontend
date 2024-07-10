@@ -1,9 +1,9 @@
-import { useCustomiseDocContext } from ".";
-import GradientLayout from "../../ui/gradientLayout";
+import { useCustomiseDocContext } from '.'
+import GradientLayout from '../../ui/gradientLayout'
 
 export default function ChooseDocumentType() {
-  const {setCategoryId, categories} = useCustomiseDocContext()
-    
+  const { setCategoryId, categories } = useCustomiseDocContext()
+
   return (
     <GradientLayout arrow>
       <div className="choose-document-type">
@@ -15,16 +15,20 @@ export default function ChooseDocumentType() {
         </h2>
         <div className="options-grid">
           <>
-          { categories?.map((category) => {
-            return (
-              <div className="option" onClick={() => setCategoryId(category.id)}>
-                <p className="text--sm">{category?.name}</p>
-              </div>
-            )
-          })}
+            {categories?.map((category) => {
+              return (
+                <div
+                  key={category.id}
+                  className="option"
+                  onClick={() => setCategoryId(category.id)}
+                >
+                  <p className="text--sm">{category?.name}</p>
+                </div>
+              )
+            })}
           </>
         </div>
       </div>
     </GradientLayout>
-  );
+  )
 }

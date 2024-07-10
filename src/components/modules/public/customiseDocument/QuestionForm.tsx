@@ -137,6 +137,7 @@ const QuestionForm: React.FC<FormProps> = ({
             <BaseInput
               className="text--xs"
               type="number"
+              placeholder="Enter a Number"
               value={(formData[name] as string) || ''}
               onChange={(e) => handleChange(name, e.target.value)}
             />

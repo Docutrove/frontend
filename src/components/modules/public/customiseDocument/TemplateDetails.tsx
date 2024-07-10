@@ -114,23 +114,25 @@ export default function TemplateDetails() {
     }
 
     // Function to replace dynamic sections
+
     const replaceDynamicSections = (html: string): string => {
       try {
         return html.replace(
-          /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g,
-          (_, condition, content) => {
+          /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\|#Dynamic (.*?)#/g,
+          (_, condition1, content1, condition2) => {
+            const condition = condition1 || condition2
+            const content = content1 || ''
+
             const [key, value] = condition
               .split('=')
               .map((str: string) => str.trim())
-
             const formDataValue = formData[key]
 
             if (formDataValue === value) {
               let processedContent = content
 
-              // Handle nested questions
               const nestedQuestions = getNestedQuestions(key, value)
-              nestedQuestions.forEach((question: { name: string | number }) => {
+              nestedQuestions.forEach((question: { name: string }) => {
                 const placeholderRegex = new RegExp(`{{${question.name}}}`, 'g')
                 processedContent = processedContent.replace(
                   placeholderRegex,
@@ -159,21 +161,6 @@ export default function TemplateDetails() {
       }
       return value || '------'
     })
-
-    /*
-    TO be used 
-        processedHtml = processedHtml.replace(
-      /{{(.*?)}}|#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g,
-      (_match, p1, p2, _p3) => {
-        const key = p1 || p2 // Determine which capture group is matched
-        const value = formData[key.trim()]
-        if (Array.isArray(value)) {
-          return value.join(', ') || '------'
-        }
-        return value || '------'
-      }
-    )
-    */
 
     let processedCompleteHtml = replaceDynamicSections(completeTemplateHtml)
     processedCompleteHtml = processedCompleteHtml.replace(

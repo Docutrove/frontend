@@ -86,11 +86,49 @@ export default function TemplateInvoice() {
       return configQuestion?.questions?.[configValue] || []
     }
 
+    // const replaceDynamicSections = (html: string): string => {
+    //   try {
+    //     return html.replace(
+    //       // /{{(.*?)}}|#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\|#.*?#/g,
+    //       /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g,
+    //       (_, condition, content) => {
+    //         const [key, value] = condition
+    //           .split('=')
+    //           .map((str: string) => str.trim())
+    //         const formDataValue = formData[key]
+
+    //         if (formDataValue === value) {
+    //           let processedContent = content
+
+    //           const nestedQuestions = getNestedQuestions(key, value)
+    //           nestedQuestions.forEach((question: { name: string }) => {
+    //             const placeholderRegex = new RegExp(`{{${question.name}}}`, 'g')
+    //             processedContent = processedContent.replace(
+    //               placeholderRegex,
+    //               formData[question.name] || '------'
+    //             )
+    //           })
+
+    //           return replaceDynamicSections(processedContent)
+    //         }
+
+    //         return ''
+    //       }
+    //     )
+    //   } catch (error) {
+    //     console.error('Error in replaceDynamicSections:', error)
+    //     return ''
+    //   }
+    // }
+
     const replaceDynamicSections = (html: string): string => {
       try {
         return html.replace(
-          /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g,
-          (match, condition, content) => {
+          /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\|#Dynamic (.*?)#/g,
+          (_, condition1, content1, condition2) => {
+            const condition = condition1 || condition2
+            const content = content1 || ''
+
             const [key, value] = condition
               .split('=')
               .map((str: string) => str.trim())
@@ -121,6 +159,7 @@ export default function TemplateInvoice() {
     }
 
     processedHtml = replaceDynamicSections(processedHtml)
+
     processedHtml = processedHtml
       .replace(/#Dynamic .*?#([\s\S]*?)\\Dynamic\\/g, '')
       .replace(/{{(.*?)}}/g, (_, key) => {

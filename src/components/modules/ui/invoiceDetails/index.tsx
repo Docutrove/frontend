@@ -66,6 +66,10 @@ export default function InvoiceDetails({
             <div className="template-image">
               <p className="text--sm template-image__text">
                 {parse(document_text || '')}
+
+                {/* <div
+                  dangerouslySetInnerHTML={{ __html: document_text ?? '' }}
+                /> */}
               </p>
             </div>
           </div>

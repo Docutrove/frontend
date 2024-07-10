@@ -49,7 +49,6 @@ export default function TemplateInvoice() {
   }
 
   useEffect(() => {
-    console.log(isLoaded)
     getTemplateLocal()
   }, [templateId])
 
@@ -93,7 +92,6 @@ export default function TemplateInvoice() {
               .split('=')
               .map((str: string) => str.trim())
             const formDataValue = formData[key]
-            // const formDataValue = typeof formData[key] === 'string' ? formData[key].trim() : '';
 
             if (formDataValue === value) {
               let processedContent = content
@@ -120,18 +118,19 @@ export default function TemplateInvoice() {
     }
 
     processedHtml = replaceDynamicSections(processedHtml)
-    console.log(processedHtml)
-
     processedHtml = processedHtml.replace(/{{(.*?)}}/g, (_, key) => {
       const value = formData[key.trim()]
       if (Array.isArray(value)) {
-        console.log(value)
         return value.join(', ') || '------'
       }
       return value || '------'
     })
 
-    processedHtml.replace(/#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g, '')
+    // Ensure that any leftover dynamic tags are removed
+    processedHtml = processedHtml.replace(
+      /#Dynamic .*?#([\s\S]*?)\\Dynamic\\/g,
+      ''
+    )
 
     return processedHtml
   }, [formData, templateHtml, questions])

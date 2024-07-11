@@ -89,8 +89,11 @@ export default function TemplateInvoice() {
     const replaceDynamicSections = (html: string): string => {
       try {
         return html.replace(
-          /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g,
-          (condition, content) => {
+
+          /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\|#Dynamic (.*?)#/g,
+          (_, condition1, content1, condition2) => {
+            const condition = condition1 || condition2
+            const content = content1 || ''
             const [key, value] = condition
               .split('=')
               .map((str: string) => str.trim())
@@ -121,6 +124,7 @@ export default function TemplateInvoice() {
     }
 
     processedHtml = replaceDynamicSections(processedHtml)
+
     processedHtml = processedHtml
       .replace(/#Dynamic .*?#([\s\S]*?)\\Dynamic\\/g, '')
       .replace(/{{(.*?)}}/g, (_, key) => {

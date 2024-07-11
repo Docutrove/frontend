@@ -93,7 +93,6 @@ export default function TemplateInvoice() {
           (_, condition1, content1, condition2) => {
             const condition = condition1 || condition2
             const content = content1 || ''
-
             const [key, value] = condition
               .split('=')
               .map((str: string) => str.trim())

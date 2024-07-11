@@ -6,7 +6,6 @@ import BaseInput from '../../ui/input'
 import ProgressBar from '../../ui/ProgressBar'
 import ReactDatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { FaCalendarAlt } from 'react-icons/fa'
 
 interface Question {
   label: string

@@ -4,6 +4,9 @@ import BaseButton from '../../ui/button'
 import { useCustomiseDocContext } from '.'
 import BaseInput from '../../ui/input'
 import ProgressBar from '../../ui/ProgressBar'
+import ReactDatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import { FaCalendarAlt } from 'react-icons/fa'
 
 interface Question {
   label: string
@@ -116,12 +119,10 @@ const QuestionForm: React.FC<FormProps> = ({
 
   return (
     <>
-      {
-        <ProgressBar
-          currentStep={currentStep}
-          totalQuestions={currentQuestions.length}
-        />
-      }
+      <ProgressBar
+        currentStep={currentStep}
+        totalQuestions={currentQuestions.length}
+      />
       <div className="document-details">
         <div className="document-details__input">
           <label className="label">{label}</label>
@@ -142,14 +143,27 @@ const QuestionForm: React.FC<FormProps> = ({
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
+
           {type === 'date' && (
-            <BaseInput
+            <ReactDatePicker
+              selected={
+                typeof formData[name] === 'string' &&
+                !isNaN(Date.parse(formData[name]))
+                  ? new Date(formData[name])
+                  : null
+              }
+              onChange={(date: Date | null) => {
+                if (date) {
+                  const formattedDate = date.toLocaleDateString('en-GB')
+                  handleChange(name, formattedDate)
+                }
+              }}
+              dateFormat="dd-MM-yyyy"
               className="text--xs"
-              type="date"
-              value={(formData[name] as string) || ''}
-              onChange={(e) => handleChange(name, e.target.value)}
+              placeholderText="Select a date"
             />
           )}
+
           {type === 'textarea' && (
             <textarea
               className="text--xs"

@@ -56,19 +56,19 @@ const customiseDocContext = createContext<{
   setTemplateId: (templateId: string) => void
 }>({
   setTemplateData: function (data: DynamicObject | undefined): void {
-    console.log(data)
+    // console.log(data)
   },
   setCategoryId: function (categoryId: string): void {
-    console.log(categoryId)
+    // console.log(categoryId)
   },
   setTemplateId: function (templateId: string): void {
-    console.log(templateId)
+    // console.log(templateId)
   },
   setAuthData: function (data: AuthData): void {
-    console.log(data)
+    //  console.log(data)
   },
   setTemplate: function (data: Template | undefined): void {
-    console.log(data)
+    // console.log(data)
   },
 })
 

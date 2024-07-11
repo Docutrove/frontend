@@ -4,15 +4,15 @@ import TemplateAccordion from '../TemplateAccordion'
 
 export const accordionItems = [
   {
-    header: 'What is DocuTrove used for?',
+    header: 'What is an MOU?',
     body: 'DocuTrove caters to independent contractors, freelancers, startups, small businesses, and SMEs.',
   },
   {
-    header: 'What is DocuTrove used for?',
+    header: 'Who needs an MOU?',
     body: 'DocuTrove caters to independent contractors, freelancers, startups, small businesses, and SMEs.',
   },
   {
-    header: 'What is DocuTrove used for?',
+    header: 'How can an MOU be used?',
     body: 'DocuTrove caters to independent contractors, freelancers, startups, small businesses, and SMEs.',
   },
 ]

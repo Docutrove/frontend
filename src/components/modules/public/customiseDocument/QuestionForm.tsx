@@ -129,7 +129,11 @@ const QuestionForm: React.FC<FormProps> = ({
             <BaseInput
               className="text--xs"
               type="text"
-              value={(formData[name] as string) || ''}
+              value={
+                Array.isArray(formData[name])
+                  ? formData[name].join(', ')
+                  : (formData[name] as string)
+              }
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
@@ -138,7 +142,11 @@ const QuestionForm: React.FC<FormProps> = ({
               className="text--xs"
               type="number"
               placeholder="Enter a Number"
-              value={(formData[name] as string) || ''}
+              value={
+                Array.isArray(formData[name])
+                  ? formData[name].join(', ')
+                  : (formData[name] as string)
+              }
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
@@ -215,29 +223,26 @@ const QuestionForm: React.FC<FormProps> = ({
             </select>
           )}
           {type === 'multi-insert' && (
-            <div className="document-details__multi-insert">
+            <div>
               <BaseInput
-                className="text--xs"
                 type="text"
                 value={multiInsertValue}
                 onChange={(e) => handleMultiInsertChange(name, e.target.value)}
                 onKeyDown={(e) => handleMultiInsertKeyDown(e, name)}
-                placeholder="Type a value and press Enter or separate multiple values with commas"
+                placeholder="Enter values separated by commas"
+                className="text--xs"
               />
-              <div className="document-details__multi-insert-tags">
-                {((formData[name] as string[]) || []).map((value, index) => (
-                  <span
-                    key={index}
-                    className="document-details__multi-insert-tag"
-                  >
+              <div className="multi-insert-values">
+                {(formData[name] as string[])?.map((value, index) => (
+                  <div key={index} className="multi-insert-value">
                     {value}
                     <button
-                      className="document-details__multi-insert-tag-remove"
+                      type="button"
                       onClick={() => removeMultiInsertValue(name, value)}
                     >
-                      <Icon name="close" />
+                      &times;
                     </button>
-                  </span>
+                  </div>
                 ))}
               </div>
             </div>

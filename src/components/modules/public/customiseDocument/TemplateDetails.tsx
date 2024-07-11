@@ -8,7 +8,6 @@ import useRequest from '../../../hooks/useRequest'
 import { getTemplate } from '../../../../api/templates'
 import { useMemo } from 'react'
 import toast from 'react-hot-toast'
-//import { replaceDynamicSectionsInPreview } from '../../../../utils/replaceDynamicSections' // Import the utility function
 
 interface TemplateModule {
   name: string

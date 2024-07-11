@@ -40,7 +40,7 @@ export default function TemplateInvoice() {
   }>({})
   const [questions, setQuestions] = useState<any[]>([])
   const [templateHtml, setTemplateHtml] = useState<string>('')
-  const [isLoaded, setIsLoaded] = useState<boolean>(false)
+  const [, setIsLoaded] = useState<boolean>(false)
 
   const getTemplateLocal = async () => {
     const [thisTemplate, err] = await makeRequest()
@@ -85,41 +85,6 @@ export default function TemplateInvoice() {
       )
       return configQuestion?.questions?.[configValue] || []
     }
-
-    // const replaceDynamicSections = (html: string): string => {
-    //   try {
-    //     return html.replace(
-    //       // /{{(.*?)}}|#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\|#.*?#/g,
-    //       /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\/g,
-    //       (_, condition, content) => {
-    //         const [key, value] = condition
-    //           .split('=')
-    //           .map((str: string) => str.trim())
-    //         const formDataValue = formData[key]
-
-    //         if (formDataValue === value) {
-    //           let processedContent = content
-
-    //           const nestedQuestions = getNestedQuestions(key, value)
-    //           nestedQuestions.forEach((question: { name: string }) => {
-    //             const placeholderRegex = new RegExp(`{{${question.name}}}`, 'g')
-    //             processedContent = processedContent.replace(
-    //               placeholderRegex,
-    //               formData[question.name] || '------'
-    //             )
-    //           })
-
-    //           return replaceDynamicSections(processedContent)
-    //         }
-
-    //         return ''
-    //       }
-    //     )
-    //   } catch (error) {
-    //     console.error('Error in replaceDynamicSections:', error)
-    //     return ''
-    //   }
-    // }
 
     const replaceDynamicSections = (html: string): string => {
       try {

@@ -125,6 +125,7 @@ const QuestionForm: React.FC<FormProps> = ({
       <div className="document-details">
         <div className="document-details__input">
           <label className="label">{label}</label>
+
           {type === 'text' && (
             <BaseInput
               className="text--xs"
@@ -150,7 +151,6 @@ const QuestionForm: React.FC<FormProps> = ({
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
-
           {type === 'date' && (
             <ReactDatePicker
               selected={

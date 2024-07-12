@@ -598,6 +598,7 @@
     flex-direction: column;
     align-items: flex-start; // Align items to the start of the container
     padding: 0.5rem 0.2rem;
+    overflow-y: scroll;
 
     label {
       width: 100%; // Ensure the label takes up full width

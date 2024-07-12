@@ -87,7 +87,7 @@ const TemplateModal: React.FC<TemplateModalProps> = ({ isOpen, onClose }) => {
               <label>Phone Number</label>
               <input type="tel" placeholder="+234 000 000 000" required />
               <label>Message</label>
-              <textarea placeholder="Write here" required></textarea>
+              <textarea placeholder="Write here" rows={4} required></textarea>
               <button type="submit">Submit</button>
             </form>
           )}

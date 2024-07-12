@@ -20,7 +20,9 @@
     .template-image {
       width: 100%;
       max-width: 100%;
-      display: block;
+      display: flex !important;
+      align-items: center;
+
       margin: 0 auto;
     }
   }
@@ -198,6 +200,7 @@
     flex-direction: column;
     gap: 20px;
     padding-top: 30px;
+    padding-bottom: 20px;
   }
 
   a {

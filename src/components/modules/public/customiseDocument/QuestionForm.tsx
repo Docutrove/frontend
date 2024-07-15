@@ -21,14 +21,12 @@ interface FormProps {
   formData: { [key: string]: string | string[] }
   handleChange: (field: string, value: string | string[]) => void
   handleSubmit: () => void
-  finaldata: any
 }
 
 const QuestionForm: React.FC<FormProps> = ({
   questions,
   formData,
   handleChange,
-  finaldata,
 }) => {
   const [currentStep, setCurrentStep] = useState<number>(0)
   const [currentQuestions, setCurrentQuestions] =
@@ -146,7 +144,7 @@ const QuestionForm: React.FC<FormProps> = ({
             <ReactDatePicker
               selected={
                 typeof formData[name] === 'string' &&
-                !isNaN(Date.parse(formData[name]))
+                  !isNaN(Date.parse(formData[name]))
                   ? new Date(formData[name])
                   : null
               }
@@ -265,7 +263,7 @@ const QuestionForm: React.FC<FormProps> = ({
           ) : (
             <BaseButton
               variant="primary"
-              onClick={() => setTemplateData(finaldata)}
+              onClick={() => setTemplateData(formData)}
             >
               Next
             </BaseButton>

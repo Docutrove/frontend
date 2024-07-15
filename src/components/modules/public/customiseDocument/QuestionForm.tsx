@@ -145,9 +145,10 @@ const QuestionForm: React.FC<FormProps> = ({
           {type === 'date' && (
             <ReactDatePicker
               selected={
-                typeof formData[name] === 'string' ?
-                !isNaN(Date.parse(formData[name]))
-                  ? new Date(formData[name])
+                typeof formData[name] === 'string'
+                  ? !isNaN(Date.parse(formData[name]))
+                    ? new Date(formData[name])
+                    : null
                   : null
               }
               onChange={(date: Date | null) => {

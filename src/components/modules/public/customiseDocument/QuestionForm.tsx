@@ -129,11 +129,7 @@ const QuestionForm: React.FC<FormProps> = ({
             <BaseInput
               className="text--xs"
               type="text"
-              value={
-                Array.isArray(formData[name])
-                  ? formData[name].join(', ')
-                  : (formData[name] as string)
-              }
+              value={formData[name] as string}
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
@@ -142,11 +138,7 @@ const QuestionForm: React.FC<FormProps> = ({
               className="text--xs"
               type="number"
               placeholder="Enter a Number"
-              value={
-                Array.isArray(formData[name])
-                  ? formData[name].join(', ')
-                  : (formData[name] as string)
-              }
+              value={formData[name] as string}
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}

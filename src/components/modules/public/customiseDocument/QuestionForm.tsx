@@ -144,12 +144,12 @@ const QuestionForm: React.FC<FormProps> = ({
           )}
           {type === 'date' && (
             <ReactDatePicker
-              selected={
-                typeof formData[name] === 'string' &&
-                !isNaN(Date.parse(formData[name]))
-                  ? new Date(formData[name])
-                  : null
-              }
+              // selected={
+              //   typeof formData[name] === 'string' ?
+              //   !isNaN(Date.parse(formData[name]))
+              //     ? new Date(formData[name])
+              //     : null
+              // }
               onChange={(date: Date | null) => {
                 if (date) {
                   const formattedDate = date.toLocaleDateString('en-GB')

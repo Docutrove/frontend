@@ -177,6 +177,16 @@ const QuestionForm: React.FC<FormProps> = ({
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
+
+          {type === 'email' && (
+            <BaseInput
+              type="email"
+              name={name}
+              className="text--xs"
+              value={(formData[name] as string) || ''}
+              onChange={(e) => handleChange(name, e.target.value)}
+            />
+          )}
           {type === 'dropdown' && (
             <select
               className="text--xs"

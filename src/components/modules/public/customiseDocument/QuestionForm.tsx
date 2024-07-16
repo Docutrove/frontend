@@ -82,13 +82,13 @@ const QuestionForm: React.FC<FormProps> = ({
     handleChange(field, values)
   }
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    const day = String(date.getDate()).padStart(2, '0')
-    const month = String(date.getMonth() + 1).padStart(2, '0') // Months are zero-indexed
-    const year = date.getFullYear()
-    return `${day}-${month}-${year}`
-  }
+  // const formatDate = (dateString: string) => {
+  //   const date = new Date(dateString)
+  //   const day = String(date.getDate()).padStart(2, '0')
+  //   const month = String(date.getMonth() + 1).padStart(2, '0') // Months are zero-indexed
+  //   const year = date.getFullYear()
+  //   return `${day}-${month}-${year}`
+  // }
 
   // const toInputDateFormat = (dateString: string) => {
   //   if (!dateString) return ''
@@ -156,7 +156,7 @@ const QuestionForm: React.FC<FormProps> = ({
               className="text--xs"
               type="text"
               placeholder={example}
-              value={formData[name] as string}
+              value={(formData[name] as string) || ''}
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
@@ -165,7 +165,7 @@ const QuestionForm: React.FC<FormProps> = ({
               className="text--xs"
               type="number"
               placeholder={example}
-              value={formData[name] as string}
+              value={(formData[name] as string) || ''}
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
@@ -192,13 +192,22 @@ const QuestionForm: React.FC<FormProps> = ({
                 )} */}
 
           {/*using reactdatetime */}
-
+          {/* 
           {type === 'date' && (
             <BaseInput
               className="text--xs"
               type="date"
               value={formData[name] as string}
               onChange={(e) => handleChange(name, formatDate(e.target.value))}
+            />
+          )} */}
+
+          {type === 'date' && (
+            <BaseInput
+              className="text--xs"
+              type="date"
+              value={(formData[name] as string) || ''}
+              onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
 
@@ -253,35 +262,41 @@ const QuestionForm: React.FC<FormProps> = ({
             </div>
           )}
           {type === 'select' && (
-            <select
-              multiple
-              className="text--xs"
-              value={(formData[name] as string[]) || []}
-              onChange={(e) => handleMultiSelectChange(name, e.target)}
-            >
-              {options?.map((option: string, index: number) => (
-                <option key={index} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
+            <div className="document-details__select">
+              <select
+                multiple
+                className="text--xs"
+                value={(formData[name] as string[]) || []}
+                onChange={(e) => handleMultiSelectChange(name, e.target)}
+              >
+                {options?.map((option: string, index: number) => (
+                  <option key={index} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
           )}
           {type === 'multi-insert' && (
-            <div>
+            <div className="document-details__multi-insert">
               <BaseInput
                 type="text"
                 value={multiInsertValue}
                 onChange={(e) => handleMultiInsertChange(name, e.target.value)}
                 onKeyDown={(e) => handleMultiInsertKeyDown(e, name)}
-                placeholder="Enter values separated by commas"
+                placeholder={example}
                 className="text--xs"
               />
-              <div className="multi-insert-values">
-                {(formData[name] as string[])?.map((value, index) => (
-                  <div key={index} className="multi-insert-value">
+              <div className="document-details__multi-insert-tags">
+                {((formData[name] as string[]) || [])?.map((value, index) => (
+                  <div
+                    key={index}
+                    className="document-details__multi-insert-tag"
+                  >
                     {value}
                     <button
                       type="button"
+                      className="document-details__multi-insert-tag-remove"
                       onClick={() => removeMultiInsertValue(name, value)}
                     >
                       &times;

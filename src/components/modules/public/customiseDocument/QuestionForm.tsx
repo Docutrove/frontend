@@ -19,7 +19,7 @@ interface Question {
 
 interface FormProps {
   questions: Question[]
-  formData: { [key: string]: string | string[] }
+  formData: { [key: string]: string | string[] | Date }
   handleChange: (field: string, value: string | string[]) => void
   handleSubmit: () => void
 }
@@ -150,6 +150,28 @@ const QuestionForm: React.FC<FormProps> = ({
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
+          {/*           
+          {type === 'date' && (
+            <ReactDatePicker
+              selected={
+                typeof formData[name] === 'string' &&
+                !isNaN(Date.parse(formData[name]))
+                  ? new Date(formData[name])
+                  : null
+              }
+              onChange={(date: Date | null) => {
+                if (date) {
+                  const formattedDate = date.toLocaleDateString('en-GB')
+                  handleChange(name, formattedDate)
+                }
+              }}
+              dateFormat="dd-MM-yyyy"
+              className="text--xs"
+              //  placeholderText="Select a date"
+              placeholderText={example}
+            />
+          )} */}
+
           {type === 'date' && (
             <ReactDatePicker
               selected={

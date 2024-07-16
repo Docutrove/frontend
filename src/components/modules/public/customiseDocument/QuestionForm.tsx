@@ -9,6 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 interface Question {
   label: string
+  example: string
   name: string
   type: string
   options?: string[]
@@ -78,6 +79,14 @@ const QuestionForm: React.FC<FormProps> = ({
     handleChange(field, values)
   }
 
+  // const formatDate = (dateString: string) => {
+  //   const date = new Date(dateString)
+  //   const day = String(date.getDate()).padStart(2, '0')
+  //   const month = String(date.getMonth() + 1).padStart(2, '0') // Months are zero-indexed
+  //   const year = String(date.getFullYear()) // Ensure the year is a full string
+  //   return `${day}-${month}-${year}`
+  // }
+
   const handleMultiInsertChange = (field: string, value: string) => {
     setMultiInsertValue(value)
     const values = value
@@ -112,7 +121,7 @@ const QuestionForm: React.FC<FormProps> = ({
   const currentQuestion = currentQuestions[currentStep]
   if (!currentQuestion) return null
 
-  const { label, name, options, type } = currentQuestion
+  const { label, example, name, options, type } = currentQuestion
 
   return (
     <>
@@ -127,6 +136,7 @@ const QuestionForm: React.FC<FormProps> = ({
             <BaseInput
               className="text--xs"
               type="text"
+              placeholder={example}
               value={formData[name] as string}
               onChange={(e) => handleChange(name, e.target.value)}
             />
@@ -135,7 +145,7 @@ const QuestionForm: React.FC<FormProps> = ({
             <BaseInput
               className="text--xs"
               type="number"
-              placeholder="Enter a Number"
+              placeholder={example}
               value={formData[name] as string}
               onChange={(e) => handleChange(name, e.target.value)}
             />
@@ -156,14 +166,25 @@ const QuestionForm: React.FC<FormProps> = ({
               }}
               dateFormat="dd-MM-yyyy"
               className="text--xs"
-              placeholderText="Select a date"
+              //  placeholderText="Select a date"
+              placeholderText={example}
             />
           )}
+
+          {/* {type === 'date' && (
+            <BaseInput
+              className="text--xs"
+              type="date"
+              value={formData[name] as string}
+              onChange={(e) => handleChange(name, formatDate(e.target.value))}
+            />
+          )} */}
 
           {type === 'textarea' && (
             <textarea
               className="text--xs"
               value={(formData[name] as string) || ''}
+              placeholder={example}
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
@@ -171,6 +192,7 @@ const QuestionForm: React.FC<FormProps> = ({
           {type === 'email' && (
             <BaseInput
               type="email"
+              placeholder={example}
               name={name}
               className="text--xs"
               value={(formData[name] as string) || ''}

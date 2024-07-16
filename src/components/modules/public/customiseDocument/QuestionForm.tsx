@@ -6,7 +6,6 @@ import BaseInput from '../../ui/input'
 import ProgressBar from '../../ui/ProgressBar'
 //import ReactDatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-
 import 'react-datetime/css/react-datetime.css'
 
 interface Question {
@@ -15,6 +14,7 @@ interface Question {
   name: string
   format: string
   type: string
+  required: boolean
   options?: string[]
   isConfig?: boolean
   questions?: { [key: string]: Question[] }
@@ -155,6 +155,7 @@ const QuestionForm: React.FC<FormProps> = ({
             <BaseInput
               className="text--xs"
               type="text"
+              required
               placeholder={example}
               value={(formData[name] as string) || ''}
               onChange={(e) => handleChange(name, e.target.value)}
@@ -164,6 +165,7 @@ const QuestionForm: React.FC<FormProps> = ({
             <BaseInput
               className="text--xs"
               type="number"
+              required
               placeholder={example}
               value={(formData[name] as string) || ''}
               onChange={(e) => handleChange(name, e.target.value)}
@@ -206,6 +208,7 @@ const QuestionForm: React.FC<FormProps> = ({
             <BaseInput
               className="text--xs"
               type="date"
+              required
               value={(formData[name] as string) || ''}
               onChange={(e) => handleChange(name, e.target.value)}
             />
@@ -215,6 +218,7 @@ const QuestionForm: React.FC<FormProps> = ({
             <textarea
               className="text--xs"
               value={(formData[name] as string) || ''}
+              required
               placeholder={example}
               onChange={(e) => handleChange(name, e.target.value)}
             />
@@ -223,6 +227,7 @@ const QuestionForm: React.FC<FormProps> = ({
           {type === 'email' && (
             <BaseInput
               type="email"
+              required
               placeholder={example}
               name={name}
               className="text--xs"
@@ -234,6 +239,7 @@ const QuestionForm: React.FC<FormProps> = ({
           {type === 'dropdown' && (
             <select
               className="text--xs"
+              required
               value={(formData[name] as string) || ''}
               onChange={(e) => handleChange(name, e.target.value)}
             >
@@ -251,6 +257,7 @@ const QuestionForm: React.FC<FormProps> = ({
                 <label key={index}>
                   <input
                     type="radio"
+                    required
                     name={name}
                     value={option}
                     checked={formData[name] === option}
@@ -265,6 +272,7 @@ const QuestionForm: React.FC<FormProps> = ({
             <div className="document-details__select">
               <select
                 multiple
+                required
                 className="text--xs"
                 value={(formData[name] as string[]) || []}
                 onChange={(e) => handleMultiSelectChange(name, e.target)}
@@ -281,6 +289,7 @@ const QuestionForm: React.FC<FormProps> = ({
             <div className="document-details__multi-insert">
               <BaseInput
                 type="text"
+                required
                 value={multiInsertValue}
                 onChange={(e) => handleMultiInsertChange(name, e.target.value)}
                 onKeyDown={(e) => handleMultiInsertKeyDown(e, name)}

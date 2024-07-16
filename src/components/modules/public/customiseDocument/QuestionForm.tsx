@@ -4,13 +4,17 @@ import BaseButton from '../../ui/button'
 import { useCustomiseDocContext } from '.'
 import BaseInput from '../../ui/input'
 import ProgressBar from '../../ui/ProgressBar'
-import ReactDatePicker from 'react-datepicker'
+//import ReactDatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import 'react-datetime/css/react-datetime.css'
 
 interface Question {
   label: string
+  example: string
   name: string
+  format: string
   type: string
+  required: boolean
   options?: string[]
   isConfig?: boolean
   questions?: { [key: string]: Question[] }
@@ -18,17 +22,15 @@ interface Question {
 
 interface FormProps {
   questions: Question[]
-  formData: { [key: string]: string | string[] }
+  formData: { [key: string]: string | string[] | Date }
   handleChange: (field: string, value: string | string[]) => void
   handleSubmit: () => void
-  finaldata: any
 }
 
 const QuestionForm: React.FC<FormProps> = ({
   questions,
   formData,
   handleChange,
-  finaldata,
 }) => {
   const [currentStep, setCurrentStep] = useState<number>(0)
   const [currentQuestions, setCurrentQuestions] =
@@ -80,6 +82,30 @@ const QuestionForm: React.FC<FormProps> = ({
     handleChange(field, values)
   }
 
+  // const formatDate = (dateString: string) => {
+  //   const date = new Date(dateString)
+  //   const day = String(date.getDate()).padStart(2, '0')
+  //   const month = String(date.getMonth() + 1).padStart(2, '0') // Months are zero-indexed
+  //   const year = date.getFullYear()
+  //   return `${day}-${month}-${year}`
+  // }
+
+  // const toInputDateFormat = (dateString: string) => {
+  //   if (!dateString) return ''
+  //   const parts = dateString.split('-')
+  //   if (parts.length === 3) {
+  //     if (parts[0].length === 4) {
+  //       // If already in yyyy-MM-dd format
+  //       return dateString
+  //     } else {
+  //       // If in dd-MM-yyyy format, convert to yyyy-MM-dd
+  //       const [day, month, year] = parts
+  //       return `${year}-${month}-${day}`
+  //     }
+  //   }
+  //   return ''
+  // }
+
   const handleMultiInsertChange = (field: string, value: string) => {
     setMultiInsertValue(value)
     const values = value
@@ -114,7 +140,7 @@ const QuestionForm: React.FC<FormProps> = ({
   const currentQuestion = currentQuestions[currentStep]
   if (!currentQuestion) return null
 
-  const { label, name, options, type } = currentQuestion
+  const { label, example, name, options, type } = currentQuestion
 
   return (
     <>
@@ -129,7 +155,9 @@ const QuestionForm: React.FC<FormProps> = ({
             <BaseInput
               className="text--xs"
               type="text"
-              value={formData[name] as string}
+              required
+              placeholder={example}
+              value={(formData[name] as string) || ''}
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
@@ -137,28 +165,52 @@ const QuestionForm: React.FC<FormProps> = ({
             <BaseInput
               className="text--xs"
               type="number"
-              placeholder="Enter a Number"
-              value={formData[name] as string}
+              required
+              placeholder={example}
+              value={(formData[name] as string) || ''}
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
+
+          {/* {type === 'date' && (
+                  <ReactDatePicker
+                    selected={
+                      typeof formData[name] === 'string' &&
+                      !isNaN(Date.parse(formData[name]))
+                        ? new Date(formData[name])
+                        : null
+                    }
+                    onChange={(date: Date | null) => {
+                      if (date) {
+                        const formattedDate = date.toLocaleDateString('en-GB')
+                        handleChange(name, formattedDate)
+                      }
+                    }}
+                    dateFormat="dd-MM-yyyy"
+                    className="text--xs"
+                    //  placeholderText="Select a date"
+                    placeholderText={example}
+                  />
+                )} */}
+
+          {/*using reactdatetime */}
+          {/* 
           {type === 'date' && (
-            <ReactDatePicker
-              selected={
-                typeof formData[name] === 'string' ?
-                !isNaN(Date.parse(formData[name]))
-                  ? new Date(formData[name])
-                  : null
-              }
-              onChange={(date: Date | null) => {
-                if (date) {
-                  const formattedDate = date.toLocaleDateString('en-GB')
-                  handleChange(name, formattedDate)
-                }
-              }}
-              dateFormat="dd-MM-yyyy"
+            <BaseInput
               className="text--xs"
-              placeholderText="Select a date"
+              type="date"
+              value={formData[name] as string}
+              onChange={(e) => handleChange(name, formatDate(e.target.value))}
+            />
+          )} */}
+
+          {type === 'date' && (
+            <BaseInput
+              className="text--xs"
+              type="date"
+              required
+              value={(formData[name] as string) || ''}
+              onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
 
@@ -166,6 +218,8 @@ const QuestionForm: React.FC<FormProps> = ({
             <textarea
               className="text--xs"
               value={(formData[name] as string) || ''}
+              required
+              placeholder={example}
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
@@ -173,15 +227,19 @@ const QuestionForm: React.FC<FormProps> = ({
           {type === 'email' && (
             <BaseInput
               type="email"
+              required
+              placeholder={example}
               name={name}
               className="text--xs"
               value={(formData[name] as string) || ''}
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
+
           {type === 'dropdown' && (
             <select
               className="text--xs"
+              required
               value={(formData[name] as string) || ''}
               onChange={(e) => handleChange(name, e.target.value)}
             >
@@ -199,6 +257,7 @@ const QuestionForm: React.FC<FormProps> = ({
                 <label key={index}>
                   <input
                     type="radio"
+                    required
                     name={name}
                     value={option}
                     checked={formData[name] === option}
@@ -210,35 +269,43 @@ const QuestionForm: React.FC<FormProps> = ({
             </div>
           )}
           {type === 'select' && (
-            <select
-              multiple
-              className="text--xs"
-              value={(formData[name] as string[]) || []}
-              onChange={(e) => handleMultiSelectChange(name, e.target)}
-            >
-              {options?.map((option: string, index: number) => (
-                <option key={index} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
+            <div className="document-details__select">
+              <select
+                multiple
+                required
+                className="text--xs"
+                value={(formData[name] as string[]) || []}
+                onChange={(e) => handleMultiSelectChange(name, e.target)}
+              >
+                {options?.map((option: string, index: number) => (
+                  <option key={index} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
           )}
           {type === 'multi-insert' && (
-            <div>
+            <div className="document-details__multi-insert">
               <BaseInput
                 type="text"
+                required
                 value={multiInsertValue}
                 onChange={(e) => handleMultiInsertChange(name, e.target.value)}
                 onKeyDown={(e) => handleMultiInsertKeyDown(e, name)}
-                placeholder="Enter values separated by commas"
+                placeholder="Enter comma separated values e.g value1, value2"
                 className="text--xs"
               />
-              <div className="multi-insert-values">
-                {(formData[name] as string[])?.map((value, index) => (
-                  <div key={index} className="multi-insert-value">
+              <div className="document-details__multi-insert-tags">
+                {((formData[name] as string[]) || [])?.map((value, index) => (
+                  <div
+                    key={index}
+                    className="document-details__multi-insert-tag"
+                  >
                     {value}
                     <button
                       type="button"
+                      className="document-details__multi-insert-tag-remove"
                       onClick={() => removeMultiInsertValue(name, value)}
                     >
                       &times;
@@ -265,7 +332,7 @@ const QuestionForm: React.FC<FormProps> = ({
           ) : (
             <BaseButton
               variant="primary"
-              onClick={() => setTemplateData(finaldata)}
+              onClick={() => setTemplateData(formData)}
             >
               Next
             </BaseButton>

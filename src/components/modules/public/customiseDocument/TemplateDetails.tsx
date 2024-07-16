@@ -209,7 +209,6 @@ export default function TemplateDetails() {
           formData={formData}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          finaldata={processedTemplate}
         />
       </div>
 

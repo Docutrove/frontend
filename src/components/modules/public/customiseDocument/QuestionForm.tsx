@@ -293,7 +293,7 @@ const QuestionForm: React.FC<FormProps> = ({
                 value={multiInsertValue}
                 onChange={(e) => handleMultiInsertChange(name, e.target.value)}
                 onKeyDown={(e) => handleMultiInsertKeyDown(e, name)}
-                placeholder={example}
+                placeholder="Enter comma separated values e.g value1, value2"
                 className="text--xs"
               />
               <div className="document-details__multi-insert-tags">

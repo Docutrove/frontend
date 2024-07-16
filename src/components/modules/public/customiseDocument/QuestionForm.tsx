@@ -4,13 +4,16 @@ import BaseButton from '../../ui/button'
 import { useCustomiseDocContext } from '.'
 import BaseInput from '../../ui/input'
 import ProgressBar from '../../ui/ProgressBar'
-import ReactDatePicker from 'react-datepicker'
+//import ReactDatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+
+import 'react-datetime/css/react-datetime.css'
 
 interface Question {
   label: string
   example: string
   name: string
+  format: string
   type: string
   options?: string[]
   isConfig?: boolean
@@ -79,12 +82,28 @@ const QuestionForm: React.FC<FormProps> = ({
     handleChange(field, values)
   }
 
-  // const formatDate = (dateString: string) => {
-  //   const date = new Date(dateString)
-  //   const day = String(date.getDate()).padStart(2, '0')
-  //   const month = String(date.getMonth() + 1).padStart(2, '0') // Months are zero-indexed
-  //   const year = String(date.getFullYear()) // Ensure the year is a full string
-  //   return `${day}-${month}-${year}`
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString)
+    const day = String(date.getDate()).padStart(2, '0')
+    const month = String(date.getMonth() + 1).padStart(2, '0') // Months are zero-indexed
+    const year = date.getFullYear()
+    return `${day}-${month}-${year}`
+  }
+
+  // const toInputDateFormat = (dateString: string) => {
+  //   if (!dateString) return ''
+  //   const parts = dateString.split('-')
+  //   if (parts.length === 3) {
+  //     if (parts[0].length === 4) {
+  //       // If already in yyyy-MM-dd format
+  //       return dateString
+  //     } else {
+  //       // If in dd-MM-yyyy format, convert to yyyy-MM-dd
+  //       const [day, month, year] = parts
+  //       return `${year}-${month}-${day}`
+  //     }
+  //   }
+  //   return ''
   // }
 
   const handleMultiInsertChange = (field: string, value: string) => {
@@ -150,57 +169,38 @@ const QuestionForm: React.FC<FormProps> = ({
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
-          {/*           
-          {type === 'date' && (
-            <ReactDatePicker
-              selected={
-                typeof formData[name] === 'string' &&
-                !isNaN(Date.parse(formData[name]))
-                  ? new Date(formData[name])
-                  : null
-              }
-              onChange={(date: Date | null) => {
-                if (date) {
-                  const formattedDate = date.toLocaleDateString('en-GB')
-                  handleChange(name, formattedDate)
-                }
-              }}
-              dateFormat="dd-MM-yyyy"
-              className="text--xs"
-              //  placeholderText="Select a date"
-              placeholderText={example}
-            />
-          )} */}
-
-          {type === 'date' && (
-            <ReactDatePicker
-              selected={
-                typeof formData[name] === 'string' &&
-                !isNaN(Date.parse(formData[name]))
-                  ? new Date(formData[name])
-                  : null
-              }
-              onChange={(date: Date | null) => {
-                if (date) {
-                  const formattedDate = date.toLocaleDateString('en-GB')
-                  handleChange(name, formattedDate)
-                }
-              }}
-              dateFormat="dd-MM-yyyy"
-              className="text--xs"
-              //  placeholderText="Select a date"
-              placeholderText={example}
-            />
-          )}
 
           {/* {type === 'date' && (
+                  <ReactDatePicker
+                    selected={
+                      typeof formData[name] === 'string' &&
+                      !isNaN(Date.parse(formData[name]))
+                        ? new Date(formData[name])
+                        : null
+                    }
+                    onChange={(date: Date | null) => {
+                      if (date) {
+                        const formattedDate = date.toLocaleDateString('en-GB')
+                        handleChange(name, formattedDate)
+                      }
+                    }}
+                    dateFormat="dd-MM-yyyy"
+                    className="text--xs"
+                    //  placeholderText="Select a date"
+                    placeholderText={example}
+                  />
+                )} */}
+
+          {/*using reactdatetime */}
+
+          {type === 'date' && (
             <BaseInput
               className="text--xs"
               type="date"
               value={formData[name] as string}
               onChange={(e) => handleChange(name, formatDate(e.target.value))}
             />
-          )} */}
+          )}
 
           {type === 'textarea' && (
             <textarea
@@ -221,6 +221,7 @@ const QuestionForm: React.FC<FormProps> = ({
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
+
           {type === 'dropdown' && (
             <select
               className="text--xs"

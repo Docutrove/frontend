@@ -145,6 +145,7 @@ const QuestionForm: React.FC<FormProps> = ({
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
+
           {type === 'date' && (
             <ReactDatePicker
               selected={
@@ -259,7 +260,7 @@ const QuestionForm: React.FC<FormProps> = ({
           )} */}
 
           {type === 'multi-insert' && (
-            <div>
+            <div className="document-details__multi-insert">
               <BaseInput
                 type="text"
                 required
@@ -269,10 +270,13 @@ const QuestionForm: React.FC<FormProps> = ({
                 onKeyDown={(e) => handleMultiInsertKeyDown(e, name)}
                 className="text--xs"
               />
-              <div className="multi-insert-values">
+              <div className="document-details__multi-insert-tags">
                 {Array.isArray(formData[name]) &&
                   (formData[name] as string[])?.map((value, index) => (
-                    <div key={index} className="multi-insert-value">
+                    <div
+                      key={index}
+                      className="document-details__multi-insert-tag"
+                    >
                       {value}
                       <button
                         type="button"

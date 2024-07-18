@@ -233,31 +233,6 @@ const QuestionForm: React.FC<FormProps> = ({
               ))}
             </select>
           )}
-          {/* {type === 'multi-insert' && (
-            <div>
-              <BaseInput
-                type="text"
-                value={multiInsertValue}
-                onChange={(e) => handleMultiInsertChange(name, e.target.value)}
-                onKeyDown={(e) => handleMultiInsertKeyDown(e, name)}
-                placeholder="Enter values separated by commas"
-                className="text--xs"
-              />
-              <div className="multi-insert-values">
-                {(formData[name] as string[])?.map((value, index) => (
-                  <div key={index} className="multi-insert-value">
-                    {value}
-                    <button
-                      type="button"
-                      onClick={() => removeMultiInsertValue(name, value)}
-                    >
-                      &times;
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )} */}
 
           {type === 'multi-insert' && (
             <div className="document-details__multi-insert">
@@ -265,7 +240,8 @@ const QuestionForm: React.FC<FormProps> = ({
                 type="text"
                 required
                 placeholder="Enter values separated by commas e.g value1, value2"
-                value={multiInsertValue}
+                value={(multiInsertValue as string) || ''}
+                //         value={(formData[name] as string) || ''}
                 onChange={(e) => handleMultiInsertChange(name, e.target.value)}
                 onKeyDown={(e) => handleMultiInsertKeyDown(e, name)}
                 className="text--xs"
@@ -308,7 +284,7 @@ const QuestionForm: React.FC<FormProps> = ({
               variant="primary"
               onClick={() => setTemplateData(formData)}
             >
-              Next
+              Finish
             </BaseButton>
           )}
         </div>

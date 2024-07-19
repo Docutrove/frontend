@@ -6,6 +6,7 @@ import BaseInput from '../../ui/input'
 import ProgressBar from '../../ui/ProgressBar'
 import ReactDatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import toast from 'react-hot-toast'
 
 interface Question {
   label: string
@@ -60,7 +61,15 @@ const QuestionForm: React.FC<FormProps> = ({
   }, [formData, questions])
 
   const nextStep = () => {
+    console.log(formData[name])
+    if (!formData[name]) {
+      // Check if the field is empty (Falsy values include empty strings, null, undefined, 0, false)
+      toast.error('Please fill in the required fields') // Display an error message if the field is empty
+      return
+    }
+
     if (multiInsertValue.trim() !== '') {
+      // If the multi-insert field is not empty, add the value to the form data
       setMultiInsertValue('')
     }
     setCurrentStep((prevStep) =>

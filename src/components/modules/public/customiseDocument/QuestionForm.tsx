@@ -60,6 +60,9 @@ const QuestionForm: React.FC<FormProps> = ({
   }, [formData, questions])
 
   const nextStep = () => {
+    if (multiInsertValue.trim() !== '') {
+      setMultiInsertValue('')
+    }
     setCurrentStep((prevStep) =>
       Math.min(prevStep + 1, currentQuestions.length - 1)
     )
@@ -87,6 +90,7 @@ const QuestionForm: React.FC<FormProps> = ({
       .map((v) => v.trim())
       .filter((v) => v !== '')
     handleChange(field, values)
+    //setMultiInsertValue('') // Clear the input field after updating the form data
   }
 
   const handleMultiInsertKeyDown = (
@@ -100,6 +104,7 @@ const QuestionForm: React.FC<FormProps> = ({
         multiInsertValue.trim(),
       ]
       handleChange(field, newValues)
+      console.log('newValues', newValues)
       setMultiInsertValue('')
     }
   }
@@ -116,6 +121,7 @@ const QuestionForm: React.FC<FormProps> = ({
 
   const { label, example, name, options, type } = currentQuestion
 
+  //console.log(name)
   return (
     <>
       <ProgressBar
@@ -160,6 +166,7 @@ const QuestionForm: React.FC<FormProps> = ({
                   handleChange(name, formattedDate)
                 }
               }}
+              value={formData[name] as string}
               dateFormat="dd-MM-yyyy"
               className="text--xs"
               placeholderText="Select a date"

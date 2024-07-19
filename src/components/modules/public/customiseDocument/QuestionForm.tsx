@@ -4,25 +4,24 @@ import BaseButton from '../../ui/button'
 import { useCustomiseDocContext } from '.'
 import BaseInput from '../../ui/input'
 import ProgressBar from '../../ui/ProgressBar'
-//import ReactDatePicker from 'react-datepicker'
+import ReactDatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import 'react-datetime/css/react-datetime.css'
+import toast from 'react-hot-toast'
 
 interface Question {
   label: string
   example: string
   name: string
-  format: string
   type: string
-  required: boolean
   options?: string[]
+  required: boolean
   isConfig?: boolean
   questions?: { [key: string]: Question[] }
 }
 
 interface FormProps {
   questions: Question[]
-  formData: { [key: string]: string | string[] | Date }
+  formData: { [key: string]: string | string[] }
   handleChange: (field: string, value: string | string[]) => void
   handleSubmit: () => void
 }
@@ -62,6 +61,17 @@ const QuestionForm: React.FC<FormProps> = ({
   }, [formData, questions])
 
   const nextStep = () => {
+    console.log(formData[name])
+    if (!formData[name]) {
+      // Check if the field is empty (Falsy values include empty strings, null, undefined, 0, false)
+      toast.error('Please fill in the required fields') // Display an error message if the field is empty
+      return
+    }
+
+    if (multiInsertValue.trim() !== '') {
+      // If the multi-insert field is not empty, add the value to the form data
+      setMultiInsertValue('')
+    }
     setCurrentStep((prevStep) =>
       Math.min(prevStep + 1, currentQuestions.length - 1)
     )
@@ -82,30 +92,6 @@ const QuestionForm: React.FC<FormProps> = ({
     handleChange(field, values)
   }
 
-  // const formatDate = (dateString: string) => {
-  //   const date = new Date(dateString)
-  //   const day = String(date.getDate()).padStart(2, '0')
-  //   const month = String(date.getMonth() + 1).padStart(2, '0') // Months are zero-indexed
-  //   const year = date.getFullYear()
-  //   return `${day}-${month}-${year}`
-  // }
-
-  // const toInputDateFormat = (dateString: string) => {
-  //   if (!dateString) return ''
-  //   const parts = dateString.split('-')
-  //   if (parts.length === 3) {
-  //     if (parts[0].length === 4) {
-  //       // If already in yyyy-MM-dd format
-  //       return dateString
-  //     } else {
-  //       // If in dd-MM-yyyy format, convert to yyyy-MM-dd
-  //       const [day, month, year] = parts
-  //       return `${year}-${month}-${day}`
-  //     }
-  //   }
-  //   return ''
-  // }
-
   const handleMultiInsertChange = (field: string, value: string) => {
     setMultiInsertValue(value)
     const values = value
@@ -113,6 +99,7 @@ const QuestionForm: React.FC<FormProps> = ({
       .map((v) => v.trim())
       .filter((v) => v !== '')
     handleChange(field, values)
+    //setMultiInsertValue('') // Clear the input field after updating the form data
   }
 
   const handleMultiInsertKeyDown = (
@@ -126,6 +113,7 @@ const QuestionForm: React.FC<FormProps> = ({
         multiInsertValue.trim(),
       ]
       handleChange(field, newValues)
+      console.log('newValues', newValues)
       setMultiInsertValue('')
     }
   }
@@ -142,6 +130,7 @@ const QuestionForm: React.FC<FormProps> = ({
 
   const { label, example, name, options, type } = currentQuestion
 
+  //console.log(name)
   return (
     <>
       <ProgressBar
@@ -172,45 +161,24 @@ const QuestionForm: React.FC<FormProps> = ({
             />
           )}
 
-          {/* {type === 'date' && (
-                  <ReactDatePicker
-                    selected={
-                      typeof formData[name] === 'string' &&
-                      !isNaN(Date.parse(formData[name]))
-                        ? new Date(formData[name])
-                        : null
-                    }
-                    onChange={(date: Date | null) => {
-                      if (date) {
-                        const formattedDate = date.toLocaleDateString('en-GB')
-                        handleChange(name, formattedDate)
-                      }
-                    }}
-                    dateFormat="dd-MM-yyyy"
-                    className="text--xs"
-                    //  placeholderText="Select a date"
-                    placeholderText={example}
-                  />
-                )} */}
-
-          {/*using reactdatetime */}
-          {/* 
           {type === 'date' && (
-            <BaseInput
-              className="text--xs"
-              type="date"
+            <ReactDatePicker
+              selected={
+                typeof formData[name] === 'string' &&
+                !isNaN(Date.parse(formData[name] as string))
+                  ? new Date(formData[name] as string)
+                  : null
+              }
+              onChange={(date: Date | null) => {
+                if (date) {
+                  const formattedDate = date.toLocaleDateString('en-GB')
+                  handleChange(name, formattedDate)
+                }
+              }}
               value={formData[name] as string}
-              onChange={(e) => handleChange(name, formatDate(e.target.value))}
-            />
-          )} */}
-
-          {type === 'date' && (
-            <BaseInput
+              dateFormat="dd-MM-yyyy"
               className="text--xs"
-              type="date"
-              required
-              value={(formData[name] as string) || ''}
-              onChange={(e) => handleChange(name, e.target.value)}
+              placeholderText="Select a date"
             />
           )}
 
@@ -235,7 +203,6 @@ const QuestionForm: React.FC<FormProps> = ({
               onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
-
           {type === 'dropdown' && (
             <select
               className="text--xs"
@@ -269,49 +236,48 @@ const QuestionForm: React.FC<FormProps> = ({
             </div>
           )}
           {type === 'select' && (
-            <div className="document-details__select">
-              <select
-                multiple
-                required
-                className="text--xs"
-                value={(formData[name] as string[]) || []}
-                onChange={(e) => handleMultiSelectChange(name, e.target)}
-              >
-                {options?.map((option: string, index: number) => (
-                  <option key={index} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <select
+              multiple
+              className="text--xs"
+              value={(formData[name] as string[]) || []}
+              onChange={(e) => handleMultiSelectChange(name, e.target)}
+            >
+              {options?.map((option: string, index: number) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
           )}
+
           {type === 'multi-insert' && (
             <div className="document-details__multi-insert">
               <BaseInput
                 type="text"
                 required
-                value={multiInsertValue}
+                placeholder="Enter values separated by commas e.g value1, value2"
+                value={(multiInsertValue as string) || ''}
+                //         value={(formData[name] as string) || ''}
                 onChange={(e) => handleMultiInsertChange(name, e.target.value)}
                 onKeyDown={(e) => handleMultiInsertKeyDown(e, name)}
-                placeholder="Enter comma separated values e.g value1, value2"
                 className="text--xs"
               />
               <div className="document-details__multi-insert-tags">
-                {((formData[name] as string[]) || [])?.map((value, index) => (
-                  <div
-                    key={index}
-                    className="document-details__multi-insert-tag"
-                  >
-                    {value}
-                    <button
-                      type="button"
-                      className="document-details__multi-insert-tag-remove"
-                      onClick={() => removeMultiInsertValue(name, value)}
+                {Array.isArray(formData[name]) &&
+                  (formData[name] as string[])?.map((value, index) => (
+                    <div
+                      key={index}
+                      className="document-details__multi-insert-tag"
                     >
-                      &times;
-                    </button>
-                  </div>
-                ))}
+                      {value}
+                      <button
+                        type="button"
+                        onClick={() => removeMultiInsertValue(name, value)}
+                      >
+                        &times;
+                      </button>
+                    </div>
+                  ))}
               </div>
             </div>
           )}
@@ -334,7 +300,7 @@ const QuestionForm: React.FC<FormProps> = ({
               variant="primary"
               onClick={() => setTemplateData(formData)}
             >
-              Next
+              Finish
             </BaseButton>
           )}
         </div>

@@ -15,7 +15,7 @@ export default function TemplatePayment() {
   const { makeRequest: signupRequest } = useRequest(signup, authData)
   const itemID = Number(templateId)
   // const callbackUrl = "https://2e32-102-89-22-245.ngrok-free.app/customise/document";
-  const callbackUrl = "https://docutrove.co/customise/document";
+  const callbackUrl = "https://www.docutrove.co/customise/document";
   const processedHtml = localStorage.getItem("processedCompleteHtml");
   const { makeRequest: paymentRequest } = useRequest(initiatePayment, { itemID, paymentData: { config: templateData, html: processedHtml }, callbackUrl })
 

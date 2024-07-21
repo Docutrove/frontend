@@ -75,7 +75,7 @@ const QuestionForm: React.FC<FormProps> = ({
     // console.log(formData[name])
     if (!formData[name]) {
       // Check if the field is empty (Falsy values include empty strings, null, undefined, 0, false)
-      toast.error('Please fill in the required fields') // Display an error message if the field is empty
+      toast.error('This Field is required') // Display an error message if the field is empty
       return
     }
 
@@ -195,6 +195,9 @@ const QuestionForm: React.FC<FormProps> = ({
               dateFormat="dd-MM-yyyy"
               className="text--xs"
               placeholderText="Select a date"
+              showYearDropdown
+              showMonthDropdown
+              dropdownMode="select"
             />
           )}
 

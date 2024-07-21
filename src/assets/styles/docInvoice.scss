@@ -250,19 +250,75 @@
 
   .react-datepicker-wrapper {
     width: 100%;
-    input {
-      width: 100%; // Ensure input fields take up full width
-      margin-bottom: 15px;
-      font-family: Inter;
-      font-weight: 400;
-      padding: 10px 40px 10px 10px; // Adjust padding for the calendar icon
-      border: 1px solid #cfd3dd;
-      border-radius: 5px;
-      font-size: 1rem;
-      background-image: url('../Images/Calendar.svg'); //calendar
-      background-repeat: no-repeat;
-      background-position: right 10px center; // icon position
-    }
+  }
+
+  .react-datepicker__input-container input {
+    width: 100%; /* Ensure input fields take up full width */
+    margin-bottom: 15px;
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    padding: 10px 40px 10px 10px; /* Adjust padding for the calendar icon */
+    border: 1px solid #cfd3dd;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-image: url('../Images/Calendar.svg'); /* calendar */
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* icon position */
+  }
+
+  /* Styling for the dropdown menus */
+  .react-datepicker__year-dropdown,
+  .react-datepicker__month-dropdown {
+    width: auto; /* Adjust width as necessary */
+    max-height: 200px; /* Limit the height to make it scrollable */
+    overflow-y: auto; /* Enable vertical scrolling */
+    background-color: #fff;
+    border: 1px solid #cfd3dd;
+    border-radius: 5px;
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    padding: 5px;
+  }
+
+  .react-datepicker__year-select {
+    width: 100%;
+  }
+
+  /* Styling for the datepicker dropdown menu items */
+  .react-datepicker__year-dropdown-option,
+  .react-datepicker__month-dropdown-option {
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .react-datepicker__year-dropdown-option:hover,
+  .react-datepicker__month-dropdown-option:hover {
+    background-color: #f0f0f0;
+  }
+
+  /* Ensure selected dropdown item is highlighted */
+  .react-datepicker__year-dropdown-option--selected,
+  .react-datepicker__month-dropdown-option--selected {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+  /*  Styling for the dropdown toggle button */
+  .react-datepicker__month-year-dropdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .react-datepicker__month-year-dropdown select {
+    width: 100%;
+    padding: 5px;
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    border: 1px solid #cfd3dd;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
   }
 
   &__multi-insert {

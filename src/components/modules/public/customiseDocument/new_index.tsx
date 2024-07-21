@@ -52,6 +52,7 @@ const customiseDocContext = createContext<{
   setTemplateData: (data: DynamicObject | undefined) => void
   setCategoryId: (categoryId: string) => void
   setTemplateId: (templateId: string) => void
+  clearSavedFormData: () => void
 }>({
   setTemplateData: function (data: DynamicObject | undefined): void {
     console.log(data)
@@ -67,6 +68,9 @@ const customiseDocContext = createContext<{
   },
   setTemplate: function (data: Template | undefined): void {
     console.log(data)
+  },
+  clearSavedFormData: function (): void {
+    console.log('Clearing saved form data')
   },
 })
 
@@ -88,13 +92,17 @@ export default function CustomiseDocumentProvider() {
   const [categories, setCategories] = useState()
   const [categoryId, setCategoryId] = useState('')
   const [templateId, setTemplateId] = useState('')
-  const [templateData, setTemplateData] = useState<DynamicObject | undefined>()
+  const [templateData, setTemplateData] = useState<DynamicObject | undefined>(
+    () => {
+      const savedData = localStorage.getItem('formData')
+      return savedData ? JSON.parse(savedData) : undefined
+    }
+  )
   const [template, setTemplate] = useState<Template | undefined>()
   const [authData, setAuthData] = useState<AuthData>()
 
   const requestTemplateCategories = async () => {
     const [categories, err] = await templateCategoriesRequest()
-
     if (err) {
       toast.error(err.message)
     }
@@ -118,42 +126,56 @@ export default function CustomiseDocumentProvider() {
     const nextScreen = SCREENS[idx + 1]
     setActiveScreen(nextScreen)
   }
+
   const goBack = () => {
     const idx = SCREENS.findIndex((s) => s === activeScreen)
     const nextScreen = SCREENS[idx - 1]
     setActiveScreen(nextScreen)
   }
+
   const setCategoryIdReal = (categoryId: string) => {
     setCategoryId(categoryId)
     const idx = SCREENS.findIndex((s) => s === activeScreen)
     const nextScreen = SCREENS[idx + 1]
     setActiveScreen(nextScreen)
   }
+
   const setTemplateIdReal = (templateId: string) => {
     setTemplateId(templateId)
     const idx = SCREENS.findIndex((s) => s === activeScreen)
     const nextScreen = SCREENS[idx + 1]
     setActiveScreen(nextScreen)
   }
+
   const setTemplateDataReal = (data: DynamicObject | undefined) => {
     console.log(data)
     setTemplateData(data)
+    localStorage.setItem('formData', JSON.stringify(data))
     const idx = SCREENS.findIndex((s) => s === activeScreen)
     const nextScreen = SCREENS[idx + 1]
     setActiveScreen(nextScreen)
   }
+
+  const clearSavedFormData = () => {
+    localStorage.removeItem('formData')
+    localStorage.removeItem('currentStep')
+  }
+
   const setAuthDataReal = (data: AuthData) => {
     setAuthData(data)
     const idx = SCREENS.findIndex((s) => s === activeScreen)
     const nextScreen = SCREENS[idx + 1]
     setActiveScreen(nextScreen)
+    clearSavedFormData()
   }
+
   const setTemplateReal = (data: Template | undefined) => {
     setTemplate(data)
     const idx = SCREENS.findIndex((s) => s === activeScreen)
     const nextScreen = SCREENS[idx + 1]
     setActiveScreen(nextScreen)
   }
+
   return (
     <customiseDocContext.Provider
       value={{
@@ -165,6 +187,7 @@ export default function CustomiseDocumentProvider() {
         setTemplateData: setTemplateDataReal,
         setAuthData: setAuthDataReal,
         setTemplate: setTemplateReal,
+        clearSavedFormData,
         categories: categories,
         categoryId: categoryId,
         templateId: templateId,

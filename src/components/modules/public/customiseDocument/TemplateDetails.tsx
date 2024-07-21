@@ -117,7 +117,9 @@ export default function TemplateDetails() {
     const replaceDynamicSections = (html: string): string => {
       try {
         return html.replace(
-          /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\|#Dynamic (.*?)#/g,
+          //     /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\|#Dynamic (.*?)#/g, //old regex
+          /\s*#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\|#Dynamic (.*?)#\s*/g, //updated regex to remove extra spaces
+
           (_, condition1, content1, condition2) => {
             const condition = condition1 || condition2
             const content = content1 || ''

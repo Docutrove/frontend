@@ -38,6 +38,17 @@ const QuestionForm: React.FC<FormProps> = ({
   const [multiInsertValue, setMultiInsertValue] = useState('')
 
   useEffect(() => {
+    // Load form data from localStorage when the component mounts
+    const savedFormData = localStorage.getItem('formData')
+    if (savedFormData) {
+      const parsedData = JSON.parse(savedFormData)
+      Object.keys(parsedData).forEach((key) =>
+        handleChange(key, parsedData[key])
+      )
+    }
+  }, [])
+
+  useEffect(() => {
     const updateQuestions = () => {
       let updatedQuestions: Question[] = []
       let shouldUpdate = false
@@ -61,7 +72,7 @@ const QuestionForm: React.FC<FormProps> = ({
   }, [formData, questions])
 
   const nextStep = () => {
-    console.log(formData[name])
+    // console.log(formData[name])
     if (!formData[name]) {
       // Check if the field is empty (Falsy values include empty strings, null, undefined, 0, false)
       toast.error('Please fill in the required fields') // Display an error message if the field is empty
@@ -113,7 +124,7 @@ const QuestionForm: React.FC<FormProps> = ({
         multiInsertValue.trim(),
       ]
       handleChange(field, newValues)
-      console.log('newValues', newValues)
+      // console.log('newValues', newValues)
       setMultiInsertValue('')
     }
   }
@@ -124,6 +135,11 @@ const QuestionForm: React.FC<FormProps> = ({
     )
     handleChange(field, newValues)
   }
+
+  // Save form data to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('formData', JSON.stringify(formData))
+  }, [formData])
 
   const currentQuestion = currentQuestions[currentStep]
   if (!currentQuestion) return null

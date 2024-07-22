@@ -2,27 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { Icon } from '../../ui/Icon'
 import TemplateAccordion from '../TemplateAccordion'
 
-export const accordionItems = [
-  {
-    header: 'What is an MOU?',
-    body: 'DocuTrove caters to independent contractors, freelancers, startups, small businesses, and SMEs.',
-  },
-  {
-    header: 'Who needs an MOU?',
-    body: 'DocuTrove caters to independent contractors, freelancers, startups, small businesses, and SMEs.',
-  },
-  {
-    header: 'How can an MOU be used?',
-    body: 'DocuTrove caters to independent contractors, freelancers, startups, small businesses, and SMEs.',
-  },
-]
-
 interface TemplateModalProps {
   isOpen: boolean
   onClose: () => void
+  faqs: { title: string; description: string }[]
 }
 
-const TemplateModal: React.FC<TemplateModalProps> = ({ isOpen, onClose }) => {
+const TemplateModal: React.FC<TemplateModalProps> = ({
+  isOpen,
+  onClose,
+  faqs,
+}) => {
   const [modalContent, setModalContent] = useState<'accordion' | 'form'>(
     'accordion'
   )
@@ -71,7 +61,7 @@ const TemplateModal: React.FC<TemplateModalProps> = ({ isOpen, onClose }) => {
         </div>
         <div className="template-modal-body">
           {modalContent === 'accordion' ? (
-            <TemplateAccordion items={accordionItems} />
+            <TemplateAccordion items={faqs} />
           ) : (
             <form className="contact-form">
               <label className="label">First Name</label>

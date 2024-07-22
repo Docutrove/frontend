@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { Icon } from '../../ui/Icon' // Adjust the import path as necessary
 
 interface AccordionItem {
-  header: string
-  body: string
+  title: string
+  description: string
 }
 
 interface TemplateAccordionProps {
@@ -25,11 +25,11 @@ export default function TemplateAccordion({ items }: TemplateAccordionProps) {
             className="template-accordion-header"
             onClick={() => toggleAccordion(index)}
           >
-            <span>{item.header}</span>
+            <span>{item.title}</span>
             <Icon name={activeIndex === index ? 'caret-up' : 'caret-down'} />
           </div>
           {activeIndex === index && (
-            <div className="template-accordion-body">{item.body}</div>
+            <div className="template-accordion-body">{item.description}</div>
           )}
         </div>
       ))}

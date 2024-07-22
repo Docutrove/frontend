@@ -49,6 +49,8 @@ export default function TemplateDetails() {
     name: string
     price: number
     description: string
+    //   faqs: string[]
+    faqs?: any[]
     configuration: {
       fields: []
       formConfig: {
@@ -76,7 +78,9 @@ export default function TemplateDetails() {
     if (localTemplate) {
       const fields = localTemplate.configuration.formConfig.modules
       const html = localTemplate.configuration.previewHtml //changed this from previewHtml
+      const faqs = localTemplate.faqs //faqs from API responsq
       const completeHtml = localTemplate.configuration.html
+      console.log(faqs)
 
       const initialFormData: { [key: string]: string | string[] } = {}
       fields.forEach((field: any) => {
@@ -214,7 +218,7 @@ export default function TemplateDetails() {
         />
       </div>
 
-      <div>{<ContactSection />}</div>
+      <div>{<ContactSection faqs={localTemplate?.faqs ?? []} />}</div>
 
       <div></div>
     </InvoiceDetails>

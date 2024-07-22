@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 import { Icon } from '../../ui/Icon'
 import TemplateModal from '../TemplateModal'
 
-const ContactSection: React.FC = () => {
+interface ContactSectionProps {
+  faqs: { title: string; description: string }[]
+}
+
+const ContactSection: React.FC<ContactSectionProps> = ({ faqs }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const openModal = () => {
@@ -20,7 +24,7 @@ const ContactSection: React.FC = () => {
       <div className="contact-button" onClick={openModal}>
         Contact Support <Icon name="support-icon" />
       </div>
-      <TemplateModal isOpen={isModalOpen} onClose={closeModal} />
+      <TemplateModal isOpen={isModalOpen} onClose={closeModal} faqs={faqs} />
     </div>
   )
 }

@@ -7,6 +7,7 @@ import ProgressBar from '../../ui/ProgressBar'
 import ReactDatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import toast from 'react-hot-toast'
+//import { clear } from 'console'
 
 interface Question {
   label: string
@@ -34,9 +35,10 @@ const QuestionForm: React.FC<FormProps> = ({
   const [currentStep, setCurrentStep] = useState<number>(0)
   const [currentQuestions, setCurrentQuestions] =
     useState<Question[]>(questions)
-  const { setTemplateData, clearSavedFormData } = useCustomiseDocContext()
+  const { setTemplateData } = useCustomiseDocContext()
   const [multiInsertValue, setMultiInsertValue] = useState('')
 
+  console.log(setTemplateData)
   useEffect(() => {
     const savedStep = localStorage.getItem('currentStep')
     if (savedStep) {
@@ -138,7 +140,7 @@ const QuestionForm: React.FC<FormProps> = ({
 
   const handleSubmit = () => {
     setTemplateData(formData)
-    clearSavedFormData()
+    // clearSavedFormData()
   }
 
   const currentQuestion = currentQuestions[currentStep]

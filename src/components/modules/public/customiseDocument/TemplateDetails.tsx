@@ -80,7 +80,6 @@ export default function TemplateDetails() {
       const html = localTemplate.configuration.previewHtml //changed this from previewHtml
       const faqs = localTemplate.faqs //faqs from API responsq
       const completeHtml = localTemplate.configuration.html
-      console.log(faqs)
 
       const initialFormData: { [key: string]: string | string[] } = {}
       fields.forEach((field: any) => {
@@ -217,9 +216,8 @@ export default function TemplateDetails() {
           handleSubmit={handleSubmit}
         />
       </div>
-
+      console.log(formData);
       <div>{<ContactSection faqs={localTemplate?.faqs ?? []} />}</div>
-
       <div></div>
     </InvoiceDetails>
   )

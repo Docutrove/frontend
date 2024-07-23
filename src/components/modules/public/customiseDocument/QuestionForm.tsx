@@ -37,16 +37,26 @@ const QuestionForm: React.FC<FormProps> = ({
   const { setTemplateData } = useCustomiseDocContext()
   const [multiInsertValue, setMultiInsertValue] = useState('')
 
+  /***********************************BEGINNING OF LOCAL STORAGE TO GET FORM VALUES */
+
   useEffect(() => {
     // Load form data from localStorage when the component mounts
     const savedFormData = localStorage.getItem('formData')
+
     if (savedFormData) {
       const parsedData = JSON.parse(savedFormData)
       Object.keys(parsedData).forEach((key) =>
         handleChange(key, parsedData[key])
       )
     }
-  }, [])
+  }, [questions])
+
+  useEffect(() => {
+    // Save form data to localStorage whenever it changes
+    localStorage.setItem('formData', JSON.stringify(formData))
+  }, [formData])
+
+  /*********************************** END OF LOCAL STORAGE SECTION TO GET FORM VALUES */
 
   useEffect(() => {
     const updateQuestions = () => {
@@ -72,7 +82,6 @@ const QuestionForm: React.FC<FormProps> = ({
   }, [formData, questions])
 
   const nextStep = () => {
-    // console.log(formData[name])
     if (!formData[name]) {
       // Check if the field is empty (Falsy values include empty strings, null, undefined, 0, false)
       toast.error('This Field is required') // Display an error message if the field is empty
@@ -124,7 +133,6 @@ const QuestionForm: React.FC<FormProps> = ({
         multiInsertValue.trim(),
       ]
       handleChange(field, newValues)
-      // console.log('newValues', newValues)
       setMultiInsertValue('')
     }
   }
@@ -136,17 +144,11 @@ const QuestionForm: React.FC<FormProps> = ({
     handleChange(field, newValues)
   }
 
-  // Save form data to localStorage whenever it changes
-  useEffect(() => {
-    localStorage.setItem('formData', JSON.stringify(formData))
-  }, [formData])
-
   const currentQuestion = currentQuestions[currentStep]
   if (!currentQuestion) return null
 
   const { label, example, name, options, type } = currentQuestion
 
-  //console.log(name)
   return (
     <>
       <ProgressBar
@@ -269,6 +271,7 @@ const QuestionForm: React.FC<FormProps> = ({
             </select>
           )}
 
+          {/* FOR LOCALSTORAGE */}
           {type === 'multi-insert' && (
             <div className="document-details__multi-insert">
               <BaseInput
@@ -276,7 +279,6 @@ const QuestionForm: React.FC<FormProps> = ({
                 required
                 placeholder="Enter values separated by commas e.g value1, value2"
                 value={(multiInsertValue as string) || ''}
-                //         value={(formData[name] as string) || ''}
                 onChange={(e) => handleMultiInsertChange(name, e.target.value)}
                 onKeyDown={(e) => handleMultiInsertKeyDown(e, name)}
                 className="text--xs"

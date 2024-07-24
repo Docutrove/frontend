@@ -216,7 +216,7 @@ export default function TemplateDetails() {
           handleSubmit={handleSubmit}
         />
       </div>
-      console.log(formData);
+
       <div>{<ContactSection faqs={localTemplate?.faqs ?? []} />}</div>
       <div></div>
     </InvoiceDetails>

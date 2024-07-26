@@ -77,7 +77,7 @@ export default function TemplateDetails() {
   useEffect(() => {
     if (localTemplate) {
       const fields = localTemplate.configuration.formConfig.modules
-      const html = localTemplate.configuration.previewHtml //changed this from previewHtml
+      const html = localTemplate.configuration.html //changed this from previewHtml
       //    const faqs = localTemplate.faqs //faqs from API responsq
       const completeHtml = localTemplate.configuration.html
 
@@ -160,11 +160,29 @@ export default function TemplateDetails() {
 
     processedHtml = processedHtml.replace(/{{(.*?)}}/g, (_match, key) => {
       const value = formData[key.trim()]
-      if (Array.isArray(value)) {
-        return value.join(', ') || '------'
+      if (typeof value === 'object' && value !== null) {
+        if ('display' in value) {
+          return value.display || '------'
+        }
+        if (Array.isArray(value)) {
+          return value.join(', ') || '------'
+        }
       }
       return value || '------'
     })
+
+    // processedHtml = processedHtml.replace(/{{(.*?)}}/g, (_match, key) => {
+    //   const value = formData[key.trim()]
+    //   if (typeof value === 'object' && value !== null) {
+    //     if ('display' in value) {
+    //       return value.display || '------'
+    //     }
+    //     if (Array.isArray(value)) {
+    //       return value.join(', ') || '------'
+    //     }
+    //   }
+    //   return value || '------'
+    // })
 
     let processedCompleteHtml = replaceDynamicSections(completeTemplateHtml)
     processedCompleteHtml = processedCompleteHtml.replace(
@@ -188,7 +206,7 @@ export default function TemplateDetails() {
   }
 
   const handleSubmit = () => {
-    // console.log('Form submitted:', formData);
+    console.log('Form submitted:', formData)
   }
 
   useEffect(() => {

@@ -26,6 +26,22 @@ interface FormProps {
   handleSubmit: () => void
 }
 
+/*
+Interface for the formProp with date object {display: string, value: string} suspended
+
+interface FormProps {
+  questions: Question[]
+  formData: {
+    [key: string]: string | string[] | { display: string; value: string }
+  }
+  handleChange: (
+    field: string,
+    value: string | string[] | { display: string; value: string }
+  ) => void
+  handleSubmit: () => void
+}
+*/
+
 const QuestionForm: React.FC<FormProps> = ({
   questions,
   formData,
@@ -133,6 +149,7 @@ const QuestionForm: React.FC<FormProps> = ({
         multiInsertValue.trim(),
       ]
       handleChange(field, newValues)
+      console.log()
       setMultiInsertValue('')
     }
   }
@@ -142,6 +159,30 @@ const QuestionForm: React.FC<FormProps> = ({
       (v) => v !== valueToRemove
     )
     handleChange(field, newValues)
+  }
+
+  //For the date input field, format date in words
+  const formatDateInWords = (date: Date): string => {
+    const day = date.getDate()
+    const month = date.toLocaleString('default', { month: 'long' })
+    const year = date.getFullYear()
+
+    const getDaySuffix = (day: number): string => {
+      if (day > 3 && day < 21) return 'th'
+      switch (day % 10) {
+        case 1:
+          return 'st'
+        case 2:
+          return 'nd'
+        case 3:
+          return 'rd'
+        default:
+          return 'th'
+      }
+    }
+
+    //return `day of ${day}${getDaySuffix(day)} ${month} ${year}` formatting with the string `day of`
+    return `${day}${getDaySuffix(day)} ${month} ${year}`
   }
 
   const currentQuestion = currentQuestions[currentStep]
@@ -189,10 +230,24 @@ const QuestionForm: React.FC<FormProps> = ({
               }
               onChange={(date: Date | null) => {
                 if (date) {
-                  const formattedDate = date.toLocaleDateString('en-GB')
-                  handleChange(name, formattedDate)
+                  //  const formattedDate = date.toLocaleDateString('en-GB')
+                  const formattedDateInWords = formatDateInWords(date) // Date in Words Format
+                  //   const formattedDateOriginal = date.toLocaleDateString('en-GB') //dd/mm/yyy format
+                  //    handleChange(name, formattedDate)
+                  handleChange(name, formattedDateInWords)
                 }
               }}
+              //  onChange={(date: Date | null) => {
+              // //   if (date) {
+              // //     const formattedDateInWords = formatDateInWords(date) // Date in Words Format
+              // //     const formattedDateOriginal = date.toLocaleDateString('en-GB') //dd/mm/yyy format
+              // //     handleChange(name, {
+              // //       display: formattedDateInWords,
+              // //       value: formattedDateOriginal,
+              // //     })
+              // //   }
+              //  }}
+
               value={formData[name] as string}
               dateFormat="dd-MM-yyyy"
               className="text--xs"

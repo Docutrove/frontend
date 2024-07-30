@@ -166,8 +166,12 @@ export default function TemplateDetails() {
       return value || '------'
     })
 
-    let processedCompleteHtml = replaceDynamicSections(completeTemplateHtml)
+    //   let processedCompleteHtml = replaceDynamicSections(completeTemplateHtml) old way sending back processed html to backend
+
+    let processedCompleteHtml = completeTemplateHtml //sending back complete html to backend without processing it
+
     processedCompleteHtml = processedCompleteHtml.replace(
+      //No processing of complete html (Mapping the form values to the placeholders on the template page)
       /{{(.*?)}}/g,
       (_match, key) => {
         const value = formData[key.trim()]

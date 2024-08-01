@@ -1,12 +1,11 @@
 import { useCustomiseDocContext } from '.'
 import InvoiceDetails from '../../ui/invoiceDetails'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import ContactSection from '../../ui/ContactSection'
 import QuestionForm from './QuestionForm'
 import './index.scss'
 import useRequest from '../../../hooks/useRequest'
 import { getTemplate } from '../../../../api/templates'
-import { useMemo } from 'react'
 import toast from 'react-hot-toast'
 
 interface TemplateModule {
@@ -49,7 +48,6 @@ export default function TemplateDetails() {
     name: string
     price: number
     description: string
-    //   faqs: string[]
     faqs?: any[]
     configuration: {
       fields: []
@@ -77,8 +75,7 @@ export default function TemplateDetails() {
   useEffect(() => {
     if (localTemplate) {
       const fields = localTemplate.configuration.formConfig.modules
-      const html = localTemplate.configuration.previewHtml //changed this from previewHtml
-      //    const faqs = localTemplate.faqs //faqs from API responsq
+      const html = localTemplate.configuration.html //changed this from previewHtml
       const completeHtml = localTemplate.configuration.html
 
       const initialFormData: { [key: string]: string | string[] } = {}
@@ -107,7 +104,6 @@ export default function TemplateDetails() {
   const processedTemplate = useMemo(() => {
     let processedHtml = templateHtml
 
-    // Function to get nested questions for a given config question
     const getNestedQuestions = (configName: string, configValue: string) => {
       const configQuestion = questions.find(
         (q) => q.name === configName && q.isConfig
@@ -115,14 +111,10 @@ export default function TemplateDetails() {
       return configQuestion?.questions?.[configValue] || []
     }
 
-    // Function to replace dynamic sections
-
     const replaceDynamicSections = (html: string): string => {
       try {
         return html.replace(
-          //     /#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\|#Dynamic (.*?)#/g, //old regex
-          /\s*#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\|#Dynamic (.*?)#\s*/g, //updated regex to remove extra spaces
-
+          /\s*#Dynamic (.*?)#([\s\S]*?)\\Dynamic\\|#Dynamic (.*?)#\s*/g,
           (_, condition1, content1, condition2) => {
             const condition = condition1 || condition2
             const content = content1 || ''
@@ -158,6 +150,19 @@ export default function TemplateDetails() {
 
     processedHtml = replaceDynamicSections(processedHtml)
 
+    processedHtml = processedHtml.replace(
+      /{{#each (.*?)}}([\s\S]*?){{\/each}}/g,
+      (_match, key, content) => {
+        const values = formData[key.trim()]
+        if (Array.isArray(values)) {
+          return `<ol>${values
+            .map((value) => `<li>${value}</li>`)
+            .join('')}</ol>`
+        }
+        return content || '------'
+      }
+    )
+
     processedHtml = processedHtml.replace(/{{(.*?)}}/g, (_match, key) => {
       const value = formData[key.trim()]
       if (Array.isArray(value)) {
@@ -166,12 +171,9 @@ export default function TemplateDetails() {
       return value || '------'
     })
 
-    //   let processedCompleteHtml = replaceDynamicSections(completeTemplateHtml) old way sending back processed html to backend
-
-    let processedCompleteHtml = completeTemplateHtml //sending back complete html to backend without processing it
+    let processedCompleteHtml = completeTemplateHtml
 
     processedCompleteHtml = processedCompleteHtml.replace(
-      //No processing of complete html (Mapping the form values to the placeholders on the template page)
       /{{(.*?)}}/g,
       (_match, key) => {
         const value = formData[key.trim()]

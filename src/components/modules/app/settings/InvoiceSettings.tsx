@@ -1,4 +1,4 @@
-import { Icon } from "../../ui/Icon";
+import { Icon } from '../../ui/Icon'
 
 export default function InvoiceSettings() {
   return (
@@ -87,5 +87,5 @@ export default function InvoiceSettings() {
         </div>
       </div>
     </>
-  );
+  )
 }

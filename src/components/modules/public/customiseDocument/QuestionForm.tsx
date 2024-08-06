@@ -7,7 +7,7 @@ import ProgressBar from '../../ui/ProgressBar'
 import ReactDatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import toast from 'react-hot-toast'
-import { debounce } from 'lodash' //used to delay the salary input field calculation
+import { debounce } from 'lodash'
 
 interface Question {
   label: string
@@ -21,7 +21,7 @@ interface Question {
   action?: {
     name: string
     value: string
-  } // For objects with action attribute
+  }
 }
 
 interface FormProps {
@@ -30,22 +30,6 @@ interface FormProps {
   handleChange: (field: string, value: string | string[]) => void
   handleSubmit: () => void
 }
-
-/*
-Interface for the formProp with date object {display: string, value: string} suspended
-
-interface FormProps {
-  questions: Question[]
-  formData: {
-    [key: string]: string | string[] | { display: string; value: string }
-  }
-  handleChange: (
-    field: string,
-    value: string | string[] | { display: string; value: string }
-  ) => void
-  handleSubmit: () => void
-}
-*/
 
 const QuestionForm: React.FC<FormProps> = ({
   questions,
@@ -57,14 +41,12 @@ const QuestionForm: React.FC<FormProps> = ({
     useState<Question[]>(questions)
   const { setTemplateData } = useCustomiseDocContext()
   const [multiInsertValue, setMultiInsertValue] = useState('')
-  const [rawInputs, setRawInputs] = useState<{ [key: string]: string }>({})
-
-  /***********************************BEGINNING OF LOCAL STORAGE TO GET FORM VALUES */
+  const [rawNumberInputs, setRawNumberInputs] = useState<{
+    [key: string]: string
+  }>({})
 
   useEffect(() => {
-    // Load form data from localStorage when the component mounts
     const savedFormData = localStorage.getItem('formData')
-
     if (savedFormData) {
       const parsedData = JSON.parse(savedFormData)
       Object.keys(parsedData).forEach((key) =>
@@ -74,11 +56,8 @@ const QuestionForm: React.FC<FormProps> = ({
   }, [questions])
 
   useEffect(() => {
-    // Save form data to localStorage whenever it changes
     localStorage.setItem('formData', JSON.stringify(formData))
   }, [formData])
-
-  /*********************************** END OF LOCAL STORAGE SECTION TO GET FORM VALUES */
 
   useEffect(() => {
     const updateQuestions = () => {
@@ -103,21 +82,13 @@ const QuestionForm: React.FC<FormProps> = ({
     updateQuestions()
   }, [formData, questions])
 
-  useEffect(() => {
-    return () => {
-      debouncedProcessValue.cancel()
-    }
-  }, []) //For salary caluclation
-
   const nextStep = () => {
     if (!formData[name]) {
-      // Check if the field is empty (Falsy values include empty strings, null, undefined, 0, false)
-      toast.error('This Field is required') // Display an error message if the field is empty
+      toast.error('This Field is required')
       return
     }
 
     if (multiInsertValue.trim() !== '') {
-      // If the multi-insert field is not empty, add the value to the form data
       setMultiInsertValue('')
     }
     setCurrentStep((prevStep) =>
@@ -129,38 +100,26 @@ const QuestionForm: React.FC<FormProps> = ({
     setCurrentStep((prevStep) => Math.max(prevStep - 1, 0))
   }
 
-  /************************************** SALARY CALCULATION BLOCK  **** */
-  const debouncedProcessValue = debounce(
-    (question: Question, value: string) => {
-      const processedValue = processValue(question, value)
-      handleChange(question.name, processedValue)
-    },
-    500
-  ) // 500ms delay
-
-  const processValue = (question: Question, value: string): string => {
-    if (question.action && question.action.name === 'multiply') {
+  const handleNumberInputChange = debounce((field: string, value: string) => {
+    const question = questions.find((q) => q.name === field)
+    if (question && question.action && question.action.name === 'multiply') {
       const multiplier = parseFloat(question.action.value)
       const numericValue = parseFloat(value)
       if (!isNaN(multiplier) && !isNaN(numericValue)) {
-        return (numericValue * multiplier).toString()
-      }
-    }
-    return value
-  }
-
-  const handleInputChange = (field: string, value: string) => {
-    const question = questions.find((q) => q.name === field)
-    if (question) {
-      setRawInputs((prev) => ({ ...prev, [field]: value }))
-      if (question.action && question.action.name === 'multiply') {
-        debouncedProcessValue(question, value)
+        const result = (numericValue * multiplier).toString()
+        handleChange(field, result)
       } else {
         handleChange(field, value)
       }
+    } else {
+      handleChange(field, value)
     }
+  }, 500)
+
+  const handleRawNumberInputChange = (field: string, value: string) => {
+    setRawNumberInputs((prev) => ({ ...prev, [field]: value }))
+    handleNumberInputChange(field, value)
   }
-  /************************************** SALARY CALCUALTION END */
 
   const handleMultiSelectChange = (
     field: string,
@@ -180,7 +139,6 @@ const QuestionForm: React.FC<FormProps> = ({
       .map((v) => v.trim())
       .filter((v) => v !== '')
     handleChange(field, values)
-    //setMultiInsertValue('') // Clear the input field after updating the form data
   }
 
   const handleMultiInsertKeyDown = (
@@ -194,7 +152,6 @@ const QuestionForm: React.FC<FormProps> = ({
         multiInsertValue.trim(),
       ]
       handleChange(field, newValues)
-      console.log()
       setMultiInsertValue('')
     }
   }
@@ -206,7 +163,6 @@ const QuestionForm: React.FC<FormProps> = ({
     handleChange(field, newValues)
   }
 
-  //For the date input field, format date in words
   const formatDateInWords = (date: Date): string => {
     const day = date.getDate()
     const month = date.toLocaleString('default', { month: 'long' })
@@ -226,7 +182,6 @@ const QuestionForm: React.FC<FormProps> = ({
       }
     }
 
-    //return `day of ${day}${getDaySuffix(day)} ${month} ${year}` formatting with the string `day of`
     return `${day}${getDaySuffix(day)} ${month} ${year}`
   }
 
@@ -251,7 +206,7 @@ const QuestionForm: React.FC<FormProps> = ({
               required
               placeholder={example}
               value={(formData[name] as string) || ''}
-              onChange={(e) => handleInputChange(name, e.target.value)}
+              onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
           {type === 'number' && (
@@ -260,12 +215,10 @@ const QuestionForm: React.FC<FormProps> = ({
               type="number"
               required
               placeholder={example}
-              value={rawInputs[name] || (formData[name] as string) || ''}
-              //   value={(formData[name] as string) || ''}
-              onChange={(e) => handleInputChange(name, e.target.value)}
+              value={rawNumberInputs[name] || (formData[name] as string) || ''}
+              onChange={(e) => handleRawNumberInputChange(name, e.target.value)}
             />
           )}
-
           {type === 'date' && (
             <ReactDatePicker
               selected={
@@ -276,24 +229,10 @@ const QuestionForm: React.FC<FormProps> = ({
               }
               onChange={(date: Date | null) => {
                 if (date) {
-                  //  const formattedDate = date.toLocaleDateString('en-GB')
-                  const formattedDateInWords = formatDateInWords(date) // Date in Words Format
-                  //   const formattedDateOriginal = date.toLocaleDateString('en-GB') //dd/mm/yyy format
-                  //    handleChange(name, formattedDate)
-                  handleInputChange(name, formattedDateInWords)
+                  const formattedDateInWords = formatDateInWords(date)
+                  handleChange(name, formattedDateInWords)
                 }
               }}
-              //  onChange={(date: Date | null) => {
-              // //   if (date) {
-              // //     const formattedDateInWords = formatDateInWords(date) // Date in Words Format
-              // //     const formattedDateOriginal = date.toLocaleDateString('en-GB') //dd/mm/yyy format
-              // //     handleChange(name, {
-              // //       display: formattedDateInWords,
-              // //       value: formattedDateOriginal,
-              // //     })
-              // //   }
-              //  }}
-
               value={formData[name] as string}
               dateFormat="dd-MM-yyyy"
               className="text--xs"
@@ -303,17 +242,15 @@ const QuestionForm: React.FC<FormProps> = ({
               dropdownMode="select"
             />
           )}
-
           {type === 'textarea' && (
             <textarea
               className="text--xs"
               value={(formData[name] as string) || ''}
               required
               placeholder={example}
-              onChange={(e) => handleInputChange(name, e.target.value)}
+              onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
-
           {type === 'email' && (
             <BaseInput
               type="email"
@@ -322,7 +259,7 @@ const QuestionForm: React.FC<FormProps> = ({
               name={name}
               className="text--xs"
               value={(formData[name] as string) || ''}
-              onChange={(e) => handleInputChange(name, e.target.value)}
+              onChange={(e) => handleChange(name, e.target.value)}
             />
           )}
           {type === 'dropdown' && (
@@ -330,7 +267,7 @@ const QuestionForm: React.FC<FormProps> = ({
               className="text--xs"
               required
               value={(formData[name] as string) || ''}
-              onChange={(e) => handleInputChange(name, e.target.value)}
+              onChange={(e) => handleChange(name, e.target.value)}
             >
               <option value="">Select an option</option>
               {options?.map((option: string, index: number) => (
@@ -350,7 +287,7 @@ const QuestionForm: React.FC<FormProps> = ({
                     name={name}
                     value={option}
                     checked={formData[name] === option}
-                    onChange={(e) => handleInputChange(name, e.target.value)}
+                    onChange={(e) => handleChange(name, e.target.value)}
                   />
                   {option}
                 </label>
@@ -371,8 +308,6 @@ const QuestionForm: React.FC<FormProps> = ({
               ))}
             </select>
           )}
-
-          {/* FOR LOCALSTORAGE */}
           {type === 'multi-insert' && (
             <div className="document-details__multi-insert">
               <BaseInput

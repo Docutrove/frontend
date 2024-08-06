@@ -1,5 +1,5 @@
 // import { useEffect } from "react";
-import { Offer } from "../../ui/offer";
+import { Offer } from '../../ui/offer'
 // import useRequest from "../../../hooks/useRequest";
 // import { toast } from "react-hot-toast";
 // import { getCategories } from "../../../../api/home";
@@ -11,42 +11,45 @@ import { Offer } from "../../ui/offer";
 // }
 
 interface Offers {
-  name: string;
-  variant: "purple" | "green" | "blue" | "plain";
-  iconName: "document" | "pie" | "user";
-  path: string;
-  title: string;
-  description: string;
+  name: string
+  variant: 'purple' | 'green' | 'blue' | 'plain'
+  iconName: 'document' | 'pie' | 'user'
+  path: string
+  title: string
+  description: string
 }
 
 const offers: Offers[] = [
   {
-    name: "template",
-    variant: "purple",
-    iconName: "document",
-    path: "/customise",
-    title: "Create Customized Legal Documents",
-    description: "Choose from our templates, answer a few questions and get lawyer-vetted documents tailored to your needs.",
+    name: 'template',
+    variant: 'purple',
+    iconName: 'document',
+    path: '/customise',
+    title: 'Create Customized Legal Documents',
+    description:
+      'Choose from our templates, answer a few questions and get lawyer-vetted documents tailored to your needs.',
   },
 
   {
-    name: "business_registration",
-    variant: "green",
-    iconName: "pie",
-    path: "/business",
-    description: "From registration to compliance, DocuTrove provides everything your business needs to stay on the right side of the law.",
-    title: "Business Legal Support",
+    name: 'business_registration',
+    variant: 'green',
+    iconName: 'pie',
+    path: '/business',
+    description:
+      'From registration to compliance, DocuTrove provides everything your business needs to stay on the right side of the law.',
+    title: 'Business Legal Support',
   },
 
   {
-    name: "consultation",
-    variant: "blue",
-    iconName: "user",
-    path: "/consultation",
-    title: "Schedule a Consultation",
-    description: "Speak to qualified experts on legal matters across several disciplines. Consult with top legal minds in the Country and find a resolution easily.",
+    name: 'consultation',
+    variant: 'blue',
+    iconName: 'user',
+    path: '/consultation',
+    title: 'Schedule a Consultation',
+    description:
+      'Speak to qualified experts on legal matters across several disciplines. Consult with top legal minds in the Country and find a resolution easily.',
   },
-];
+]
 
 export default function HomeOffers() {
   // const { makeRequest, response } = useRequest(getCategories);
@@ -67,21 +70,22 @@ export default function HomeOffers() {
     <div className="home__offers app-container">
       <div className="home__offers__content app-container__section">
         <>
-        { offers.map((offer) => {
-          return (
-            <Offer
-            variant={offer.variant}
-            iconName={offer.iconName}
-            title={offer.title}
-            description={offer.description}
-            path={offer.path}
-            buttonText="Discover More"
-            buttonVariant="secondary"
-            />
-          )
-        })}
+          {offers.map((offer, index) => {
+            return (
+              <Offer
+                key={index}
+                variant={offer.variant}
+                iconName={offer.iconName}
+                title={offer.title}
+                description={offer.description}
+                path={offer.path}
+                buttonText="Discover More"
+                buttonVariant="secondary"
+              />
+            )
+          })}
         </>
-        
+
         {/* {response?.data?.map((category: Category, i: number) => {
           const offerItem = offers.find(
             (offer) => offer.name === category.name
@@ -107,5 +111,5 @@ export default function HomeOffers() {
         })} */}
       </div>
     </div>
-  );
+  )
 }

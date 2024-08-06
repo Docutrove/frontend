@@ -151,7 +151,7 @@ export default function TemplateDetails() {
     processedHtml = replaceDynamicSections(processedHtml)
 
     processedHtml = processedHtml.replace(
-      /{{#each (.*?)}}([\s\S]*?){{\/each}}/g,
+      /{{#each (.*?)}}([\s\S]*?){{\/each}}/g, // Handle List for multi-insert input Fields
       (_match, key, content) => {
         const values = formData[key.trim()]
         if (Array.isArray(values)) {

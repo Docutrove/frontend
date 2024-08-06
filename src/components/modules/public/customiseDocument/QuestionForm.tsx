@@ -7,6 +7,7 @@ import ProgressBar from '../../ui/ProgressBar'
 import ReactDatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import toast from 'react-hot-toast'
+import { debounce } from 'lodash' //used to delay the salary input field calculation
 
 interface Question {
   label: string
@@ -17,6 +18,10 @@ interface Question {
   required: boolean
   isConfig?: boolean
   questions?: { [key: string]: Question[] }
+  action?: {
+    name: string
+    value: string
+  } // For objects with action attribute
 }
 
 interface FormProps {
@@ -52,6 +57,7 @@ const QuestionForm: React.FC<FormProps> = ({
     useState<Question[]>(questions)
   const { setTemplateData } = useCustomiseDocContext()
   const [multiInsertValue, setMultiInsertValue] = useState('')
+  const [rawInputs, setRawInputs] = useState<{ [key: string]: string }>({})
 
   /***********************************BEGINNING OF LOCAL STORAGE TO GET FORM VALUES */
 
@@ -97,6 +103,12 @@ const QuestionForm: React.FC<FormProps> = ({
     updateQuestions()
   }, [formData, questions])
 
+  useEffect(() => {
+    return () => {
+      debouncedProcessValue.cancel()
+    }
+  }, []) //For salary caluclation
+
   const nextStep = () => {
     if (!formData[name]) {
       // Check if the field is empty (Falsy values include empty strings, null, undefined, 0, false)
@@ -116,6 +128,39 @@ const QuestionForm: React.FC<FormProps> = ({
   const prevStep = () => {
     setCurrentStep((prevStep) => Math.max(prevStep - 1, 0))
   }
+
+  /************************************** SALARY CALCULATION BLOCK  **** */
+  const debouncedProcessValue = debounce(
+    (question: Question, value: string) => {
+      const processedValue = processValue(question, value)
+      handleChange(question.name, processedValue)
+    },
+    500
+  ) // 500ms delay
+
+  const processValue = (question: Question, value: string): string => {
+    if (question.action && question.action.name === 'multiply') {
+      const multiplier = parseFloat(question.action.value)
+      const numericValue = parseFloat(value)
+      if (!isNaN(multiplier) && !isNaN(numericValue)) {
+        return (numericValue * multiplier).toString()
+      }
+    }
+    return value
+  }
+
+  const handleInputChange = (field: string, value: string) => {
+    const question = questions.find((q) => q.name === field)
+    if (question) {
+      setRawInputs((prev) => ({ ...prev, [field]: value }))
+      if (question.action && question.action.name === 'multiply') {
+        debouncedProcessValue(question, value)
+      } else {
+        handleChange(field, value)
+      }
+    }
+  }
+  /************************************** SALARY CALCUALTION END */
 
   const handleMultiSelectChange = (
     field: string,
@@ -206,7 +251,7 @@ const QuestionForm: React.FC<FormProps> = ({
               required
               placeholder={example}
               value={(formData[name] as string) || ''}
-              onChange={(e) => handleChange(name, e.target.value)}
+              onChange={(e) => handleInputChange(name, e.target.value)}
             />
           )}
           {type === 'number' && (
@@ -215,8 +260,9 @@ const QuestionForm: React.FC<FormProps> = ({
               type="number"
               required
               placeholder={example}
-              value={(formData[name] as string) || ''}
-              onChange={(e) => handleChange(name, e.target.value)}
+              value={rawInputs[name] || (formData[name] as string) || ''}
+              //   value={(formData[name] as string) || ''}
+              onChange={(e) => handleInputChange(name, e.target.value)}
             />
           )}
 
@@ -234,7 +280,7 @@ const QuestionForm: React.FC<FormProps> = ({
                   const formattedDateInWords = formatDateInWords(date) // Date in Words Format
                   //   const formattedDateOriginal = date.toLocaleDateString('en-GB') //dd/mm/yyy format
                   //    handleChange(name, formattedDate)
-                  handleChange(name, formattedDateInWords)
+                  handleInputChange(name, formattedDateInWords)
                 }
               }}
               //  onChange={(date: Date | null) => {
@@ -264,7 +310,7 @@ const QuestionForm: React.FC<FormProps> = ({
               value={(formData[name] as string) || ''}
               required
               placeholder={example}
-              onChange={(e) => handleChange(name, e.target.value)}
+              onChange={(e) => handleInputChange(name, e.target.value)}
             />
           )}
 
@@ -276,7 +322,7 @@ const QuestionForm: React.FC<FormProps> = ({
               name={name}
               className="text--xs"
               value={(formData[name] as string) || ''}
-              onChange={(e) => handleChange(name, e.target.value)}
+              onChange={(e) => handleInputChange(name, e.target.value)}
             />
           )}
           {type === 'dropdown' && (
@@ -284,7 +330,7 @@ const QuestionForm: React.FC<FormProps> = ({
               className="text--xs"
               required
               value={(formData[name] as string) || ''}
-              onChange={(e) => handleChange(name, e.target.value)}
+              onChange={(e) => handleInputChange(name, e.target.value)}
             >
               <option value="">Select an option</option>
               {options?.map((option: string, index: number) => (
@@ -304,7 +350,7 @@ const QuestionForm: React.FC<FormProps> = ({
                     name={name}
                     value={option}
                     checked={formData[name] === option}
-                    onChange={(e) => handleChange(name, e.target.value)}
+                    onChange={(e) => handleInputChange(name, e.target.value)}
                   />
                   {option}
                 </label>

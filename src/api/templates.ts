@@ -1,54 +1,58 @@
-import createRequest from "../utils/api";
+import createRequest from '../utils/api'
 
 function getTemplateCategories() {
-  return createRequest("/api/v1/item/categories?page=1&limit=100&service=template", "get");
+  return createRequest(
+    '/api/v1/item/categories?page=1&limit=100&service=template',
+    'get'
+  )
 }
 
 function getTemplatesByCategory(categoryId: string) {
-  return createRequest(`/api/v1/item?limit=100&page=1&categoryId=${categoryId}`, "get");
+  return createRequest(
+    `/api/v1/item?limit=100&page=1&categoryId=${categoryId}`,
+    'get'
+  )
 }
 
 async function createRequestForTemplate(
   url: string,
-  method: "get" | "post" | "put" | "patch" | "delete",
+  method: 'get' | 'post' | 'put' | 'patch' | 'delete',
   body?: Record<string, any>
 ) {
   try {
     const headers: any = {
-      "Content-Type": "application/json",
-    };
-
-    if (localStorage.getItem("AUTH_TOKEN")) {
-      headers["Authorization"] = `Bearer ${localStorage.getItem("AUTH_TOKEN")}`;
+      'Content-Type': 'application/json',
     }
 
-    const res = await fetch(`https://api.docutrove.co${url}`, {
+    if (localStorage.getItem('AUTH_TOKEN')) {
+      headers['Authorization'] = `Bearer ${localStorage.getItem('AUTH_TOKEN')}`
+    }
+
+    //3fe4-102-89-43-25.ngrok-free.app/
+    //const res = await fetch(`https://api.docutrove.co${url}`, {
+    const res = await fetch(`https://3fe4-102-89-43-25.ngrok-free.app${url}`, {
       method,
       headers,
       body: JSON.stringify(body),
-    });
-    let response;
+    })
+    let response
     try {
-      response = await res.json();
+      response = await res.json()
     } catch {
-      return [null, { message: "Something went wrong" }];
+      return [null, { message: 'Something went wrong' }]
     }
 
     if (!res.ok) {
-      return [null, response];
+      return [null, response]
     }
-    return [response, null];
+    return [response, null]
   } catch (err) {
-    return [null, err];
+    return [null, err]
   }
 }
 
 function getTemplate(templateId: string) {
-  return createRequestForTemplate(`/api/v1/item/${templateId}`, "get");
+  return createRequestForTemplate(`/api/v1/item/${templateId}`, 'get')
 }
 
-export {
-  getTemplateCategories,
-  getTemplatesByCategory,
-  getTemplate,
-};
+export { getTemplateCategories, getTemplatesByCategory, getTemplate }

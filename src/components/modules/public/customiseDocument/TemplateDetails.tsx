@@ -171,7 +171,8 @@ export default function TemplateDetails() {
       return value || '------'
     })
 
-    let processedCompleteHtml = completeTemplateHtml
+    //let processedCompleteHtml = completeTemplateHtml
+    let processedCompleteHtml = replaceDynamicSections(completeTemplateHtml) //sending back complete html to backend with processing it
 
     processedCompleteHtml = processedCompleteHtml.replace(
       /{{(.*?)}}/g,

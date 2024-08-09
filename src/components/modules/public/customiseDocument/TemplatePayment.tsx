@@ -15,9 +15,13 @@ export default function TemplatePayment() {
   const { makeRequest: signupRequest } = useRequest(signup, authData)
   const itemID = Number(templateId)
   // const callbackUrl = "https://2e32-102-89-22-245.ngrok-free.app/customise/document";
-  const callbackUrl = "https://www.docutrove.co/customise/document";
-  const processedHtml = localStorage.getItem("processedCompleteHtml");
-  const { makeRequest: paymentRequest } = useRequest(initiatePayment, { itemID, paymentData: { config: templateData, html: processedHtml }, callbackUrl })
+  const callbackUrl = 'https://www.docutrove.co/customise/document'
+  const processedHtml = localStorage.getItem('processedCompleteHtml')
+  const { makeRequest: paymentRequest } = useRequest(initiatePayment, {
+    itemID,
+    paymentData: { config: templateData, html: processedHtml },
+    callbackUrl,
+  })
 
   const signUp = async () => {
     const token = localStorage.getItem('AUTH_TOKEN')
@@ -38,7 +42,7 @@ export default function TemplatePayment() {
     if (err) {
       toast.error(err.message)
     }
-    toast.success('you are being redirected tp payment')
+    toast.success('you are being redirected to payment')
     window.location.href = resp.data.payment_url
   }
 

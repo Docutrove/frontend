@@ -132,6 +132,8 @@ const QuestionForm: React.FC<FormProps> = ({
     handleChange(field, values)
   }
 
+  /************************** MULTI-INSERT UTILITY FUNCTIONS *****************/
+
   const handleMultiInsertChange = (field: string, value: string) => {
     setMultiInsertValue(value)
     const values = value
@@ -162,6 +164,8 @@ const QuestionForm: React.FC<FormProps> = ({
     )
     handleChange(field, newValues)
   }
+
+  /************************** END MULTI-INSERT UTILITY FUNCTIONS *****************/
 
   const formatDateInWords = (date: Date): string => {
     const day = date.getDate()

@@ -111,6 +111,7 @@ export default function TemplateDetails() {
       return configQuestion?.questions?.[configValue] || []
     }
 
+    // Function That replaces the dynamic sections in the html
     const replaceDynamicSections = (html: string): string => {
       try {
         return html.replace(
@@ -148,6 +149,8 @@ export default function TemplateDetails() {
       }
     }
 
+    /***************************************** END PROCESSING COMPLETED HTML FOR TEMPLATE DETAILS PAGE  */
+
     processedHtml = replaceDynamicSections(processedHtml)
 
     processedHtml = processedHtml.replace(
@@ -171,8 +174,11 @@ export default function TemplateDetails() {
       return value || '------'
     })
 
+    /***************************************** END PROCESSING COMPLETED HTML FOR TEMPLATE DETAILS PAGE */
+
+    /***************************************** PROCESSING COMPLETED HTML TO BE STORED IN LOCAL STORAGE SECTION */
     //let processedCompleteHtml = completeTemplateHtml
-    let processedCompleteHtml = replaceDynamicSections(completeTemplateHtml) //sending back complete html to backend with processing it
+    let processedCompleteHtml = replaceDynamicSections(completeTemplateHtml) //sending back complete html to backend with processing function
 
     processedCompleteHtml = processedCompleteHtml.replace(
       /{{(.*?)}}/g,
@@ -185,10 +191,25 @@ export default function TemplateDetails() {
       }
     )
 
+    processedCompleteHtml = processedCompleteHtml.replace(
+      /{{#each (.*?)}}([\s\S]*?){{\/each}}/g, // Handle List for multi-insert input Fields
+      (_match, key, content) => {
+        const values = formData[key.trim()]
+        if (Array.isArray(values)) {
+          return `<ol>${values
+            .map((value) => `<li>${value}</li>`)
+            .join('')}</ol>`
+        }
+        return content || '------'
+      }
+    )
+
     localStorage.setItem('processedCompleteHtml', processedCompleteHtml)
 
     return processedHtml
   }, [formData, templateHtml, questions])
+
+  /*************************************************** END PROCESSED COMPLETED HTML SECTION */
 
   const handleChange = (field: string, value: string | string[]) => {
     setFormData((prevFormData) => ({ ...prevFormData, [field]: value }))
